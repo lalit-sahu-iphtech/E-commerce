@@ -1,19 +1,17 @@
-import { useState } from "react";
-import SignUp from "./components/AccountPage/Signup";
-import Home from "./components/Home/Home";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+import SignUp from "./components/AccountPage/SignUp";
+import Home from "./components/Home/Home";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   return (
     <>
-   
-      {isAuthenticated ? (
-        <Home />
-      ) : (
-        <SignUp setIsAuthenticated={setIsAuthenticated} />
-      )}
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
     </>
   );
 }
