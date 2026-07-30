@@ -103,7 +103,7 @@ export default function ExploreProducts(){
 
                 <div className="arrows">
                     <button className="arrow-btn">&#8592;</button>
-                    <button className="arrow-btn">&#8592;</button>
+                    <button className="arrow-btn">&#8594;</button>
 
                 </div>
             </div>
