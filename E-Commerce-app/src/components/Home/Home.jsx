@@ -7,10 +7,12 @@ import Category from "../category/Category";
 import SellingFlash from "../sellingProducts/SellingFlash";
 import MusicBanner from "../MusicBanner/MusicBanner"
 import ExploreProducts from "../ExploreProducts/ExploreProducts";
+import Featured from "../Featured/Featured";
+import Footer from "../Footer/Footer";
 export default function Home(){
     return(
         <>
-        <Navbar/>
+        {/* <Navbar/> */}
         <div className="home">
             <Sidebar/>
             <Hero/>
@@ -23,6 +25,8 @@ export default function Home(){
 
         <MusicBanner/>
         <ExploreProducts/>
+        <Featured/>
+        <Footer/>
         </>
     )
 }
