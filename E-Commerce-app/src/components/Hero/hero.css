@@ -1,0 +1,69 @@
+.hero{
+ position: relative;
+ width: 100%;
+ margin-top: 10px;
+}
+
+.hero img{
+   width: 100%;
+   height: 500px;
+   /* object-fit: cover; */
+   display: block;
+}
+.hero-content{
+    position:absolute;
+    top: 70px;
+    left: 60px;
+    color: #fff;
+}
+.series p{
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.series span{
+    font-size: 30px;
+    margin-right: 10px;
+}
+.hero-content h1{
+    font-size: 54px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+.shop-btn{
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    
+    font-size: 18px;
+    cursor: pointer;
+    padding-bottom: 1px;
+}
+
+@media (max-width : 768px) {
+    .hero-content{
+        top: 12%;
+        left: 5%;
+    }
+    .hero-content h1{
+        margin-bottom: 15px;
+    }
+}
+@media (max-width : 480px) {
+    .hero-content{
+        top: 10%;
+        left: 5%;
+    }
+    .series{
+        margin-bottom: 10px;
+    }
+    .hero-content h1{
+        line-height: 1.1;
+        margin-bottom: 12px;
+        font-size: 45px;
+    }
+    .shop-btn{
+        font-size: 13px;
+    }
+}

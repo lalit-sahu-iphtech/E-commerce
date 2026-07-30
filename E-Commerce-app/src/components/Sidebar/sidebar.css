@@ -1,0 +1,24 @@
+.sidebar{
+    width: 270px;
+    min-height: 500px;
+    border-right: 1px solid #ddd;
+    /* padding-top: 5px; */
+    margin-right: 50px;
+    margin-top: -50px;
+}
+.sidebar ul{
+    list-style: none;
+}
+.sidebar li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: -30px;
+}
+.arrow{
+    font-size: 14px;
+}

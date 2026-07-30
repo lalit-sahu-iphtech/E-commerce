@@ -1,0 +1,160 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+
+  }
+
+.product-card{
+    width: 100%;
+    cursor:pointer;
+
+}
+.product-image{
+    position:relative;
+    background:#F5F5F5;
+    padding:25px;
+    height:250px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.product-image img{
+    width:170px;
+    height:170px;
+    object-fit:contain;
+}
+.icons{
+    position:absolute;
+    top:12px;
+    right:12px;
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.icons svg{
+    width:34px;
+    height:34px;
+    padding:8px;
+    background:#fff;
+    border-radius:50%;
+    color:#000;
+    cursor:pointer;
+}
+
+.cart-btn{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    background:#000;
+    color:#fff;
+    border:none;
+    padding:12px;
+    cursor:pointer;
+}
+
+.product-card h3{
+    margin:16px 0 8px;
+    font-size:16px;
+}
+
+.price{
+    display:flex;
+    gap:12px;
+    margin-bottom:8px;
+}
+
+.new-price{
+    color:#DB4444;
+    font-weight:600;
+}
+
+.old-price{
+    color:#999;
+    text-decoration:line-through;
+}
+
+.rating{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    color:#777;
+    font-size:14px;
+} 
+
+/* ================= Flash Sale ================= */
+.selling-section{
+    margin:100px;
+}
+
+.selling-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:40px;
+}
+
+.selling-title{
+    margin-top:20px;
+    font-size:36px;
+    font-weight:700;
+}
+
+.view-btn{
+    width:160px;
+    height:56px;
+    border:none;
+    background:#DB4444;
+    color:#fff;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:500;
+}
+
+.view-btn:hover{
+    background:#c93535;
+}
+
+@media(max-width:992px){
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .selling-section{
+        margin:50px;
+    }
+}
+
+@media(max-width:768px){
+
+    .selling-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .selling-section{
+        margin:40px 20px;
+    }
+}
+
+@media(max-width:480px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .view-btn{
+        width:100%;
+    }
+}
