@@ -2,7 +2,7 @@ import "./navbar.css";
 import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
-
+import { Link } from "react-router-dom";
 export default function Navbar(){
     return(
         <header className="navbar">
@@ -10,13 +10,23 @@ export default function Navbar(){
             <h2>Exclusive</h2>
             </div>
             <nav>
-                <ul className="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                   
-                </ul>
+            <ul className="nav-links">
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+
+                <li>
+                    <Link to="/contact">Contact</Link>
+                </li>
+
+                <li>
+                    <Link to="/about">About</Link>
+                </li>
+
+                <li>
+                    <Link to="/signup">Sign Up</Link>
+                </li>
+           </ul>
             </nav>
             <div className="right-section">
                 <div className="search-box">
