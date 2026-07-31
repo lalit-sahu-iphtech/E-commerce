@@ -2,9 +2,10 @@ import { useState } from "react"
 import signUpImg from "../../assets/sign-up/sign-up.png"
 import "./signup.css"
 
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp({ setIsAuthenticated }){
-
+    const navigate = useNavigate();
    const[isLogin, setIsLogin] = useState(false);
    const[formData, setFormData] = useState({
     name : "",
@@ -36,6 +37,8 @@ export default function SignUp({ setIsAuthenticated }){
     console.log(users);
     alert("Account created Successfully");
     setIsAuthenticated(true);
+    navigate("/");
+
     setFormData({
         name : "",
         email : "",
@@ -58,16 +61,24 @@ export default function SignUp({ setIsAuthenticated }){
         item.email === formData.email &&
         item.password === formData.password
     );
-    if(user){
-        alert("Login Successful")
-        console.log("Logged In User");
-        console.log(user);
-        
-        localStorage.setItem("currentUser", JSON.stringify(user));
+    if (user) {
+
+        alert("Login Successful");
+      
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify(user)
+        );
+      
         setIsAuthenticated(true);
-    }else{
-        console.log("Invalid Email or Password")
-    }
+      
+        navigate("/");
+      
+      } else {
+      
+        alert("Invalid Email or Password");
+      
+      }
     setFormData({
         name: "",
         email: "",

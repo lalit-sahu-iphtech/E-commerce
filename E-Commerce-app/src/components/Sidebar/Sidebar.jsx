@@ -1,26 +1,142 @@
 import "./sidebar.css";
 import { FaChevronRight } from "react-icons/fa";
-export default function Sidebar(){
+import { useCategory } from "../../context/CategoryContext";
+import { useState } from "react";
 
-    return(
-       <aside className="sidebar">
-         <ul>
-            <li>Woman's Fashion
-                <FaChevronRight className="arrow"/>
-            </li>
-            <li>Men's Fashion
-            <FaChevronRight className="arrow"/>
 
-            </li>
-            
-            <li>Electronics</li>
-            <li>Home & Lifestyle</li>
-            <li>Medicine</li>
-            <li>Sports & Outdoor</li>
-            <li>Baby's & Toys</li>
-            <li>Groceries & pets</li>
-            <li>Health & Beauty</li>
-        </ul>
-       </aside>
-    )
+export default function Sidebar() {
+
+    const {
+        category,
+        setCategory,
+        subCategory,
+        setSubCategory,
+      } = useCategory();
+
+  const [hoverMenu, setHoverMenu] = useState("");
+
+  const categories = [
+    {
+      title: "Woman's Fashion",
+      submenu: [
+        "Dresses",
+        "Handbags",
+        "High Heels",
+        "Jewellery",
+        "Makeup",
+      ],
+    },
+
+    {
+      title: "Men's Fashion",
+      submenu: [
+        "Shirts",
+        "Shoes",
+        "Watches",
+        "Bags",
+        "Jackets",
+      ],
+    },
+
+    {
+      title: "Electronics",
+    },
+
+    {
+      title: "Home & Lifestyle",
+    },
+
+    {
+      title: "Medicine",
+    },
+
+    {
+      title: "Sports & Outdoor",
+    },
+
+    {
+      title: "Baby's & Toys",
+    },
+
+    {
+      title: "Groceries & Pets",
+    },
+
+    {
+      title: "Health & Beauty",
+    },
+  ];
+
+  return (
+    <aside className="sidebar">
+
+      <ul>
+
+        {categories.map((item) => (
+
+          <li
+
+            key={item.title}
+
+            className={`sidebar-item ${
+              category === item.title
+                ? "active-category"
+                : ""
+            }`}
+
+            onClick={() =>
+              setCategory(item.title)
+            }
+
+            onMouseEnter={() =>
+              setHoverMenu(item.title)
+            }
+
+            onMouseLeave={() =>
+              setHoverMenu("")
+            }
+
+          >
+
+            <span>{item.title}</span>
+
+            {item.submenu && (
+              <FaChevronRight className="arrow" />
+            )}
+
+            {hoverMenu === item.title &&
+              item.submenu && (
+
+                <div className="submenu">
+
+                  {item.submenu.map((sub) => (
+
+                        <div
+                        key={sub}
+                        className={`submenu-item ${
+                        subCategory === sub ? "active-submenu" : ""
+                        }`}
+                        onClick={(e) => {
+                        e.stopPropagation();
+                        setSubCategory(sub);
+                        setCategory(item.title);
+                        }}
+                        >
+                        {sub}
+                        </div>
+
+                  ))}
+
+                </div>
+
+              )}
+
+          </li>
+
+        ))}
+
+      </ul>
+
+    </aside>
+  );
 }

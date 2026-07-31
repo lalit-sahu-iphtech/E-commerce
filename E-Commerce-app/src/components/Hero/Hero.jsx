@@ -1,6 +1,15 @@
 import heroImg from "../../assets/hero/heroImg.png"
 import "./hero.css"
 export default function Hero(){
+  const handleShopNow = () =>{
+    const section = document.getElementById("flash-sale");
+
+    if(section){
+      section.scrollIntoView({
+        behavior : "smooth",
+      });
+    }
+  };
 
     return(
   
@@ -13,7 +22,9 @@ export default function Hero(){
                 <br />  
                 off Voucher
               </h1>
-              <button className="shop-btn">Shop Now</button> <span>→</span>
+              <button className="shop-btn"
+              onClick={handleShopNow}
+              >Shop Now</button> <span className="arrow">→</span>
             </div>
           </div>
      

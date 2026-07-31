@@ -6,7 +6,7 @@ import headphone from "../../assets/category/headphone.png"
 import gaming from "../../assets/category/gaming.png"
 
 import "./category.css"
-
+import { useSearch } from "../../context/SearchContext";
 const categories = [
     { name : "Phones", icon: phone },
     {name : "Computers",icon: computers},
@@ -16,6 +16,10 @@ const categories = [
     { name : "Gaming", icon: gaming },
 ]
 export default function Category(){
+//     const { search } = useSearch();
+//     const filteredProducts = products.filter((item)=>
+// item.title.toLowerCase().includes(search.toLowerCase())
+// );
 
     return(
         <section className="category-section">

@@ -26,6 +26,27 @@
     height:170px;
     object-fit:contain;
 }
+.wishlist-btn{
+    border:none;
+    background:#fff;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.heart{
+    font-size:18px;
+    color:#000;
+    transition:0.3s;
+}
+
+.active-heart{
+    color:#DB4444 !important;
+}
 .icons{
     position:absolute;
     top:12px;
@@ -56,6 +77,11 @@
     border:none;
     padding:12px;
     cursor:pointer;
+    transition: .3s;
+}
+.cart-btn.added{
+    background-color: #16a34a;
+    color: white;
 }
 
 .product-card h3{
@@ -72,9 +98,12 @@
 .new-price{
     color:#DB4444;
     font-weight:600;
+  font-size: 16px;
+
 }
 
 .old-price{
+  font-size: 16px;
     color:#999;
     text-decoration:line-through;
 }

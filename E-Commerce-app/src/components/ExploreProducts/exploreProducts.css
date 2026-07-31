@@ -90,7 +90,7 @@
     top: 12px;
     left: 12px;
   
-    background: #00ff66;
+    background: #16a34a;
     color: white;
   
     padding: 5px 14px;
@@ -99,7 +99,27 @@
   }
   
   /* ================= ICONS ================= */
-  
+  .wishlist-btn{
+    border:none;
+    background:#fff;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.heart{
+    font-size:18px;
+    color:#000;
+    transition:0.3s;
+}
+
+.active-heart{
+    color:#DB4444 !important;
+}
   .icons {
     position: absolute;
     top: 12px;
@@ -138,6 +158,11 @@
     color: white;
   
     cursor: pointer;
+    transition: .3s;
+  }
+  .cart-btn.added{
+    background-color: #16a34a;
+    color: white;
   }
   
   /* Optional hover effect */
@@ -170,11 +195,15 @@
   .new-price {
     color: #db4444;
     font-weight: 600;
+  font-size: 16px;
+
   }
   
   .old-price {
     color: #999;
     text-decoration: line-through;
+  font-size: 16px;
+
   }
   
   /* ================= RATING ================= */

@@ -35,24 +35,63 @@
     border-radius:4px;
     font-size:12px;
 }
-
 .icons{
-    position:absolute;
-    top:10px;
-    right:10px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
+  position:absolute;
+  top:10px;
+  right:10px;
+
+  display:flex !important;
+  flex-direction:column !important;
+
+  align-items:center;
+
+  gap:10px;
+
+  z-index:5;
+}
+.wishlist-btn,
+.preview-btn{
+  all:unset;
+  border:none;
+  background:#fff;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+.wishlist-btn svg,
+.preview-btn svg{
+    font-size:18px;
+}
+.wishlist-btn{
+  top : 0;
+}
+.preview-btn{
+   top:44px 
 }
 
-.icons svg{
-    background:#fff;
-    color: #000;
-    width:34px;
-    height:34px;
-    padding:8px;
-    border-radius:50%;
-    cursor:pointer;
+.heart{
+  font-size:18px;
+  color:#000;
+  transition:0.3s;
+}
+
+.active-heart{
+  color:#DB4444 !important;
+}
+
+.no-product{
+  grid-column:1/-1;
+  text-align:center;
+  padding:50px 0;
+  color:#777;
 }
 
 .cart-btn{
@@ -60,11 +99,16 @@
     left:0;
     bottom:0;
     width:100%;
-    background:#000;
-    color:#fff;
+    /* background:#000;
+    color:#fff; */
     border:none;
     padding:12px;
     cursor:pointer;
+    transition: .3s;
+}
+.cart-btn.added{
+  background-color: #16a34a;
+  color: white;
 }
 
 .product-card h3{
@@ -80,10 +124,12 @@
 
 .new-price{
     color:#DB4444;
+    font-size: 16px;
     font-weight:600;
 }
 
 .old-price{
+  font-size: 16px;
     color:#999;
     text-decoration:line-through;
 }
