@@ -1,4 +1,5 @@
 import heroImg from "../../assets/hero/heroImg.png"
+import { FaApple } from "react-icons/fa";
 import "./hero.css"
 export default function Hero(){
   const handleShopNow = () =>{
@@ -17,7 +18,9 @@ export default function Hero(){
             <img src={heroImg} alt="iphone" />
 
             <div className="hero-content">
-              <p className="series"><span></span>iPhone 14 Series</p>
+              <p className="series"><span>
+                 <FaApple className="apple-icon" />
+                </span>iPhone 14 Series</p>
               <h1>Up to 10%
                 <br />  
                 off Voucher

@@ -10,6 +10,9 @@ import Cart from "./components/Cart/Cart.jsx";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import AllProducts from "./pages/AllProducts/AllProducts";
+
+import Profile from "./pages/Profile/Profile";
+
 import { useState } from "react";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,6 +27,8 @@ function App() {
 
         <Route path="/signup" element={<SignUp setIsAuthenticated={setIsAuthenticated}
 />} />
+
+<Route path="/profile" element={<Profile />} />
 
         <Route path = "/wishlist"element={<Wishlist/>}/>
 
