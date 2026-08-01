@@ -3,6 +3,8 @@ import signUpImg from "../../assets/sign-up/sign-up.png"
 import "./signup.css"
 
 import { useNavigate } from "react-router-dom";
+import googleIcon from "../../assets/google.png";
+import Footer from "../Footer/Footer";
 
 export default function SignUp({ setIsAuthenticated }){
     const navigate = useNavigate();
@@ -87,6 +89,7 @@ export default function SignUp({ setIsAuthenticated }){
    }
    
     return(
+    <>
         <div className="signup-container">
           <div className="left">
           <img src={signUpImg} alt="signup img" />
@@ -149,7 +152,7 @@ export default function SignUp({ setIsAuthenticated }){
           {!isLogin && (
              <button className="google-btn">
              <img 
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
+              src={googleIcon}
              alt="google" />
              sign up with Google
              </button>
@@ -169,5 +172,8 @@ export default function SignUp({ setIsAuthenticated }){
                 
           </div>
         </div>
+        <Footer/>
+        <h1>footer</h1>
+    </>
     )
 }

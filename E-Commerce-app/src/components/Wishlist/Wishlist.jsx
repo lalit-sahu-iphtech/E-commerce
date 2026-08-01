@@ -4,76 +4,87 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { useWishlist } from "../../context/WishlistContext";
 import RecommendedCard from "./RecommendedCard";
 
-import laptop from "../../assets/exploreProducts/laptop.png";
-import monitor from "../../assets/products/monitor.png";
-import gamepad from "../../assets/products/gamepad.png";
-import keyboard from "../../assets/products/keyboard.png";
+// import laptop from "../../assets/exploreProducts/laptop.png";
+// import monitor from "../../assets/products/monitor.png";
+// import gamepad from "../../assets/products/gamepad.png";
+// import keyboard from "../../assets/products/keyboard.png";
+
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
-const recommendedProducts = [
-  {
-    id: 5,
-    image: laptop,
-    title: "ASUS FHD Gaming Laptop",
-    price: 960,
-    oldPrice: 1160,
-    discount: "-35%",
-    rating: 5,
-    reviews: 65,
-  },
-  {
-    id: 6,
-    image: monitor,
-    title: "IPS LCD Gaming Monitor",
-    price: 160,
-    oldPrice: 170,
-    rating: 5,
-    reviews: 65,
-  },
-  {
-    id: 7,
-    image: gamepad,
-    title: "HAVIT HV-G92 Gamepad",
-    price: 560,
-    oldPrice: 650,
-    new: true,
-    rating: 5,
-    reviews: 65,
-  },
-  {
-    id: 8,
-    image: keyboard,
-    title: "AK-900 Wired Keyboard",
-    price: 200,
-    oldPrice: 260,
-    rating: 5,
-    reviews: 65,
-  },
-];
+import { useState } from "react";
+import {products} from "../../data/recomonded"
+
+// const recommendedProducts = [
+//   {
+//     id: 5,
+//     image: laptop,
+//     title: "ASUS FHD Gaming Laptop",
+//     price: 960,
+//     oldPrice: 1160,
+//     discount: "-35%",
+//     rating: 5,
+//     reviews: 65,
+//   },
+//   {
+//     id: 6,
+//     image: monitor,
+//     title: "IPS LCD Gaming Monitor",
+//     price: 160,
+//     oldPrice: 170,
+//     rating: 5,
+//     reviews: 65,
+//   },
+//   {
+//     id: 7,
+//     image: gamepad,
+//     title: "HAVIT HV-G92 Gamepad",
+//     price: 560,
+//     oldPrice: 650,
+//     new: true,
+//     rating: 5,
+//     reviews: 65,
+//   },
+//   {
+//     id: 8,
+//     image: keyboard,
+//     title: "AK-900 Wired Keyboard",
+//     price: 200,
+//     oldPrice: 260,
+//     rating: 5,
+//     reviews: 65,
+//   },
+// ];
 
 export default function Wishlist() {
-    const {
-        addToCart
-    } = useCart();
-    const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const navigate = useNavigate();
   const { wishlist, removeFromWishlist, clearWishlist } = useWishlist();
 
-  const handleMoveAllToBag = () =>{
-    if(wishlist.length === 0){
-        alert("Wishlist is empty");
-        return;
+    const [added, setAdded] = useState(false);
+
+    const handleAddCart = (products) =>{
+     addToCart(products);
+     setAdded(products.id);
+     setTimeout(() =>{
+      setAdded(null);
+     },1000);
+
+    }
+  const handleMoveAllToBag = () => {
+    if (wishlist.length === 0) {
+      alert("Wishlist is empty");
+      return;
     }
     wishlist.forEach((item) => {
-        addToCart(item);
-      });
-    
+      addToCart(item);
+    });
+
     clearWishlist();
     alert("All products moved to cart");
-  }
+  };
 
   return (
     <div className="wishlist-page">
-
       {/* Wishlist Header */}
 
       <div className="wishlist-header">
@@ -93,67 +104,46 @@ export default function Wishlist() {
         </div>
       ) : (
         <div className="wishlist-grid">
-
-          {wishlist.map((product) => (
-
-            <div
-              className="wishlist-card"
-              key={product.id}
-            >
-
+          {wishlist.map((products) => (
+            <div className="wishlist-card" key={products.id}>
               <div className="wishlist-image">
-
-                <img
-                  src={product.image}
-                  alt={product.title}
-                />
+                <img src={products.image} alt={products.title} />
 
                 <button
                   className="delete-btn"
-                  onClick={() =>
-                    removeFromWishlist(product.id)
-                  }
+                  onClick={() => removeFromWishlist(products.id)}
                 >
                   <FaTrashAlt />
                 </button>
 
-                    <button
-                    className="cart-btn"
-                    onClick={() => addToCart(product)}
-                    >
-                    <HiOutlineShoppingCart />
-                    Add To Cart
-                    </button>
-
+               <button
+              className={`cart-btn ${added === products.id ? "added" : ""}`}
+              onClick={() => handleAddCart(products)}
+            >
+              <HiOutlineShoppingCart />
+              {added === products.id ? "✓ Added" : "Add To Cart"}
+            </button>
               </div>
 
-              <h3>{product.title}</h3>
+              <h3>{products.title}</h3>
 
               <div className="price">
-
-                <span className="new-price">
-                  ${product.price}
-                </span>
-{/* 
+                <span className="new-price">${products.price}</span>
+                {/* 
                 {product.oldPrice && (
                   <span className="old-price">
                     ${product.oldPrice}
                   </span>
                 )} */}
-
               </div>
-
             </div>
-
           ))}
-
         </div>
       )}
 
       {/* Just For You */}
 
       <div className="just-header">
-
         <div className="just-left">
           <span className="red-bar"></span>
           <h2>Just For You</h2>
@@ -162,23 +152,13 @@ export default function Wishlist() {
         <button className="move-btn" onClick={() => navigate("/")}>
           See All
         </button>
-
       </div>
 
       <div className="wishlist-grid">
-
-        {recommendedProducts.map((product) => (
-
-          <RecommendedCard
-            key={product.id}
-            product={product}
-          />
-
+        {products.map((product) => (
+          <RecommendedCard key={product.id} product={product} />
         ))}
-
       </div>
-     
-
     </div>
   );
 }

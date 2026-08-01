@@ -4,9 +4,12 @@ import SignUp from "./components/AccountPage/SignUp";
 import Home from "./components/Home/Home";
 import Wishlist from "./components/Wishlist/Wishlist"
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import RecomDetails from "./pages/ProductDetails/RecomDetails";
+
 import Cart from "./components/Cart/Cart.jsx";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
+import AllProducts from "./pages/AllProducts/AllProducts";
 import { useState } from "react";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -25,10 +28,14 @@ function App() {
         <Route path = "/wishlist"element={<Wishlist/>}/>
 
         <Route path="/cart"element={<Cart />} />
+
+           <Route path="/products" element={<AllProducts />} />
         <Route
         path="/product/:id"
         element={<ProductDetails />}
         />
+        <Route path="/product/:id/:title" element={<RecomDetails/>} />
+     
       </Routes>
     </>
   );

@@ -205,6 +205,9 @@
   /* ===========================
         SERVICES
 =========================== */
+/* ===========================
+        SERVICES
+=========================== */
 
 .services{
     display:flex;
@@ -218,6 +221,18 @@
 .service-card{
     flex:1;
     text-align:center;
+
+    padding:30px 20px;
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition: transform .35s ease, box-shadow .35s ease, background .35s ease;
+}
+
+.service-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
 }
 
 .service-icon{
@@ -233,17 +248,38 @@
     display:flex;
     justify-content:center;
     align-items:center;
+
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), 
+                background .35s ease, 
+                border-color .35s ease;
 }
 
 .service-icon svg{
     color:#fff;
     font-size:34px;
+    transition: transform .35s ease;
+}
+
+.service-card:hover .service-icon{
+    transform: scale(1.12) rotate(-8deg);
+    background:#DB4444;
+    border-color:#F5C7C7;
+}
+
+.service-card:hover .service-icon svg{
+    transform: scale(1.1);
 }
 
 .service-card h3{
     font-size:20px;
     font-weight:600;
     margin-bottom:10px;
+
+    transition: color .3s ease;
+}
+
+.service-card:hover h3{
+    color:#DB4444;
 }
 
 .service-card p{

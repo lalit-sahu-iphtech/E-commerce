@@ -5,10 +5,24 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+
 export default function RecommendedCard({ product }) {
   const { addToCart } = useCart();
   const { addToWishlist } = useWishlist();
   const navigate = useNavigate();
+
+   const [added, setAdded] = useState(false);
+
+    const handleAddCart = (product) =>{
+     addToCart(product);
+     setAdded(product.id);
+     setTimeout(() =>{
+      setAdded(null);
+     },1000);
+
+    }
 
   return (
     <div className="wishlist-card">
@@ -29,31 +43,28 @@ export default function RecommendedCard({ product }) {
         {/* <button className="preview-btn">
           <FaRegEye />
         </button> */}
-        <button
-          onClick={() => navigate(`/product/${product.id}`)}
-          style={{
-            border: "none",
-            background: "#fff",
-            width: "34px",
-            height: "34px",
-            borderRadius: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-            padding: 0,
-            margin: 0,
-          }}
-        >
-          <FaRegEye style={{ fontSize: "18px" }} />
-        </button>
+     <button
+  className="preview-btn"
+  onClick={() =>
+    navigate(
+      `/product/${product.id}/${product.title
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`
+    )
+  }
+>
+  <FaRegEye />
+</button>
 
         <img src={product.image} alt={product.title} />
 
-        <button className="cart-btn" onClick={() => addToCart(product)}>
-          <HiOutlineShoppingCart />
-          Add To Cart
-        </button>
+            <button
+              className={`cart-btn ${added === product.id ? "added" : ""}`}
+              onClick={() => handleAddCart(product)}
+            >
+              <HiOutlineShoppingCart />
+              {added === product.id ? "✓ Added" : "Add To Cart"}
+            </button>
       </div>
 
       <h3>{product.title}</h3>

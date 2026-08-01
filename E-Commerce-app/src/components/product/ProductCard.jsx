@@ -15,22 +15,34 @@ import { useNavigate } from "react-router-dom";
 export default function ProductCard({ product }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   const [added, setAdded] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleAddCart = () => {
     addToCart(product);
+
     setAdded(true);
+
     setTimeout(() => {
       setAdded(false);
     }, 1000);
   };
+
   return (
     <div className="product-card">
       <div className="product-image">
-        <span className="discount">{product.disCount}</span>
+        {product.discount && (
+          <span className="discount">
+            {product.discount}
+          </span>
+        )}
+
+        {product.badge && (
+          <span className="discount new-badge">
+            {product.badge}
+          </span>
+        )}
 
         <div className="icons">
           <button
@@ -45,36 +57,35 @@ export default function ProductCard({ product }) {
           </button>
 
           <button
-          onClick={() => navigate(`/product/${product.id}`)}
-          style={{
-            border: "none",
-            background: "#fff",
-            width: "34px",
-            height: "34px",
-            borderRadius: "50%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-            padding: 0,
-            margin: 0,
-          }}
-        >
-          <FaRegEye style={{ fontSize: "18px" }} />
-  </button>
-
-          {/* <button
-            className="preview-btn"
-            onClick={() => navigate(`/product/${product.id}`)}
+        
+           onClick={() => navigate(`/product/${product.id}`)}
+             style={{
+              border: "none",
+              background: "#fff",
+              width: "34px",
+              height: "34px",
+              borderRadius: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+              padding: 0,
+              margin: 0,
+            }}
           >
-            <FaRegEye />
-          </button> */}
-          {/* <FaRegEye/> */}
+            <FaRegEye style={{ fontSize: "18px" }}  />
+          </button>
         </div>
-        <img src={product.image} alt={product.title} />
+
+        <img
+          src={product.image}
+          alt={product.title}
+        />
 
         <button
-          className={`cart-btn ${added ? "added" : ""}`}
+          className={`cart-btn ${
+            added ? "added" : ""
+          }`}
           onClick={handleAddCart}
         >
           {added ? "✓ Added" : "Add To Cart"}
@@ -84,17 +95,29 @@ export default function ProductCard({ product }) {
       <h3>{product.title}</h3>
 
       <div className="price">
-        <span className="new-price">${product.price}</span>
+        <span className="new-price">
+          ${product.price}
+        </span>
 
-        <span className="old-price">${product.oldPrice}</span>
+        {product.oldPrice && (
+          <span className="old-price">
+            ${product.oldPrice}
+          </span>
+        )}
       </div>
 
       <div className="rating">
         {[...Array(5)].map((_, index) =>
-          index < product.rating ? (
-            <FaStar key={index} color="#FFAD33" />
+          index < Math.floor(product.rating) ? (
+            <FaStar
+              key={index}
+              color="#FFAD33"
+            />
           ) : (
-            <FaRegStar key={index} color="#FFAD33" />
+            <FaRegStar
+              key={index}
+              color="#FFAD33"
+            />
           )
         )}
 

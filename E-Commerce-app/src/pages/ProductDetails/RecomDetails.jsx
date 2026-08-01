@@ -4,11 +4,11 @@ import { FaStar, FaRegStar, FaHeart } from "react-icons/fa";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { useState } from "react";
 
-import { products } from "../../data/products";
+import { products } from "../../data/recomonded";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 
-export default function ProductDetails() {
+export default function RecomDetails() {
   const { id } = useParams();
 
   const product = products.find((item) => item.id === Number(id));

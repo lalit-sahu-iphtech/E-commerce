@@ -44,6 +44,7 @@
     display:flex;
     justify-content:center;
     align-items:center;
+    overflow: hidden;
 }
 
 .wishlist-image img{
@@ -88,6 +89,11 @@
     gap:8px;
 
     cursor:pointer;
+    transition: .3s;
+}
+.cart-btn.added{
+    background-color: #16a34a;
+    color: white;
 }
 .wishlist-card h3{
     margin-top:15px;
@@ -146,7 +152,7 @@
     border-radius:4px;
 }
 
-.eye-btn,
+/* .eye-btn,
 .preview-btn{
     position:absolute;
     right:12px;
@@ -158,16 +164,50 @@
     display:flex;
     justify-content:center;
     align-items:center;
-}
+} */
 
-.eye-btn{
+/* .eye-btn{
     top:12px;
-}
+} */
 
-.preview-btn{
+/* .preview-btn{
     top:10px;
+} */
+.preview-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  z-index: 5;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
 }
 
+.preview-btn svg {
+  font-size: 18px;
+  color: #000;
+}
+
+.preview-btn:hover {
+  background: #DB4444;
+}
+
+.preview-btn:hover svg {
+  color: #fff;
+}
 .discount{
     position:absolute;
     top:12px;
