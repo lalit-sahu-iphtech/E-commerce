@@ -103,13 +103,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+    margin-top: 80px;
+    
   }
   
   .product-left {
     display: flex;
     align-items: center;
     gap: 18px;
+
   }
   
   .product-left img {
@@ -305,4 +308,3 @@
     }
   
   }
-  
