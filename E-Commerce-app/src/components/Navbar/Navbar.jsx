@@ -1,8 +1,13 @@
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import { FaRegHeart, FaBars, FaTimes, FaRegUserCircle } from "react-icons/fa";
+import {
+  FaRegHeart,
+  FaBars,
+  FaTimes,
+  FaRegUserCircle,
+} from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
 
@@ -11,16 +16,30 @@ import { useCart } from "../../context/CartContext";
 import { useSearch } from "../../context/SearchContext";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
   const { wishlist } = useWishlist();
   const { cart } = useCart();
   const { search, setSearch } = useSearch();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
-  // Current Logged In User
   const currentUser = JSON.parse(
     localStorage.getItem("currentUser")
   );
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+
+    setShowProfile(false);
+
+    alert("Logged Out Successfully");
+
+    navigate("/");
+
+    window.location.reload();
+  };
 
   return (
     <header className="navbar">
@@ -43,7 +62,10 @@ export default function Navbar() {
       <nav className={menuOpen ? "nav active" : "nav"}>
         <ul className="nav-links">
           <li>
-            <Link to="/" onClick={() => setMenuOpen(false)}>
+            <Link
+              to="/"
+              onClick={() => setMenuOpen(false)}
+            >
               Home
             </Link>
           </li>
@@ -66,7 +88,7 @@ export default function Navbar() {
             </Link>
           </li>
 
-          {!currentUser ? (
+          {!currentUser && (
             <li>
               <Link
                 to="/signup"
@@ -75,21 +97,13 @@ export default function Navbar() {
                 Sign Up
               </Link>
             </li>
-          ) : (
-            <li>
-              <Link
-                to="/profile"
-                onClick={() => setMenuOpen(false)}
-              >
-                Profile
-              </Link>
-            </li>
           )}
         </ul>
       </nav>
 
       {/* Right Section */}
       <div className="right-section">
+        {/* Search */}
         <div className="search-box">
           <input
             type="text"
@@ -132,13 +146,67 @@ export default function Navbar() {
 
         {/* Profile */}
         {currentUser && (
-          <Link
-            to="/profile"
-            className="profile-link"
-          >
-            <FaRegUserCircle className="icon" />
-          </Link>
-        )}
+  <div className="profile-menu">
+    <FaRegUserCircle
+      className="profile-icon"
+      onClick={() => setShowProfile(!showProfile)}
+    />
+
+    {showProfile && (
+      <div className="profile-dropdown">
+
+        <div
+          onClick={() => {
+            setShowProfile(false);
+            navigate("/profile");
+          }}
+        >
+           Manage My Account
+        </div>
+
+        <div
+          onClick={() => {
+            setShowProfile(false);
+            navigate("/orders");
+          }}
+        >
+           My Orders
+        </div>
+
+        <div
+          onClick={() => {
+            setShowProfile(false);
+            alert("Coming Soon");
+          }}
+        >
+           My Cancellations
+        </div>
+
+        <div
+          onClick={() => {
+            setShowProfile(false);
+            alert("Coming Soon");
+          }}
+        >
+           My Reviews
+        </div>
+
+        <div
+          onClick={() => {
+            localStorage.removeItem("currentUser");
+            setShowProfile(false);
+            navigate("/");
+            window.location.reload();
+          }}
+        >
+           Logout
+        </div>
+
+      </div>
+    )}
+  </div>
+)}
+        
       </div>
     </header>
   );

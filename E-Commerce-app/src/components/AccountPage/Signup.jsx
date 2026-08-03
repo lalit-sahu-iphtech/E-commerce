@@ -112,6 +112,17 @@ export default function SignUp({ setIsAuthenticated }) {
     }
   };
 
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+
+    if(isLogin){
+      handleLogin();
+    }else{
+      handleSignup();
+    }
+
+  }
+
   return (
     <>
       <div className="signup-container">
@@ -128,7 +139,7 @@ export default function SignUp({ setIsAuthenticated }) {
 
           <p>Enter your details below</p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             {!isLogin && (
               <input
                 type="text"
@@ -159,11 +170,8 @@ export default function SignUp({ setIsAuthenticated }) {
           <div className="btn-row">
             <button
               className="create-btn"
-              onClick={
-                isLogin
-                  ? handleLogin
-                  : handleSignup
-              }
+              type="submit"
+             
             >
               {isLogin
                 ? "Log In"
