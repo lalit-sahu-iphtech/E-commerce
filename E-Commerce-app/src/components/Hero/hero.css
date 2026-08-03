@@ -108,37 +108,52 @@
   }
   
   /* ================= Mobile ================= */
-  
   @media (max-width: 480px) {
-  
-    .hero-content {
-      top: 35px;
-      left: 20px;
-      max-width: 240px;
+
+    .hero{
+      width: 100%;
+      margin-top: 15px;
     }
   
-    .series {
-      font-size: 13px;
-      gap: 8px;
-      margin-bottom: 12px;
+    .hero img{
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
     }
   
-    .apple-icon {
-      font-size: 24px;
+    .hero-content{
+      top: 20px;
+      left: 16px;
+      max-width: 160px;
     }
   
-    .hero-content h1 {
-      font-size: 30px;
-      line-height: 1.2;
-      margin-bottom: 16px;
+    .series{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      margin-bottom: 8px;
     }
   
-    .shop-btn {
-      font-size: 14px;
+    .apple-icon{
+      font-size: 16px;
     }
   
-    .arrow {
-      margin-left: 8px;
-      font-size: 18px;
+    .hero-content h1{
+      font-size: 22px;
+      line-height: 1.15;
+      margin-bottom: 10px;
+      letter-spacing: 0;
+    }
+  
+    .shop-btn{
+      font-size: 11px;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 2px;
+    }
+  
+    .arrow{
+      font-size: 12px;
+      margin-left: 4px;
     }
   }
