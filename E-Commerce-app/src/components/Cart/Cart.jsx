@@ -1,9 +1,10 @@
 import "./cart.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import CartItem from "./CartItem";
 
 export default function Cart() {
+  const navigate = useNavigate();
   const { cart } = useCart();
 
   const total = cart.reduce(
@@ -91,7 +92,7 @@ export default function Cart() {
                 <span>${total}</span>
               </div>
 
-              <button className="checkout-btn">
+              <button className="checkout-btn" onClick={() => navigate("/checkout")}>
                 Proceed To Checkout
               </button>
 
