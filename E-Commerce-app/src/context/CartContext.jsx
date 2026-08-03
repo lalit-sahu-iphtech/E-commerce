@@ -1,28 +1,69 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
 
+  const currentUser = JSON.parse(
+    localStorage.getItem("currentUser")
+  );
+
+  const cartKey = currentUser
+    ? `cart_${currentUser.email}`
+    : null;
+
   const [cart, setCart] = useState(() => {
-    const data = localStorage.getItem("cart");
-    return data ? JSON.parse(data) : [];
+    if (!cartKey) return [];
+
+    return (
+      JSON.parse(localStorage.getItem(cartKey)) || []
+    );
   });
 
+  // Load cart when user changes
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    if (!cartKey) {
+      setCart([]);
+      return;
+    }
 
+    const data =
+      JSON.parse(localStorage.getItem(cartKey)) || [];
+
+    setCart(data);
+  }, [cartKey]);
+
+  // Save cart
+  useEffect(() => {
+    if (cartKey) {
+      localStorage.setItem(
+        cartKey,
+        JSON.stringify(cart)
+      );
+    }
+  }, [cart, cartKey]);
+
+  // Add Product
   const addToCart = (product) => {
 
-    const exist = cart.find((item) => item.id === product.id);
+    const exist = cart.find(
+      (item) => item.id === product.id
+    );
 
     if (exist) {
 
       setCart(
         cart.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
             : item
         )
       );
@@ -38,27 +79,31 @@ export function CartProvider({ children }) {
       ]);
 
     }
-
   };
 
+  // Remove
   const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
+    setCart(
+      cart.filter((item) => item.id !== id)
+    );
   };
 
+  // Increase
   const increaseQty = (id) => {
-
     setCart(
       cart.map((item) =>
         item.id === id
-          ? { ...item, quantity: item.quantity + 1 }
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
           : item
       )
     );
-
   };
 
+  // Decrease
   const decreaseQty = (id) => {
-
     setCart(
       cart.map((item) =>
         item.id === id
@@ -72,15 +117,14 @@ export function CartProvider({ children }) {
           : item
       )
     );
-
   };
 
+  // Clear
   const clearCart = () => {
     setCart([]);
   };
 
   return (
-
     <CartContext.Provider
       value={{
         cart,
@@ -93,8 +137,8 @@ export function CartProvider({ children }) {
     >
       {children}
     </CartContext.Provider>
-
   );
 }
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () =>
+  useContext(CartContext);
