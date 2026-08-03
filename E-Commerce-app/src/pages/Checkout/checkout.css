@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .checkout-page {
+    width: 100%;
+    padding: 60px 80px;
+    background: #fff;
+  }
+  
+  .checkout-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 60px;
+    font-size: 14px;
+  }
+  
+  .checkout-breadcrumb a {
+    text-decoration: none;
+    color: #7d7d7d;
+  }
+  
+  .checkout-breadcrumb p {
+    color: #000;
+  }
+  
+  .checkout-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    align-items: flex-start;
+  }
+  
+  /* ================= LEFT ================= */
+  
+  .billing-section {
+    flex: 1;
+  }
+  
+  .billing-section h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+  
+  .billing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    color: #7d7d7d;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+  
+  .form-group label span {
+    color: #DB4444;
+  }
+  
+  .form-group input {
+    width: 100%;
+    height: 52px;
+    background: #f5f5f5;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 0 15px;
+    font-size: 15px;
+  }
+  
+  .save-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  
+  .save-info input {
+    width: 18px;
+    height: 18px;
+    accent-color: #DB4444;
+  }
+  
+  /* ================= RIGHT ================= */
+  
+  .order-summary {
+    width: 450px;
+  }
+  
+  .checkout-product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  
+  .product-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  
+  .product-left img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+  }
+  
+  .product-left p {
+    font-size: 16px;
+  }
+  /* ================= PRICE ================= */
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  .total-row {
+    border-bottom: none;
+    font-weight: 600;
+    margin-bottom: 25px;
+  }
+  
+  /* ================= PAYMENT ================= */
+  
+  .payment-method {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  
+  .payment-method label,
+  .cash-delivery {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  
+  .payment-method input,
+  .cash-delivery input {
+    width: 18px;
+    height: 18px;
+    accent-color: #DB4444;
+  }
+  
+  .payment-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .payment-icons img {
+    height: 22px;
+    object-fit: contain;
+  }
+  
+  .cash-delivery {
+    margin-bottom: 30px;
+  }
+  
+  /* ================= COUPON ================= */
+  
+  .coupon-box {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  
+  .coupon-box input {
+    flex: 1;
+    height: 56px;
+    padding: 0 18px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .coupon-box button {
+    width: 180px;
+    border: none;
+    background: #DB4444;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .3s;
+  }
+  
+  .coupon-box button:hover {
+    background: #c73434;
+  }
+  
+  /* ================= PLACE ORDER ================= */
+  
+  .place-order-btn {
+    width: 220px;
+    height: 56px;
+    border: none;
+    background: #DB4444;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .3s;
+  }
+  
+  .place-order-btn:hover {
+    background: #c73434;
+  }
+  
+  /* ================= RESPONSIVE ================= */
+  
+  @media (max-width: 992px) {
+  
+    .checkout-page {
+      padding: 40px 25px;
+    }
+  
+    .checkout-wrapper {
+      flex-direction: column;
+      gap: 50px;
+    }
+  
+    .order-summary {
+      width: 100%;
+    }
+  
+  }
+  
+  @media (max-width: 768px) {
+  
+    .checkout-page {
+      padding: 30px 18px;
+    }
+  
+    .billing-section h1 {
+      font-size: 30px;
+    }
+  
+    .coupon-box {
+      flex-direction: column;
+    }
+  
+    .coupon-box button {
+      width: 100%;
+      height: 54px;
+    }
+  
+    .place-order-btn {
+      width: 100%;
+    }
+  
+    .payment-method {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  
+  }
+  
+  @media (max-width: 480px) {
+  
+    .checkout-breadcrumb {
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+  
+    .checkout-product {
+      gap: 10px;
+    }
+  
+    .product-left p {
+      font-size: 14px;
+    }
+  
+    .price-row {
+      font-size: 15px;
+    }
+  
+    .payment-icons img {
+      height: 18px;
+    }
+  
+  }
+  
