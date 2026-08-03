@@ -1,16 +1,94 @@
-# React + Vite
+# 🛒 E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern and responsive E-Commerce website built using **React.js + Vite**.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://e-commerce.vercel.app
 
-## React Compiler
+## 📂 GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://github.com/lalit-sahu-iphtech/E-commerce
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## ✨ Features
+
+- User Authentication (Local Storage)
+- Product Listing
+- Product Details Page
+- Category Filtering
+- Search Products
+- Wishlist
+- Shopping Cart
+- Checkout Page
+- User Profile
+- About Page
+- Contact Page
+- Responsive Design
+
+---
+
+## 🛠️ Tech Stack
+
+- React.js
+- Vite
+- React Router DOM
+- Context API
+- CSS3
+- Local Storage
+- React Icons
+
+---
+
+## 📥 Clone the Repository
+
+```bash
+git clone https://github.com/lalit-sahu-iphtech/E-commerce.git
+```
+
+---
+
+## 📂 Go to Project Folder
+
+```bash
+cd E-commerce/E-Commerce-app
+```
+
+---
+
+## 📦 Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## ▶️ Run the Project
+
+```bash
+npm run dev
+```
+
+Open your browser:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 👨‍💻 Author
+
+**Lalit Kumar Sahu**
+
+GitHub: https://github.com/lalit-sahu-iphtech
