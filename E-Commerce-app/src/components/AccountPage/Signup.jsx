@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/google.png";
 import Footer from "../Footer/Footer";
 
-export default function SignUp({ setIsAuthenticated }) {
+export default function Signup({ setIsAuthenticated }) {
   const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(false);
@@ -24,23 +24,35 @@ export default function SignUp({ setIsAuthenticated }) {
     });
   };
 
+  const getUsers = () => {
+    try {
+      const savedUsers = JSON.parse(localStorage.getItem("users"));
+      return Array.isArray(savedUsers) ? savedUsers : [];
+    } catch {
+      return [];
+    }
+  };
+
   // ================= SIGNUP =================
 
   const handleSignup = () => {
+    const name = formData.name.trim();
+    const email = formData.email.trim().toLowerCase();
+    const password = formData.password;
+
     if (
-      formData.name.trim() === "" ||
-      formData.email.trim() === "" ||
-      formData.password.trim() === ""
+      name === "" ||
+      email === "" ||
+      password.trim() === ""
     ) {
       alert("Please fill all fields");
       return;
     }
 
-    const users =
-      JSON.parse(localStorage.getItem("users")) || [];
+    const users = getUsers();
 
     const userExist = users.find(
-      (user) => user.email === formData.email
+      (user) => user.email === email
     );
 
     if (userExist) {
@@ -48,7 +60,8 @@ export default function SignUp({ setIsAuthenticated }) {
       return;
     }
 
-    users.push(formData);
+    const newUser = { name, email, password };
+    users.push(newUser);
 
     localStorage.setItem(
       "users",
@@ -58,7 +71,7 @@ export default function SignUp({ setIsAuthenticated }) {
     // Current Logged In User
     localStorage.setItem(
       "currentUser",
-      JSON.stringify(formData)
+      JSON.stringify(newUser)
     );
 
     if (setIsAuthenticated) {
@@ -69,27 +82,28 @@ export default function SignUp({ setIsAuthenticated }) {
 
     navigate("/");
 
-    window.location.reload();
   };
 
   // ================= LOGIN =================
 
   const handleLogin = () => {
+    const email = formData.email.trim().toLowerCase();
+    const password = formData.password;
+
     if (
-      formData.email.trim() === "" ||
-      formData.password.trim() === ""
+      email === "" ||
+      password.trim() === ""
     ) {
       alert("Please fill all fields");
       return;
     }
 
-    const users =
-      JSON.parse(localStorage.getItem("users")) || [];
+    const users = getUsers();
 
     const user = users.find(
       (item) =>
-        item.email === formData.email &&
-        item.password === formData.password
+        item.email === email &&
+        item.password === password
     );
 
     if (user) {
@@ -106,7 +120,6 @@ export default function SignUp({ setIsAuthenticated }) {
 
       navigate("/");
 
-      window.location.reload();
     } else {
       alert("Invalid Email or Password");
     }
@@ -139,7 +152,7 @@ export default function SignUp({ setIsAuthenticated }) {
 
           <p>Enter your details below</p>
 
-          <form onSubmit={handleSubmit}>
+          <form id="auth-form" onSubmit={handleSubmit}>
             {!isLogin && (
               <input
                 type="text"
@@ -151,7 +164,7 @@ export default function SignUp({ setIsAuthenticated }) {
             )}
 
             <input
-              type="text"
+              type="email"
               placeholder="Email or Phone Number"
               name="email"
               value={formData.email}
@@ -171,7 +184,7 @@ export default function SignUp({ setIsAuthenticated }) {
             <button
               className="create-btn"
               type="submit"
-             
+              form="auth-form"
             >
               {isLogin
                 ? "Log In"
@@ -186,7 +199,7 @@ export default function SignUp({ setIsAuthenticated }) {
           </div>
 
           {!isLogin && (
-            <button className="google-btn">
+            <button className="google-btn" type="button">
               <img
                 src={googleIcon}
                 alt="google"
