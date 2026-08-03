@@ -14,6 +14,7 @@ import AllProducts from "./pages/AllProducts/AllProducts";
 import Profile from "./pages/Profile/Profile";
 
 import { useState } from "react";
+import Checkout from "./pages/Checkout/Checkout";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
@@ -40,6 +41,8 @@ function App() {
         element={<ProductDetails />}
         />
         <Route path="/product/:id/:title" element={<RecomDetails/>} />
+
+        <Route path="/checkout"element={<Checkout/>}/>
      
       </Routes>
     </>
