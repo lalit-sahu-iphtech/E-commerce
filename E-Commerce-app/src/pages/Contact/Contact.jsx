@@ -1,41 +1,110 @@
 import "./contact.css";
+import { Link } from "react-router-dom";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
+import Footer from "../../components/Footer/Footer";
 
 export default function Contact() {
   return (
+    <>
+      <section className="contact-page">
+        {/* Breadcrumb */}
+        <div className="breadcrumb">
+          <Link to="/">Home</Link>
+          <span>/</span>
+          <span className="active-page">Contact</span>
+        </div>
 
-    <div className="contact-page">
+        {/* Contact Container */}
+        <div className="contact-container">
+          {/* Left Side */}
+          <div className="contact-info">
+            <div className="info-box">
+              <div className="info-title">
+                <div className="info-icon">
+                  <FaPhoneAlt />
+                </div>
 
-      <h1>Contact Us</h1>
+                <h3>Call To Us</h3>
+              </div>
 
-      <form className="contact-form">
+              <p>We are available 24/7, 7 days a week.</p>
 
-        <input
-          type="text"
-          placeholder="Your Name"
-        />
+              <p>
+                <strong>Phone:</strong> +8801611112222
+              </p>
+            </div>
 
-        <input
-          type="email"
-          placeholder="Your Email"
-        />
+            <hr />
 
-        <input
-          type="text"
-          placeholder="Subject"
-        />
+            <div className="info-box">
+              <div className="info-title">
+                <div className="info-icon">
+                  <MdOutlineMailOutline />
+                </div>
 
-        <textarea
-          rows="6"
-          placeholder="Your Message"
-        ></textarea>
+                <h3>Write To Us</h3>
+              </div>
 
-        <button>
-          Send Message
-        </button>
+              <p>
+                Fill out our form and we will contact you
+                within 24 hours.
+              </p>
 
-      </form>
+              <p>
+                <strong>Email:</strong>
+                customer@exclusive.com
+              </p>
 
-    </div>
+              <p>
+                <strong>Email:</strong>
+                support@exclusive.com
+              </p>
+            </div>
+          </div>
 
+          {/* Right Side */}
+          <div className="contact-form">
+            <form>
+              <div className="input-row">
+                <input
+                  type="text"
+                  placeholder="Your Name *"
+                  required
+                />
+
+                <input
+                  type="email"
+                  placeholder="Your Email *"
+                  required
+                />
+
+                <input
+                  type="text"
+                  placeholder="Your Phone *"
+                  required
+                />
+              </div>
+
+              <textarea
+                rows="10"
+                placeholder="Your Message"
+              ></textarea>
+
+              <div className="send-btn-wrapper">
+                <button
+                  type="submit"
+                  className="send-btn"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </>
   );
 }
