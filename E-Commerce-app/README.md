@@ -2,9 +2,72 @@
 
 A modern and responsive E-Commerce website built using **React.js + Vite**.
 
-## 🚀 Live Demo
+## 📁 Project Structure
 
-https://e-commerce.vercel.app
+
+E-commerce/
+│
+├── E-Commerce-app/
+│   ├── public/
+│   │   ├── assets/
+│   │   └── vite.svg
+│   │
+│   ├── src/
+│   │   ├── assets/
+│   │   │   ├── about/
+│   │   │   ├── category/
+│   │   │   ├── exploreProducts/
+│   │   │   ├── featured/
+│   │   │   ├── footer/
+│   │   │   ├── hero/
+│   │   │   ├── payment/
+│   │   │   ├── products/
+│   │   │   ├── sign-up/
+│   │   │   └── speaker/
+│   │   │
+│   │   ├── components/
+│   │   │   ├── AccountPage/
+│   │   │   ├── Cart/
+│   │   │   ├── category/
+│   │   │   ├── ExploreProducts/
+│   │   │   ├── Featured/
+│   │   │   ├── Footer/
+│   │   │   ├── Hero/
+│   │   │   ├── Home/
+│   │   │   ├── MusicBanner/
+│   │   │   ├── Navbar/
+│   │   │   ├── product/
+│   │   │   ├── sellingProducts/
+│   │   │   ├── Sidebar/
+│   │   │   └── Wishlist/
+│   │   │
+│   │   ├── context/
+│   │   │   ├── CartContext.jsx
+│   │   │   ├── CategoryContext.jsx
+│   │   │   ├── SearchContext.jsx
+│   │   │   └── WishlistContext.jsx
+│   │   │
+│   │   ├── data/
+│   │   │   ├── products.js
+│   │   │   └── recommended.js
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── About/
+│   │   │   ├── AllProducts/
+│   │   │   ├── Checkout/
+│   │   │   ├── Contact/
+│   │   │   ├── ProductDetails/
+│   │   │   └── Profile/
+│   │   │
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   ├── vite.config.js
+│   └── README.md
+│
+└── .gitignore
+
 
 ## 📂 GitHub Repository
 
