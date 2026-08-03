@@ -13,7 +13,8 @@ import ExploreCard from "./ExploreCard"
 import { useSearch } from "../../context/SearchContext";
 
 import {products} from "../../data/products"
-
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 // const products = [
 //     {
 //       id: 1,
@@ -104,11 +105,26 @@ import {products} from "../../data/products"
 //   ];
 
 export default function ExploreProducts(){
+    const[startIndex, setStartIndex] = useState(8);
+
     const { search } = useSearch();
-    const sellingProducts = products.slice(8,16); 
+    const navigate = useNavigate();
+    const sellingProducts = products.slice(startIndex, startIndex + 8); 
     const filteredProducts = sellingProducts.filter((item)=>
 item.title.toLowerCase().includes(search.toLowerCase())
+
 );
+const handleNext = () =>{
+    if(startIndex + 8 < products.length){
+        setStartIndex(startIndex + 4);
+    }
+}
+const handlePrev = () =>{
+    if(startIndex > 8){
+        setStartIndex(startIndex - 4)
+    }
+}
+
     return(
         <section className="explore-section">
             <div className="today">
@@ -119,8 +135,18 @@ item.title.toLowerCase().includes(search.toLowerCase())
                 <h2 className="explore-title">Explore Our Products</h2>
 
                 <div className="arrows">
-                    <button className="arrow-btn">&#8592;</button>
-                    <button className="arrow-btn">&#8594;</button>
+                    <button className="arrow-btn"
+                    onClick={handlePrev}
+                    disabled={startIndex === 8}
+                    >
+
+                        &#8592;
+                        
+                        </button>
+                    <button className="arrow-btn"
+                     onClick={handleNext}
+                     disabled={startIndex  + 8 >= products.length}
+                    >&#8594;</button>
 
                 </div>
             </div>
@@ -135,7 +161,9 @@ item.title.toLowerCase().includes(search.toLowerCase())
                    
             </div>
             <div className="view-all-wrapper">
-                <button className="view-btn">View All Products</button>
+                <button className="view-btn"
+                onClick={() => navigate("/products")}
+                >View All Products</button>
             </div>
         </section>
     )

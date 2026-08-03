@@ -6,7 +6,7 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
+// import "../product/product.css"
 
 export default function RecommendedCard({ product }) {
   const { addToCart } = useCart();

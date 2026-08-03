@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 import { products } from "../../data/products";
 
+import { useState,useEffect } from "react";
+
 export default function FlashSale() {
   const navigate = useNavigate();
 
@@ -34,6 +36,54 @@ export default function FlashSale() {
     );
   });
 
+  const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 3);
+
+const calculateTimeLeft = () => {
+  const difference = targetDate - new Date();
+
+  if (difference <= 0) {
+    return {
+      days: "00",
+      hours: "00",
+      minutes: "00",
+      seconds: "00",
+    };
+  }
+
+  return {
+    days: String(
+      Math.floor(difference / (1000 * 60 * 60 * 24))
+    ).padStart(2, "0"),
+
+    hours: String(
+      Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+      )
+    ).padStart(2, "0"),
+
+    minutes: String(
+      Math.floor((difference / (1000 * 60)) % 60)
+    ).padStart(2, "0"),
+
+    seconds: String(
+      Math.floor((difference / 1000) % 60)
+    ).padStart(2, "0"),
+  };
+};
+
+const [timeLeft, setTimeLeft] = useState(
+  calculateTimeLeft()
+);
+
+useEffect(() => {
+  const timer = setInterval(() => {
+    setTimeLeft(calculateTimeLeft());
+  }, 1000);
+
+  return () => clearInterval(timer);
+}, []);
+
   return (
     <section className="flash-sale" id="flash-sale">
       <div className="flash-sale-header">
@@ -48,28 +98,28 @@ export default function FlashSale() {
           <div className="timer">
             <div className="timer-box">
               <span className="timer-label">Days</span>
-              <span className="timer-value">03</span>
+              <span className="timer-value">{timeLeft.days}</span>
             </div>
 
             <span className="timer-colon">:</span>
 
             <div className="timer-box">
               <span className="timer-label">Hours</span>
-              <span className="timer-value">23</span>
+              <span className="timer-value">{timeLeft.hours}</span>
             </div>
 
             <span className="timer-colon">:</span>
 
             <div className="timer-box">
               <span className="timer-label">Minutes</span>
-              <span className="timer-value">19</span>
+              <span className="timer-value">{timeLeft.minutes}</span>
             </div>
 
             <span className="timer-colon">:</span>
 
             <div className="timer-box">
               <span className="timer-label">Seconds</span>
-              <span className="timer-value">56</span>
+              <span className="timer-value">{timeLeft.seconds}</span>
             </div>
           </div>
         </div>

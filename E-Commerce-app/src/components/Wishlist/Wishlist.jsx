@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import {products} from "../../data/recomonded"
+import Footer from "../Footer/Footer";
 
 // const recommendedProducts = [
 //   {
@@ -84,6 +85,7 @@ export default function Wishlist() {
   };
 
   return (
+    <>
     <div className="wishlist-page">
       {/* Wishlist Header */}
 
@@ -160,5 +162,7 @@ export default function Wishlist() {
         ))}
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }

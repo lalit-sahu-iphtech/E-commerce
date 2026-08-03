@@ -35,6 +35,13 @@
 }
 .wishlist-card{
     cursor:pointer;
+    transition: all .35s ease;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.wishlist-card:hover{
+    transform : translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0, 0.12);
 }
 
 .wishlist-image{
@@ -45,12 +52,20 @@
     justify-content:center;
     align-items:center;
     overflow: hidden;
+    transition: .35s;
 }
 
 .wishlist-image img{
     width:170px;
     height:170px;
     object-fit:contain;
+    transition: .4s ease;
+}
+.wishlist-card:hover .wishlist-image {
+    background-color: #efefef;
+}
+.wishlist-card:hover .wishlist-image img{
+    transform: scale(1.12);
 }
 .delete-btn{
     position:absolute;
@@ -69,6 +84,12 @@
     align-items:center;
 
     cursor:pointer;
+    transition: .3s;
+}
+.delete-btn:hover{
+    background-color: #DB4444;
+    color: #fff;
+    transform: scale(1.1);
 }
 .cart-btn{
     position:absolute;
@@ -90,6 +111,10 @@
 
     cursor:pointer;
     transition: .3s;
+    transform:  translateY(100%);
+}
+.wishlist-card:hover .cart-btn{
+    transform: translateY(0);
 }
 .cart-btn.added{
     background-color: #16a34a;
@@ -98,6 +123,10 @@
 .wishlist-card h3{
     margin-top:15px;
     font-size:16px;
+    transition: .3s;
+}
+.wishlist-card:hover h3{
+   color: #DB4444;
 }
 
 .price{
@@ -203,6 +232,7 @@
 
 .preview-btn:hover {
   background: #DB4444;
+  transform: scale(1.1);
 }
 
 .preview-btn:hover svg {

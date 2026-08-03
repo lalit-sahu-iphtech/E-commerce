@@ -29,6 +29,19 @@ export default function ProductCard({ product }) {
     }, 1000);
   };
 
+  const handleWishlist = () =>{
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+
+    if(!currentUser){
+      alert("please login first to add products to wishlist.");
+      navigate("/signup");
+      return;
+    }
+    toggleWishlist(product);
+  }
+
   return (
     <div className="product-card">
       <div className="product-image">
@@ -47,7 +60,7 @@ export default function ProductCard({ product }) {
         <div className="icons">
           <button
             className="wishlist-btn"
-            onClick={() => toggleWishlist(product)}
+            onClick={handleWishlist}
           >
             {isInWishlist(product.id) ? (
               <FaHeart className="heart active-heart" />
