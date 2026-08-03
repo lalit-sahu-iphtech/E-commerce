@@ -2,9 +2,7 @@
 
 A modern and responsive E-Commerce website built using **React.js + Vite**.
 
-## 🚀 Live Demo
 
-https://e-commerce.vercel.app
 
 ## 📂 GitHub Repository
 
