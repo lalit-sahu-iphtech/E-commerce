@@ -7,6 +7,12 @@
     align-items: center;
     padding: 60px;
     overflow: hidden;
+    transition: all .45s ease;
+    cursor: pointer;
+}
+.music-banner:hover{
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.35);
 }
 .banner-content{
     width:  420px;
@@ -39,6 +45,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: all .35s ease;
+}
+.music-banner:hover .time-box{
+    transform: translateY(-6px);
+}
+.time-box:hover{
+    background-color: #00ff66;
+    color: #fff;
+    transform: scale(1.12);
 }
 .time-box h3{
     font-size: 18px;
@@ -56,11 +71,13 @@
     border-radius:4px;
     font-size:16px;
     cursor:pointer;
-    transition:.3s;
+    transition:all .3s ease;
 }
 
 .banner-content button:hover{
     background:#00d857;
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 12px 30px rgba(0,255,102,.45);
 }
 
 /* Right */
@@ -75,8 +92,19 @@
     width:100%;
     max-width:600px;
     object-fit:contain;
+    transition: transform .6s ease;
+
+}
+.music-banner:hover .banner-image img{
+    transform:scale(1.08) rotate(-2deg);
+}
+.banner-content h2{
+    transition:.4s ease;
 }
 
+.music-banner:hover .banner-content h2{
+    letter-spacing:1px;
+}
 /* ---------- Tablet ---------- */
 
 @media(max-width:992px){
