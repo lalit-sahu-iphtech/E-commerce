@@ -6,9 +6,11 @@ import {
   FaRegHeart,
   FaBars,
   FaTimes,
-  FaRegUserCircle,
 } from "react-icons/fa";
-import { HiOutlineShoppingCart } from "react-icons/hi2";
+import {
+  HiOutlineShoppingCart,
+  HiOutlineUser,
+} from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
 
 import { useWishlist } from "../../context/WishlistContext";
@@ -117,96 +119,93 @@ export default function Navbar() {
           <IoSearchOutline className="search-icon" />
         </div>
 
-        {/* Wishlist */}
-        <Link
-          to="/wishlist"
-          className="wishlist-link"
-        >
-          <FaRegHeart className="icon" />
-
-          {wishlist.length > 0 && (
-            <span className="wishlist-count">
-              {wishlist.length}
-            </span>
-          )}
-        </Link>
-
-        {/* Cart */}
-        <div className="cart-icon">
-          <Link to="/cart">
-            <HiOutlineShoppingCart className="icon" />
-          </Link>
-
-          {cart.length > 0 && (
-            <span className="cart-count">
-              {cart.length}
-            </span>
-          )}
-        </div>
-
-        {/* Profile */}
+        {/* Wishlist - only when logged in */}
         {currentUser && (
-  <div className="profile-menu">
-    <FaRegUserCircle
-      className="profile-icon"
-      onClick={() => setShowProfile(!showProfile)}
-    />
+          <Link
+            to="/wishlist"
+            className="wishlist-link"
+          >
+            <FaRegHeart className="icon" />
 
-    {showProfile && (
-      <div className="profile-dropdown">
+            {wishlist.length > 0 && (
+              <span className="wishlist-count">
+                {wishlist.length}
+              </span>
+            )}
+          </Link>
+        )}
 
-        <div
-          onClick={() => {
-            setShowProfile(false);
-            navigate("/profile");
-          }}
-        >
-           Manage My Account
+        {/* Cart - only when logged in */}
+        {currentUser && (
+          <div className="cart-icon">
+            <Link to="/cart">
+              <HiOutlineShoppingCart className="icon" />
+            </Link>
+
+            {cart.length > 0 && (
+              <span className="cart-count">
+                {cart.length}
+              </span>
+            )}
+          </div>
+        )}
+
+        {/* Profile - only when logged in */}
+        {currentUser && (
+        <div className="profile-menu">
+          <HiOutlineUser
+            className="profile-icon"
+            onClick={() => setShowProfile(!showProfile)}
+          />
+
+          {showProfile && (
+            <div className="profile-dropdown">
+
+              <div
+                onClick={() => {
+                  setShowProfile(false);
+                  navigate("/profile");
+                }}
+              >
+                 Manage My Account
+              </div>
+
+              <div
+                onClick={() => {
+                  setShowProfile(false);
+                  navigate("/orders");
+                }}
+              >
+                 My Orders
+              </div>
+
+              <div
+                onClick={() => {
+                  setShowProfile(false);
+                  alert("Coming Soon");
+                }}
+              >
+                 My Cancellations
+              </div>
+
+              <div
+                onClick={() => {
+                  setShowProfile(false);
+                  alert("Coming Soon");
+                }}
+              >
+                 My Reviews
+              </div>
+
+              <div onClick={handleLogout}>
+                 Logout
+              </div>
+
+            </div>
+          )}
         </div>
+        )}
 
-        <div
-          onClick={() => {
-            setShowProfile(false);
-            navigate("/orders");
-          }}
-        >
-           My Orders
-        </div>
-
-        <div
-          onClick={() => {
-            setShowProfile(false);
-            alert("Coming Soon");
-          }}
-        >
-           My Cancellations
-        </div>
-
-        <div
-          onClick={() => {
-            setShowProfile(false);
-            alert("Coming Soon");
-          }}
-        >
-           My Reviews
-        </div>
-
-        <div
-          onClick={() => {
-            localStorage.removeItem("currentUser");
-            setShowProfile(false);
-            navigate("/");
-            window.location.reload();
-          }}
-        >
-           Logout
-        </div>
-
-      </div>
-    )}
-  </div>
-)}
-        
       </div>
     </header>
   );
