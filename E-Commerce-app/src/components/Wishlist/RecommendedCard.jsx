@@ -1,4 +1,4 @@
-import { FaRegHeart, FaRegEye, FaStar, FaRegStar } from "react-icons/fa";
+import { FaRegHeart, FaRegEye, FaStar, FaRegStar,FaStarHalfAlt, } from "react-icons/fa";
 
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 // import "../product/product.css"
 
-export default function RecommendedCard({ product }) {
+export default function RecommendedCard({ product, index}) {
   const { addToCart } = useCart();
   const { addToWishlist } = useWishlist();
   const navigate = useNavigate();
@@ -27,9 +27,10 @@ export default function RecommendedCard({ product }) {
   return (
     <div className="wishlist-card">
       <div className="wishlist-image">
-        {product.discount && (
-          <span className="discount">{product.discount}</span>
+        {index == 0 && product.discount && (
+           <span className="discount-badge">{product.discount}</span>
         )}
+       
 
         {product.new && <span className="new-badge">NEW</span>}
 
@@ -71,23 +72,41 @@ export default function RecommendedCard({ product }) {
 
       <div className="price">
         <span className="new-price">${product.price}</span>
-
-        {/* <span className="old-price">
+         {index == 0 && product.oldPrice && (
+            <span className="old-price">
             ${product.oldPrice}
-          </span> */}
+          </span>
+         )}
+      
       </div>
 
       <div className="rating">
-        {[...Array(5)].map((_, index) =>
-          index < Math.floor(product.rating) ? (
-            <FaStar key={index} color="#FFAD33" />
-          ) : (
-            <FaRegStar key={index} color="#FFAD33" />
-          )
-        )}
+        {[...Array(5)].map((_, index) => {
+          if (index + 1 <= Math.floor(product.rating)) {
+            return <FaStar key={index} color="#FFAD33" />;
+          } else if (
+            index < product.rating &&
+            product.rating % 1 !== 0
+          ) {
+            return (
+              <FaStarHalfAlt
+                key={index}
+                color="#FFAD33"
+              />
+            );
+          } else {
+            return (
+              <FaRegStar
+                key={index}
+                color="#FFAD33"
+              />
+            );
+          }
+        })}
 
         <span>({product.reviews})</span>
       </div>
+
     </div>
   );
 }
