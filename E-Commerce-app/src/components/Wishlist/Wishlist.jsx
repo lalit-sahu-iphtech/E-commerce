@@ -4,57 +4,11 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { useWishlist } from "../../context/WishlistContext";
 import RecommendedCard from "./RecommendedCard";
 
-// import laptop from "../../assets/exploreProducts/laptop.png";
-// import monitor from "../../assets/products/monitor.png";
-// import gamepad from "../../assets/products/gamepad.png";
-// import keyboard from "../../assets/products/keyboard.png";
-
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import {products} from "../../data/recomonded"
 import Footer from "../Footer/Footer";
-
-// const recommendedProducts = [
-//   {
-//     id: 5,
-//     image: laptop,
-//     title: "ASUS FHD Gaming Laptop",
-//     price: 960,
-//     oldPrice: 1160,
-//     discount: "-35%",
-//     rating: 5,
-//     reviews: 65,
-//   },
-//   {
-//     id: 6,
-//     image: monitor,
-//     title: "IPS LCD Gaming Monitor",
-//     price: 160,
-//     oldPrice: 170,
-//     rating: 5,
-//     reviews: 65,
-//   },
-//   {
-//     id: 7,
-//     image: gamepad,
-//     title: "HAVIT HV-G92 Gamepad",
-//     price: 560,
-//     oldPrice: 650,
-//     new: true,
-//     rating: 5,
-//     reviews: 65,
-//   },
-//   {
-//     id: 8,
-//     image: keyboard,
-//     title: "AK-900 Wired Keyboard",
-//     price: 200,
-//     oldPrice: 260,
-//     rating: 5,
-//     reviews: 65,
-//   },
-// ];
 
 export default function Wishlist() {
   const { addToCart } = useCart();
@@ -106,9 +60,15 @@ export default function Wishlist() {
         </div>
       ) : (
         <div className="wishlist-grid">
-          {wishlist.map((products) => (
+          {wishlist.map((products, index) => (
             <div className="wishlist-card" key={products.id}>
               <div className="wishlist-image">
+                {index === 0 && products.discount && (
+                  <span className="discount-badge">
+                    {products.discount}
+                  </span>
+                )}
+
                 <img src={products.image} alt={products.title} />
 
                 <button
@@ -131,12 +91,12 @@ export default function Wishlist() {
 
               <div className="price">
                 <span className="new-price">${products.price}</span>
-                {/* 
-                {product.oldPrice && (
+
+                {index === 0 && products.oldPrice && (
                   <span className="old-price">
-                    ${product.oldPrice}
+                    ${products.oldPrice}
                   </span>
-                )} */}
+                )}
               </div>
             </div>
           ))}
@@ -157,8 +117,8 @@ export default function Wishlist() {
       </div>
 
       <div className="wishlist-grid">
-        {products.map((product) => (
-          <RecommendedCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <RecommendedCard key={product.id} product={product} index={index}/>
         ))}
       </div>
     </div>
