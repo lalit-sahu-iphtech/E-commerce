@@ -10,6 +10,10 @@ import {
 import {
   HiOutlineShoppingCart,
   HiOutlineUser,
+  HiOutlineShoppingBag,
+  HiOutlineXCircle,
+  HiOutlineStar,
+  HiOutlineArrowRightOnRectangle,
 } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
 
@@ -167,7 +171,8 @@ export default function Navbar() {
                   navigate("/profile");
                 }}
               >
-                 Manage My Account
+                <HiOutlineUser className="dropdown-icon" />
+                Manage My Account
               </div>
 
               <div
@@ -176,7 +181,8 @@ export default function Navbar() {
                   navigate("/orders");
                 }}
               >
-                 My Orders
+                <HiOutlineShoppingBag className="dropdown-icon" />
+                My Orders
               </div>
 
               <div
@@ -185,7 +191,8 @@ export default function Navbar() {
                   alert("Coming Soon");
                 }}
               >
-                 My Cancellations
+                <HiOutlineXCircle className="dropdown-icon" />
+                My Cancellations
               </div>
 
               <div
@@ -194,11 +201,13 @@ export default function Navbar() {
                   alert("Coming Soon");
                 }}
               >
-                 My Reviews
+                <HiOutlineStar className="dropdown-icon" />
+                My Reviews
               </div>
 
               <div onClick={handleLogout}>
-                 Logout
+                <HiOutlineArrowRightOnRectangle className="dropdown-icon" />
+                Logout
               </div>
 
             </div>
