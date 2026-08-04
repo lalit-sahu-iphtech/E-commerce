@@ -11,14 +11,16 @@ export const products = [
   {
   id: 1,
   image: laptop,
+  discount:"-35%",
   title: "ASUS FHD Gaming Laptop",
   category: "Electronics",
   price: 700,
+  oldPrice : 1160,
   rating: 5,
   reviews: 325,
   description:
     "Powerful gaming laptop with Full HD display, high-speed processor, dedicated graphics, and fast SSD storage for smooth performance.",
-    new:true,
+    
 
 },
   {
