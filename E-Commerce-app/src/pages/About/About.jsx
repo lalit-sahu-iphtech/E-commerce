@@ -22,7 +22,7 @@ export default function About() {
       icon: saleIcon,
       number: "33k",
       text: "Monthly Product Sale",
-      active: true,
+     
     },
     {
       id: 3,
@@ -83,9 +83,7 @@ export default function About() {
           {stats.map((item) => (
             <div
               key={item.id}
-              className={`stat-card ${
-                item.active ? "active-card" : ""
-              }`}
+              className="stat-card"
             >
               <div className="icon-circle">
                 <img src={item.icon} alt="" />
