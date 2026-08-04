@@ -1,4 +1,4 @@
-import { FaRegHeart,FaHeart,FaRegEye, FaStar, FaRegStar } from "react-icons/fa";
+import { FaRegHeart,FaHeart,FaRegEye, FaStar, FaRegStar,  FaStarHalfAlt, } from "react-icons/fa";
 
 import "./exploreProducts.css";
 import { useWishlist } from "../../context/WishlistContext";
@@ -93,16 +93,36 @@ const handleWishlist = () =>{
       </div>
 
       <div className="rating">
-        {[...Array(5)].map((_, index) =>
-          index < product.rating ? (
-            <FaStar key={index} color="#FFAD33" />
-          ) : (
-            <FaRegStar key={index} color="#FFAD33" />
-          )
-        )}
+  {[...Array(5)].map((_, index) => {
+    if (index + 1 <= Math.floor(product.rating)) {
+      return (
+        <FaStar
+          key={index}
+          color="#FFAD33"
+        />
+      );
+    } else if (
+      index < product.rating &&
+      product.rating % 1 !== 0
+    ) {
+      return (
+        <FaStarHalfAlt
+          key={index}
+          color="#FFAD33"
+        />
+      );
+    } else {
+      return (
+        <FaRegStar
+          key={index}
+          color="#BFBFBF"
+        />
+      );
+    }
+  })}
 
-        <span>({product.reviews})</span>
-      </div>
+  <span>({product.reviews})</span>
+</div>
 
       {product.colors && (
         <div className="color-options">
