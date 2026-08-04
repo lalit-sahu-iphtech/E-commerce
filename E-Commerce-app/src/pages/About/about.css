@@ -80,6 +80,9 @@
   .stat-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 30px rgba(0,0,0,.08);
+    background: #DB4444;
+    border-color: #DB4444;
+    color: #fff;
   }
   
   .icon-circle {
@@ -111,30 +114,7 @@
     font-size: 15px;
     color: #444;
   }
-  /* Active Card */
 
-.active-card {
-    background: #DB4444;
-    border-color: #DB4444;
-    color: #fff;
-  }
-  
-  .active-card p,
-  .active-card h2 {
-    color: #fff;
-  }
-  
-  .active-card .icon-circle {
-    background: #fff;
-    border-color: rgba(255,255,255,.4);
-  }
-  
-  /* Hover */
-  
-  .active-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(219,68,68,.35);
-  }
   
   /* ================= Responsive ================= */
   
