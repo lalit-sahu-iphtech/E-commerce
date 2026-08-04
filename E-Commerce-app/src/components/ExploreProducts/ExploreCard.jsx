@@ -90,7 +90,7 @@ const handleWishlist = () =>{
 
       <div className="price">
         <span className="new-price">${product.price}</span>
-      </div>
+    
 
       <div className="rating">
   {[...Array(5)].map((_, index) => {
@@ -122,6 +122,7 @@ const handleWishlist = () =>{
   })}
 
   <span>({product.reviews})</span>
+</div>
 </div>
 
       {product.colors && (
