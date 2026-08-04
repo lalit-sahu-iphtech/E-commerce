@@ -3,359 +3,389 @@
 =========================== */
 
 .footer {
-    background: #000;
-    color: #fff;
-    margin-top: 100px;
-  }
-  
-  .footer-container {
-    max-width: 1170px;
-    margin: auto;
-    padding: 80px 20px 60px;
-  
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr;
-    gap: 50px;
-  }
-  
-  /* ===========================
-        COLUMN
-  =========================== */
-  
-  .footer-column h2 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 25px;
-  }
-  
-  .footer-column h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-  
-  .footer-column p {
-    color: #fafafa;
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 16px;
-  }
-  
-  .footer-column ul {
-    list-style: none;
-  }
-  
-  .footer-column ul li {
-    margin-bottom: 16px;
-  }
-  
-  .footer-column ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: .3s;
-  }
-  .footer-column:last-child{
-    display:flex;
-    flex-direction:column;
+  background: #000;
+  color: #fff;
+  margin-top: 100px;
 }
-  
-  .footer-column ul li a:hover {
-    color: #DB4444;
-  }
-  
-  /* ===========================
-        SUBSCRIBE
-  =========================== */
-  
-  .subscribe-box {
-    width: 220px;
-    height: 50px;
-  
-    border: 1px solid #fff;
-    border-radius: 4px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  
-    overflow: hidden;
-  }
-  
-  .subscribe-box input {
-    flex: 1;
-  
-    background: transparent;
-    border: none;
-    outline: none;
-  
-    color: white;
-  
-    padding: 0 15px 0 15px;
-    padding-right: 1px;
-    font-size: 15px;
-  }
-  
-  .subscribe-box input::placeholder {
-    color: #999;
-  }
-  
-  .subscribe-box button {
-    width: 50px;
-    height: 100%;
-  
-    border: none;
-    background: transparent;
-  
-    color: white;
-    font-size: 22px;
-  
-    cursor: pointer;
-   
-  }
-  
-  /* ===========================
-        DOWNLOAD
-  =========================== */
-  
-  .download-text {
-    font-size: 14px !important;
-    color: #999 !important;
-  }
-  .app-download{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-top:18px;
+
+.footer-container {
+  width: 100%;
+  padding: 80px 80px 60px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* ===========================
+      COLUMN
+=========================== */
+
+.footer-column {
+  flex: 1 1 0;
+}
+
+.footer-column:first-child{
+  flex: 0 0 260px;
+}
+
+.footer-column:last-child{
+  flex: 0 0 190px;
+}
+
+.footer-column h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.footer-column h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.footer-column p {
+  color: #fafafa;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 16px;
+}
+
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: .3s;
+}
+.footer-column:last-child{
+  display:flex;
+  flex-direction:column;
+}
+
+.footer-column ul li a:hover {
+  color: #DB4444;
+}
+
+/* ===========================
+      SUBSCRIBE
+=========================== */
+
+.subscribe-box {
+  width: 220px;
+  height: 50px;
+
+  border: 1px solid #fff;
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  overflow: hidden;
+}
+
+.subscribe-box input {
+  flex: 1;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  color: white;
+
+  padding: 0 15px 0 15px;
+  padding-right: 1px;
+  font-size: 15px;
+}
+
+.subscribe-box input::placeholder {
+  color: #999;
+}
+
+.subscribe-box button {
+  width: 50px;
+  height: 100%;
+
+  border: none;
+  background: transparent;
+
+  color: white;
+  font-size: 22px;
+
+  cursor: pointer;
+ 
+}
+
+/* ===========================
+      DOWNLOAD
+=========================== */
+
+.download-text {
+  font-size: 14px !important;
+  color: #999 !important;
+}
+.app-download{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
 }
 
 .qr{
-    width:80px;
-    height:80px;
-    object-fit:cover;
-    flex-shrink:0;
-    border: 1px solid beige;
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  flex-shrink:0;
+  border: 1px solid beige;
 }
 
 .store-buttons{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 
 }
 
 .store-buttons img{
-    width:130px;
-    height:60px;
-    object-fit:contain;
-    display:block;
+  width:130px;
+  height:60px;
+  object-fit:contain;
+  display:block;
 }
-  
-  /* ===========================
-        SOCIAL
-  =========================== */
-  
-  .social-icons {
-    display:flex;
-    align-items:center;
-    gap:24px;
-    margin-top:24px;
-  }
-  
-  .social-icons svg {
-    font-size:22px;
-    color:#fff;
-    cursor:pointer;
-    transition:.3s;
 
-  }
-  
-  .social-icons svg:hover {
-    color: #DB4444;
-  }
-  
-  /* ===========================
-        COPYRIGHT
-  =========================== */
-  
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,.08);
-  
-    text-align: center;
-  
-    padding: 25px 20px;
-  }
-  
-  .footer-bottom p {
-    color: #777;
-    font-size: 15px;
-  }
-  /* ===========================
-        LAPTOP
+/* ===========================
+      SOCIAL
+=========================== */
+
+.social-icons {
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin-top:24px;
+}
+
+.social-icons svg {
+  font-size:22px;
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+
+}
+
+.social-icons svg:hover {
+  color: #DB4444;
+}
+
+/* ===========================
+      COPYRIGHT
+=========================== */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+
+  text-align: center;
+
+  padding: 25px 20px;
+}
+
+.footer-bottom p {
+  color: #777;
+  font-size: 15px;
+}
+/* ===========================
+      LAPTOP
 =========================== */
 
 @media (max-width: 1200px) {
 
-    .footer-container{
-      grid-template-columns: repeat(3,1fr);
-      gap:40px;
-    }
-  
+  .footer-container{
+    flex-wrap: wrap;
+    gap:40px;
+    padding: 70px 50px 50px;
   }
-  
-  /* ===========================
-          TABLET
-  =========================== */
-  
-  @media (max-width: 992px){
-  
-    .footer{
-      margin-top:80px;
-    }
-  
-    .footer-container{
-  
-      grid-template-columns: repeat(2,1fr);
-  
-      gap:40px;
-  
-      padding:60px 30px;
-  
-    }
-  
-    .footer-column h2{
-      font-size:24px;
-    }
-  
-    .footer-column h3{
-      font-size:18px;
-    }
-  
+
+  .footer-column,
+  .footer-column:first-child,
+  .footer-column:last-child{
+    flex: 1 1 30%;
   }
-  
-  /* ===========================
-          MOBILE
-  =========================== */
-  
-  @media (max-width:768px){
-  
-    .footer-container{
-  
-      grid-template-columns:1fr;
-  
-      gap:35px;
-  
-      padding:50px 20px;
-  
-    }
-  
-    .footer-column{
-  
-      text-align:left;
-  
-    }
-  
-    .subscribe-box{
-  
-      width:100%;
-  
-      max-width:320px;
-  
-    }
-  
-    .app-download{
-  
-      align-items:flex-start;
-  
-    }
-  
-    .store-buttons img{
-  
-      width:130px;
-  
-    }
-  
-    .social-icons{
-  
-      gap:18px;
-  
-    }
-  
+
+}
+
+/* ===========================
+        TABLET
+=========================== */
+
+@media (max-width: 992px){
+
+  .footer{
+    margin-top:80px;
   }
-  
-  /* ===========================
-        SMALL MOBILE
-  =========================== */
-  
-  @media (max-width:480px){
-  
-    .footer-column h2{
-  
-      font-size:22px;
-  
-    }
-  
-    .footer-column h3{
-  
-      font-size:18px;
-  
-    }
-  
-    .footer-column p,
-    .footer-column li{
-  
-      font-size:14px;
-  
-    }
-  
-    .subscribe-box{
-  
-      height:46px;
-  
-    }
-  
-    .subscribe-box input{
-  
-      font-size:14px;
-  
-    }
-  
-    .subscribe-box button{
-  
-      width:46px;
-  
-      font-size:20px;
-  
-    }
-  
-    .qr{
-  
-      width:80px;
-      height:80px;
-  
-    }
-  
-    .store-buttons img{
-  
-      width:110px;
-  
-    }
-  
-    .social-icons svg{
-  
-      font-size:22px;
-  
-    }
-  
-    .footer-bottom{
-  
-      padding:20px;
-  
-    }
-  
-    .footer-bottom p{
-  
-      font-size:13px;
-  
-    }
-  
+
+  .footer-container{
+
+    flex-wrap: wrap;
+
+    gap:40px;
+
+    padding:60px 30px;
+
   }
+
+  .footer-column,
+  .footer-column:first-child,
+  .footer-column:last-child{
+    flex: 1 1 45%;
+  }
+
+  .footer-column h2{
+    font-size:24px;
+  }
+
+  .footer-column h3{
+    font-size:18px;
+  }
+
+}
+
+/* ===========================
+        MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+  .footer-container{
+
+    flex-direction: column;
+
+    gap:35px;
+
+    padding:50px 20px;
+
+  }
+
+  .footer-column,
+  .footer-column:first-child,
+  .footer-column:last-child{
+    flex: 1 1 auto;
+  }
+
+  .footer-column{
+
+    text-align:left;
+
+  }
+
+  .subscribe-box{
+
+    width:100%;
+
+    max-width:320px;
+
+  }
+
+  .app-download{
+
+    align-items:flex-start;
+
+  }
+
+  .store-buttons img{
+
+    width:130px;
+
+  }
+
+  .social-icons{
+
+    gap:18px;
+
+  }
+
+}
+
+/* ===========================
+      SMALL MOBILE
+=========================== */
+
+@media (max-width:480px){
+
+  .footer-column h2{
+
+    font-size:22px;
+
+  }
+
+  .footer-column h3{
+
+    font-size:18px;
+
+  }
+
+  .footer-column p,
+  .footer-column li{
+
+    font-size:14px;
+
+  }
+
+  .subscribe-box{
+
+    height:46px;
+
+  }
+
+  .subscribe-box input{
+
+    font-size:14px;
+
+  }
+
+  .subscribe-box button{
+
+    width:46px;
+
+    font-size:20px;
+
+  }
+
+  .qr{
+
+    width:80px;
+    height:80px;
+
+  }
+
+  .store-buttons img{
+
+    width:110px;
+
+  }
+
+  .social-icons svg{
+
+    font-size:22px;
+
+  }
+
+  .footer-bottom{
+
+    padding:20px;
+
+  }
+
+  .footer-bottom p{
+
+    font-size:13px;
+
+  }
+
+}
