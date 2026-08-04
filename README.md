@@ -1,7 +1,6 @@
 # 🛒 E-Commerce Website
 
 A modern and responsive E-Commerce website built using **React.js + Vite**.
-
 ## 📁 Project Structure
 
 ```text
@@ -68,6 +67,7 @@ E-commerce/
 │
 └── .gitignore
 ```
+
 
 ## 📂 GitHub Repository
 

@@ -24,26 +24,35 @@ export default function Signup({ setIsAuthenticated }) {
     });
   };
 
+  const getUsers = () => {
+    try {
+      const savedUsers = JSON.parse(localStorage.getItem("users"));
+      return Array.isArray(savedUsers) ? savedUsers : [];
+    } catch {
+      return [];
+    }
+  };
+
   // ================= SIGNUP =================
 
   const handleSignup = () => {
-    console.log("click")
+    const name = formData.name.trim();
+    const email = formData.email.trim().toLowerCase();
+    const password = formData.password;
+
     if (
-      formData.name.trim() === "" ||
-      formData.email.trim() === "" ||
-      formData.password.trim() === ""
+      name === "" ||
+      email === "" ||
+      password.trim() === ""
     ) {
       alert("Please fill all fields");
       return;
     }
 
-  console.log("click")
-
-    const users =
-      JSON.parse(localStorage.getItem("users")) || [];
+    const users = getUsers();
 
     const userExist = users.find(
-      (user) => user.email === formData.email
+      (user) => user.email === email
     );
 
     if (userExist) {
@@ -51,7 +60,8 @@ export default function Signup({ setIsAuthenticated }) {
       return;
     }
 
-    users.push(formData);
+    const newUser = { name, email, password };
+    users.push(newUser);
 
     localStorage.setItem(
       "users",
@@ -61,7 +71,7 @@ export default function Signup({ setIsAuthenticated }) {
     // Current Logged In User
     localStorage.setItem(
       "currentUser",
-      JSON.stringify(formData)
+      JSON.stringify(newUser)
     );
 
     if (setIsAuthenticated) {
@@ -72,27 +82,28 @@ export default function Signup({ setIsAuthenticated }) {
 
     navigate("/");
 
-    window.location.reload();
   };
 
   // ================= LOGIN =================
 
   const handleLogin = () => {
+    const email = formData.email.trim().toLowerCase();
+    const password = formData.password;
+
     if (
-      formData.email.trim() === "" ||
-      formData.password.trim() === ""
+      email === "" ||
+      password.trim() === ""
     ) {
       alert("Please fill all fields");
       return;
     }
 
-    const users =
-      JSON.parse(localStorage.getItem("users")) || [];
+    const users = getUsers();
 
     const user = users.find(
       (item) =>
-        item.email === formData.email &&
-        item.password === formData.password
+        item.email === email &&
+        item.password === password
     );
 
     if (user) {
@@ -109,7 +120,6 @@ export default function Signup({ setIsAuthenticated }) {
 
       navigate("/");
 
-      window.location.reload();
     } else {
       alert("Invalid Email or Password");
     }
@@ -142,7 +152,7 @@ export default function Signup({ setIsAuthenticated }) {
 
           <p>Enter your details below</p>
 
-          <form onSubmit={handleSubmit}>
+          <form id="auth-form" onSubmit={handleSubmit}>
             {!isLogin && (
               <input
                 type="text"
@@ -154,7 +164,7 @@ export default function Signup({ setIsAuthenticated }) {
             )}
 
             <input
-              type="text"
+              type="email"
               placeholder="Email or Phone Number"
               name="email"
               value={formData.email}
@@ -171,25 +181,38 @@ export default function Signup({ setIsAuthenticated }) {
           </form>
 
           <div className="btn-row">
-            <button
-              className="create-btn"
-              type="submit"
-             
-            >
-              {isLogin
-                ? "Log In"
-                : "Create Account"}
-            </button>
 
-            {isLogin && (
-              <a href="#" className="forgot">
-                Forgot Password
-              </a>
-            )}
-          </div>
+                {isLogin ? (
+                  <>
+                    <button
+                      className="login-btn"
+                      type="submit"
+                      form="auth-form"
+                    >
+                      Log In
+                    </button>
+
+                    <button
+                      type="button"
+                      className="forgot-btn"
+                    >
+                      Forgot Password?
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    className="create-btn"
+                    type="submit"
+                    form="auth-form"
+                  >
+                    Create Account
+                  </button>
+                )}
+
+</div>
 
           {!isLogin && (
-            <button className="google-btn">
+            <button className="google-btn" type="button">
               <img
                 src={googleIcon}
                 alt="google"
@@ -200,16 +223,18 @@ export default function Signup({ setIsAuthenticated }) {
 
           <p className="login-text">
             {isLogin ? (
+
               <>
-                Don't have an account?
+                {/* Don't have an account? */}
                 <span
                   onClick={() =>
                     setIsLogin(false)
                   }
                 >
-                  Sign Up
+                  {/* Sign Up */}
                 </span>
               </>
+
             ) : (
               <>
                 Already have an account?
@@ -223,6 +248,7 @@ export default function Signup({ setIsAuthenticated }) {
               </>
             )}
           </p>
+
         </div>
       </div>
 
