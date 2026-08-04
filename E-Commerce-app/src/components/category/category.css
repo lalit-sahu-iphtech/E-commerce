@@ -90,15 +90,12 @@
     margin: 0;
   }
   
-  .category-card:hover,
-  .category-card.active {
+  .category-card:hover
+  {
     background: #db4444;
     border-color: #db4444;
   }
-  .category-card.active:hover{
-    background-color: #fff;
-   
-  }
+
   .category-card.active:hover p{
  
     color: #000;
