@@ -82,7 +82,7 @@ export const products = [
     price: 375,
     oldPrice: 400,
     discount: "-15%",
-    rating: 5,
+    rating: 4.5,
     reviews: 99,
     description:
       "Comfortable gaming chair with adjustable height, lumbar support and premium leather finish.",
