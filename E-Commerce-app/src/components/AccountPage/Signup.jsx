@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/google.png";
 import Footer from "../Footer/Footer";
 
-export default function SignUp({ setIsAuthenticated }) {
+export default function Signup({ setIsAuthenticated }) {
   const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(false);
@@ -27,6 +27,7 @@ export default function SignUp({ setIsAuthenticated }) {
   // ================= SIGNUP =================
 
   const handleSignup = () => {
+    console.log("click")
     if (
       formData.name.trim() === "" ||
       formData.email.trim() === "" ||
@@ -35,6 +36,8 @@ export default function SignUp({ setIsAuthenticated }) {
       alert("Please fill all fields");
       return;
     }
+
+  console.log("click")
 
     const users =
       JSON.parse(localStorage.getItem("users")) || [];
