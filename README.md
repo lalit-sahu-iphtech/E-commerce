@@ -5,7 +5,7 @@ A modern and responsive E-Commerce website built using **React.js + Vite**.
 
 #img
 
-<img src="./image1.png"/>
+<img src="./E-Commerce-app/image1.png" alt="Project Screenshot"/>
 
 ## 📁 Project Structure
 
