@@ -20,6 +20,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useSearch } from "../../context/SearchContext";
+import {products} from "../../data/products"
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ export default function Navbar() {
   const { wishlist } = useWishlist();
   const { cart } = useCart();
   const { search, setSearch } = useSearch();
+  const[showSuggestions,  setShowSuggestions] = useState(false);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
@@ -46,6 +48,7 @@ export default function Navbar() {
 
     window.location.reload();
   };
+  const filteredProducts = search.trim() === ""?[] : products.filter((product)=>product.title.toLowerCase().includes(search.toLowerCase())).slice(0,15);
 
   return (
     <header className="navbar">
@@ -111,17 +114,66 @@ export default function Navbar() {
       <div className="right-section">
         {/* Search */}
         <div className="search-box">
-          <input
+
+        <input
             type="text"
             placeholder="What are you looking for?"
             value={search}
-            onChange={(e) =>
-              setSearch(e.target.value)
-            }
-          />
+            onChange={(e) => {
+                setSearch(e.target.value);
+                setShowSuggestions(true);
+            }}
+            onFocus={() => setShowSuggestions(true)}
+        />
 
-          <IoSearchOutline className="search-icon" />
-        </div>
+<IoSearchOutline className="search-icon" />
+
+{showSuggestions && search && (
+    <div className="search-suggestions">
+
+        {filteredProducts.length > 0 ? (
+
+            filteredProducts.map((product) => (
+
+                <div
+                    key={product.id}
+                    className="suggestion-item"
+                    onClick={() => {
+                        navigate(`/product/${product.id}`);
+                        setSearch("");
+                        setShowSuggestions(false);
+                    }}
+                >
+
+                    <img
+                        src={product.image}
+                        alt={product.title}
+                    />
+
+                    <div className="suggestion-info">
+
+                        <h4>{product.title}</h4>
+
+                        <p>${product.price}</p>
+
+                    </div>
+
+                </div>
+
+            ))
+
+        ) : (
+
+            <p className="no-result">
+                No Product Found
+            </p>
+
+        )}
+
+    </div>
+)}
+
+</div>
 
         {/* Wishlist - only when logged in */}
         {currentUser && (
