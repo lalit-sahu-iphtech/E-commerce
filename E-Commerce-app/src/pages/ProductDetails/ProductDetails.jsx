@@ -1,5 +1,5 @@
 import "./productDetails.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaStar, FaRegStar, FaHeart } from "react-icons/fa";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { useState } from "react";
@@ -7,170 +7,320 @@ import { useState } from "react";
 import { products } from "../../data/products";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
+import RecomDetails from "./RecomDetails";
+
+import {
+  TbTruckDelivery,
+  TbRefresh,
+} from "react-icons/tb";
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const product = products.find((item) => item.id === Number(id));
+  const product = products.find(
+    (item) => item.id === Number(id)
+  );
 
   const [qty, setQty] = useState(1);
+
   const [selectedSize, setSelectedSize] = useState(
     product?.sizes?.[0] || ""
   );
 
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  const imageRotation = [
+    "rotate(0deg)",
+    "rotate(-25deg)",
+    "rotate(25deg)",
+    "rotate(180deg)",
+  ];
+
   const { addToCart } = useCart();
-  const { toggleWishlist, isInWishlist } = useWishlist();
+  const { toggleWishlist, isInWishlist } =
+    useWishlist();
 
   if (!product) {
     return (
-      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2
+        style={{
+          textAlign: "center",
+          marginTop: "50px",
+        }}
+      >
         Product Not Found
       </h2>
     );
   }
 
   return (
-    <section className="details-page">
-      {/* Left Section */}
-      <div className="details-left">
-        <div className="small-images">
-          {[1, 2, 3, 4].map((item) => (
-            <div className="small-box" key={item}>
-              <img src={product.image} alt={product.title} />
-            </div>
-          ))}
-        </div>
+    <div className="product-container">
 
-        <div className="main-image">
-          <img src={product.image} alt={product.title} />
-        </div>
-      </div>
+      <section className="details-page">
 
-      {/* Right Section */}
-      <div className="details-right">
-        <h2>{product.title}</h2>
+        {/* LEFT */}
 
-        {/* Rating */}
-        <div className="rating-row">
-          {[...Array(5)].map((_, index) =>
-            index < Math.floor(product.rating) ? (
-              <FaStar key={index} color="#FFAD33" />
-            ) : (
-              <FaRegStar key={index} color="#FFAD33" />
-            )
-          )}
+        <div className="details-left">
 
-          <span>({product.reviews} Reviews)</span>
+          <div className="small-images">
 
-          <span
-            className="stock"
-            style={{
-              color: product.stock ? "#00A651" : "red",
-            }}
-          >
-            {product.stock ? "In Stock" : "Out of Stock"}
-          </span>
-        </div>
+            {imageRotation.map((rotation, index) => (
 
-        {/* Price */}
-        <h3 className="price">${product.price}</h3>
-
-        {/* Description */}
-        <p className="description">
-          {product.description}
-        </p>
-
-        <hr />
-
-        {/* Colors */}
-        <div className="color-row">
-          <strong>Colours:</strong>
-
-          {product.colors?.map((color, index) => (
-            <div
-              key={index}
-              className="circle"
-              style={{
-                background: color,
-              }}
-            ></div>
-          ))}
-        </div>
-
-        {/* Sizes */}
-        {product.sizes && (
-          <div className="size-row">
-            <strong>Size:</strong>
-
-            {product.sizes.map((size) => (
-              <button
-                key={size}
-                className={
-                  selectedSize === size
-                    ? "active-size"
+              <div
+                key={index}
+                className={`small-box ${
+                  selectedImage === index
+                    ? "active-thumb"
                     : ""
-                }
+                }`}
                 onClick={() =>
-                  setSelectedSize(size)
+                  setSelectedImage(index)
                 }
               >
-                {size}
-              </button>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  style={{
+                    transform: rotation,
+                  }}
+                />
+              </div>
+
             ))}
-          </div>
-        )}
 
-        {/* Buy Section */}
-        <div className="buy-row">
-          <div className="quantity">
-            <button
-              onClick={() =>
-                qty > 1 && setQty(qty - 1)
-              }
-            >
-              <HiMinus />
-            </button>
-
-            <span>{qty}</span>
-
-            <button
-              onClick={() =>
-                setQty(qty + 1)
-              }
-            >
-              <HiPlus />
-            </button>
           </div>
 
-          <button
-            className="buy-btn"
-            onClick={() =>
-              addToCart({
-                ...product,
-                quantity: qty,
-                size: selectedSize,
-              })
-            }
-          >
-            Buy Now
-          </button>
+          <div className="main-image">
 
-          <button
-            className="fav-btn"
-            onClick={() =>
-              toggleWishlist(product)
-            }
-          >
-            <FaHeart
-              color={
-                isInWishlist(product.id)
-                  ? "red"
-                  : "black"
-              }
+            <img
+              src={product.image}
+              alt={product.title}
+              style={{
+                transform:
+                  imageRotation[selectedImage],
+              }}
             />
-          </button>
+
+          </div>
+
         </div>
-      </div>
-    </section>
+
+        {/* RIGHT */}
+
+        <div className="details-right">
+
+          <h2>{product.title}</h2>
+
+          <div className="rating-row">
+
+            {[...Array(5)].map((_, index) =>
+              index <
+              Math.floor(product.rating) ? (
+                <FaStar
+                  key={index}
+                  color="#FFAD33"
+                />
+              ) : (
+                <FaRegStar
+                  key={index}
+                  color="#FFAD33"
+                />
+              )
+            )}
+
+            <span>
+              ({product.reviews} Reviews)
+            </span>
+
+            <span
+              className="stock"
+              style={{
+                color: product.stock
+                  ? "#00A651"
+                  : "red",
+              }}
+            >
+              {product.stock
+                ? "In Stock"
+                : "Out of Stock"}
+            </span>
+
+          </div>
+
+          <h3 className="price">
+            ${product.price}
+          </h3>
+
+          <p className="description">
+            {product.description}
+          </p>
+
+          <hr />
+
+          {/* COLORS */}
+
+          <div className="color-row">
+
+            <strong>Colours:</strong>
+
+            {product.colors?.map(
+              (color, index) => (
+                <div
+                  key={index}
+                  className="circle"
+                  style={{
+                    background: color,
+                  }}
+                ></div>
+              )
+            )}
+
+          </div>
+
+          {/* SIZE */}
+
+          {product.sizes && (
+
+            <div className="size-row">
+
+              <strong>Size:</strong>
+
+              {product.sizes.map((size) => (
+
+                <button
+                  key={size}
+                  className={
+                    selectedSize === size
+                      ? "active-size"
+                      : ""
+                  }
+                  onClick={() =>
+                    setSelectedSize(size)
+                  }
+                >
+                  {size}
+                </button>
+
+              ))}
+
+            </div>
+
+          )}
+
+          {/* BUY */}
+
+          <div className="buy-row">
+
+            <div className="quantity">
+
+              <button
+                onClick={() =>
+                  qty > 1 &&
+                  setQty(qty - 1)
+                }
+              >
+                <HiMinus />
+              </button>
+
+              <span>{qty}</span>
+
+              <button
+                onClick={() =>
+                  setQty(qty + 1)
+                }
+              >
+                <HiPlus />
+              </button>
+
+            </div>
+
+            <button
+              className="buy-btn"
+              onClick={() => {
+                addToCart({
+                  ...product,
+                  quantity: qty,
+                  size: selectedSize,
+                });
+
+                navigate("/checkout");
+              }}
+            >
+              Buy Now
+            </button>
+
+            <button
+              className="fav-btn"
+              onClick={() =>
+                toggleWishlist(product)
+              }
+            >
+              <FaHeart
+                color={
+                  isInWishlist(product.id)
+                    ? "red"
+                    : "black"
+                }
+              />
+            </button>
+
+          </div>
+
+          {/* DELIVERY */}
+
+          <div className="delivery-box">
+
+            <div className="delivery-item">
+
+              <div className="delivery-icon">
+                <TbTruckDelivery />
+              </div>
+
+              <div>
+
+                <h4>Free Delivery</h4>
+
+                <p>
+                  Enter your postal code for
+                  Delivery Availability
+                </p>
+
+              </div>
+
+            </div>
+
+            <div className="delivery-item">
+
+              <div className="delivery-icon">
+                <TbRefresh />
+              </div>
+
+              <div>
+
+                <h4>
+                  Return Delivery
+                </h4>
+
+                <p>
+                  Free 30 Days Delivery
+                  Returns. Details
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* Related Products */}
+
+      <RecomDetails />
+
+    </div>
   );
 }
