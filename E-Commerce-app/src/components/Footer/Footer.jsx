@@ -1,4 +1,6 @@
 import "./footer.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import {
   FaFacebookF,
@@ -14,31 +16,63 @@ import googlePlay from "../../assets/footer/googleplay.png";
 import appStore from "../../assets/footer/appstore.png";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      alert("Please enter your email.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email.");
+      return;
+    }
+
+    alert("✅ Thank you! Your email has been subscribed successfully.");
+    setEmail("");
+  };
+
   return (
     <footer className="footer">
-
       <div className="footer-container">
 
         {/* Exclusive */}
 
         <div className="footer-column">
 
-          <h2 className="footer-logo">Exclusive</h2>
+          <h2 className="footer-logo">
+            <Link
+              to="/"
+              style={{ textDecoration: "none", color: "#fff" }}
+            >
+              Exclusive
+            </Link>
+          </h2>
 
           <h3>Subscribe</h3>
 
           <p>Get 10% off your first order</p>
 
-          <div className="subscribe-box">
+          <form
+            className="subscribe-box"
+            onSubmit={handleSubscribe}
+          >
             <input
               type="email"
               placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
-            <button>
+            <button type="submit">
               <IoSendOutline />
             </button>
-          </div>
+          </form>
 
         </div>
 
@@ -72,23 +106,23 @@ export default function Footer() {
           <ul>
 
             <li>
-              <a href="#">My Account</a>
+              <Link to="/profile">My Account</Link>
             </li>
 
             <li>
-              <a href="#">Login / Register</a>
+              <Link to="/signup">Login / Register</Link>
             </li>
 
             <li>
-              <a href="#">Cart</a>
+              <Link to="/cart">Cart</Link>
             </li>
 
             <li>
-              <a href="#">Wishlist</a>
+              <Link to="/wishlist">Wishlist</Link>
             </li>
 
             <li>
-              <a href="#">Shop</a>
+              <Link to="/">Shop</Link>
             </li>
 
           </ul>
@@ -116,7 +150,7 @@ export default function Footer() {
             </li>
 
             <li>
-              <a href="#">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
 
           </ul>
@@ -173,8 +207,6 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom */}
-
       <div className="footer-bottom">
 
         <p>
@@ -182,7 +214,6 @@ export default function Footer() {
         </p>
 
       </div>
-
     </footer>
   );
 }
