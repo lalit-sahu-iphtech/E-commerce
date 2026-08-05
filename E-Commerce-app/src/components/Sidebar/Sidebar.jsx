@@ -2,9 +2,12 @@ import "./sidebar.css";
 import { FaChevronRight } from "react-icons/fa";
 import { useCategory } from "../../context/CategoryContext";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Sidebar() {
+
+  const navigate = useNavigate();
 
     const {
         category,
@@ -84,9 +87,10 @@ export default function Sidebar() {
                 : ""
             }`}
 
-            onClick={() =>
-              setCategory(item.title)
-            }
+           onClick={() => {
+            setCategory(item.title);
+            navigate(`/sidebar/${item.title}`);
+        }}
 
             onMouseEnter={() =>
               setHoverMenu(item.title)
@@ -101,7 +105,11 @@ export default function Sidebar() {
             <span>{item.title}</span>
 
             {item.submenu && (
-              <FaChevronRight className="arrow" />
+              <FaChevronRight
+                className="arrow"
+                size={14}
+                color="#000"
+              />
             )}
 
             {hoverMenu === item.title &&
@@ -116,11 +124,14 @@ export default function Sidebar() {
                         className={`submenu-item ${
                         subCategory === sub ? "active-submenu" : ""
                         }`}
-                        onClick={(e) => {
+                       onClick={(e) => {
                         e.stopPropagation();
-                        setSubCategory(sub);
+
                         setCategory(item.title);
-                        }}
+                        setSubCategory(sub);
+
+                        navigate(`/sidebar/${sub}`);
+                    }}
                         >
                         {sub}
                         </div>
