@@ -11,16 +11,19 @@ import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import AllProducts from "./pages/AllProducts/AllProducts";
 
+
+import "./App.css"
 import Profile from "./pages/Profile/Profile";
 
 import { useState } from "react";
 import Checkout from "./pages/Checkout/Checkout";
+import Footer from "./components/Footer/Footer";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
-    <>
-      <Navbar />
-
+    <div className="app-wrapper">
+      <Navbar/>
+      <main className="app-content">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -45,7 +48,9 @@ function App() {
         <Route path="/checkout"element={<Checkout/>}/>
      
       </Routes>
-    </>
+      </main>
+      <Footer/>
+    </div>
   );
 }
 
