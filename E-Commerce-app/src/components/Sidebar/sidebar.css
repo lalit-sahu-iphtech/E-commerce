@@ -3,7 +3,8 @@
     min-height:500px;
     border-right:1px solid #ddd;
     margin-right:50px;
-    margin-top:-20px;
+    /* margin-top:-20px; */
+    margin-top: 20px;
     background:#fff;
     position: relative;
     line-height: 2;
@@ -54,11 +55,11 @@
 }
 
 .arrow{
-
-    transition:.3s;
-
-    font-size:13px;
-
+    font-size:14px;
+    min-width:14px;
+    color:#000;
+    flex-shrink:0;
+    transition:transform .3s;
 }
 
 .sidebar-item{

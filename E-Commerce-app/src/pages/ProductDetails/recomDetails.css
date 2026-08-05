@@ -143,9 +143,9 @@
     transition: all .3s ease;
     transform: translateY(100%);
 }
-.product-card:hover .cart-btn {
+/* .product-card:hover .cart-btn {
   transform: translateY(0);
-}
+} */
   
   .wishlist-card:hover .cart-btn {
     bottom: 0;

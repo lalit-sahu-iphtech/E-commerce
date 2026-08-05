@@ -1,5 +1,5 @@
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 import {
@@ -23,6 +23,9 @@ import { useSearch } from "../../context/SearchContext";
 import {products} from "../../data/products"
 
 export default function Navbar() {
+
+  const location = useLocation();
+  const isSignupPage = location.pathname === "/signup";
   const navigate = useNavigate();
 
   const { wishlist } = useWishlist();
@@ -175,36 +178,55 @@ export default function Navbar() {
 
 </div>
 
-        {/* Wishlist - only when logged in */}
-        {currentUser && (
-          <Link
-            to="/wishlist"
-            className="wishlist-link"
+      {/* Wishlist */}
+      {!isSignupPage && (
+
+      
+        <div
+          className="wishlist-link"
+          onClick={() => {
+            if (!currentUser) {
+              alert("Please Login First");
+              navigate("/signup");
+              return;
+            }
+
+            navigate("/wishlist");
+          }}
+        >
+          <FaRegHeart className="icon" />
+
+          {currentUser && wishlist.length > 0 && (
+            <span className="wishlist-count">
+              {wishlist.length}
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* Cart */}
+      {!isSignupPage && (
+          <div
+            className="cart-icon"
+            onClick={() => {
+              if (!currentUser) {
+                alert("Please Login First");
+                navigate("/signup");
+                return;
+              }
+
+              navigate("/cart");
+            }}
           >
-            <FaRegHeart className="icon" />
+            <HiOutlineShoppingCart className="icon" />
 
-            {wishlist.length > 0 && (
-              <span className="wishlist-count">
-                {wishlist.length}
-              </span>
-            )}
-          </Link>
-        )}
-
-        {/* Cart - only when logged in */}
-        {currentUser && (
-          <div className="cart-icon">
-            <Link to="/cart">
-              <HiOutlineShoppingCart className="icon" />
-            </Link>
-
-            {cart.length > 0 && (
+            {currentUser && cart.length > 0 && (
               <span className="cart-count">
                 {cart.length}
               </span>
             )}
           </div>
-        )}
+      )}
 
         {/* Profile - only when logged in */}
         {currentUser && (

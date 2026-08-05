@@ -1,7 +1,7 @@
 import "./profile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer"
+import Footer from "../../components/Footer/Footer";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -47,7 +47,60 @@ export default function Profile() {
     });
   };
 
-  const handleSave = () => {
+  const handleSave = (e) => {
+    e.preventDefault();
+
+    const {
+      firstName,
+      lastName,
+      email,
+      address,
+      currentPassword,
+      newPassword,
+      confirmPassword,
+    } = formData;
+
+    if (
+      firstName.trim() === "" ||
+      lastName.trim() === "" ||
+      email.trim() === "" ||
+      address.trim() === ""
+    ) {
+      alert("Please fill all required fields.");
+    
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        address: "",
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+      });
+    
+      return;
+    }
+    if (newPassword !== "" || confirmPassword !== "") {
+      if (
+        currentPassword.trim() === "" ||
+        newPassword.trim() === "" ||
+        confirmPassword.trim() === ""
+      ) {
+        alert("Please fill all password fields.");
+        return;
+      }
+      
+      if (currentPassword !== currentUser.password) {
+        alert("Current password is incorrect.");
+        return;
+      }
+      
+      if (newPassword !== confirmPassword) {
+        alert("New Password and Confirm Password do not match.");
+        return;
+      }
+    }
+
     const users =
       JSON.parse(localStorage.getItem("users")) || [];
 
@@ -55,18 +108,16 @@ export default function Profile() {
       if (user.email === currentUser.email) {
         return {
           ...user,
-          name:
-            formData.firstName +
-            " " +
-            formData.lastName,
-          email: formData.email,
-          address: formData.address,
+          name: `${firstName} ${lastName}`,
+          email,
+          address,
           password:
-            formData.newPassword === ""
+            newPassword === ""
               ? user.password
-              : formData.newPassword,
+              : newPassword,
         };
       }
+
       return user;
     });
 
@@ -77,16 +128,13 @@ export default function Profile() {
 
     const updatedCurrentUser = {
       ...currentUser,
-      name:
-        formData.firstName +
-        " " +
-        formData.lastName,
-      email: formData.email,
-      address: formData.address,
+      name: `${firstName} ${lastName}`,
+      email,
+      address,
       password:
-        formData.newPassword === ""
+        newPassword === ""
           ? currentUser.password
-          : formData.newPassword,
+          : newPassword,
     };
 
     localStorage.setItem(
@@ -94,7 +142,17 @@ export default function Profile() {
       JSON.stringify(updatedCurrentUser)
     );
 
-    alert("Profile Updated Successfully");
+    console.log("Updated Profile");
+
+    console.table(updatedCurrentUser);
+
+    alert("Profile Updated Successfully.");
+    setFormData((prev) => ({
+      ...prev,
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    }));
   };
 
   if (!currentUser) return null;
@@ -102,34 +160,26 @@ export default function Profile() {
   return (
     <>
       <section className="account-page">
-
         {/* Breadcrumb */}
 
         <div className="top-bar">
-
           <div className="breadcrumb">
-
             <Link to="/">Home</Link>
 
             <span>/</span>
 
             <p>My Account</p>
-
           </div>
 
           <h4>
-            Welcome!{" "}
-            <span>{formData.firstName}</span>
+            Welcome! <span>{formData.firstName}</span>
           </h4>
-
         </div>
 
         <div className="account-wrapper">
-
           {/* Sidebar */}
 
           <div className="account-sidebar">
-
             <h3>Manage My Account</h3>
 
             <ul>
@@ -151,132 +201,115 @@ export default function Profile() {
             </ul>
 
             <h3>My Wishlist</h3>
-
           </div>
 
           {/* Right */}
 
           <div className="account-content">
+            <form onSubmit={handleSave}>
+              <h2>Edit Your Profile</h2>
 
-            <h2>Edit Your Profile</h2>
+              <div className="form-row">
+                <div className="input-group">
+                  <label>First Name</label>
 
-            <div className="form-row">
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
+                </div>
 
-              <div className="input-group">
+                <div className="input-group">
+                  <label>Last Name</label>
 
-                <label>First Name</label>
-
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                />
-
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
 
-              <div className="input-group">
+              <div className="form-row">
+                <div className="input-group">
+                  <label>Email</label>
 
-                <label>Last Name</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
 
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                />
+                <div className="input-group">
+                  <label>Address</label>
 
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="Enter Address"
+                    value={formData.address}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
 
-            </div>
+              <label className="password-title">
+                Password Changes
+              </label>
 
-            <div className="form-row">
+              <input
+                className="password-input"
+                type="password"
+                placeholder="Current Password"
+                name="currentPassword"
+                value={formData.currentPassword}
+                onChange={handleChange}
+              />
 
-              <div className="input-group">
+              <input
+                className="password-input"
+                type="password"
+                placeholder="New Password"
+                name="newPassword"
+                value={formData.newPassword}
+                onChange={handleChange}
+              />
 
-                <label>Email</label>
+              <input
+                className="password-input"
+                type="password"
+                placeholder="Confirm New Password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
 
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
+              <div className="buttons">
+                <button
+                  type="button"
+                  className="cancel-btn"
+                  onClick={() => navigate("/")}
+                >
+                  Cancel
+                </button>
 
+                <button
+                  type="submit"
+                  className="save-btn"
+                >
+                  Save Changes
+                </button>
               </div>
-
-              <div className="input-group">
-
-                <label>Address</label>
-
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Enter Address"
-                  value={formData.address}
-                  onChange={handleChange}
-                />
-
-              </div>
-
-            </div>
-
-            <label className="password-title">
-              Password Changes
-            </label>
-
-            <input
-              className="password-input"
-              type="password"
-              placeholder="Current Password"
-              name="currentPassword"
-              value={formData.currentPassword}
-              onChange={handleChange}
-            />
-
-            <input
-              className="password-input"
-              type="password"
-              placeholder="New Password"
-              name="newPassword"
-              value={formData.newPassword}
-              onChange={handleChange}
-            />
-
-            <input
-              className="password-input"
-              type="password"
-              placeholder="Confirm New Password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-            />
-
-            <div className="buttons">
-
-              <button
-                className="cancel-btn"
-                onClick={() => navigate("/")}
-              >
-                Cancel
-              </button>
-
-              <button
-                className="save-btn"
-                onClick={handleSave}
-              >
-                Save Changes
-              </button>
-
-            </div>
-
+            </form>
           </div>
-
         </div>
-
       </section>
 
-      <Footer/>
     </>
   );
 }
