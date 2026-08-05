@@ -119,20 +119,20 @@
 }
 
 .cart-btn{
-    position:absolute;
-    left:0;
-    bottom:0;
-    width:100%;
-    /* background:#000;
-    color:#fff; */
-    border:none;
-    padding:12px;
-    cursor:pointer;
-    transition: all .3s ease;
-    transform: translateY(100%);
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  /* background:#000;
+  color:#fff; */
+  border:none;
+  padding:12px;
+  cursor:pointer;
+  transition: all .3s ease;
+  transform: translateY(100%);
 }
 .product-card:hover .cart-btn {
-  transform: translateY(0);
+transform: translateY(0);
 }
 .cart-btn.added{
   background-color: #16a34a;
