@@ -1,7 +1,6 @@
 import "./checkout.css";
 import { Link } from "react-router-dom";
 
-import Footer from "../../components/Footer/Footer";
 
 import { useCart } from "../../context/CartContext";
 
@@ -219,7 +218,6 @@ export default function Checkout() {
         </div>
       </section>
 
-      <Footer />
     </>
   );
 }
