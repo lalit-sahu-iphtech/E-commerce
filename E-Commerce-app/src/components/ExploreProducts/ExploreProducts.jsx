@@ -134,7 +134,7 @@ const handlePrev = () =>{
             <div className="explore-top">
                 <h2 className="explore-title">Explore Our Products</h2>
 
-                <div className="arrows">
+                {/* <div className="arrows">
                     <button className="arrow-btn"
                     onClick={handlePrev}
                     disabled={startIndex === 8}
@@ -148,7 +148,8 @@ const handlePrev = () =>{
                      disabled={startIndex  + 8 >= products.length}
                     >&#8594;</button>
 
-                </div>
+                </div> */}
+
             </div>
             <div className="products-grid">
 

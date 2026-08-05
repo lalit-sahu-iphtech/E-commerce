@@ -96,10 +96,11 @@
     border-color: #db4444;
   }
 
-  .category-card.active:hover p{
+  /* .category-card.active:hover p{
  
     color: #000;
-  }
+  } */
+   
   .category-card:hover p,
   .category-card.active p {
     color: #fff;

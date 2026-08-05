@@ -14,10 +14,11 @@ import AllProducts from "./pages/AllProducts/AllProducts";
 
 import "./App.css"
 import Profile from "./pages/Profile/Profile";
-
 import { useState } from "react";
 import Checkout from "./pages/Checkout/Checkout";
 import Footer from "./components/Footer/Footer";
+import CategoryProductsPage from "./pages/CategoryProducts/CategoryProductsPage.jsx";
+import CategoryDetails from "./pages/ProductDetails/CategoryDetails.jsx";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
@@ -46,6 +47,16 @@ function App() {
         <Route path="/product/:id/:title" element={<RecomDetails/>} />
 
         <Route path="/checkout"element={<Checkout/>}/>
+
+        <Route
+  path="/category/:categoryName"
+  element={<CategoryProductsPage/>}
+/>
+
+<Route
+  path="/category-product/:id"
+  element={<CategoryDetails/>}
+/>
      
       </Routes>
       </main>

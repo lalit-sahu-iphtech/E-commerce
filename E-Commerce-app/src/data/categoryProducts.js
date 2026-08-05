@@ -43,10 +43,10 @@ import ps5_4 from "../assets/products/gaming/ps5-4.png";
 // ======================= LAPTOP =======================
 
 // MacBook Air M3
-import macbook_1 from "../assets/products/laptop/macbook-1.png";
-import macbook_2 from "../assets/products/laptop/macbook-2.png";
-import macbook_3 from "../assets/products/laptop/macbook-3.png";
-import macbook_4 from "../assets/products/laptop/macbook-4.png";
+import macbook1 from "../assets/products/laptops/macbook1.png";
+import macbook2 from "../assets/products/laptops/macbook2.png";
+import macbook3 from "../assets/products/laptops/macbook3.png";
+import macbook4 from "../assets/products/laptops/macbook4.png";
 
 // ======================= SPEAKER =======================
 
@@ -85,234 +85,1083 @@ import ipad_4 from "../assets/products/tablet/ipad-4.png";
 
 export const categoryProducts = {
 
-  Phones: [
+Phones: [
 
-    {
-      id: 101,
-      category: "Phones",
-      title: "iPhone 16 Pro Max",
+  {
+    id: 101,
+    category: "Phones",
+    title: "iPhone 16 Pro Max",
 
-      images: [
-        iphone16_1,
-        iphone16_2,
-        iphone16_3,
-        iphone16_4,
-      ],
+    image: iphone16_1,   // Category/Product Card ke liye
 
-      price: 1499,
-      oldPrice: 1699,
-      discount: "-12%",
-      rating: 4.9,
-      reviews: 254,
-      badge: "New",
-
-      description:
-        "Apple iPhone 16 Pro Max with A18 Pro chip, Super Retina XDR display, titanium design and advanced camera system.",
-    },
-
-   
-  ],
-
-  Computers: [
-
-    {
-      id: 201,
-      category: "Computers",
-      title: "MacBook Pro M4",
-
-      images: [
-        macbook_1,
-        macbook_2,
-        macbook_3,
-        macbook_4,
-      ],
-
-      price: 2299,
-      oldPrice: 2499,
-      discount: "-8%",
-      rating: 4.9,
-      reviews: 188,
-      badge: "New",
-
-      description:
-        "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
-    },
-  ],
-
-SmartWatch: [
-
-    {
-    id:301,
-    category:"SmartWatch",
-    title:"Apple Watch Ultra 2",
-    
-    images:[
-    watchUltra_1,
-    watchUltra_2,
-    watchUltra_3,
-    watchUltra_4,
+    images: [
+      iphone16_1,
+      iphone16_2,
+      iphone16_3,
+      iphone16_4,
     ],
-    
-    price:899,
-    oldPrice:999,
-    discount:"-10%",
-    rating:4.9,
-    reviews:210,
-    badge:"New",
-    
+
+    price: 1499,
+    oldPrice: 1699,
+    discount: "-12%",
+    rating: 4.9,
+    reviews: 254,
+    // badge: "New",
+
     description:
-    "Premium Apple smartwatch with titanium case, GPS and health tracking.",
-    },
+      "Apple iPhone 16 Pro Max with A18 Pro chip.",
+  },
+
+  {
+    id: 102,
+    category: "Phones",
+    title: "iPhone 16 Pro Max",
+
+    image: iphone16_2,
+
+    images: [
+      iphone16_1,
+      iphone16_2,
+      iphone16_3,
+      iphone16_4,
+    ],
+
+    price: 1499,
+    oldPrice: 1699,
+    discount: "-12%",
+    rating: 4.9,
+    reviews: 254,
+    // badge: "New",
+
+    description:
+      "Apple iPhone 16 Pro Max with A18 Pro chip.",
+  },
+
+  {
+    id: 103,
+    category: "Phones",
+    title: "iPhone 16 Pro Max",
+
+    image: iphone16_3,
+
+    images: [
+      iphone16_1,
+      iphone16_2,
+      iphone16_3,
+      iphone16_4,
+    ],
+
+    price: 1499,
+    oldPrice: 1699,
+    discount: "-12%",
+    rating: 4.9,
+    reviews: 254,
+    // badge: "New",
+
+    description:
+      "Apple iPhone 16 Pro Max with A18 Pro chip.",
+  },
+
+  {
+    id: 104,
+    category: "Phones",
+    title: "iPhone 16 Pro Max",
+
+    image: iphone16_4,
+
+    images: [
+      iphone16_1,
+      iphone16_2,
+      iphone16_3,
+      iphone16_4,
+    ],
+
+    price: 1499,
+    oldPrice: 1699,
+    discount: "-12%",
+    rating: 4.9,
+    reviews: 254,
+    // badge: "New",
+
+    description:
+      "Apple iPhone 16 Pro Max with A18 Pro chip.",
+  },
 
 ],
 
-Camera:[
+Computers: [
 
- {
-    id:401,
-    category:"Camera",
-    title:"Sony A7 IV",
-    
-    images:[sony_1,sony_2,sony_3,sony_4],
-    
-    price:2499,
-    oldPrice:2699,
-    discount:"-8%",
-    rating:4.9,
-    reviews:232,
-    
-    description:"Sony full-frame mirrorless camera with 33MP sensor.",
-    },
+  {
+    id: 201,
+    category: "Computers",
+    title: "MacBook Pro M4",
+
+    image: macbook_1,
+
+    images: [
+      macbook_1,
+      macbook_2,
+      macbook_3,
+      macbook_4,
+    ],
+
+    price: 2299,
+    oldPrice: 2499,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 188,
+    // badge: "New",
+
+    description:
+      "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+  },
+
+  {
+    id: 202,
+    category: "Computers",
+    title: "MacBook Pro M4",
+
+    image: macbook_2,
+
+    images: [
+      macbook_1,
+      macbook_2,
+      macbook_3,
+      macbook_4,
+    ],
+
+    price: 2299,
+    oldPrice: 2499,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 188,
+    // badge: "New",
+
+    description:
+      "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+  },
+
+  {
+    id: 203,
+    category: "Computers",
+    title: "MacBook Pro M4",
+
+    image: macbook_3,
+
+    images: [
+      macbook_1,
+      macbook_2,
+      macbook_3,
+      macbook_4,
+    ],
+
+    price: 2299,
+    oldPrice: 2499,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 188,
+    // badge: "New",
+
+    description:
+      "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+  },
+
+  {
+    id: 204,
+    category: "Computers",
+    title: "MacBook Pro M4",
+
+    image: macbook_4,
+
+    images: [
+      macbook_1,
+      macbook_2,
+      macbook_3,
+      macbook_4,
+    ],
+
+    price: 2299,
+    oldPrice: 2499,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 188,
+    // badge: "New",
+
+    description:
+      "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+  },
+
+],
+
+SmartWatch: [
+
+  {
+    id: 301,
+    category: "SmartWatch",
+    title: "Apple Watch Ultra 2",
+
+    image: watchUltra_1,
+
+    images: [
+      watchUltra_1,
+      watchUltra_2,
+      watchUltra_3,
+      watchUltra_4,
+    ],
+
+    price: 899,
+    oldPrice: 999,
+    discount: "-10%",
+    rating: 4.9,
+    reviews: 210,
+    // badge: "New",
+
+    description:
+      "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+  },
+
+  {
+    id: 302,
+    category: "SmartWatch",
+    title: "Apple Watch Ultra 2",
+
+    image: watchUltra_2,
+
+    images: [
+      watchUltra_1,
+      watchUltra_2,
+      watchUltra_3,
+      watchUltra_4,
+    ],
+
+    price: 899,
+    oldPrice: 999,
+    discount: "-10%",
+    rating: 4.9,
+    reviews: 210,
+    // badge: "New",
+
+    description:
+      "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+  },
+
+  {
+    id: 303,
+    category: "SmartWatch",
+    title: "Apple Watch Ultra 2",
+
+    image: watchUltra_3,
+
+    images: [
+      watchUltra_1,
+      watchUltra_2,
+      watchUltra_3,
+      watchUltra_4,
+    ],
+
+    price: 899,
+    oldPrice: 999,
+    discount: "-10%",
+    rating: 4.9,
+    reviews: 210,
+    // badge: "New",
+
+    description:
+      "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+  },
+
+  {
+    id: 304,
+    category: "SmartWatch",
+    title: "Apple Watch Ultra 2",
+
+    image: watchUltra_4,
+
+    images: [
+      watchUltra_1,
+      watchUltra_2,
+      watchUltra_3,
+      watchUltra_4,
+    ],
+
+    price: 899,
+    oldPrice: 999,
+    discount: "-10%",
+    rating: 4.9,
+    reviews: 210,
+    // badge: "New",
+
+    description:
+      "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+  },
+
+],
+
+Camera: [
+
+  {
+    id: 401,
+    category: "Camera",
+    title: "Sony A7 IV",
+
+    image: sony_1,
+
+    images: [
+      sony_1,
+      sony_2,
+      sony_3,
+      sony_4,
+    ],
+
+    price: 2499,
+    oldPrice: 2699,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 232,
+
+    description: "Sony full-frame mirrorless camera with 33MP sensor.",
+  },
+
+  {
+    id: 402,
+    category: "Camera",
+    title: "Sony A7 IV",
+
+    image: sony_2,
+
+    images: [
+      sony_1,
+      sony_2,
+      sony_3,
+      sony_4,
+    ],
+
+    price: 2499,
+    oldPrice: 2699,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 232,
+
+    description: "Sony full-frame mirrorless camera with 33MP sensor.",
+  },
+
+  {
+    id: 403,
+    category: "Camera",
+    title: "Sony A7 IV",
+
+    image: sony_3,
+
+    images: [
+      sony_1,
+      sony_2,
+      sony_3,
+      sony_4,
+    ],
+
+    price: 2499,
+    oldPrice: 2699,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 232,
+
+    description: "Sony full-frame mirrorless camera with 33MP sensor.",
+  },
+
+  {
+    id: 404,
+    category: "Camera",
+    title: "Sony A7 IV",
+
+    image: sony_4,
+
+    images: [
+      sony_1,
+      sony_2,
+      sony_3,
+      sony_4,
+    ],
+
+    price: 2499,
+    oldPrice: 2699,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 232,
+
+    description: "Sony full-frame mirrorless camera with 33MP sensor.",
+  },
+
 ],
 
 HeadPhones: [
 
-    {
-    id:501,
-    category:"HeadPhones",
-    title:"Sony WH-1000XM5",
-    
-    images:[sonyHead_1,sonyHead_2,sonyHead_3,sonyHead_4],
-    
-    price:399,
-    oldPrice:449,
-    discount:"-11%",
-    rating:4.9,
-    reviews:286,
-    
-    description:"Industry-leading noise cancelling wireless headphones.",
-    },
-],
-Gaming:[
+  {
+    id: 501,
+    category: "HeadPhones",
+    title: "Sony WH-1000XM5",
+
+    image: sonyHead_1,
+
+    images: [
+      sonyHead_1,
+      sonyHead_2,
+      sonyHead_3,
+      sonyHead_4,
+    ],
+
+    price: 399,
+    oldPrice: 449,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 286,
+
+    description: "Industry-leading noise cancelling wireless headphones.",
+  },
 
   {
-    id:601,
-    category:"Gaming",
-    title:"PS5 DualSense Controller",
-    
-    images:[ps5_1,ps5_2,ps5_3,ps5_4],
-    
-    price:79,
-    oldPrice:99,
-    discount:"-20%",
-    rating:4.9,
-    reviews:321,
-    
-    description:"Sony DualSense wireless controller with adaptive triggers.",
-    },
+    id: 502,
+    category: "HeadPhones",
+    title: "Sony WH-1000XM5",
+
+    image: sonyHead_2,
+
+    images: [
+      sonyHead_1,
+      sonyHead_2,
+      sonyHead_3,
+      sonyHead_4,
+    ],
+
+    price: 399,
+    oldPrice: 449,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 286,
+
+    description: "Industry-leading noise cancelling wireless headphones.",
+  },
+
+  {
+    id: 503,
+    category: "HeadPhones",
+    title: "Sony WH-1000XM5",
+
+    image: sonyHead_3,
+
+    images: [
+      sonyHead_1,
+      sonyHead_2,
+      sonyHead_3,
+      sonyHead_4,
+    ],
+
+    price: 399,
+    oldPrice: 449,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 286,
+
+    description: "Industry-leading noise cancelling wireless headphones.",
+  },
+
+  {
+    id: 504,
+    category: "HeadPhones",
+    title: "Sony WH-1000XM5",
+
+    image: sonyHead_4,
+
+    images: [
+      sonyHead_1,
+      sonyHead_2,
+      sonyHead_3,
+      sonyHead_4,
+    ],
+
+    price: 399,
+    oldPrice: 449,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 286,
+
+    description: "Industry-leading noise cancelling wireless headphones.",
+  },
+
 ],
+
+Gaming: [
+
+  {
+    id: 601,
+    category: "Gaming",
+    title: "PS5 DualSense Controller",
+
+    image: ps5_1,
+
+    images: [
+      ps5_1,
+      ps5_2,
+      ps5_3,
+      ps5_4,
+    ],
+
+    price: 79,
+    oldPrice: 99,
+    discount: "-20%",
+    rating: 4.9,
+    reviews: 321,
+
+    description: "Sony DualSense wireless controller with adaptive triggers.",
+  },
+
+  {
+    id: 602,
+    category: "Gaming",
+    title: "PS5 DualSense Controller",
+
+    image: ps5_2,
+
+    images: [
+      ps5_1,
+      ps5_2,
+      ps5_3,
+      ps5_4,
+    ],
+
+    price: 79,
+    oldPrice: 99,
+    discount: "-20%",
+    rating: 4.9,
+    reviews: 321,
+
+    description: "Sony DualSense wireless controller with adaptive triggers.",
+  },
+
+  {
+    id: 603,
+    category: "Gaming",
+    title: "PS5 DualSense Controller",
+
+    image: ps5_3,
+
+    images: [
+      ps5_1,
+      ps5_2,
+      ps5_3,
+      ps5_4,
+    ],
+
+    price: 79,
+    oldPrice: 99,
+    discount: "-20%",
+    rating: 4.9,
+    reviews: 321,
+
+    description: "Sony DualSense wireless controller with adaptive triggers.",
+  },
+
+  {
+    id: 604,
+    category: "Gaming",
+    title: "PS5 DualSense Controller",
+
+    image: ps5_4,
+
+    images: [
+      ps5_1,
+      ps5_2,
+      ps5_3,
+      ps5_4,
+    ],
+
+    price: 79,
+    oldPrice: 99,
+    discount: "-20%",
+    rating: 4.9,
+    reviews: 321,
+
+    description: "Sony DualSense wireless controller with adaptive triggers.",
+  },
+
+],
+
 Laptop: [
 
-    {
-    id:701,
-    category:"Laptop",
-    title:"MacBook Air M3",
-    
-    images:[macbook_1,macbook_2,macbook_3,macbook_4],
-    
-    price:1299,
-    oldPrice:1399,
-    discount:"-8%",
-    rating:4.9,
-    reviews:312,
-    
-    description:"Apple MacBook Air with M3 chip and Liquid Retina display.",
-    },
+  {
+    id: 701,
+    category: "Laptop",
+    title: "MacBook Air M3",
 
+    image: macbook1,
+
+    images: [
+      macbook1,
+      macbook2,
+      macbook3,
+      macbook4,
+    ],
+
+    price: 1299,
+    oldPrice: 1399,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 312,
+
+    description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+  },
+
+  {
+    id: 702,
+    category: "Laptop",
+    title: "MacBook Air M3",
+
+    image: macbook2,
+
+    images: [
+      macbook1,
+      macbook2,
+      macbook3,
+      macbook4,
+    ],
+
+    price: 1299,
+    oldPrice: 1399,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 312,
+
+    description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+  },
+
+  {
+    id: 703,
+    category: "Laptop",
+    title: "MacBook Air M3",
+
+    image: macbook3,
+
+    images: [
+      macbook1,
+      macbook2,
+      macbook3,
+      macbook4,
+    ],
+
+    price: 1299,
+    oldPrice: 1399,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 312,
+
+    description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+  },
+
+  {
+    id: 704,
+    category: "Laptop",
+    title: "MacBook Air M3",
+
+    image: macbook4,
+
+    images: [
+      macbook1,
+      macbook2,
+      macbook3,
+      macbook4,
+    ],
+
+    price: 1299,
+    oldPrice: 1399,
+    discount: "-8%",
+    rating: 4.9,
+    reviews: 312,
+
+    description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+  },
 
 ],
-Speaker:[
 
-    {
-    id:801,
-    category:"Speaker",
-    title:"JBL Flip 6",
-    
-    images:[flip6_1,flip6_2,flip6_3,flip6_4],
-    
-    price:149,
-    oldPrice:179,
-    discount:"-17%",
-    rating:4.8,
-    reviews:189,
-    
-    description:"Portable waterproof Bluetooth speaker with powerful bass.",
-    },
+Speaker: [
+
+  {
+    id: 801,
+    category: "Speaker",
+    title: "JBL Flip 6",
+
+    image: flip6_1,
+
+    images: [
+      flip6_1,
+      flip6_2,
+      flip6_3,
+      flip6_4,
+    ],
+
+    price: 149,
+    oldPrice: 179,
+    discount: "-17%",
+    rating: 4.8,
+    reviews: 189,
+
+    description: "Portable waterproof Bluetooth speaker with powerful bass.",
+  },
+
+  {
+    id: 802,
+    category: "Speaker",
+    title: "JBL Flip 6",
+
+    image: flip6_2,
+
+    images: [
+      flip6_1,
+      flip6_2,
+      flip6_3,
+      flip6_4,
+    ],
+
+    price: 149,
+    oldPrice: 179,
+    discount: "-17%",
+    rating: 4.8,
+    reviews: 189,
+
+    description: "Portable waterproof Bluetooth speaker with powerful bass.",
+  },
+
+  {
+    id: 803,
+    category: "Speaker",
+    title: "JBL Flip 6",
+
+    image: flip6_3,
+
+    images: [
+      flip6_1,
+      flip6_2,
+      flip6_3,
+      flip6_4,
+    ],
+
+    price: 149,
+    oldPrice: 179,
+    discount: "-17%",
+    rating: 4.8,
+    reviews: 189,
+
+    description: "Portable waterproof Bluetooth speaker with powerful bass.",
+  },
+
+  {
+    id: 804,
+    category: "Speaker",
+    title: "JBL Flip 6",
+
+    image: flip6_4,
+
+    images: [
+      flip6_1,
+      flip6_2,
+      flip6_3,
+      flip6_4,
+    ],
+
+    price: 149,
+    oldPrice: 179,
+    discount: "-17%",
+    rating: 4.8,
+    reviews: 189,
+
+    description: "Portable waterproof Bluetooth speaker with powerful bass.",
+  },
+
 ],
-Television:[
 
-    {
-    id:901,
-    category:"Television",
-    title:"Samsung Neo QLED",
-    
-    images:[samsungTv_1,samsungTv_2,samsungTv_3,samsungTv_4],
-    
-    price:1599,
-    oldPrice:1799,
-    discount:"-11%",
-    rating:4.9,
-    reviews:258,
-    
-    description:"65-inch Samsung Neo QLED 4K Smart TV.",
-    },
+Television: [
+
+  {
+    id: 901,
+    category: "Television",
+    title: "Samsung Neo QLED",
+
+    image: samsungTv_1,
+
+    images: [
+      samsungTv_1,
+      samsungTv_2,
+      samsungTv_3,
+      samsungTv_4,
+    ],
+
+    price: 1599,
+    oldPrice: 1799,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 258,
+
+    description: "65-inch Samsung Neo QLED 4K Smart TV.",
+  },
+
+  {
+    id: 902,
+    category: "Television",
+    title: "Samsung Neo QLED",
+
+    image: samsungTv_2,
+
+    images: [
+      samsungTv_1,
+      samsungTv_2,
+      samsungTv_3,
+      samsungTv_4,
+    ],
+
+    price: 1599,
+    oldPrice: 1799,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 258,
+
+    description: "65-inch Samsung Neo QLED 4K Smart TV.",
+  },
+
+  {
+    id: 903,
+    category: "Television",
+    title: "Samsung Neo QLED",
+
+    image: samsungTv_3,
+
+    images: [
+      samsungTv_1,
+      samsungTv_2,
+      samsungTv_3,
+      samsungTv_4,
+    ],
+
+    price: 1599,
+    oldPrice: 1799,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 258,
+
+    description: "65-inch Samsung Neo QLED 4K Smart TV.",
+  },
+
+  {
+    id: 904,
+    category: "Television",
+    title: "Samsung Neo QLED",
+
+    image: samsungTv_4,
+
+    images: [
+      samsungTv_1,
+      samsungTv_2,
+      samsungTv_3,
+      samsungTv_4,
+    ],
+
+    price: 1599,
+    oldPrice: 1799,
+    discount: "-11%",
+    rating: 4.9,
+    reviews: 258,
+
+    description: "65-inch Samsung Neo QLED 4K Smart TV.",
+  },
+
 ],
-Printer:[
 
-    {
-    id:1001,
-    category:"Printer",
-    title:"HP LaserJet Pro",
-    
-    images:[hpPrinter_1,hpPrinter_2,hpPrinter_3,hpPrinter_4],
-    
-    price:299,
-    oldPrice:349,
-    discount:"-14%",
-    rating:4.8,
-    reviews:134,
-    
-    description:"Wireless monochrome laser printer.",
-    },
+Printer: [
+
+  {
+    id: 1001,
+    category: "Printer",
+    title: "HP LaserJet Pro",
+
+    image: hpPrinter_1,
+
+    images: [
+      hpPrinter_1,
+      hpPrinter_2,
+      hpPrinter_3,
+      hpPrinter_4,
+    ],
+
+    price: 299,
+    oldPrice: 349,
+    discount: "-14%",
+    rating: 4.8,
+    reviews: 134,
+
+    description: "Wireless monochrome laser printer.",
+  },
+
+  {
+    id: 1002,
+    category: "Printer",
+    title: "HP LaserJet Pro",
+
+    image: hpPrinter_2,
+
+    images: [
+      hpPrinter_1,
+      hpPrinter_2,
+      hpPrinter_3,
+      hpPrinter_4,
+    ],
+
+    price: 299,
+    oldPrice: 349,
+    discount: "-14%",
+    rating: 4.8,
+    reviews: 134,
+
+    description: "Wireless monochrome laser printer.",
+  },
+
+  {
+    id: 1003,
+    category: "Printer",
+    title: "HP LaserJet Pro",
+
+    image: hpPrinter_3,
+
+    images: [
+      hpPrinter_1,
+      hpPrinter_2,
+      hpPrinter_3,
+      hpPrinter_4,
+    ],
+
+    price: 299,
+    oldPrice: 349,
+    discount: "-14%",
+    rating: 4.8,
+    reviews: 134,
+
+    description: "Wireless monochrome laser printer.",
+  },
+
+  {
+    id: 1004,
+    category: "Printer",
+    title: "HP LaserJet Pro",
+
+    image: hpPrinter_4,
+
+    images: [
+      hpPrinter_1,
+      hpPrinter_2,
+      hpPrinter_3,
+      hpPrinter_4,
+    ],
+
+    price: 299,
+    oldPrice: 349,
+    discount: "-14%",
+    rating: 4.8,
+    reviews: 134,
+
+    description: "Wireless monochrome laser printer.",
+  },
 
 ],
-Tablet:[
 
-    {
-    id:1101,
-    category:"Tablet",
-    title:"Apple iPad Air",
-    
-    images:[ipad_1,ipad_2,ipad_3,ipad_4],
-    
-    price:699,
-    oldPrice:749,
-    discount:"-7%",
-    rating:4.9,
-    reviews:221,
-    
-    description:"Apple iPad Air with M2 chip.",
-    },
+Tablet: [
+
+  {
+    id: 1101,
+    category: "Tablet",
+    title: "Apple iPad Air",
+
+    image: ipad_1,
+
+    images: [
+      ipad_1,
+      ipad_2,
+      ipad_3,
+      ipad_4,
+    ],
+
+    price: 699,
+    oldPrice: 749,
+    discount: "-7%",
+    rating: 4.9,
+    reviews: 221,
+
+    description: "Apple iPad Air with M2 chip.",
+  },
+
+  {
+    id: 1102,
+    category: "Tablet",
+    title: "Apple iPad Air",
+
+    image: ipad_2,
+
+    images: [
+      ipad_1,
+      ipad_2,
+      ipad_3,
+      ipad_4,
+    ],
+
+    price: 699,
+    oldPrice: 749,
+    discount: "-7%",
+    rating: 4.9,
+    reviews: 221,
+
+    description: "Apple iPad Air with M2 chip.",
+  },
+
+  {
+    id: 1103,
+    category: "Tablet",
+    title: "Apple iPad Air",
+
+    image: ipad_3,
+
+    images: [
+      ipad_1,
+      ipad_2,
+      ipad_3,
+      ipad_4,
+    ],
+
+    price: 699,
+    oldPrice: 749,
+    discount: "-7%",
+    rating: 4.9,
+    reviews: 221,
+
+    description: "Apple iPad Air with M2 chip.",
+  },
+
+  {
+    id: 1104,
+    category: "Tablet",
+    title: "Apple iPad Air",
+
+    image: ipad_4,
+
+    images: [
+      ipad_1,
+      ipad_2,
+      ipad_3,
+      ipad_4,
+    ],
+
+    price: 699,
+    oldPrice: 749,
+    discount: "-7%",
+    rating: 4.9,
+    reviews: 221,
+
+    description: "Apple iPad Air with M2 chip.",
+  },
 
 ],
 

@@ -14,6 +14,7 @@ import printer from "../../assets/category/printer.png";
 import tablet from "../../assets/category/tablet.png";
 
 import "./category.css";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   { name: "Phones", icon: phone },
@@ -31,6 +32,7 @@ const categories = [
 ];
 
 export default function Category() {
+  const navigate = useNavigate();
   const [startIndex, setStartIndex] = useState(0);
 
   const visibleCards = 6;
@@ -87,27 +89,26 @@ export default function Category() {
 
       </div>
 
-      <div className="categories">
+    <div className="categories">
+    {categories
+      .slice(startIndex, startIndex + visibleCards)
+      .map((item, index) => (
+        <div
+          key={index}
+          className="category-card"
+          onClick={() =>
+            navigate(`/category/${item.name}`)
+          }
+        >
+          <img
+            src={item.icon}
+            alt={item.name}
+          />
 
-        {categories
-          .slice(startIndex, startIndex + visibleCards)
-          .map((item, index) => (
-            <div
-              key={index}
-              className={`category-card ${
-                item.active ? "active" : ""
-              }`}
-            >
-              <img
-                src={item.icon}
-                alt={item.name}
-              />
-
-              <p>{item.name}</p>
-            </div>
-          ))}
-
-      </div>
+          <p>{item.name}</p>
+        </div>
+      ))}
+</div>
 
     </section>
   );
