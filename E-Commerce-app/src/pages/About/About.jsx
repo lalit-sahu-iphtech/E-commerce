@@ -1,6 +1,5 @@
 import "./about.css";
 import { Link } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
 
 import aboutImg from "../../assets/about/about.png";
 
@@ -97,7 +96,6 @@ export default function About() {
         </div>
       </section>
 
-      <Footer />
     </>
   );
 }
