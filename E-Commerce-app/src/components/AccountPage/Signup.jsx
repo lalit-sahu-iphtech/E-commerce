@@ -252,7 +252,6 @@ export default function Signup({ setIsAuthenticated }) {
         </div>
       </div>
 
-      <Footer />
     </>
   );
 }
