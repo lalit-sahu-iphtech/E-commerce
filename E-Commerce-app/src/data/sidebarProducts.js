@@ -7,6 +7,7 @@ export const sidebarProducts = {
     {
       id: "wf-001",
       name: "Floral Summer Dress",
+      category: "Woman's Fashion",
       subCategory: "Dresses",
       price: 1299,
       discount: "-10%",
@@ -18,6 +19,7 @@ export const sidebarProducts = {
     {
       id: "wf-002",
       name: "Bodycon Party Dress",
+      category: "Woman's Fashion",
       subCategory: "Dresses",
       price: 1599,
       discount: "-10%",
@@ -27,8 +29,8 @@ export const sidebarProducts = {
       image: "https://loremflickr.com/300/300/bodycon,party",
     },
     {
-      id: "wf-003",
       name: "Casual Cotton Dress",
+      category: "Woman's Fashion",
       subCategory: "Dresses",
       price: 899,
       discount: "-10%",
@@ -40,6 +42,7 @@ export const sidebarProducts = {
     {
       id: "wf-004",
       name: "Leather Handbag",
+      category: "Woman's Fashion",
       subCategory: "Handbags",
       price: 2499,
       discount: "-10%",
@@ -62,6 +65,7 @@ export const sidebarProducts = {
     {
       id: "wf-006",
       name: "Tote Bag",
+      category: "Woman's Fashion",
       subCategory: "Handbags",
       price: 1799,
       discount: "-10%",
@@ -73,6 +77,7 @@ export const sidebarProducts = {
     {
       id: "wf-007",
       name: "Stiletto Heels",
+      category: "Woman's Fashion",
       subCategory: "High Heels",
       price: 1499,
       discount: "-10%",
@@ -84,6 +89,7 @@ export const sidebarProducts = {
     {
       id: "wf-008",
       name: "Block Heels",
+      category: "Woman's Fashion",
       subCategory: "High Heels",
       price: 1299,
       discount: "-10%",
@@ -95,6 +101,7 @@ export const sidebarProducts = {
     {
       id: "wf-009",
       name: "Gold Plated Necklace Set",
+      category: "Woman's Fashion",
       subCategory: "Jewellery",
       price: 999,
       discount: "-10%",
@@ -106,6 +113,7 @@ export const sidebarProducts = {
     {
       id: "wf-010",
       name: "Pearl Earrings",
+      category: "Woman's Fashion",
       subCategory: "Jewellery",
       price: 499,
       discount: "-10%",
@@ -117,6 +125,7 @@ export const sidebarProducts = {
     {
       id: "wf-011",
       name: "Matte Lipstick Set",
+      category: "Woman's Fashion",
       subCategory: "Makeup",
       price: 699,
       discount: "-10%",
@@ -128,6 +137,7 @@ export const sidebarProducts = {
     {
       id: "wf-012",
       name: "Foundation & Concealer Kit",
+      category: "Woman's Fashion",
       subCategory: "Makeup",
       price: 1099,
       discount: "-10%",
@@ -135,9 +145,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/foundation,concealer",
-    }
+    },
   ],
-  "Dresses": [
+  Dresses: [
     {
       id: "wf-001",
       name: "Floral Summer Dress",
@@ -170,9 +180,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/casual,cotton",
-    }
+    },
   ],
-  "Handbags": [
+  Handbags: [
     {
       id: "wf-004",
       name: "Leather Handbag",
@@ -205,7 +215,7 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/tote,bag",
-    }
+    },
   ],
   "High Heels": [
     {
@@ -229,9 +239,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/block,heels",
-    }
+    },
   ],
-  "Jewellery": [
+  Jewellery: [
     {
       id: "wf-009",
       name: "Gold Plated Necklace Set",
@@ -253,9 +263,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/pearl,earrings",
-    }
+    },
   ],
-  "Makeup": [
+  Makeup: [
     {
       id: "wf-011",
       name: "Matte Lipstick Set",
@@ -277,12 +287,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/foundation,concealer",
-    }
+    },
   ],
+
   "Men's Fashion": [
     {
       id: "mf-001",
       name: "Casual Cotton Shirt",
+      category: "Men's Fashion",
       subCategory: "Shirts",
       price: 899,
       discount: "-10%",
@@ -294,6 +306,8 @@ export const sidebarProducts = {
     {
       id: "mf-002",
       name: "Formal Slim Fit Shirt",
+      category: "Men's Fashion",
+
       subCategory: "Shirts",
       price: 1099,
       discount: "-10%",
@@ -305,6 +319,8 @@ export const sidebarProducts = {
     {
       id: "mf-003",
       name: "Check Flannel Shirt",
+      category: "Men's Fashion",
+
       subCategory: "Shirts",
       price: 999,
       discount: "-10%",
@@ -316,6 +332,8 @@ export const sidebarProducts = {
     {
       id: "mf-004",
       name: "Running Sneakers",
+      category: "Men's Fashion",
+
       subCategory: "Shoes",
       price: 1999,
       discount: "-10%",
@@ -327,6 +345,8 @@ export const sidebarProducts = {
     {
       id: "mf-005",
       name: "Formal Leather Shoes",
+      category: "Men's Fashion",
+
       subCategory: "Shoes",
       price: 2499,
       discount: "-10%",
@@ -338,6 +358,8 @@ export const sidebarProducts = {
     {
       id: "mf-006",
       name: "Casual Loafers",
+      category: "Men's Fashion",
+
       subCategory: "Shoes",
       price: 1799,
       discount: "-10%",
@@ -349,6 +371,8 @@ export const sidebarProducts = {
     {
       id: "mf-007",
       name: "Analog Wrist Watch",
+      category: "Men's Fashion",
+
       subCategory: "Watches",
       price: 1599,
       discount: "-10%",
@@ -360,6 +384,8 @@ export const sidebarProducts = {
     {
       id: "mf-008",
       name: "Smart Watch",
+      category: "Men's Fashion",
+
       subCategory: "Watches",
       price: 3499,
       discount: "-10%",
@@ -371,6 +397,8 @@ export const sidebarProducts = {
     {
       id: "mf-009",
       name: "Laptop Backpack",
+      category: "Men's Fashion",
+
       subCategory: "Bags",
       price: 1499,
       discount: "-10%",
@@ -382,6 +410,8 @@ export const sidebarProducts = {
     {
       id: "mf-010",
       name: "Duffel Gym Bag",
+      category: "Men's Fashion",
+
       subCategory: "Bags",
       price: 1299,
       discount: "-10%",
@@ -393,6 +423,8 @@ export const sidebarProducts = {
     {
       id: "mf-011",
       name: "Denim Jacket",
+      category: "Men's Fashion",
+
       subCategory: "Jackets",
       price: 2199,
       discount: "-10%",
@@ -404,6 +436,8 @@ export const sidebarProducts = {
     {
       id: "mf-012",
       name: "Bomber Jacket",
+      category: "Men's Fashion",
+
       subCategory: "Jackets",
       price: 2599,
       discount: "-10%",
@@ -411,12 +445,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/bomber,jacket",
-    }
+    },
   ],
-  "Shirts": [
+  Shirts: [
     {
       id: "mf-001",
       name: "Casual Cotton Shirt",
+      category: "Men's Fashion",
+
       subCategory: "Shirts",
       price: 899,
       discount: "-10%",
@@ -428,6 +464,8 @@ export const sidebarProducts = {
     {
       id: "mf-002",
       name: "Formal Slim Fit Shirt",
+      category: "Men's Fashion",
+
       subCategory: "Shirts",
       price: 1099,
       discount: "-10%",
@@ -439,6 +477,8 @@ export const sidebarProducts = {
     {
       id: "mf-003",
       name: "Check Flannel Shirt",
+      category: "Men's Fashion",
+
       subCategory: "Shirts",
       price: 999,
       discount: "-10%",
@@ -446,9 +486,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/check,flannel",
-    }
+    },
   ],
-  "Shoes": [
+  Shoes: [
     {
       id: "mf-004",
       name: "Running Sneakers",
@@ -481,9 +521,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/casual,loafers",
-    }
+    },
   ],
-  "Watches": [
+  Watches: [
     {
       id: "mf-007",
       name: "Analog Wrist Watch",
@@ -505,9 +545,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/smart,watch",
-    }
+    },
   ],
-  "Bags": [
+  Bags: [
     {
       id: "mf-009",
       name: "Laptop Backpack",
@@ -529,9 +569,9 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/duffel,gym",
-    }
+    },
   ],
-  "Jackets": [
+  Jackets: [
     {
       id: "mf-011",
       name: "Denim Jacket",
@@ -553,12 +593,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/bomber,jacket",
-    }
+    },
   ],
-  "Electronics": [
+  Electronics: [
     {
       id: "el-001",
       name: "5G Smartphone",
+      category: "Electronics",
       subCategory: "Mobiles",
       price: 18999,
       discount: "-10%",
@@ -570,6 +611,7 @@ export const sidebarProducts = {
     {
       id: "el-002",
       name: "Budget Smartphone",
+      category: "Electronics",
       subCategory: "Mobiles",
       price: 9999,
       discount: "-10%",
@@ -581,6 +623,7 @@ export const sidebarProducts = {
     {
       id: "el-003",
       name: "15-inch Laptop",
+      category: "Electronics",
       subCategory: "Laptops",
       price: 45999,
       discount: "-10%",
@@ -592,6 +635,7 @@ export const sidebarProducts = {
     {
       id: "el-004",
       name: "Ultrabook",
+      category: "Electronics",
       subCategory: "Laptops",
       price: 62999,
       discount: "-10%",
@@ -603,6 +647,7 @@ export const sidebarProducts = {
     {
       id: "el-005",
       name: "Wireless Earbuds",
+      category: "Electronics",
       subCategory: "Headphones",
       price: 1999,
       discount: "-10%",
@@ -614,6 +659,7 @@ export const sidebarProducts = {
     {
       id: "el-006",
       name: "Over-Ear Headphones",
+      category: "Electronics",
       subCategory: "Headphones",
       price: 2999,
       discount: "-10%",
@@ -636,6 +682,7 @@ export const sidebarProducts = {
     {
       id: "el-008",
       name: "Action Camera",
+      category: "Electronics",
       subCategory: "Cameras",
       price: 8999,
       discount: "-10%",
@@ -647,6 +694,7 @@ export const sidebarProducts = {
     {
       id: "el-009",
       name: "Fitness Smart Watch",
+      category: "Electronics",
       subCategory: "Smart Watches",
       price: 2499,
       discount: "-10%",
@@ -654,12 +702,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/fitness,smart",
-    }
+    },
   ],
-  "Mobiles": [
+  Mobiles: [
     {
       id: "el-001",
       name: "5G Smartphone",
+      category: "Mobiles",
       subCategory: "Mobiles",
       price: 18999,
       discount: "-10%",
@@ -671,6 +720,7 @@ export const sidebarProducts = {
     {
       id: "el-002",
       name: "Budget Smartphone",
+      category: "Mobiles",
       subCategory: "Mobiles",
       price: 9999,
       discount: "-10%",
@@ -678,12 +728,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/budget,smartphone",
-    }
+    },
   ],
-  "Laptops": [
+  Laptops: [
     {
       id: "el-003",
       name: "15-inch Laptop",
+      category: "Laptops",
       subCategory: "Laptops",
       price: 45999,
       discount: "-10%",
@@ -695,6 +746,7 @@ export const sidebarProducts = {
     {
       id: "el-004",
       name: "Ultrabook",
+      category: "Laptops",
       subCategory: "Laptops",
       price: 62999,
       discount: "-10%",
@@ -702,12 +754,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/laptop,slim",
-    }
+    },
   ],
-  "Headphones": [
+  Headphones: [
     {
       id: "el-005",
       name: "Wireless Earbuds",
+      category: "Headphones",
       subCategory: "Headphones",
       price: 1999,
       discount: "-10%",
@@ -719,6 +772,7 @@ export const sidebarProducts = {
     {
       id: "el-006",
       name: "Over-Ear Headphones",
+      category: "Headphones",
       subCategory: "Headphones",
       price: 2999,
       discount: "-10%",
@@ -726,12 +780,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/over,ear",
-    }
+    },
   ],
-  "Cameras": [
+  Cameras: [
     {
       id: "el-007",
       name: "DSLR Camera",
+      category: "Cameras",
       subCategory: "Cameras",
       price: 34999,
       discount: "-10%",
@@ -743,6 +798,8 @@ export const sidebarProducts = {
     {
       id: "el-008",
       name: "Action Camera",
+      category: "Cameras",
+
       subCategory: "Cameras",
       price: 8999,
       discount: "-10%",
@@ -750,12 +807,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/action,camera",
-    }
+    },
   ],
   "Smart Watches": [
     {
       id: "el-009",
       name: "Fitness Smart Watch",
+      category:  "Smart Watches",
+
       subCategory: "Smart Watches",
       price: 2499,
       discount: "-10%",
@@ -763,12 +822,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/fitness,smart",
-    }
+    },
   ],
   "Home & Lifestyle": [
     {
       id: "hl-001",
       name: "Wooden Study Table",
+      category:  "Home & Lifestyle",
       subCategory: "Furniture",
       price: 5999,
       discount: "-10%",
@@ -780,6 +840,7 @@ export const sidebarProducts = {
     {
       id: "hl-002",
       name: "3-Seater Sofa",
+      category:  "Home & Lifestyle",
       subCategory: "Furniture",
       price: 15999,
       discount: "-10%",
@@ -791,6 +852,7 @@ export const sidebarProducts = {
     {
       id: "hl-003",
       name: "Non-Stick Cookware Set",
+      category:  "Home & Lifestyle",
       subCategory: "Kitchenware",
       price: 2499,
       discount: "-10%",
@@ -802,6 +864,7 @@ export const sidebarProducts = {
     {
       id: "hl-004",
       name: "Ceramic Dinner Set",
+      category:  "Home & Lifestyle",
       subCategory: "Kitchenware",
       price: 1799,
       discount: "-10%",
@@ -813,6 +876,7 @@ export const sidebarProducts = {
     {
       id: "hl-005",
       name: "Wall Art Canvas",
+      category:  "Home & Lifestyle",
       subCategory: "Home Decor",
       price: 899,
       discount: "-10%",
@@ -824,6 +888,7 @@ export const sidebarProducts = {
     {
       id: "hl-006",
       name: "Decorative Vase",
+      category:  "Home & Lifestyle",
       subCategory: "Home Decor",
       price: 599,
       discount: "-10%",
@@ -835,6 +900,7 @@ export const sidebarProducts = {
     {
       id: "hl-007",
       name: "LED Ceiling Light",
+      category:  "Home & Lifestyle",
       subCategory: "Lighting",
       price: 1299,
       discount: "-10%",
@@ -846,6 +912,7 @@ export const sidebarProducts = {
     {
       id: "hl-008",
       name: "Table Lamp",
+      category:  "Home & Lifestyle",
       subCategory: "Lighting",
       price: 699,
       discount: "-10%",
@@ -853,12 +920,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/table,lamp",
-    }
+    },
   ],
-  "Furniture": [
+  Furniture: [
     {
       id: "hl-001",
       name: "Wooden Study Table",
+      category:  "Furniture",
       subCategory: "Furniture",
       price: 5999,
       discount: "-10%",
@@ -870,6 +938,8 @@ export const sidebarProducts = {
     {
       id: "hl-002",
       name: "3-Seater Sofa",
+      category:  "Furniture",
+
       subCategory: "Furniture",
       price: 15999,
       discount: "-10%",
@@ -877,12 +947,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/seater,sofa",
-    }
+    },
   ],
-  "Kitchenware": [
+  Kitchenware: [
     {
       id: "hl-003",
       name: "Non-Stick Cookware Set",
+      category:  "Kitchenware",
+
       subCategory: "Kitchenware",
       price: 2499,
       discount: "-10%",
@@ -894,6 +966,8 @@ export const sidebarProducts = {
     {
       id: "hl-004",
       name: "Ceramic Dinner Set",
+      category:  "Kitchenware",
+
       subCategory: "Kitchenware",
       price: 1799,
       discount: "-10%",
@@ -901,12 +975,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/ceramic,dinner",
-    }
+    },
   ],
   "Home Decor": [
     {
       id: "hl-005",
       name: "Wall Art Canvas",
+      category:  "Home Decor",
+
       subCategory: "Home Decor",
       price: 899,
       discount: "-10%",
@@ -918,6 +994,8 @@ export const sidebarProducts = {
     {
       id: "hl-006",
       name: "Decorative Vase",
+      category:  "Home Decor",
+
       subCategory: "Home Decor",
       price: 599,
       discount: "-10%",
@@ -925,12 +1003,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/decorative,vase",
-    }
+    },
   ],
-  "Lighting": [
+  Lighting: [
     {
       id: "hl-007",
       name: "LED Ceiling Light",
+      category:  "Lighting",
+
       subCategory: "Lighting",
       price: 1299,
       discount: "-10%",
@@ -942,6 +1022,8 @@ export const sidebarProducts = {
     {
       id: "hl-008",
       name: "Table Lamp",
+      category:  "Lighting",
+
       subCategory: "Lighting",
       price: 699,
       discount: "-10%",
@@ -949,12 +1031,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/table,lamp",
-    }
+    },
   ],
-  "Medicine": [
+  Medicine: [
     {
       id: "md-001",
       name: "Pain Relief Spray",
+      category:  "Medicine",
+
       subCategory: "Pain Relief",
       price: 199,
       discount: "-10%",
@@ -966,6 +1050,8 @@ export const sidebarProducts = {
     {
       id: "md-002",
       name: "Vitamin C Tablets",
+      category:  "Medicine",
+
       subCategory: "Vitamins & Supplements",
       price: 349,
       discount: "-10%",
@@ -977,6 +1063,8 @@ export const sidebarProducts = {
     {
       id: "md-003",
       name: "Multivitamin Capsules",
+      category:  "Medicine",
+
       subCategory: "Vitamins & Supplements",
       price: 499,
       discount: "-10%",
@@ -988,6 +1076,8 @@ export const sidebarProducts = {
     {
       id: "md-004",
       name: "First Aid Kit Box",
+      category:  "Medicine",
+
       subCategory: "First Aid",
       price: 599,
       discount: "-10%",
@@ -995,12 +1085,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/first,aid",
-    }
+    },
   ],
   "Pain Relief": [
     {
       id: "md-001",
       name: "Pain Relief Spray",
+      category:  "Pain Relief",
+
       subCategory: "Pain Relief",
       price: 199,
       discount: "-10%",
@@ -1008,12 +1100,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/pain,relief",
-    }
+    },
   ],
   "Vitamins & Supplements": [
     {
       id: "md-002",
       name: "Vitamin C Tablets",
+      category:  "Vitamins & Supplements",
       subCategory: "Vitamins & Supplements",
       price: 349,
       discount: "-10%",
@@ -1025,6 +1118,8 @@ export const sidebarProducts = {
     {
       id: "md-003",
       name: "Multivitamin Capsules",
+      category:  "Vitamins & Supplements",
+
       subCategory: "Vitamins & Supplements",
       price: 499,
       discount: "-10%",
@@ -1032,12 +1127,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/multivitamin,capsules",
-    }
+    },
   ],
   "First Aid": [
     {
       id: "md-004",
       name: "First Aid Kit Box",
+      category:  "First Aid",
+
       subCategory: "First Aid",
       price: 599,
       discount: "-10%",
@@ -1045,12 +1142,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/first,aid",
-    }
+    },
   ],
   "Sports & Outdoor": [
     {
       id: "sp-001",
       name: "Yoga Mat",
+      category:  "Sports & Outdoor",
       subCategory: "Fitness Equipment",
       price: 599,
       discount: "-10%",
@@ -1062,6 +1160,8 @@ export const sidebarProducts = {
     {
       id: "sp-002",
       name: "Adjustable Dumbbells",
+      category:  "Sports & Outdoor",
+
       subCategory: "Fitness Equipment",
       price: 2499,
       discount: "-10%",
@@ -1073,6 +1173,8 @@ export const sidebarProducts = {
     {
       id: "sp-003",
       name: "Mountain Bike",
+      category:  "Sports & Outdoor",
+
       subCategory: "Cycling",
       price: 12999,
       discount: "-10%",
@@ -1084,6 +1186,8 @@ export const sidebarProducts = {
     {
       id: "sp-004",
       name: "Camping Tent (4 Person)",
+      category:  "Sports & Outdoor",
+
       subCategory: "Camping",
       price: 3499,
       discount: "-10%",
@@ -1091,12 +1195,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/camping,tent",
-    }
+    },
   ],
   "Fitness Equipment": [
     {
       id: "sp-001",
       name: "Yoga Mat",
+      category:  "Fitness Equipment",
+
       subCategory: "Fitness Equipment",
       price: 599,
       discount: "-10%",
@@ -1108,6 +1214,8 @@ export const sidebarProducts = {
     {
       id: "sp-002",
       name: "Adjustable Dumbbells",
+      category:  "Fitness Equipment",
+
       subCategory: "Fitness Equipment",
       price: 2499,
       discount: "-10%",
@@ -1115,12 +1223,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/adjustable,dumbbells",
-    }
+    },
   ],
-  "Cycling": [
+  Cycling: [
     {
       id: "sp-003",
       name: "Mountain Bike",
+      category:  "Cycling",
+
       subCategory: "Cycling",
       price: 12999,
       discount: "-10%",
@@ -1128,12 +1238,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/mountain,bike",
-    }
+    },
   ],
-  "Camping": [
+  Camping: [
     {
       id: "sp-004",
       name: "Camping Tent (4 Person)",
+      category:  "Camping",
+
       subCategory: "Camping",
       price: 3499,
       discount: "-10%",
@@ -1141,12 +1253,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/camping,tent",
-    }
+    },
   ],
   "Baby's & Toys": [
     {
       id: "bt-001",
       name: "Baby Diapers (Pack of 50)",
+      category:  "Baby's & Toys",
+
       subCategory: "Baby Care",
       price: 899,
       discount: "-10%",
@@ -1158,6 +1272,8 @@ export const sidebarProducts = {
     {
       id: "bt-002",
       name: "Baby Feeding Bottle",
+      category:  "Baby's & Toys",
+
       subCategory: "Baby Care",
       price: 299,
       discount: "-10%",
@@ -1169,6 +1285,8 @@ export const sidebarProducts = {
     {
       id: "bt-003",
       name: "Building Blocks Set",
+      category:  "Baby's & Toys",
+
       subCategory: "Toys",
       price: 799,
       discount: "-10%",
@@ -1180,6 +1298,8 @@ export const sidebarProducts = {
     {
       id: "bt-004",
       name: "Remote Control Car",
+      category:  "Baby's & Toys",
+
       subCategory: "Toys",
       price: 1299,
       discount: "-10%",
@@ -1191,6 +1311,8 @@ export const sidebarProducts = {
     {
       id: "bt-005",
       name: "Baby Romper Set",
+      category:  "Baby's & Toys",
+
       subCategory: "Baby Clothing",
       price: 499,
       discount: "-10%",
@@ -1198,12 +1320,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/baby,romper",
-    }
+    },
   ],
   "Baby Care": [
     {
       id: "bt-001",
       name: "Baby Diapers (Pack of 50)",
+      category:  "Baby Care",
+
       subCategory: "Baby Care",
       price: 899,
       discount: "-10%",
@@ -1215,6 +1339,8 @@ export const sidebarProducts = {
     {
       id: "bt-002",
       name: "Baby Feeding Bottle",
+      category:  "Baby Care",
+
       subCategory: "Baby Care",
       price: 299,
       discount: "-10%",
@@ -1222,12 +1348,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/baby,feeding",
-    }
+    },
   ],
-  "Toys": [
+  Toys: [
     {
       id: "bt-003",
       name: "Building Blocks Set",
+      category:  "Toys",
+
       subCategory: "Toys",
       price: 799,
       discount: "-10%",
@@ -1239,6 +1367,8 @@ export const sidebarProducts = {
     {
       id: "bt-004",
       name: "Remote Control Car",
+      category:  "Toys",
+
       subCategory: "Toys",
       price: 1299,
       discount: "-10%",
@@ -1246,12 +1376,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/remote,control",
-    }
+    },
   ],
   "Baby Clothing": [
     {
       id: "bt-005",
       name: "Baby Romper Set",
+      category: "Baby Clothing",
+
       subCategory: "Baby Clothing",
       price: 499,
       discount: "-10%",
@@ -1259,12 +1391,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/baby,romper",
-    }
+    },
   ],
   "Groceries & Pets": [
     {
       id: "gp-001",
       name: "Basmati Rice 5kg",
+      category:  "Groceries & Pets",
+
       subCategory: "Groceries",
       price: 599,
       discount: "-10%",
@@ -1276,6 +1410,8 @@ export const sidebarProducts = {
     {
       id: "gp-002",
       name: "Cooking Oil 1L",
+      category:  "Groceries & Pets",
+
       subCategory: "Groceries",
       price: 199,
       discount: "-10%",
@@ -1287,6 +1423,8 @@ export const sidebarProducts = {
     {
       id: "gp-003",
       name: "Dog Food 3kg",
+      category:  "Groceries & Pets",
+
       subCategory: "Pet Food",
       price: 899,
       discount: "-10%",
@@ -1298,6 +1436,8 @@ export const sidebarProducts = {
     {
       id: "gp-004",
       name: "Cat Food 1.5kg",
+      category:  "Groceries & Pets",
+
       subCategory: "Pet Food",
       price: 599,
       discount: "-10%",
@@ -1309,6 +1449,8 @@ export const sidebarProducts = {
     {
       id: "gp-005",
       name: "Pet Leash & Collar",
+      category:  "Groceries & Pets",
+
       subCategory: "Pet Accessories",
       price: 349,
       discount: "-10%",
@@ -1316,12 +1458,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/pet,leash",
-    }
+    },
   ],
-  "Groceries": [
+  Groceries: [
     {
       id: "gp-001",
       name: "Basmati Rice 5kg",
+      category:  "Groceries",
+
       subCategory: "Groceries",
       price: 599,
       discount: "-10%",
@@ -1333,6 +1477,8 @@ export const sidebarProducts = {
     {
       id: "gp-002",
       name: "Cooking Oil 1L",
+      category:  "Groceries",
+
       subCategory: "Groceries",
       price: 199,
       discount: "-10%",
@@ -1340,12 +1486,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/cooking,oil",
-    }
+    },
   ],
   "Pet Food": [
     {
       id: "gp-003",
       name: "Dog Food 3kg",
+      category: "Pet Food",
+
       subCategory: "Pet Food",
       price: 899,
       discount: "-10%",
@@ -1357,6 +1505,8 @@ export const sidebarProducts = {
     {
       id: "gp-004",
       name: "Cat Food 1.5kg",
+      category: "Pet Food",
+
       subCategory: "Pet Food",
       price: 599,
       discount: "-10%",
@@ -1364,12 +1514,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/cat,food",
-    }
+    },
   ],
   "Pet Accessories": [
     {
       id: "gp-005",
       name: "Pet Leash & Collar",
+      category: "Pet Accessories",
+
       subCategory: "Pet Accessories",
       price: 349,
       discount: "-10%",
@@ -1377,12 +1529,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/pet,leash",
-    }
+    },
   ],
   "Health & Beauty": [
     {
       id: "hb-001",
       name: "Face Moisturizer",
+      category: "Health & Beauty",
+
       subCategory: "Skincare",
       price: 499,
       discount: "-10%",
@@ -1394,6 +1548,8 @@ export const sidebarProducts = {
     {
       id: "hb-002",
       name: "Sunscreen SPF 50",
+      category: "Health & Beauty",
+
       subCategory: "Skincare",
       price: 599,
       discount: "-10%",
@@ -1405,6 +1561,8 @@ export const sidebarProducts = {
     {
       id: "hb-003",
       name: "Hair Serum",
+      category: "Health & Beauty",
+
       subCategory: "Haircare",
       price: 399,
       discount: "-10%",
@@ -1416,6 +1574,8 @@ export const sidebarProducts = {
     {
       id: "hb-004",
       name: "Shampoo & Conditioner Set",
+      category: "Health & Beauty",
+
       subCategory: "Haircare",
       price: 699,
       discount: "-10%",
@@ -1427,6 +1587,8 @@ export const sidebarProducts = {
     {
       id: "hb-005",
       name: "Electric Trimmer",
+      category: "Health & Beauty",
+
       subCategory: "Personal Care",
       price: 1299,
       discount: "-10%",
@@ -1434,12 +1596,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/electric,trimmer",
-    }
+    },
   ],
-  "Skincare": [
+  Skincare: [
     {
       id: "hb-001",
       name: "Face Moisturizer",
+      category: "Skincare",
+
       subCategory: "Skincare",
       price: 499,
       discount: "-10%",
@@ -1451,6 +1615,8 @@ export const sidebarProducts = {
     {
       id: "hb-002",
       name: "Sunscreen SPF 50",
+      category: "Skincare",
+
       subCategory: "Skincare",
       price: 599,
       discount: "-10%",
@@ -1458,12 +1624,14 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/sunscreen,spf",
-    }
+    },
   ],
-  "Haircare": [
+  Haircare: [
     {
       id: "hb-003",
       name: "Hair Serum",
+      category: "Haircare",
+
       subCategory: "Haircare",
       price: 399,
       discount: "-10%",
@@ -1475,6 +1643,8 @@ export const sidebarProducts = {
     {
       id: "hb-004",
       name: "Shampoo & Conditioner Set",
+      category: "Haircare",
+
       subCategory: "Haircare",
       price: 699,
       discount: "-10%",
@@ -1482,12 +1652,13 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/shampoo,conditioner",
-    }
+    },
   ],
   "Personal Care": [
     {
       id: "hb-005",
       name: "Electric Trimmer",
+      category: "Personal Care",
       subCategory: "Personal Care",
       price: 1299,
       discount: "-10%",
@@ -1495,6 +1666,6 @@ export const sidebarProducts = {
       reviews: 99,
 
       image: "https://loremflickr.com/300/300/electric,trimmer",
-    }
-  ]
+    },
+  ],
 };
