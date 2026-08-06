@@ -21,6 +21,8 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useSearch } from "../../context/SearchContext";
 import {products} from "../../data/products"
+import { categoryProducts } from "../../data/categoryProducts";
+import { sidebarProducts } from "../../data/sidebarProducts";
 
 export default function Navbar() {
 
@@ -51,7 +53,43 @@ export default function Navbar() {
 
     window.location.reload();
   };
-  const filteredProducts = search.trim() === ""?[] : products.filter((product)=>product.title.toLowerCase().includes(search.toLowerCase())).slice(0,15);
+
+  const categoryItems = Object.values(categoryProducts)
+  .flat()
+  .map((item) => ({
+    ...item,
+    type: "category",
+  }));
+
+  const allSidebarProducts = Object.values(sidebarProducts)
+  .flat()
+  .map((item) => ({
+    ...item,
+    type: "sidebar",
+  }));
+
+const mainProducts = products.map((item) => ({
+  ...item,
+  type: "main",
+}));
+
+const allProducts = [...mainProducts, ...categoryItems, ...allSidebarProducts,];
+
+
+
+const filteredProducts =
+search.trim() === ""
+  ? []
+  : allProducts.filter((product) => {
+      const value = search.toLowerCase();
+
+      return (
+        product.title?.toLowerCase().includes(value) ||
+        product.name?.toLowerCase().includes(value) ||
+        product.category?.toLowerCase().includes(value) ||
+        product.subCategory?.toLowerCase().includes(value)
+      );
+    }).slice(0, 15);
 
   return (
     <header className="navbar">
@@ -142,9 +180,16 @@ export default function Navbar() {
                     key={product.id}
                     className="suggestion-item"
                     onClick={() => {
+                      if (product.type === "main") {
                         navigate(`/product/${product.id}`);
-                        setSearch("");
-                        setShowSuggestions(false);
+                      } else if (product.type === "category") {
+                        navigate(`/category-product/${product.id}`);
+                      } else if (product.type === "sidebar") {
+                        navigate(`/sidebar-product/${product.id}`);
+                      }
+                    
+                      setSearch("");
+                      setShowSuggestions(false);
                     }}
                 >
 
@@ -155,7 +200,7 @@ export default function Navbar() {
 
                     <div className="suggestion-info">
 
-                        <h4>{product.title}</h4>
+                        <h4>{product.title || product.name}</h4>
 
                         <p>${product.price}</p>
 

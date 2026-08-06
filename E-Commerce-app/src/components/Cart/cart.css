@@ -213,6 +213,17 @@
   
 
 }
+.coupon-success{
+    color:green;
+    font-size:14px;
+    margin-top:10px;
+}
+
+.coupon-error{
+    color:#DB4444;
+    font-size:14px;
+    margin-top:10px;
+}
 
 .cart-total{
 

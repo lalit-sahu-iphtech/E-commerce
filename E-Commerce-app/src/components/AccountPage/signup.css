@@ -159,7 +159,22 @@
     margin-left: 6px;
     cursor: pointer;
   }
+
+  .error {
+    color: #e63946 !important;
+    font-size: 11px;
+    margin-top: -20px;
+    margin-bottom: 5px;
+  }
   
+  .input-error {
+    border-bottom: 1px solid #e63946 !important;
+  }
+  
+  .input-error:focus {
+    outline: none;
+    border-color: #e63946;
+  }
   /* =========================================================
      RESPONSIVE BREAKPOINTS
      ========================================================= */

@@ -1,20 +1,76 @@
 import "./cart.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import CartItem from "./CartItem";
+import { useEffect, useState } from "react";
 
 export default function Cart() {
   const navigate = useNavigate();
   const { cart } = useCart();
+
+  const [coupon, setCoupon] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [couponMsg, setCouponMsg] = useState("");
 
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
+  // Recalculate discount whenever cart total changes
+  useEffect(() => {
+    if (appliedCoupon === "SAVE10") {
+      setDiscount(total * 0.1);
+    } else if (appliedCoupon === "SAVE20") {
+      setDiscount(total * 0.2);
+    } else if (appliedCoupon === "FLAT50") {
+      setDiscount(Math.min(50, total));
+    } else {
+      setDiscount(0);
+    }
+  }, [total, appliedCoupon]);
+
+  const finalTotal = Math.max(total - discount, 0);
+
+  const handleApplyCoupon = () => {
+    const code = coupon.trim().toUpperCase();
+
+    if (!code) {
+      setCouponMsg("Please enter a coupon code");
+      setAppliedCoupon("");
+      return;
+    }
+
+    switch (code) {
+      case "SAVE10":
+        setAppliedCoupon("SAVE10");
+        setCouponMsg("✅ SAVE10 applied successfully");
+        setCoupon("");
+        break;
+
+      case "SAVE20":
+        setAppliedCoupon("SAVE20");
+        setCouponMsg("✅ SAVE20 applied successfully");
+        setCoupon("");
+        break;
+
+      case "FLAT50":
+        setAppliedCoupon("FLAT50");
+        setCouponMsg("✅ FLAT50 applied successfully");
+        setCoupon("");
+        break;
+
+      default:
+        setAppliedCoupon("");
+        setCouponMsg("❌ Invalid coupon code");
+        setDiscount(0);
+    }
+  };
+
   return (
     <div className="cart-page">
-
+      {/* Breadcrumb */}
       <div className="breadcrumb">
         <Link to="/">Home</Link> / <span>Cart</span>
       </div>
@@ -22,14 +78,15 @@ export default function Cart() {
       {cart.length === 0 ? (
         <div className="empty-cart">
           <h2>Your Cart is Empty 🛒</h2>
+
           <Link to="/">
             <button>Continue Shopping</button>
           </Link>
         </div>
       ) : (
         <>
+          {/* Cart Table */}
           <div className="cart-table">
-
             <div className="cart-heading">
               <span>Product</span>
               <span>Price</span>
@@ -43,11 +100,10 @@ export default function Cart() {
                 product={product}
               />
             ))}
-
           </div>
 
+          {/* Buttons */}
           <div className="cart-buttons">
-
             <Link to="/">
               <button className="outline-btn">
                 Return To Shop
@@ -57,29 +113,53 @@ export default function Cart() {
             <button className="outline-btn">
               Update Cart
             </button>
-
           </div>
 
+          {/* Bottom */}
           <div className="cart-bottom">
-
+            {/* Coupon */}
             <div className="coupon">
-
               <input
                 type="text"
                 placeholder="Coupon Code"
+                value={coupon}
+                onChange={(e) => {
+                  setCoupon(e.target.value);
+                  setCouponMsg("");
+                }}
               />
 
-              <button>Apply Coupon</button>
+              <button onClick={handleApplyCoupon}>
+                Apply Coupon
+              </button>
 
+              {couponMsg && (
+                <p
+                  className={
+                    couponMsg.startsWith("✅")
+                      ? "coupon-success"
+                      : "coupon-error"
+                  }
+                >
+                  {couponMsg}
+                </p>
+              )}
             </div>
 
+            {/* Cart Total */}
             <div className="cart-total">
-
               <h2>Cart Total</h2>
 
               <div className="total-row">
                 <span>Subtotal:</span>
-                <span>${total}</span>
+                <span>${total.toFixed(2)}</span>
+              </div>
+
+              <div className="total-row">
+                <span>Discount:</span>
+                <span>
+                  -${discount.toFixed(2)}
+                </span>
               </div>
 
               <div className="total-row">
@@ -89,15 +169,16 @@ export default function Cart() {
 
               <div className="total-row">
                 <span>Total:</span>
-                <span>${total}</span>
+                <span>${finalTotal.toFixed(2)}</span>
               </div>
 
-              <button className="checkout-btn" onClick={() => navigate("/checkout")}>
+              <button
+                className="checkout-btn"
+                onClick={() => navigate("/checkout")}
+              >
                 Proceed To Checkout
               </button>
-
             </div>
-
           </div>
         </>
       )}

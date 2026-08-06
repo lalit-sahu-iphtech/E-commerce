@@ -17,11 +17,53 @@ export default function Signup({ setIsAuthenticated }) {
     password: "",
   });
 
+const [errors, setErrors] = useState({
+  name:"",
+  email:"",
+  password:"",
+})
+
+const validateForm = () =>{
+  const newErrors = {};
+  // Name validation (signup only)
+  if(!isLogin){
+    if(!formData.name.trim()){
+      newErrors.name = "Name is Required";
+    }else if(formData.name.trim().length < 3){
+      newErrors.name = "Name must be at least 3 characters";
+    }else if(formData.name.trim().length > 10){
+      newErrors.name = "Name cannot exceed 10 characters"
+    }
+  }
+   // Email Validation
+   if (!formData.email.trim()) {
+    newErrors.email = "Email is required";
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
+  ) {
+    newErrors.email = "Enter a valid email";
+  }
+   
+  // password validation
+  if(!formData.password){
+    newErrors.password="Password is required";
+  }else if(formData.password.length  < 6){
+    newErrors.password = "Password must be at least 6 characters"
+  }else if(formData.password.length  > 20){
+    newErrors.password = "Password cannot exceed 20 characters"
+  }
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+}
   const handleChange = (e) => {
+    const{name, value} = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+    setErrors({
+      ...errors, [name]:"",
+    })
   };
 
   const getUsers = () => {
@@ -40,14 +82,14 @@ export default function Signup({ setIsAuthenticated }) {
     const email = formData.email.trim().toLowerCase();
     const password = formData.password;
 
-    if (
-      name === "" ||
-      email === "" ||
-      password.trim() === ""
-    ) {
-      alert("Please fill all fields");
-      return;
-    }
+    // if (
+    //   name === "" ||
+    //   email === "" ||
+    //   password.trim() === ""
+    // ) {
+    //   alert("Please fill all fields");
+    //   return;
+    // }
 
     const users = getUsers();
 
@@ -90,13 +132,13 @@ export default function Signup({ setIsAuthenticated }) {
     const email = formData.email.trim().toLowerCase();
     const password = formData.password;
 
-    if (
-      email === "" ||
-      password.trim() === ""
-    ) {
-      alert("Please fill all fields");
-      return;
-    }
+    // if (
+    //   email === "" ||
+    //   password.trim() === ""
+    // ) {
+    //   alert("Please fill all fields");
+    //   return;
+    // }
 
     const users = getUsers();
 
@@ -128,6 +170,8 @@ export default function Signup({ setIsAuthenticated }) {
   const handleSubmit = (e) =>{
     e.preventDefault();
 
+    if(!validateForm()) return;
+
     if(isLogin){
       handleLogin();
     }else{
@@ -154,30 +198,49 @@ export default function Signup({ setIsAuthenticated }) {
 
           <form id="auth-form" onSubmit={handleSubmit}>
             {!isLogin && (
+             <> 
               <input
                 type="text"
                 placeholder="Name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                className={errors.name ? "input-error" : ""}
               />
+              {errors.name && (
+                <span className="error">*{errors.name}</span>
+              )}
+             </>
             )}
-
-            <input
+             <>
+             <input
               type="email"
               placeholder="Email or Phone Number"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              className={errors.email ? "input-error" : ""}
             />
+            {errors.email && (
+              <span className="error">*{errors.email}</span>
+            )}
+             </>
+            
 
-            <input
+           <>
+           <input
               type="password"
               placeholder="Password"
               name="password"
               value={formData.password}
               onChange={handleChange}
+              className={errors.password ? "input-error" : ""}
+
             />
+            {errors.password && (
+              <span className="error">*{errors.password}</span>
+            )}
+           </>
           </form>
 
           <div className="btn-row">
