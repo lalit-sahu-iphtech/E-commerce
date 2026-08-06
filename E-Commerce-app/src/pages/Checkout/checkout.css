@@ -229,6 +229,17 @@
 .coupon-box button:hover{
   background:#c63b3b;
 }
+.coupon-success{
+  color:green;
+  font-size:14px;
+  margin-top:10px;
+}
+
+.coupon-error{
+  color:#DB4444;
+  font-size:14px;
+  margin-top:5px;
+}
 
 /* ================= Place Order ================= */
 
@@ -255,6 +266,21 @@
   text-align:center;
   margin-bottom:30px;
   font-weight:500;
+}
+
+.checkout-error{
+  color:#e63946;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.checkout-input-error{
+  border:1px solid #e63946 !important;
+}
+
+.checkout-input-error:focus{
+  outline:none;
+  border-color:#e63946;
 }
 
 /* ================= 1200 ================= */

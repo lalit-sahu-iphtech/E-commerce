@@ -5,11 +5,22 @@ import { Link, useParams } from "react-router-dom";
 import CategoryCard from "../../components/product/CategoryCard";
 
 import { categoryProducts } from "../../data/categoryProducts";
+import { useSearch } from "../../context/SearchContext";
 
 export default function CategoryProductsPage() {
   const { categoryName } = useParams();
+  const{search} = useSearch();
 
   const products = categoryProducts[categoryName] || [];
+
+  const filteredProducts =
+  search.trim() === ""
+    ? products
+    : products.filter((product) =>
+        product.title
+          .toLowerCase()
+          .includes(search.toLowerCase())
+      );
 
   return (
     <section className="category-page">
@@ -32,7 +43,7 @@ export default function CategoryProductsPage() {
 
         <h2>{categoryName}</h2>
 
-        <p>{products.length} Products Found</p>
+        <p>{filteredProducts.length} Products Found</p>
 
       </div>
 
@@ -42,7 +53,7 @@ export default function CategoryProductsPage() {
 
         <div className="category-products-grid">
 
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
 
             <CategoryCard
               key={product.id}

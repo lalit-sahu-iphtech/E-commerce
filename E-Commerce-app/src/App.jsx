@@ -20,16 +20,24 @@ import CategoryProductsPage from "./pages/CategoryProducts/CategoryProductsPage.
 import CategoryDetails from "./pages/ProductDetails/CategoryDetails.jsx";
 import SidebarProductsPage from "./pages/SidebarProductsPage/SidebarProductsPage.jsx";
 import SidebarDetails from "./pages/ProductDetails/SidebarDetails.jsx";
+import FaqPage from "./pages/FAQ/FaqPage";
+import PrivacyPage from "./pages/Privacy/PrivacyPage";
+import TermsPage from "./pages/Terms/TermsPage";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <div className="app-wrapper">
       <Navbar />
       <main className="app-content">
+      
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/faq"element={<FaqPage/>}/>
+          <Route path="/privacy"element={<PrivacyPage/>}/>
+          <Route path="/terms"element={<TermsPage/>}/>
+
 
           <Route
             path="/signup"
@@ -62,6 +70,7 @@ function App() {
 
           <Route path="/sidebar-product/:id" element={<SidebarDetails />} />
         </Routes>
+
       </main>
       <Footer />
     </div>

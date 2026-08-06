@@ -167,6 +167,15 @@
   .send-btn:hover {
     background: #c73535;
   }
+  .contact-error {
+    color: #e63946;
+    font-size: 13px;
+    margin-top: 6px;
+    min-height: 18px;
+  }
+  .contact-input-error {
+    border: 1px solid #e63946 !important;
+  }
   
   /* ================= Responsive ================= */
   

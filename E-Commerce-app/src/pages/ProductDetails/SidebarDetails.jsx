@@ -22,11 +22,10 @@ export default function SidebarDetails() {
 
   const [qty, setQty] = useState(1);
 
-  const [selectedSize, setSelectedSize] = useState(
-    product?.sizes?.[0] || ""
-  );
+  const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
 
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showImage, setShowImage] = useState(false);
 
   // Our data has only a single "image" per product (no images[] array).
   // Same as ProductDetails.jsx: reuse that one image at 4 different
@@ -72,7 +71,7 @@ export default function SidebarDetails() {
             ))}
           </div>
 
-          <div className="main-image">
+          <div className="main-image" onClick={() => setShowImage(true)}>
             <img
               src={product.image}
               alt={product.name}
@@ -84,7 +83,7 @@ export default function SidebarDetails() {
         {/* RIGHT */}
         <div className="details-right">
           {/* was product.title -> data uses "name" */}
-          <h2>{product.name}</h2>
+          <h2>{product.title || product.name}</h2>
 
           <div className="rating-row">
             {[...Array(5)].map((_, index) =>
@@ -110,7 +109,7 @@ export default function SidebarDetails() {
             </span>
           </div>
 
-          <h3 className="price">${product.price}</h3>
+          <h3 className="price">${(product.price * qty).toFixed(2)}</h3>
 
           {/* FIX: no "description" field in data yet — guard so it doesn't render "undefined" */}
           {product.description && (
@@ -152,13 +151,13 @@ export default function SidebarDetails() {
           {/* BUY */}
           <div className="buy-row">
             <div className="quantity">
-              <button onClick={() => qty > 1 && setQty(qty - 1)}>
+              <button onClick={() => setQty((prev) => Math.max(1, prev - 1))}>
                 <HiMinus />
               </button>
 
               <span>{qty}</span>
 
-              <button onClick={() => setQty(qty + 1)}>
+              <button onClick={() => setQty((prev) => prev + 1)}>
                 <HiPlus />
               </button>
             </div>
@@ -166,13 +165,15 @@ export default function SidebarDetails() {
             <button
               className="buy-btn"
               onClick={() => {
-                addToCart({
-                  ...product,
-                  quantity: qty,
-                  size: selectedSize,
+                navigate("/checkout", {
+                  state: {
+                    buyNowProduct: {
+                      ...product,
+                      quantity: qty,
+                      size: selectedSize,
+                    },
+                  },
                 });
-
-                navigate("/checkout");
               }}
             >
               Buy Now
@@ -209,9 +210,23 @@ export default function SidebarDetails() {
           </div>
         </div>
       </section>
+      {showImage && (
+  <div
+    className="image-modal"
+    onClick={() => setShowImage(false)}
+  >
+    <span className="close-image">&times;</span>
 
-      {/* Related Products */}
-      {/* <RecomDetails /> */}
+    <img
+      src={product.image}
+      alt={product.title}
+      className="zoom-image"
+      style={{
+        transform: imageRotation[selectedImage],
+      }}
+    />
+  </div>
+)}
     </div>
   );
 }

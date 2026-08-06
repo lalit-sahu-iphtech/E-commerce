@@ -11,50 +11,81 @@ export default function Contact() {
     phone: "",
     message: "",
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const validateForm = () => {
+    const newErrors = {};
 
+    // Name
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.trim().length < 3) {
+      newErrors.name = "Name must be at least 3 characters";
+    } else if (formData.name.trim().length > 30) {
+      newErrors.name = "Name cannot exceed 30 characters";
+    }
+
+    // Email
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
+    ) {
+      newErrors.email = "Enter a valid email";
+    }
+
+    // Phone
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^[0-9]{10}$/.test(formData.phone)) {
+      newErrors.phone = "Enter a valid 10-digit phone number";
+    }
+
+    // Message
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    } else if (formData.message.trim().length > 200) {
+      newErrors.message = "Message cannot exceed 200 characters";
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+    setErrors({
+      ...errors,
+      [name]: "",
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, email, phone, message } = formData;
+    if (!validateForm()) return;
 
-    if (
-      !name.trim() ||
-      !email.trim() ||
-      !phone.trim() ||
-      !message.trim()
-    ) {
-      alert("Please fill all fields.");
-      return;
-    }
-
-    const emailRegex =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-      alert("Please enter a valid email.");
-      return;
-    }
-
-    const phoneRegex = /^[0-9]{10}$/;
-
-    if (!phoneRegex.test(phone)) {
-      alert("Please enter a valid 10-digit phone number.");
-      return;
-    }
-
-    console.log("Contact Form Data");
     console.log(formData);
 
     alert("✅ Message sent successfully!");
 
     setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+
+    setErrors({
       name: "",
       email: "",
       phone: "",
@@ -68,19 +99,14 @@ export default function Contact() {
       <div className="breadcrumb">
         <Link to="/">Home</Link>
         <span>/</span>
-        <span className="active-page">
-          Contact
-        </span>
+        <span className="active-page">Contact</span>
       </div>
 
       {/* Contact Container */}
       <div className="contact-container">
-
         {/* Left Side */}
         <div className="contact-info">
-
           <div className="info-box">
-
             <div className="info-title">
               <div className="info-icon">
                 <FaPhoneAlt />
@@ -89,21 +115,17 @@ export default function Contact() {
               <h3>Call To Us</h3>
             </div>
 
-            <p>
-              We are available 24/7, 7 days a week.
-            </p>
+            <p>We are available 24/7, 7 days a week.</p>
 
             <p>
               <strong>Phone:</strong>
               +8801611112222
             </p>
-
           </div>
 
           <hr />
 
           <div className="info-box">
-
             <div className="info-title">
               <div className="info-icon">
                 <MdOutlineMailOutline />
@@ -112,10 +134,7 @@ export default function Contact() {
               <h3>Write To Us</h3>
             </div>
 
-            <p>
-              Fill out our form and we will
-              contact you within 24 hours.
-            </p>
+            <p>Fill out our form and we will contact you within 24 hours.</p>
 
             <p>
               <strong>Email:</strong>
@@ -126,67 +145,76 @@ export default function Contact() {
               <strong>Email:</strong>
               support@exclusive.com
             </p>
-
           </div>
-
         </div>
 
         {/* Right Side */}
         <div className="contact-form">
-
           <form onSubmit={handleSubmit}>
-
             <div className="input-row">
+              <div className="contact-field">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name *"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={errors.name ? "contact-input-error" : ""}
+                />
+                {errors.name && <p className="contact-error">*{errors.name}</p>}
+              </div>
 
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name *"
-                value={formData.name}
-                onChange={handleChange}
-              />
+              <div className="contact-field">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email *"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={errors.email ? "contact-input-error" : ""}
+                />
+                {errors.email && (
+                  <p className="contact-error">*{errors.email}</p>
+                )}
+              </div>
 
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email *"
-                value={formData.email}
-                onChange={handleChange}
-              />
-
-              <input
-                type="text"
-                name="phone"
-                placeholder="Your Phone *"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-
+              <div className="contact-field">
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Your Phone *"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={errors.phone ? "contact-input-error" : ""}
+                />
+                {errors.phone && (
+                  <p className="contact-error">*{errors.phone}</p>
+                )}
+              </div>
             </div>
 
-            <textarea
-              rows="10"
-              name="message"
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={handleChange}
-            ></textarea>
+            <div className="contact-field">
+              <textarea
+                rows="10"
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleChange}
+                className={errors.message ? "contact-input-error" : ""}
+              />
+
+              {errors.message && (
+                <p className="contact-error">*{errors.message}</p>
+              )}
+            </div>
 
             <div className="send-btn-wrapper">
-
-              <button
-                type="submit"
-                className="send-btn"
-              >
+              <button type="submit" className="send-btn">
                 Send Message
               </button>
-
             </div>
-
           </form>
-
         </div>
-
       </div>
     </section>
   );

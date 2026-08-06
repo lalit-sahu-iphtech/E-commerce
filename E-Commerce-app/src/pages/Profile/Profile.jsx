@@ -6,9 +6,7 @@ import Footer from "../../components/Footer/Footer";
 export default function Profile() {
   const navigate = useNavigate();
 
-  const currentUser = JSON.parse(
-    localStorage.getItem("currentUser")
-  );
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -19,6 +17,77 @@ export default function Profile() {
     newPassword: "",
     confirmPassword: "",
   });
+
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    // First Name
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = "First name is required";
+    } else if (formData.firstName.trim().length < 3) {
+      newErrors.firstName = "Minimum 3 characters required";
+    }
+
+    // Last Name
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Last name is required";
+    } else if (formData.lastName.trim().length < 3) {
+      newErrors.lastName = "Minimum 3 characters required";
+    }
+
+    // Email
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
+    ) {
+      newErrors.email = "Enter a valid email";
+    }
+
+    // Address
+    if (!formData.address.trim()) {
+      newErrors.address = "Address is required";
+    }
+
+    // Password Validation
+    if (
+      formData.currentPassword ||
+      formData.newPassword ||
+      formData.confirmPassword
+    ) {
+      if (!formData.currentPassword) {
+        newErrors.currentPassword = "Current password is required";
+      } else if (formData.currentPassword !== currentUser.password) {
+        newErrors.currentPassword = "Current password is incorrect";
+      }
+
+      if (!formData.newPassword) {
+        newErrors.newPassword = "New password is required";
+      } else if (formData.newPassword.length < 6) {
+        newErrors.newPassword = "Password must be at least 6 characters";
+      }
+
+      if (!formData.confirmPassword) {
+        newErrors.confirmPassword = "Confirm password is required";
+      } else if (formData.newPassword !== formData.confirmPassword) {
+        newErrors.confirmPassword = "Passwords do not match";
+      }
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
 
   useEffect(() => {
     if (!currentUser) {
@@ -41,14 +110,22 @@ export default function Profile() {
   }, []);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
+    });
+
+    setErrors({
+      ...errors,
+      [name]: "",
     });
   };
 
   const handleSave = (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
 
     const {
       firstName,
@@ -60,49 +137,7 @@ export default function Profile() {
       confirmPassword,
     } = formData;
 
-    if (
-      firstName.trim() === "" ||
-      lastName.trim() === "" ||
-      email.trim() === "" ||
-      address.trim() === ""
-    ) {
-      alert("Please fill all required fields.");
-    
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        address: "",
-        currentPassword: "",
-        newPassword: "",
-        confirmPassword: "",
-      });
-    
-      return;
-    }
-    if (newPassword !== "" || confirmPassword !== "") {
-      if (
-        currentPassword.trim() === "" ||
-        newPassword.trim() === "" ||
-        confirmPassword.trim() === ""
-      ) {
-        alert("Please fill all password fields.");
-        return;
-      }
-      
-      if (currentPassword !== currentUser.password) {
-        alert("Current password is incorrect.");
-        return;
-      }
-      
-      if (newPassword !== confirmPassword) {
-        alert("New Password and Confirm Password do not match.");
-        return;
-      }
-    }
-
-    const users =
-      JSON.parse(localStorage.getItem("users")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
     const updatedUsers = users.map((user) => {
       if (user.email === currentUser.email) {
@@ -111,48 +146,51 @@ export default function Profile() {
           name: `${firstName} ${lastName}`,
           email,
           address,
-          password:
-            newPassword === ""
-              ? user.password
-              : newPassword,
+          password: newPassword === "" ? user.password : newPassword,
         };
       }
 
       return user;
     });
 
-    localStorage.setItem(
-      "users",
-      JSON.stringify(updatedUsers)
-    );
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
 
     const updatedCurrentUser = {
       ...currentUser,
       name: `${firstName} ${lastName}`,
       email,
       address,
-      password:
-        newPassword === ""
-          ? currentUser.password
-          : newPassword,
+      password: newPassword === "" ? currentUser.password : newPassword,
     };
 
-    localStorage.setItem(
-      "currentUser",
-      JSON.stringify(updatedCurrentUser)
-    );
+    localStorage.setItem("currentUser", JSON.stringify(updatedCurrentUser));
 
     console.log("Updated Profile");
 
     console.table(updatedCurrentUser);
 
     alert("Profile Updated Successfully.");
-    setFormData((prev) => ({
-      ...prev,
+    alert("Profile Updated Successfully.");
+
+    setFormData({
+      
+      lastName: "",
+      
+      address: "",
       currentPassword: "",
       newPassword: "",
       confirmPassword: "",
-    }));
+    });
+    
+    setErrors({
+      firstName: "",
+      lastName: "",
+      email: "",
+      address: "",
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
   };
 
   if (!currentUser) return null;
@@ -183,9 +221,7 @@ export default function Profile() {
             <h3>Manage My Account</h3>
 
             <ul>
-              <li className="active">
-                My Profile
-              </li>
+              <li className="active">My Profile</li>
 
               <li>Address Book</li>
 
@@ -218,7 +254,11 @@ export default function Profile() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
+                    className={errors.firstName ? "profile-input-error" : ""}
                   />
+                  {errors.firstName && (
+                    <p className="profile-error">*{errors.firstName}</p>
+                  )}
                 </div>
 
                 <div className="input-group">
@@ -229,7 +269,11 @@ export default function Profile() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
+                    className={errors.lastName ? "profile-input-error" : ""}
                   />
+                  {errors.lastName && (
+                    <p className="profile-error">*{errors.lastName}</p>
+                  )}
                 </div>
               </div>
 
@@ -242,7 +286,12 @@ export default function Profile() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    className={errors.email ? "profile-input-error" : ""}
                   />
+
+                  {errors.email && (
+                    <p className="profile-error">*{errors.email}</p>
+                  )}
                 </div>
 
                 <div className="input-group">
@@ -254,40 +303,57 @@ export default function Profile() {
                     placeholder="Enter Address"
                     value={formData.address}
                     onChange={handleChange}
+                    className={errors.address ? "profile-input-error" : ""}
                   />
+                  {errors.address && (
+                    <p className="profile-error">*{errors.address}</p>
+                  )}
                 </div>
               </div>
 
-              <label className="password-title">
-                Password Changes
-              </label>
+              <label className="password-title">Password Changes</label>
 
               <input
-                className="password-input"
                 type="password"
                 placeholder="Current Password"
                 name="currentPassword"
                 value={formData.currentPassword}
                 onChange={handleChange}
+                className={`password-input ${
+                  errors.currentPassword ? "profile-input-error" : ""
+                }`}
               />
+              {errors.currentPassword && (
+                <p className="profile-error">*{errors.currentPassword}</p>
+              )}
 
               <input
-                className="password-input"
                 type="password"
                 placeholder="New Password"
                 name="newPassword"
                 value={formData.newPassword}
                 onChange={handleChange}
+                className={`password-input ${
+                  errors.newPassword ? "profile-input-error" : ""
+                }`}
               />
+              {errors.newPassword && (
+                <p className="profile-error">*{errors.newPassword}</p>
+              )}
 
               <input
-                className="password-input"
                 type="password"
                 placeholder="Confirm New Password"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
+                className={`password-input ${
+                  errors.confirmPassword ? "profile-input-error" : ""
+                }`}
               />
+              {errors.confirmPassword && (
+                <p className="profile-error">*{errors.confirmPassword}</p>
+              )}
 
               <div className="buttons">
                 <button
@@ -298,10 +364,7 @@ export default function Profile() {
                   Cancel
                 </button>
 
-                <button
-                  type="submit"
-                  className="save-btn"
-                >
+                <button type="submit" className="save-btn">
                   Save Changes
                 </button>
               </div>
@@ -309,7 +372,6 @@ export default function Profile() {
           </div>
         </div>
       </section>
-
     </>
   );
 }

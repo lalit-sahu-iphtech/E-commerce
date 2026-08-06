@@ -197,6 +197,22 @@
   background:#c13333;
 }
 
+.profile-error {
+  color: #e63946;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.profile-input-error {
+  border: 1px solid #e63946 !important;
+}
+
+.profile-input-error:focus {
+  outline: none;
+  border-color: #e63946;
+}
+
 /* Responsive */
 
 @media(max-width:992px){
