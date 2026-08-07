@@ -11,6 +11,8 @@ import RecomDetails from "./RecomDetails";
 
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
 
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+
 export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -18,6 +20,10 @@ export default function ProductDetails() {
   const product = products.find((item) => item.id === Number(id));
 
   const [qty, setQty] = useState(1);
+
+  const [selectedColor, setSelectedColor] = useState(
+    product?.colors?.[0] || ""
+  );
 
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
 
@@ -46,6 +52,18 @@ export default function ProductDetails() {
       </h2>
     );
   }
+  const handleNextImage = (e) => {
+    e.stopPropagation();
+    setSelectedImage((prev) =>
+      prev === imageRotation.length - 1 ? 0 : prev + 1
+    );
+  };
+  const handlePrevImage = (e) => {
+    e.stopPropagation();
+    setSelectedImage((prev) =>
+      prev === 0 ? imageRotation.length - 1 : prev - 1
+    );
+  };
 
   return (
     <div className="product-container">
@@ -125,10 +143,13 @@ export default function ProductDetails() {
             {product.colors?.map((color, index) => (
               <div
                 key={index}
-                className="circle"
+                className={`circle ${
+                  selectedColor === color ? "active-color" : ""
+                }`}
                 style={{
                   background: color,
                 }}
+                onClick={() => setSelectedColor(color)}
               ></div>
             ))}
           </div>
@@ -219,7 +240,13 @@ export default function ProductDetails() {
       </section>
       {showImage && (
         <div className="image-modal" onClick={() => setShowImage(false)}>
-          <span className="close-image">&times;</span>
+          <span className="close-image" onClick={() => setShowImage(false)}>
+            &times;
+          </span>
+
+          <button className="prev-image" onClick={handlePrevImage}>
+            <HiChevronLeft />
+          </button>
 
           <img
             src={product.image}
@@ -228,7 +255,12 @@ export default function ProductDetails() {
             style={{
               transform: imageRotation[selectedImage],
             }}
+            onClick={(e) => e.stopPropagation()}
           />
+
+          <button className="next-image" onClick={handleNextImage}>
+            <HiChevronRight />
+          </button>
         </div>
       )}
 
