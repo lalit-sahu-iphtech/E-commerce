@@ -173,6 +173,11 @@ transform: translateY(0);
     color:#777;
     font-size:14px;
 }
+.arrow-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 
 /* ================= Flash Sale ================= */
 

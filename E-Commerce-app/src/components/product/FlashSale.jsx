@@ -47,34 +47,20 @@ export default function FlashSale() {
     setCurrentIndex(0);
   }, [search, category, subCategory]);
 
-  const nextProducts = () => {
-    if (
-      currentIndex + productsPerPage >=
-      filteredProducts.length
-    ) {
-      setCurrentIndex(0);
-    } else {
-      setCurrentIndex(
-        currentIndex + productsPerPage
-      );
-    }
-  };
+  const isFirstPage = currentIndex === 0;
+  const isLastPage = currentIndex + productsPerPage >= filteredProducts.length;
 
-  const prevProducts = () => {
-    if (currentIndex === 0) {
-      const lastIndex =
-        Math.floor(
-          (filteredProducts.length - 1) /
-            productsPerPage
-        ) * productsPerPage;
+ const nextProducts = () => {
+  if (!isLastPage) {
+    setCurrentIndex(currentIndex + productsPerPage);
+  }
+};
 
-      setCurrentIndex(lastIndex);
-    } else {
-      setCurrentIndex(
-        currentIndex - productsPerPage
-      );
-    }
-  };
+const prevProducts = () => {
+  if (!isFirstPage) {
+    setCurrentIndex(currentIndex - productsPerPage);
+  }
+};
 
   // ================= Timer =================
 
@@ -213,6 +199,7 @@ export default function FlashSale() {
             <button
               className="arrow-btn"
               onClick={prevProducts}
+              disabled={isFirstPage}
             >
               <FaArrowLeft />
             </button>
@@ -220,6 +207,7 @@ export default function FlashSale() {
             <button
               className="arrow-btn"
               onClick={nextProducts}
+              disabled={isLastPage}
             >
               <FaArrowRight />
             </button>

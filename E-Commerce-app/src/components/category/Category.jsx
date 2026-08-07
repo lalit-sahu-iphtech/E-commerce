@@ -37,17 +37,22 @@ export default function Category() {
 
   const visibleCards = 6;
 
-  const nextSlide = () => {
-    if (startIndex + visibleCards < categories.length) {
-      setStartIndex(startIndex + visibleCards);
-    }
-  };
+  const isFirstPage = startIndex === 0;
 
-  const prevSlide = () => {
-    if (startIndex - visibleCards >= 0) {
-      setStartIndex(startIndex - visibleCards);
-    }
-  };
+const isLastPage =
+  startIndex + visibleCards >= categories.length;
+
+ const nextSlide = () => {
+  if (!isLastPage) {
+    setStartIndex(startIndex + visibleCards);
+  }
+};
+
+ const prevSlide = () => {
+  if (!isFirstPage) {
+    setStartIndex(startIndex - visibleCards);
+  }
+};
 
   return (
     <section className="category-section">
@@ -72,6 +77,7 @@ export default function Category() {
             <button
               className="arrow-btn"
               onClick={prevSlide}
+              disabled={isFirstPage}
             >
               &#8592;
             </button>
@@ -79,6 +85,7 @@ export default function Category() {
             <button
               className="arrow-btn"
               onClick={nextSlide}
+               disabled={isLastPage}
             >
               &#8594;
             </button>
