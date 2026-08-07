@@ -69,7 +69,7 @@ export const products = [
     description:
       "24-inch IPS gaming monitor with vivid colors, Full HD resolution and ultra-smooth performance.",
     colors: ["#000000", "#DB4444"],
-    sizes: ["24 Inch"],
+    sizes: ["S", "M", "L"],
     stock: true,
   },
 
@@ -87,7 +87,7 @@ export const products = [
     description:
       "Comfortable gaming chair with adjustable height, lumbar support and premium leather finish.",
     colors: ["#000000", "#DB4444"],
-    sizes: ["Standard"],
+    sizes: ["S", "M", "L"],
     stock: true,
   },
  {
@@ -102,6 +102,8 @@ export const products = [
   reviews: 65,
   description:
     "Premium winter coat made with high-quality fabric, providing warmth, comfort, and a stylish look for cold weather.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -116,6 +118,8 @@ export const products = [
   reviews: 65,
   description:
     "Luxury duffle bag crafted with premium materials, offering spacious storage and an elegant design for travel and everyday use.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -129,6 +133,8 @@ export const products = [
   reviews: 65,
   description:
     "High-performance RGB liquid CPU cooler designed to keep your processor cool while delivering quiet and efficient cooling.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -142,6 +148,8 @@ export const products = [
   reviews: 65,
   description:
     "Modern wooden bookshelf with multiple storage shelves, perfect for organizing books, decor items, and office essentials.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -154,6 +162,8 @@ export const products = [
   reviews: 35,
   description:
     "Nutritious dry dog food made with high-quality ingredients to support your pet's healthy growth and active lifestyle.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -167,6 +177,8 @@ export const products = [
   showCart: true,
   description:
     "Professional DSLR camera featuring high-resolution image quality, advanced autofocus, and Full HD video recording.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -179,6 +191,8 @@ export const products = [
   reviews: 325,
   description:
     "Powerful gaming laptop with Full HD display, high-speed processor, dedicated graphics, and fast SSD storage for smooth performance.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -191,6 +205,8 @@ export const products = [
   reviews: 145,
   description:
     "Complete skincare kit formulated to cleanse, hydrate, and protect your skin while improving its natural glow.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -205,6 +221,8 @@ export const products = [
   colors: ["#FB1314", "#DB4444"],
   description:
     "Battery-powered ride-on electric car for kids with realistic controls, LED lights, and rechargeable battery.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -218,6 +236,8 @@ export const products = [
   colors: ["#00ff66", "#DB4444"],
   description:
     "Lightweight soccer cleats designed for excellent grip, comfort, and stability on natural and artificial grass surfaces.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -232,6 +252,8 @@ export const products = [
   colors: ["#000", "#DB4444"],
   description:
     "USB gaming controller with responsive buttons, dual vibration feedback, and ergonomic design for an immersive gaming experience.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 {
@@ -245,6 +267,8 @@ export const products = [
   colors: ["#000", "#DB4444"],
   description:
     "Stylish quilted satin jacket featuring a lightweight design, comfortable fit, and premium finish for everyday fashion.",
+    colors: ["#000000", "#DB4444"],
+    sizes: ["S", "M", "L"],
 },
 
 
