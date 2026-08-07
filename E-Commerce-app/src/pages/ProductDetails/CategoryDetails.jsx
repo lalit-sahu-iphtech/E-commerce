@@ -10,6 +10,7 @@ import { useWishlist } from "../../context/WishlistContext";
 import RecomDetails from "./RecomDetails";
 
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 export default function CategoryDetails() {
   const products = Object.values(categoryProducts).flat();
@@ -27,6 +28,10 @@ export default function CategoryDetails() {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const [showImage, setShowImage] = useState(false);
 
+  const [selectedColor, setSelectedColor] = useState(
+    product?.colors?.[0] || ""
+  );
+
   if (!product) {
     return (
       <h2
@@ -39,6 +44,21 @@ export default function CategoryDetails() {
       </h2>
     );
   }
+  const handleNextImage = (e) => {
+    e.stopPropagation();
+
+    setSelectedImage((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const handlePrevImage = (e) => {
+    e.stopPropagation();
+
+    setSelectedImage((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
 
   return (
     <div className="product-container">
@@ -105,10 +125,13 @@ export default function CategoryDetails() {
             {product.colors?.map((color, index) => (
               <div
                 key={index}
-                className="circle"
+                className={`circle ${
+                  selectedColor === color ? "active-color" : ""
+                }`}
                 style={{
                   background: color,
                 }}
+                onClick={() => setSelectedColor(color)}
               ></div>
             ))}
           </div>
@@ -197,17 +220,22 @@ export default function CategoryDetails() {
       </section>
       {showImage && (
         <div className="image-modal" onClick={() => setShowImage(false)}>
-          <span className="close-image">&times;</span>
-
+          <span className="close-image" onClick={() => setShowImage(false)}>
+            &times;
+          </span>
+          <button className="prev-image" onClick={handlePrevImage}>
+            <HiChevronLeft />
+          </button>
           <img
             src={product.images[selectedImage]}
             alt={product.title}
             className="zoom-image"
-            onClick={(e) => {
-              e.stopPropagation(); 
-              setShowImage(false)
-            }}
+            onClick={(e) => e.stopPropagation()}
           />
+          
+          <button className="next-image" onClick={handleNextImage}>
+            <HiChevronRight />
+          </button>
         </div>
       )}
 
