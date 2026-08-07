@@ -5,38 +5,83 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../context/ToastContext";
 export default function ExploreCard({ product }) {
   
-  const { addToCart } = useCart();
+  const {
+    addToCart,
+    removeFromCart,
+    isInCart,
+  } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
-  const [added,setAdded]=useState(false);
+  // const [added,setAdded]=useState(false);
 
   const navigate = useNavigate();
 
-  const handleAddCart=()=>{
+  const{showToast} = useToast();
 
-    addToCart(product);
-    
-    setAdded(true);
-    
-    setTimeout(()=>{
-    
-    setAdded(false);
-    
-    },1000);
-    
-};
+  const handleWishlist = () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  
+    if (!currentUser) {
+      showToast("Please login first to add products to wishlist.", "error");
+      navigate("/signup");
+      return;
+    }
+  
+    const alreadyInWishlist = isInWishlist(product.id);
+  
+    toggleWishlist(product);
+  
+    if (alreadyInWishlist) {
+      showToast("Product removed from wishlist.", "success");
+    } else {
+      showToast("Product added to wishlist.", "success");
+    }
+  };
+  // handle add to catt
+  // const handleAddCart = () => {
+  //   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  
+  //   if (!currentUser) {
+  //     showToast("Please login first to add products to cart.", "error");
+  //     navigate("/signup");
+  //     return;
+  //   }
+  
+  //   addToCart(product);
+  
+  //   showToast("Product added to cart.", "success");
+  
+  //   setAdded(true);
+  
+  //   setTimeout(() => {
+  //     setAdded(false);
+  //   }, 1000);
+  // };
+  const handleAddCart = () => {
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+  
+    if (!currentUser) {
+      showToast(
+        "Please login first to add products to cart.",
+        "error"
+      );
+      navigate("/signup");
+      return;
+    }
+  
+    if (isInCart(product.id)) {
+      removeFromCart(product.id);
+      showToast("Product removed from cart.", "success");
+    } else {
+      addToCart(product);
+      showToast("Product added to cart.", "success");
+    }
+  };
 
-const handleWishlist = () =>{
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  if(!currentUser){
-    alert("please login first to add products to wishlist.")
-    navigate("/signup");
-    return;
-  }
-  toggleWishlist(product);
-
-}
   return (
     <div className="product-card">
       <div className="product-image">
@@ -75,11 +120,15 @@ const handleWishlist = () =>{
 
         <img src={product.image} alt={product.title} />
         <button
-        className={`cart-btn ${added?"added":""}`}
+       className={`cart-btn ${
+        isInCart(product.id) ? "added" : "removed"
+      }`}
         onClick={handleAddCart}
         >
 
-        {added ? "✓ Added" : "Add To Cart"}
+{isInCart(product.id)
+  ? "Remove Item"
+  : "Add to Cart"}
 
         </button>
 
