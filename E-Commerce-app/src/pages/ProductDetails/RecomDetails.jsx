@@ -17,6 +17,7 @@ export default function RecomDetails() {
   const navigate = useNavigate();
 
   const [added, setAdded] = useState(null);
+  
 
   const handleAddCart = (product) => {
     addToCart(product);
