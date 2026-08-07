@@ -1,8 +1,8 @@
 import ProductCard from "./ProductCard";
 import "./product.css";
 
-import { useSearch } from "../../context/SearchContext";
-import { useCategory } from "../../context/CategoryContext";
+// import { useSearch } from "../../context/SearchContext";
+// import { useCategory } from "../../context/CategoryContext";
 import { useNavigate } from "react-router-dom";
 
 import { products } from "../../data/products";
@@ -14,41 +14,43 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 export default function FlashSale() {
   const navigate = useNavigate();
 
-  const { category, subCategory } = useCategory();
-  const { search } = useSearch();
+  // const { category, subCategory } = useCategory();
+  // const { search } = useSearch();
 
   // ================= Products Slider =================
 
   const productsPerPage = 4;
 
-  const filteredProducts = products.filter((item) => {
-    const matchSearch = item.title
-      .toLowerCase()
-      .includes(search.toLowerCase());
+  // const filteredProducts = products.filter((item) => {
+  //   const matchSearch = item.title
+  //     .toLowerCase()
+  //     .includes(search.toLowerCase());
 
-    const matchCategory =
-      category === "All" || item.category === category;
+  //   const matchCategory =
+  //     category === "All" || item.category === category;
 
-    const matchSubCategory =
-      subCategory === "" ||
-      item.subCategory === subCategory;
+  //   const matchSubCategory =
+  //     subCategory === "" ||
+  //     item.subCategory === subCategory;
 
-    return (
-      matchSearch &&
-      matchCategory &&
-      matchSubCategory
-    );
-  });
+  //   return (
+  //     matchSearch &&
+  //     matchCategory &&
+  //     matchSubCategory
+  //   );
+  // });
+
+  const filteredProducts = products;
 
   const [currentIndex, setCurrentIndex] =
     useState(0);
 
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [search, category, subCategory]);
+  // useEffect(() => {
+  //   setCurrentIndex(0);
+  // }, [search, category, subCategory]);
 
   const isFirstPage = currentIndex === 0;
-  const isLastPage = currentIndex + productsPerPage >= filteredProducts.length;
+  const isLastPage = currentIndex + productsPerPage >= products.length;
 
  const nextProducts = () => {
   if (!isLastPage) {
@@ -216,25 +218,15 @@ const prevProducts = () => {
       </div>
 
       <div className="products">
-        {filteredProducts.length > 0 ? (
-          filteredProducts
-            .slice(
-              currentIndex,
-              currentIndex +
-                productsPerPage
-            )
-            .map((item) => (
-              <ProductCard
-                key={item.id}
-                product={item}
-              />
-            ))
-        ) : (
-          <h2 className="no-product">
-            No Product Found
-          </h2>
-        )}
-      </div>
+  {products
+    .slice(currentIndex, currentIndex + productsPerPage)
+    .map((item) => (
+      <ProductCard
+        key={item.id}
+        product={item}
+      />
+    ))}
+</div>
 
       <div className="view-all-wrapper">
         <button
