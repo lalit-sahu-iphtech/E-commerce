@@ -9,9 +9,11 @@ import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import {products} from "../../data/recomonded"
 import Footer from "../Footer/Footer";
+import { useToast } from "../../context/ToastContext";
 
 export default function Wishlist() {
   const { addToCart } = useCart();
+  const{showToast} = useToast();
   const navigate = useNavigate();
   const { wishlist, removeFromWishlist, clearWishlist } = useWishlist();
 
@@ -27,7 +29,8 @@ export default function Wishlist() {
     }
   const handleMoveAllToBag = () => {
     if (wishlist.length === 0) {
-      alert("Wishlist is empty");
+      // alert("Wishlist is empty");
+      showToast("Wishlist is empty", "error")
       return;
     }
     wishlist.forEach((item) => {
@@ -35,7 +38,8 @@ export default function Wishlist() {
     });
 
     clearWishlist();
-    alert("All products moved to cart");
+    // alert("All products moved to cart");
+    showToast("All products moved to cart", "success")
   };
 
   return (
