@@ -110,6 +110,8 @@ Phones: [
 
     description:
       "Apple iPhone 16 Pro Max with A18 Pro chip.",
+      colors: ["#000000", "#DB4444"],
+   
   },
 
   {
@@ -135,6 +137,8 @@ Phones: [
 
     description:
       "Apple iPhone 16 Pro Max with A18 Pro chip.",
+      colors: ["#000000", "#DB4444"],
+   
   },
 
   {
@@ -160,6 +164,8 @@ Phones: [
 
     description:
       "Apple iPhone 16 Pro Max with A18 Pro chip.",
+      colors: ["#000000", "#DB4444"],
+   
   },
 
   {
@@ -185,6 +191,8 @@ Phones: [
 
     description:
       "Apple iPhone 16 Pro Max with A18 Pro chip.",
+      colors: ["#000000", "#DB4444"],
+   
   },
 
 ],
@@ -214,6 +222,8 @@ Computers: [
 
     description:
       "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+      colors: ["#000000", "#DB4444"],
+   
   },
 
   {
@@ -239,6 +249,8 @@ Computers: [
 
     description:
       "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+      colors: ["#000000", "#DB4444"],
+   
   },
 
   {
@@ -264,6 +276,9 @@ Computers: [
 
     description:
       "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+      colors: ["#000000", "#DB4444"],
+    
+
   },
 
   {
@@ -289,6 +304,7 @@ Computers: [
 
     description:
       "Apple MacBook Pro with M4 chip, Liquid Retina XDR display and all-day battery life.",
+      colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -318,6 +334,7 @@ SmartWatch: [
 
     description:
       "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+      colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -343,6 +360,7 @@ SmartWatch: [
 
     description:
       "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+      colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -368,6 +386,7 @@ SmartWatch: [
 
     description:
       "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+      colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -393,6 +412,7 @@ SmartWatch: [
 
     description:
       "Premium Apple smartwatch with titanium case, GPS and health tracking.",
+      colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -420,6 +440,7 @@ Camera: [
     reviews: 232,
 
     description: "Sony full-frame mirrorless camera with 33MP sensor.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -443,6 +464,7 @@ Camera: [
     reviews: 232,
 
     description: "Sony full-frame mirrorless camera with 33MP sensor.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -466,6 +488,7 @@ Camera: [
     reviews: 232,
 
     description: "Sony full-frame mirrorless camera with 33MP sensor.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -489,6 +512,7 @@ Camera: [
     reviews: 232,
 
     description: "Sony full-frame mirrorless camera with 33MP sensor.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -516,6 +540,7 @@ HeadPhones: [
     reviews: 286,
 
     description: "Industry-leading noise cancelling wireless headphones.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -539,6 +564,7 @@ HeadPhones: [
     reviews: 286,
 
     description: "Industry-leading noise cancelling wireless headphones.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -562,6 +588,7 @@ HeadPhones: [
     reviews: 286,
 
     description: "Industry-leading noise cancelling wireless headphones.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -585,6 +612,7 @@ HeadPhones: [
     reviews: 286,
 
     description: "Industry-leading noise cancelling wireless headphones.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -612,6 +640,7 @@ Gaming: [
     reviews: 321,
 
     description: "Sony DualSense wireless controller with adaptive triggers.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -635,6 +664,7 @@ Gaming: [
     reviews: 321,
 
     description: "Sony DualSense wireless controller with adaptive triggers.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -658,6 +688,7 @@ Gaming: [
     reviews: 321,
 
     description: "Sony DualSense wireless controller with adaptive triggers.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -681,6 +712,7 @@ Gaming: [
     reviews: 321,
 
     description: "Sony DualSense wireless controller with adaptive triggers.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -708,6 +740,7 @@ Laptop: [
     reviews: 312,
 
     description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -731,6 +764,7 @@ Laptop: [
     reviews: 312,
 
     description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -754,6 +788,7 @@ Laptop: [
     reviews: 312,
 
     description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -777,6 +812,7 @@ Laptop: [
     reviews: 312,
 
     description: "Apple MacBook Air with M3 chip and Liquid Retina display.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -804,6 +840,7 @@ Speaker: [
     reviews: 189,
 
     description: "Portable waterproof Bluetooth speaker with powerful bass.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -827,6 +864,7 @@ Speaker: [
     reviews: 189,
 
     description: "Portable waterproof Bluetooth speaker with powerful bass.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -850,6 +888,7 @@ Speaker: [
     reviews: 189,
 
     description: "Portable waterproof Bluetooth speaker with powerful bass.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -873,6 +912,7 @@ Speaker: [
     reviews: 189,
 
     description: "Portable waterproof Bluetooth speaker with powerful bass.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -900,6 +940,7 @@ Television: [
     reviews: 258,
 
     description: "65-inch Samsung Neo QLED 4K Smart TV.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -923,6 +964,7 @@ Television: [
     reviews: 258,
 
     description: "65-inch Samsung Neo QLED 4K Smart TV.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -946,6 +988,7 @@ Television: [
     reviews: 258,
 
     description: "65-inch Samsung Neo QLED 4K Smart TV.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -969,6 +1012,7 @@ Television: [
     reviews: 258,
 
     description: "65-inch Samsung Neo QLED 4K Smart TV.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -996,6 +1040,7 @@ Printer: [
     reviews: 134,
 
     description: "Wireless monochrome laser printer.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -1019,6 +1064,7 @@ Printer: [
     reviews: 134,
 
     description: "Wireless monochrome laser printer.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -1042,6 +1088,7 @@ Printer: [
     reviews: 134,
 
     description: "Wireless monochrome laser printer.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -1065,6 +1112,7 @@ Printer: [
     reviews: 134,
 
     description: "Wireless monochrome laser printer.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
@@ -1092,6 +1140,7 @@ Tablet: [
     reviews: 221,
 
     description: "Apple iPad Air with M2 chip.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -1115,6 +1164,7 @@ Tablet: [
     reviews: 221,
 
     description: "Apple iPad Air with M2 chip.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -1138,6 +1188,7 @@ Tablet: [
     reviews: 221,
 
     description: "Apple iPad Air with M2 chip.",
+    colors: ["#000000", "#DB4444"],
   },
 
   {
@@ -1161,6 +1212,7 @@ Tablet: [
     reviews: 221,
 
     description: "Apple iPad Air with M2 chip.",
+    colors: ["#000000", "#DB4444"],
   },
 
 ],
