@@ -1,4 +1,4 @@
-import "./SidebarProductsPage.css";
+import "./sidebarProductsPage.css";
 
 import { Link, useParams } from "react-router-dom";
 

@@ -67,7 +67,7 @@ function App() {
 
           <Route
             path="/sidebar/:categoryName"
-            element={<SidebarProductsPage />}
+            element={<SidebarProductsPage/>}
           />
 
           <Route path="/sidebar-product/:id" element={<SidebarDetails />} />
