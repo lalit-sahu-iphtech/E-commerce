@@ -5,9 +5,11 @@ import "./signup.css";
 import { useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/google.png";
 import Footer from "../Footer/Footer";
+import { useToast } from "../../context/ToastContext";
 
 export default function Signup({ setIsAuthenticated }) {
   const navigate = useNavigate();
+  const{showToast} = useToast();
 
   const [isLogin, setIsLogin] = useState(false);
 
@@ -98,7 +100,8 @@ const validateForm = () =>{
     );
 
     if (userExist) {
-      alert("User already exists!");
+      // alert("User already exists!");
+      showToast("User already exists","error");
       return;
     }
 
@@ -120,7 +123,8 @@ const validateForm = () =>{
       setIsAuthenticated(true);
     }
 
-    alert("Account Created Successfully");
+    // alert("Account Created Successfully");
+    showToast("Account Created Successfully","success");
 
     navigate("/");
 
@@ -158,12 +162,14 @@ const validateForm = () =>{
         setIsAuthenticated(true);
       }
 
-      alert("Login Successful");
+      // alert("Login Successful");
+      showToast("Login Successful","success");
 
       navigate("/");
 
     } else {
-      alert("Invalid Email or Password");
+      // alert("Invalid Email or Password");
+      showToast("Invalid Email or Password","error");
     }
   };
 
