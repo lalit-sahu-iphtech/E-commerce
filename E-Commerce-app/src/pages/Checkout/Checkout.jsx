@@ -8,10 +8,12 @@ import mastercard from "../../assets/payment/mastercard.png";
 import nagad from "../../assets/payment/nagad.png";
 
 import { useState, useEffect } from "react";
+import { useToast } from "../../context/ToastContext";
 
 export default function Checkout() {
   const { cart } = useCart();
   const location = useLocation();
+  const{showToast} = useToast();
 
   const buyNowProduct = location.state?.buyNowProduct;
   const checkoutItems = buyNowProduct
@@ -153,11 +155,13 @@ const subtotal = checkoutItems.reduce(
     if (!validateForm()) return;
 
     if (cart.length === 0) {
-      alert("Your cart is empty");
+      // alert("Your cart is empty");
+      showToast("Your cart is empty", "error")
       return;
     }
 
-    alert("🎉 Order Placed Successfully!");
+    // alert("🎉 Order Placed Successfully!");
+    shoToast("🎉 Order Placed Successfully!", "success");
 
     setFormData({
       firstName: "",
