@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./featured.css";
 
 export default function FeaturedCard({
@@ -7,6 +8,8 @@ export default function FeaturedCard({
   large,
   wide,
 }) {
+
+  const navigate = useNavigate();
 
   return (
 
@@ -27,7 +30,7 @@ export default function FeaturedCard({
 
         <p>{description}</p>
 
-        <button>
+        <button onClick={() => navigate("/products")}>
           Shop Now
         </button>
 
