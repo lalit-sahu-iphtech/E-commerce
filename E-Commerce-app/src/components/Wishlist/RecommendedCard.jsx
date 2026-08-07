@@ -6,23 +6,43 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useToast } from "../../context/ToastContext";
 // import "../product/product.css"
 
 export default function RecommendedCard({ product, index}) {
-  const { addToCart } = useCart();
+  const {
+    addToCart,
+    removeFromCart,
+    isInCart,
+  } = useCart();
+  const{showToast} = useToast()
   const { addToWishlist } = useWishlist();
   const navigate = useNavigate();
 
-   const [added, setAdded] = useState(false);
+  //  const [added, setAdded] = useState(false);
 
-    const handleAddCart = (product) =>{
-     addToCart(product);
-     setAdded(product.id);
-     setTimeout(() =>{
-      setAdded(null);
-     },1000);
-
+  const handleAddCart = () => {
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+  
+    if (!currentUser) {
+      showToast(
+        "Please login first to add products to cart.",
+        "error"
+      );
+      navigate("/signup");
+      return;
     }
+  
+    if (isInCart(product.id)) {
+      removeFromCart(product.id);
+      showToast("Product removed from cart.", "success");
+    } else {
+      addToCart(product);
+      showToast("Product added to cart.", "success");
+    }
+  };
 
   return (
     <div className="wishlist-card">
@@ -60,11 +80,15 @@ export default function RecommendedCard({ product, index}) {
         <img src={product.image} alt={product.title} />
 
             <button
-              className={`cart-btn ${added === product.id ? "added" : ""}`}
+             className={`cart-btn ${
+              isInCart(product.id) ? "added" : "removed"
+            }`}
               onClick={() => handleAddCart(product)}
             >
               <HiOutlineShoppingCart />
-              {added === product.id ? "✓ Added" : "Add To Cart"}
+              {isInCart(product.id)
+  ? "Remove Item"
+  : "Add to Cart"}
             </button>
       </div>
 
