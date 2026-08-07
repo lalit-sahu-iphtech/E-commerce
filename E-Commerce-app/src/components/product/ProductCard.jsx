@@ -12,57 +12,83 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "../../context/ToastContext";
 
 export default function ProductCard({ product }) {
   const { toggleWishlist, isInWishlist } = useWishlist();
-  const { addToCart } = useCart();
+  const { addToCart, removeFromCart, isInCart } = useCart();
   const navigate = useNavigate();
+  const { showToast } = useToast();
+  // const [added, setAdded] = useState(false);
 
-  const [added, setAdded] = useState(false);
+  const handleWishlist = () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  const handleAddCart = () => {
-    addToCart(product);
-
-    setAdded(true);
-
-    setTimeout(() => {
-      setAdded(false);
-    }, 1000);
-  };
-
-  const handleWishlist = () =>{
-    const currentUser = JSON.parse(
-      localStorage.getItem("currentUser")
-    );
-
-    if(!currentUser){
-      alert("please login first to add products to wishlist.");
+    if (!currentUser) {
+      // alert("please login first to add products to wishlist.");
+      showToast("please login first to add products to wishlist.", "error");
       navigate("/signup");
       return;
     }
     toggleWishlist(product);
-  }
+    if (alreadyInWishlist) {
+      showToast("Product removed from wishlist.", "success");
+    } else {
+      showToast("Product added to wishlist.", "success");
+    }
+  };
+  // handle add to catt
+  // const handleAddCart = () => {
+  //   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  //   if (!currentUser) {
+  //     // alert("Please login first to add products to cart.");
+  //     showToast("please login first to add products to Cart.", "error");
+
+  //     navigate("/signup");
+  //     return;
+  //   }
+
+  //   addToCart(product);
+  //   showToast("Product added to cart.", "success");
+  //   setAdded(true);
+  // };
+  const handleAddCart = () => {
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+  
+    if (!currentUser) {
+      showToast(
+        "Please login first to add products to cart.",
+        "error"
+      );
+      navigate("/signup");
+      return;
+    }
+  
+    if (isInCart(product.id)) {
+      removeFromCart(product.id);
+      showToast("Product removed from cart.", "success");
+    } else {
+      addToCart(product);
+      showToast("Product added to cart.", "success");
+    }
+  };
 
   return (
     <div className="product-card">
       <div className="product-image">
         {product.discount && (
-          <span className="discount">
-            {product.discount}
-          </span>
+          <span className="discount">{product.discount}</span>
         )}
 
         {product.badge && (
-          <span className="discount new-badge">
-            {product.badge}
-          </span>
+          <span className="discount new-badge">{product.badge}</span>
         )}
 
         <div className="icons">
-          <button
-            className="wishlist-btn"
-            onClick={handleWishlist}
-          >
+          <button className="wishlist-btn" onClick={handleWishlist}>
             {isInWishlist(product.id) ? (
               <FaHeart className="heart active-heart" />
             ) : (
@@ -71,9 +97,8 @@ export default function ProductCard({ product }) {
           </button>
 
           <button
-        
-           onClick={() => navigate(`/product/${product.id}`)}
-             style={{
+            onClick={() => navigate(`/product/${product.id}`)}
+            style={{
               border: "none",
               background: "#fff",
               width: "34px",
@@ -87,71 +112,47 @@ export default function ProductCard({ product }) {
               margin: 0,
             }}
           >
-            <FaRegEye style={{ fontSize: "18px" }}  />
+            <FaRegEye style={{ fontSize: "18px" }} />
           </button>
         </div>
 
-        <img
-          src={product.image}
-          alt={product.title}
-        />
+        <img src={product.image} alt={product.title} />
 
         <button
           className={`cart-btn ${
-            added ? "added" : ""
+            isInCart(product.id) ? "added" : "removed"
           }`}
           onClick={handleAddCart}
         >
-          {added ? "✓ Added" : "Add To Cart"}
+         {isInCart(product.id)
+  ? "Remove Item"
+  : "Add to Cart"}
         </button>
       </div>
 
       <h3>{product.title}</h3>
 
       <div className="price">
-        <span className="new-price">
-          ${product.price}
-        </span>
+        <span className="new-price">${product.price}</span>
 
         {product.oldPrice && (
-          <span className="old-price">
-            ${product.oldPrice}
-          </span>
+          <span className="old-price">${product.oldPrice}</span>
         )}
       </div>
 
       <div className="rating">
-  {[...Array(5)].map((_, index) => {
-    if (index + 1 <= Math.floor(product.rating)) {
-      return (
-        <FaStar
-          key={index}
-          color="#FFAD33"
-        />
-      );
-    } else if (
-      index < product.rating &&
-      product.rating % 1 !== 0
-    ) {
-      return (
-        <FaStarHalfAlt
-          key={index}
-          color="#FFAD33"
-        />
-      );
-    } else {
-      return (
-        <FaRegStar
-          key={index}
-          color="#BFBFBF"
-        />
-      );
-    }
-  })}
+        {[...Array(5)].map((_, index) => {
+          if (index + 1 <= Math.floor(product.rating)) {
+            return <FaStar key={index} color="#FFAD33" />;
+          } else if (index < product.rating && product.rating % 1 !== 0) {
+            return <FaStarHalfAlt key={index} color="#FFAD33" />;
+          } else {
+            return <FaRegStar key={index} color="#BFBFBF" />;
+          }
+        })}
 
-  <span>({product.reviews})</span>
-</div>
-
+        <span>({product.reviews})</span>
+      </div>
     </div>
   );
 }
