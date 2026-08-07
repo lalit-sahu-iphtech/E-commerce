@@ -23,6 +23,8 @@ import SidebarDetails from "./pages/ProductDetails/SidebarDetails.jsx";
 import FaqPage from "./pages/FAQ/FaqPage";
 import PrivacyPage from "./pages/Privacy/PrivacyPage";
 import TermsPage from "./pages/Terms/TermsPage";
+// import   MainProductsPage from "./pages/MainProductsPage/MainProductsPage";
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
@@ -69,6 +71,10 @@ function App() {
           />
 
           <Route path="/sidebar-product/:id" element={<SidebarDetails />} />
+          {/* <Route
+  path="/main/:categoryName"
+  element={<MainProductsPage />}
+/> */}
         </Routes>
 
       </main>
