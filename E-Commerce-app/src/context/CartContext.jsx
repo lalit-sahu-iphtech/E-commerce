@@ -82,12 +82,13 @@ export function CartProvider({ children }) {
   };
 
   // Remove
-  const removeFromCart = (id) => {
-    setCart(
-      cart.filter((item) => item.id !== id)
-    );
+  const isInCart = (id) => {
+    return cart.some((item) => item.id === id);
   };
-
+  
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
+  };
   // Increase
   const increaseQty = (id) => {
     setCart(
@@ -133,6 +134,7 @@ export function CartProvider({ children }) {
         increaseQty,
         decreaseQty,
         clearCart,
+        isInCart,
       }}
     >
       {children}
