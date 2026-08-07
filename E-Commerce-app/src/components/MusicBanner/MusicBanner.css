@@ -98,13 +98,13 @@
 .music-banner:hover .banner-image img{
     transform:scale(1.08) rotate(-2deg);
 }
-.banner-content h2{
+/* .banner-content h2{
     transition:.4s ease;
 }
 
 .music-banner:hover .banner-content h2{
     letter-spacing:1px;
-}
+} */
 /* ---------- Tablet ---------- */
 
 @media(max-width:992px){

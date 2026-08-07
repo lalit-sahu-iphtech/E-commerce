@@ -35,9 +35,18 @@ export default function Profile() {
 
     // First Name
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+      newErrors.firstName = "Name is required";
+    } else if (!/^[A-Za-z ]+$/.test(formData.firstName)) {
+      newErrors.firstName = "Only alphabets are allowed";
     } else if (formData.firstName.trim().length < 3) {
-      newErrors.firstName = "Minimum 3 characters required";
+      newErrors.firstName = "Name must be at least 3 characters";
+    }
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = "Name is required";
+    } else if (!/^[A-Za-z ]+$/.test(formData.firstName)) {
+      newErrors.lastName = "Only alphabets are allowed";
+    } else if (formData.lastName.trim().length < 3) {
+      newErrors.lastName = "Name must be at least 3 characters";
     }
 
     // Last Name

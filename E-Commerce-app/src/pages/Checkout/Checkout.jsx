@@ -15,18 +15,15 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { cart } = useCart();
   const location = useLocation();
-  const{showToast} = useToast();
+  const { showToast } = useToast();
 
   const buyNowProduct = location.state?.buyNowProduct;
-  const checkoutItems = buyNowProduct
-  ? [buyNowProduct]
-  : cart;
+  const checkoutItems = buyNowProduct ? [buyNowProduct] : cart;
 
-const subtotal = checkoutItems.reduce(
-  (total, item) =>
-    total + item.price * item.quantity,
-  0
-);
+  const subtotal = checkoutItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -52,8 +49,6 @@ const subtotal = checkoutItems.reduce(
   const [discount, setDiscount] = useState(0);
   const [couponMsg, setCouponMsg] = useState("");
 
-
-
   useEffect(() => {
     if (appliedCoupon === "SAVE10") {
       setDiscount(subtotal * 0.1);
@@ -65,6 +60,18 @@ const subtotal = checkoutItems.reduce(
       setDiscount(0);
     }
   }, [subtotal, appliedCoupon]);
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  
+    if (currentUser) {
+      setFormData((prev) => ({
+        ...prev,
+        firstName: currentUser.name || "",
+        email: currentUser.email || "",
+        phone: currentUser.phone || "",
+      }));
+    }
+  }, []);
 
   const total = Math.max(subtotal - discount, 0);
 
@@ -121,9 +128,11 @@ const subtotal = checkoutItems.reduce(
     const newErrors = {};
 
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+      newErrors.firstName = "Name is required";
+    } else if (!/^[A-Za-z ]+$/.test(formData.firstName)) {
+      newErrors.firstName = "Only alphabets are allowed";
     } else if (formData.firstName.trim().length < 3) {
-      newErrors.firstName = "First name must be at least 3 characters";
+      newErrors.firstName = "Name must be at least 3 characters";
     }
 
     if (!formData.street.trim()) {
@@ -136,8 +145,8 @@ const subtotal = checkoutItems.reduce(
 
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
-    } else if (!/^[0-9]{10}$/.test(formData.phone)) {
-      newErrors.phone = "Enter a valid 10-digit phone number";
+    } else if (!/^[6-9]\d{9}$/.test(formData.phone)) {
+      newErrors.phone = "Enter a valid 10-digit mobile number";
     }
 
     if (!formData.email.trim()) {
@@ -166,7 +175,7 @@ const subtotal = checkoutItems.reduce(
 
     if (cart.length === 0) {
       // alert("Your cart is empty");
-      showToast("Your cart is empty", "error")
+      showToast("Your cart is empty", "error");
       return;
     }
 
@@ -303,10 +312,11 @@ const subtotal = checkoutItems.reduce(
                 </label>
 
                 <input
-                  type="text"
+                  type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  maxLength={10}
                   className={errors.phone ? "checkout-input-error" : ""}
                 />
 

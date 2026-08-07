@@ -89,7 +89,7 @@ Phones: [
 
   {
     id: 101,
-    category: "Phones",
+    category: "Phone",
     title: "iPhone 16 Pro Max",
 
     image: iphone16_1,   // Category/Product Card ke liye
@@ -116,7 +116,7 @@ Phones: [
 
   {
     id: 102,
-    category: "Phones",
+    category: "Phone",
     title: "iPhone 16 Pro Max",
 
     image: iphone16_2,
@@ -143,7 +143,7 @@ Phones: [
 
   {
     id: 103,
-    category: "Phones",
+    category: "Phone",
     title: "iPhone 16 Pro Max",
 
     image: iphone16_3,
@@ -170,7 +170,7 @@ Phones: [
 
   {
     id: 104,
-    category: "Phones",
+    category: "Phone",
     title: "iPhone 16 Pro Max",
 
     image: iphone16_4,

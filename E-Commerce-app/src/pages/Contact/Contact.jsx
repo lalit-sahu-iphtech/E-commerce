@@ -25,10 +25,10 @@ export default function Contact() {
     // Name
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
+    } else if (!/^[A-Za-z ]+$/.test(formData.name)) {
+      newErrors.name = "Only alphabets are allowed";
     } else if (formData.name.trim().length < 3) {
       newErrors.name = "Name must be at least 3 characters";
-    } else if (formData.name.trim().length > 30) {
-      newErrors.name = "Name cannot exceed 30 characters";
     }
 
     // Email

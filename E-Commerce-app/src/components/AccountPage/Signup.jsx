@@ -29,12 +29,12 @@ const validateForm = () =>{
   const newErrors = {};
   // Name validation (signup only)
   if(!isLogin){
-    if(!formData.name.trim()){
-      newErrors.name = "Name is Required";
-    }else if(formData.name.trim().length < 3){
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (!/^[A-Za-z ]+$/.test(formData.name)) {
+      newErrors.name = "Only alphabets are allowed";
+    } else if (formData.name.trim().length < 3) {
       newErrors.name = "Name must be at least 3 characters";
-    }else if(formData.name.trim().length > 10){
-      newErrors.name = "Name cannot exceed 10 characters"
     }
   }
    // Email Validation
@@ -47,12 +47,19 @@ const validateForm = () =>{
   }
    
   // password validation
-  if(!formData.password){
-    newErrors.password="Password is required";
-  }else if(formData.password.length  < 6){
-    newErrors.password = "Password must be at least 6 characters"
-  }else if(formData.password.length  > 20){
-    newErrors.password = "Password cannot exceed 20 characters"
+  if (!formData.password.trim()) {
+    newErrors.password = "Password is required";
+  } else if (formData.password.length < 6) {
+    newErrors.password = "Password must be at least 6 characters";
+  } else if (formData.password.length > 20) {
+    newErrors.password = "Password cannot exceed 20 characters";
+  } else if (
+    !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,20}$/.test(
+      formData.password
+    )
+  ) {
+    newErrors.password =
+      "Password must contain uppercase, lowercase, number and special character";
   }
   setErrors(newErrors);
   return Object.keys(newErrors).length === 0;
