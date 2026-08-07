@@ -29,7 +29,9 @@
 =========================== */
 
 .footer-column {
-  min-width: 0;
+  /* min-width: 0; */
+   width:100%;
+    box-sizing:border-box;
 }
 
 .footer-column h2 {
@@ -226,91 +228,188 @@ gap:30px;
 }
 
 /* ===========================
-      MOBILE
+
+
+/* ===========================
+      MOBILE (770px and below)
 =========================== */
 
-@media (max-width:768px){
+/* ===========================
+      MOBILE (770px and below)
+=========================== */
+
+@media (max-width:770px){
 
 .footer-container{
-grid-template-columns:1fr;
-padding:40px 20px;
-gap:30px;
+    grid-template-columns:repeat(2,1fr);
+    padding:30px 20px 20px;
+    gap:0;
+    text-align:left;
 }
 
-.download-wrapper{
-align-items:flex-start;
+.footer-column{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    text-align:left;
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+/* Subscribe box -> full width, on top */
+.footer-column:nth-child(1){
+    grid-column:1 / -1;
+    padding-top:0;
+}
+
+/* Download App -> full width, at bottom */
+.footer-column:nth-child(5){
+    grid-column:1 / -1;
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+/* Support & Account share a row, Quick Link gets its own left slot */
+.footer-column:nth-child(2){
+    padding-right:10px;
+}
+
+.footer-column:nth-child(3){
+    padding-left:10px;
+    border-left:1px solid rgba(255,255,255,.08);
+}
+
+.footer-column:nth-child(4){
+    padding-right:10px;
+}
+
+.footer-column h2{
+    margin-bottom:14px;
+}
+
+.footer-column h3{
+    margin-bottom:14px;
+}
+
+.footer-column p{
+    margin-bottom:6px;
+}
+
+.footer-column ul li{
+    margin-bottom:10px;
 }
 
 .subscribe-box{
-max-width:100%;
+    width:100%;
+    max-width:280px;
+    margin:8px 0 0;
+}
+
+.subscribe-box input{
+    flex:1;
+    min-width:0;
+    width:0;
+}
+
+.download-text{
+    margin-bottom:14px !important;
+}
+
+.download-wrapper{
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+    gap:16px;
+}
+
+.store-buttons{
+    flex-direction:column;
+    align-items:flex-start;
 }
 
 .social-icons{
-margin-top:15px;
+    justify-content:flex-start;
+    margin-top:18px;
+    gap:20px;
 }
 
 }
 
 /* ===========================
-    SMALL MOBILE
+    SMALL MOBILE (600px)
 =========================== */
+
+@media (max-width: 600px){
+
+  .footer-container{
+    padding:24px 16px 16px;
+  }
+
+  .subscribe-box{
+    max-width:100%;
+    height:48px;
+  }
+
+  .subscribe-box input{
+    font-size:13px;
+    padding:0 12px;
+  }
+}
 
 @media (max-width:480px){
 
 .footer-column h2{
-font-size:22px;
+  font-size:20px;
 }
 
 .footer-column h3{
-font-size:18px;
+  font-size:16px;
 }
 
 .footer-column p,
 .footer-column li{
-font-size:14px;
-}
-
-.subscribe-box{
-height:46px;
-}
-
-.subscribe-box input{
-font-size:14px;
-}
-
-.subscribe-box button{
-width:46px;
-font-size:20px;
-}
-
-.download-wrapper{
-gap:12px;
+  font-size:13px;
+  line-height:1.6;
 }
 
 .qr{
-width:75px;
-height:75px;
+  width:65px;
+  height:65px;
 }
 
 .store-buttons img{
-width:110px;
-height:50px;
-}
-
-.social-icons{
-gap:16px;
+  width:95px;
+  height:42px;
 }
 
 .social-icons svg{
-font-size:20px;
+  font-size:18px;
 }
 
 .footer-bottom{
-padding:18px;
+  padding:14px;
 }
 
 .footer-bottom p{
-font-size:13px;
+  font-size:12px;
+}
+
+}
+
+/* ===========================
+    VERY SMALL MOBILE (360px)
+=========================== */
+
+@media (max-width:360px){
+
+.download-wrapper{
+  flex-direction:column;
+}
+
+.store-buttons{
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 }
