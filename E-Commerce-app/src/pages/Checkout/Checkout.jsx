@@ -9,8 +9,10 @@ import nagad from "../../assets/payment/nagad.png";
 
 import { useState, useEffect } from "react";
 import { useToast } from "../../context/ToastContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
+  const navigate = useNavigate();
   const { cart } = useCart();
   const location = useLocation();
   const{showToast} = useToast();
@@ -154,6 +156,14 @@ const subtotal = checkoutItems.reduce(
   const handlePlaceOrder = () => {
     if (!validateForm()) return;
 
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!currentUser) {
+      showToast("Please login first to place your order.", "error");
+      navigate("/signup");
+      return;
+    }
+
     if (cart.length === 0) {
       // alert("Your cart is empty");
       showToast("Your cart is empty", "error")
@@ -161,7 +171,7 @@ const subtotal = checkoutItems.reduce(
     }
 
     // alert("🎉 Order Placed Successfully!");
-    shoToast("🎉 Order Placed Successfully!", "success");
+    showToast("🎉 Order Placed Successfully!", "success");
 
     setFormData({
       firstName: "",

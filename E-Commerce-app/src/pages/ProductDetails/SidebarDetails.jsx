@@ -10,7 +10,7 @@ import { useWishlist } from "../../context/WishlistContext";
 import RecomDetails from "./RecomDetails";
 
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
-
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 export default function SidebarDetails() {
   const products = Object.values(sidebarProducts).flat();
   const { id } = useParams();
@@ -26,6 +26,10 @@ export default function SidebarDetails() {
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [showImage, setShowImage] = useState(false);
+
+  const [selectedColor, setSelectedColor] = useState(
+    product?.colors?.[0] || ""
+  );
 
   // Our data has only a single "image" per product (no images[] array).
   // Same as ProductDetails.jsx: reuse that one image at 4 different
@@ -47,6 +51,21 @@ export default function SidebarDetails() {
       </h2>
     );
   }
+  const handleNextImage = (e) => {
+    e.stopPropagation();
+  
+    setSelectedImage((prev) =>
+      prev === imageRotation.length - 1 ? 0 : prev + 1
+    );
+  };
+  
+  const handlePrevImage = (e) => {
+    e.stopPropagation();
+  
+    setSelectedImage((prev) =>
+      prev === 0 ? imageRotation.length - 1 : prev - 1
+    );
+  };
 
   return (
     <div className="product-container">
@@ -120,16 +139,23 @@ export default function SidebarDetails() {
 
           {/* COLORS - only renders if you add a colors[] field to a product */}
           {product.colors && (
-            <div className="color-row">
-              <strong>Colours:</strong>
-              {product.colors.map((color, index) => (
-                <div
-                  key={index}
-                  className="circle"
-                  style={{ background: color }}
-                ></div>
-              ))}
-            </div>
+
+           <div className="color-row">
+  <strong>Colours:</strong>
+
+  {product.colors?.map((color, index) => (
+    <div
+      key={index}
+      className={`circle ${
+        selectedColor === color ? "active-color" : ""
+      }`}
+      style={{
+        background: color,
+      }}
+      onClick={() => setSelectedColor(color)}
+    ></div>
+  ))}
+</div>
           )}
 
           {/* SIZE - only renders if you add a sizes[] field to a product */}
@@ -215,7 +241,19 @@ export default function SidebarDetails() {
     className="image-modal"
     onClick={() => setShowImage(false)}
   >
-    <span className="close-image">&times;</span>
+    <span
+      className="close-image"
+      onClick={() => setShowImage(false)}
+    >
+      &times;
+    </span>
+
+    <button
+      className="prev-image"
+      onClick={handlePrevImage}
+    >
+      <HiChevronLeft />
+    </button>
 
     <img
       src={product.image}
@@ -224,7 +262,15 @@ export default function SidebarDetails() {
       style={{
         transform: imageRotation[selectedImage],
       }}
+      onClick={(e) => e.stopPropagation()}
     />
+
+    <button
+      className="next-image"
+      onClick={handleNextImage}
+    >
+      <HiChevronRight />
+    </button>
   </div>
 )}
     </div>

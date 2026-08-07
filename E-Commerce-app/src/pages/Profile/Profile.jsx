@@ -2,9 +2,11 @@ import "./profile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
+import { useToast } from "../../context/ToastContext";
 
 export default function Profile() {
   const navigate = useNavigate();
+  const{showToast} = useToast();
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -39,11 +41,11 @@ export default function Profile() {
     }
 
     // Last Name
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
-    } else if (formData.lastName.trim().length < 3) {
-      newErrors.lastName = "Minimum 3 characters required";
-    }
+    // if (!formData.lastName.trim()) {
+    //   newErrors.lastName = "Last name is required";
+    // } else if (formData.lastName.trim().length < 3) {
+    //   newErrors.lastName = "Minimum 3 characters required";
+    // }
 
     // Email
     if (!formData.email.trim()) {
@@ -55,9 +57,9 @@ export default function Profile() {
     }
 
     // Address
-    if (!formData.address.trim()) {
-      newErrors.address = "Address is required";
-    }
+    // if (!formData.address.trim()) {
+    //   newErrors.address = "Address is required";
+    // }
 
     // Password Validation
     if (
@@ -169,8 +171,8 @@ export default function Profile() {
 
     console.table(updatedCurrentUser);
 
-    alert("Profile Updated Successfully.");
-    alert("Profile Updated Successfully.");
+    showToast("Profile Updated Successfully.", "success");
+  
 
     setFormData({
       

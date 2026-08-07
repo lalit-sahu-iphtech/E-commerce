@@ -12,8 +12,10 @@ import RecomDetails from "./RecomDetails";
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
 
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { useToast } from "../../context/ToastContext";
 
 export default function ProductDetails() {
+  const { showToast } = useToast();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -64,7 +66,26 @@ export default function ProductDetails() {
       prev === 0 ? imageRotation.length - 1 : prev - 1
     );
   };
+  const handleBuyNow = () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
+    if (!currentUser) {
+      showToast("Please login first to buy this product.", "error");
+      navigate("/signup");
+      return;
+    }
+
+    navigate("/checkout", {
+      state: {
+        buyNowProduct: {
+          ...product,
+          quantity: qty,
+          size: selectedSize,
+          color: selectedColor,
+        },
+      },
+    });
+  };
   return (
     <div className="product-container">
       <section className="details-page">
@@ -187,20 +208,7 @@ export default function ProductDetails() {
               </button>
             </div>
 
-            <button
-              className="buy-btn"
-              onClick={() => {
-                navigate("/checkout", {
-                  state: {
-                    buyNowProduct: {
-                      ...product,
-                      quantity: qty,
-                      size: selectedSize,
-                    },
-                  },
-                });
-              }}
-            >
+            <button className="buy-btn" onClick={handleBuyNow}>
               Buy Now
             </button>
 
