@@ -188,66 +188,66 @@ export default function Navbar() {
         </ul>
       </nav>
 
+      {/* Search */}
+      <div className="search-box">
+        <input
+          type="text"
+          placeholder="What are you looking for?"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setShowSuggestions(true);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
+          onFocus={() => setShowSuggestions(true)}
+        />
+
+        <IoSearchOutline className="search-icon" onClick={handleSearch} />
+
+        {showSuggestions && search && (
+          <div className="search-suggestions">
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className="suggestion-item"
+                  onClick={() => {
+                    if (product.type === "main") {
+                      navigate(`/product/${product.id}`);
+                    } else if (product.type === "category") {
+                      navigate(`/category-product/${product.id}`);
+                    } else if (product.type === "sidebar") {
+                      navigate(`/sidebar-product/${product.id}`);
+                    } else if (product.type === "sidebar-category") {
+                      navigate(`/sidebar/${product.name}`);
+                    }
+
+                    setSearch("");
+                    setShowSuggestions(false);
+                  }}
+                >
+                  <img src={product.image} alt={product.title} />
+
+                  <div className="suggestion-info">
+                    <h4>{product.title || product.name}</h4>
+
+                    <p>${product.price}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="no-result">No Product Found</p>
+            )}
+          </div>
+        )}
+      </div>
+
       {/* Right Section */}
       <div className="right-section">
-        {/* Search */}
-        <div className="search-box">
-          <input
-            type="text"
-            placeholder="What are you looking for?"
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setShowSuggestions(true);
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSearch();
-              }
-            }}
-            onFocus={() => setShowSuggestions(true)}
-          />
-
-          <IoSearchOutline className="search-icon"onClick={handleSearch} />
-
-          {showSuggestions && search && (
-            <div className="search-suggestions">
-              {filteredProducts.length > 0 ? (
-                filteredProducts.map((product) => (
-                  <div
-                    key={product.id}
-                    className="suggestion-item"
-                    onClick={() => {
-                      if (product.type === "main") {
-                        navigate(`/product/${product.id}`);
-                      } else if (product.type === "category") {
-                        navigate(`/category-product/${product.id}`);
-                      } else if (product.type === "sidebar") {
-                        navigate(`/sidebar-product/${product.id}`);
-                      } else if (product.type === "sidebar-category") {
-                        navigate(`/sidebar/${product.name}`);
-                      }
-
-                      setSearch("");
-                      setShowSuggestions(false);
-                    }}
-                  >
-                    <img src={product.image} alt={product.title} />
-
-                    <div className="suggestion-info">
-                      <h4>{product.title || product.name}</h4>
-
-                      <p>${product.price}</p>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p className="no-result">No Product Found</p>
-              )}
-            </div>
-          )}
-        </div>
-
         {/* Wishlist */}
         {!isSignupPage && (
           <div
