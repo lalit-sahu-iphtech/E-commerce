@@ -39,20 +39,22 @@ export default function Category() {
 
   const isFirstPage = startIndex === 0;
 
-const isLastPage =
-  startIndex + visibleCards >= categories.length;
+  const isLastPage =
+    startIndex + visibleCards >= categories.length;
 
- const nextSlide = () => {
-  if (!isLastPage) {
-    setStartIndex(startIndex + visibleCards);
-  }
-};
+  // Next: only 1 product forward
+  const nextSlide = () => {
+    if (!isLastPage) {
+      setStartIndex((prev) => prev + 1);
+    }
+  };
 
- const prevSlide = () => {
-  if (!isFirstPage) {
-    setStartIndex(startIndex - visibleCards);
-  }
-};
+  // Previous: only 1 product backward
+  const prevSlide = () => {
+    if (!isFirstPage) {
+      setStartIndex((prev) => prev - 1);
+    }
+  };
 
   return (
     <section className="category-section">
@@ -61,6 +63,7 @@ const isLastPage =
 
         <div className="today">
           <span className="today-bar"></span>
+
           <span className="today-text">
             Categories
           </span>
@@ -85,7 +88,7 @@ const isLastPage =
             <button
               className="arrow-btn"
               onClick={nextSlide}
-               disabled={isLastPage}
+              disabled={isLastPage}
             >
               &#8594;
             </button>
@@ -96,26 +99,28 @@ const isLastPage =
 
       </div>
 
-    <div className="categories">
-    {categories
-      .slice(startIndex, startIndex + visibleCards)
-      .map((item, index) => (
-        <div
-          key={index}
-          className="category-card"
-          onClick={() =>
-            navigate(`/category/${item.name}`)
-          }
-        >
-          <img
-            src={item.icon}
-            alt={item.name}
-          />
+      <div className="categories">
 
-          <p>{item.name}</p>
-        </div>
-      ))}
-</div>
+        {categories
+          .slice(startIndex, startIndex + visibleCards)
+          .map((item) => (
+            <div
+              key={item.name}
+              className="category-card"
+              onClick={() =>
+                navigate(`/category/${item.name}`)
+              }
+            >
+              <img
+                src={item.icon}
+                alt={item.name}
+              />
+
+              <p>{item.name}</p>
+            </div>
+          ))}
+
+      </div>
 
     </section>
   );

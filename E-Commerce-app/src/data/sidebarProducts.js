@@ -14,7 +14,8 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/floral,summer",
+    image:
+  "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-002",
@@ -26,7 +27,8 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/bodycon,party",
+     image:
+  "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80",
     },
     {
       name: "Casual Cotton Dress",
@@ -37,7 +39,8 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/casual,cotton",
+     image:
+  "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-004",
@@ -49,7 +52,8 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/leather,handbag",
+     image:
+  "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-005",
@@ -60,7 +64,8 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/sling,bag",
+     image:
+  "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-006",
@@ -72,7 +77,8 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/tote,bag",
+     image:
+  "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-007",
@@ -84,7 +90,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/stiletto,heels",
+     image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-008",
@@ -96,7 +102,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/block,heels",
+      image: "https://images.unsplash.com/photo-1560155016-bd4879ae8f21?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-009",
@@ -108,7 +114,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/gold,plated",
+     image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-010",
@@ -120,7 +126,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/pearl,earrings",
+      image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-011",
@@ -132,7 +138,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/matte,lipstick",
+     image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-012",
@@ -144,7 +150,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/foundation,concealer",
+      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Dresses: [
@@ -157,7 +163,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/floral,summer",
+    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-002",
@@ -168,7 +174,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/bodycon,party",
+      image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-003",
@@ -179,7 +185,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/casual,cotton",
+     image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Handbags: [
@@ -192,7 +198,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/leather,handbag",
+     image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-005",
@@ -203,7 +209,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/sling,bag",
+      image: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-006",
@@ -214,7 +220,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/tote,bag",
+    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "High Heels": [
@@ -227,7 +233,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/stiletto,heels",
+    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-008",
@@ -238,7 +244,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/block,heels",
+      image: "https://images.unsplash.com/photo-1560155016-bd4879ae8f21?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Jewellery: [
@@ -251,7 +257,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/gold,plated",
+      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-010",
@@ -262,7 +268,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/pearl,earrings",
+     image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Makeup: [
@@ -275,7 +281,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/matte,lipstick",
+      image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "wf-012",
@@ -286,7 +292,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/foundation,concealer",
+      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=500&q=80",
     },
   ],
 
@@ -301,7 +307,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/casual,cotton",
+      image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-002",
@@ -314,7 +320,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/formal,slim",
+      image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-003",
@@ -327,7 +333,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/check,flannel",
+      image: "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-004",
@@ -340,7 +346,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/running,sneakers",
+      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-005",
@@ -353,7 +359,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/formal,leather",
+      image: "https://images.unsplash.com/photo-1614252235316-8c857d0b7b9a?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-006",
@@ -366,7 +372,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/casual,loafers",
+      image: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-007",
@@ -379,7 +385,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/analog,wrist",
+       image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-008",
@@ -392,7 +398,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/smart,watch",
+      image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-009",
@@ -405,7 +411,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/laptop,backpack",
+      image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-010",
@@ -417,8 +423,7 @@ export const sidebarProducts = {
       discount: "-10%",
       rating: 5,
       reviews: 99,
-
-      image: "https://loremflickr.com/300/300/duffel,gym",
+ image: "https://images.unsplash.com/photo-1553062407-5c7c8f0b1c43?auto=format&fit=crop&w=500&q=80",  image: "https://loremflickr.com/300/300/duffel,gym",
     },
     {
       id: "mf-011",
@@ -431,7 +436,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/denim,jacket",
+     image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-012",
@@ -444,7 +449,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/bomber,jacket",
+      image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Shirts: [
@@ -459,7 +464,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/casual,cotton",
+     image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-002",
@@ -472,7 +477,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/formal,slim",
+     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-003",
@@ -485,7 +490,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/check,flannel",
+      image: "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Shoes: [
@@ -498,7 +503,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/running,sneakers",
+     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-005",
@@ -509,7 +514,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/formal,leather",
+     image: "https://images.unsplash.com/photo-1614252235316-8c857d0b7b9a?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-006",
@@ -520,7 +525,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/casual,loafers",
+      image: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Watches: [
@@ -533,7 +538,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/analog,wrist",
+     image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-008",
@@ -544,7 +549,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/smart,watch",
+     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Bags: [
@@ -557,7 +562,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/laptop,backpack",
+     image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-010",
@@ -568,7 +573,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/duffel,gym",
+     image: "https://images.unsplash.com/photo-1553062407-5c7c8f0b1c43?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Jackets: [
@@ -581,7 +586,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/denim,jacket",
+   image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "mf-012",
@@ -592,9 +597,10 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/bomber,jacket",
+     image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=80",
     },
   ],
+
   Electronics: [
     {
       id: "el-001",
@@ -606,7 +612,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/smartphone,mobile",
+      image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "el-002",
@@ -618,7 +624,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/budget,smartphone",
+      image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "el-003",
@@ -630,7 +636,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/inch,laptop",
+      image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "el-004",
@@ -642,7 +648,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/laptop,slim",
+    image: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "el-005",
@@ -653,8 +659,8 @@ export const sidebarProducts = {
       discount: "-10%",
       rating: 5,
       reviews: 99,
-
-      image: "https://loremflickr.com/300/300/wireless,earbuds",
+          image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80",
+     
     },
     {
       id: "el-006",
@@ -665,8 +671,8 @@ export const sidebarProducts = {
       discount: "-10%",
       rating: 5,
       reviews: 99,
-
-      image: "https://loremflickr.com/300/300/over,ear",
+       image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80",
+    
     },
     {
       id: "el-007",
@@ -677,7 +683,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/dslr,camera",
+      image: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "el-008",
@@ -688,8 +694,9 @@ export const sidebarProducts = {
       discount: "-10%",
       rating: 5,
       reviews: 99,
+        image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=500&q=80",
 
-      image: "https://loremflickr.com/300/300/action,camera",
+     
     },
     {
       id: "el-009",
@@ -701,129 +708,141 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/fitness,smart",
+     image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80",
     },
   ],
-  Mobiles: [
-    {
-      id: "el-001",
-      name: "5G Smartphone",
-      category: "Mobiles",
-      subCategory: "Mobiles",
-      price: 18999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+Mobiles: [
+  {
+    id: "el-001",
+    name: "5G Smartphone",
+    category: "Mobiles",
+    subCategory: "Mobiles",
+    price: 18999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/smartphone,mobile",
-    },
-    {
-      id: "el-002",
-      name: "Budget Smartphone",
-      category: "Mobiles",
-      subCategory: "Mobiles",
-      price: 9999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+    image:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    id: "el-002",
+    name: "Budget Smartphone",
+    category: "Mobiles",
+    subCategory: "Mobiles",
+    price: 9999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/budget,smartphone",
-    },
-  ],
-  Laptops: [
-    {
-      id: "el-003",
-      name: "15-inch Laptop",
-      category: "Laptops",
-      subCategory: "Laptops",
-      price: 45999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+    image:
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80",
+  },
+],
 
-      image: "https://loremflickr.com/300/300/inch,laptop",
-    },
-    {
-      id: "el-004",
-      name: "Ultrabook",
-      category: "Laptops",
-      subCategory: "Laptops",
-      price: 62999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+Laptops: [
+  {
+    id: "el-003",
+    name: "15-inch Laptop",
+    category: "Laptops",
+    subCategory: "Laptops",
+    price: 45999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/laptop,slim",
-    },
-  ],
-  Headphones: [
-    {
-      id: "el-005",
-      name: "Wireless Earbuds",
-      category: "Headphones",
-      subCategory: "Headphones",
-      price: 1999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+    image:
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    id: "el-004",
+    name: "Ultrabook",
+    category: "Laptops",
+    subCategory: "Laptops",
+    price: 62999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/wireless,earbuds",
-    },
-    {
-      id: "el-006",
-      name: "Over-Ear Headphones",
-      category: "Headphones",
-      subCategory: "Headphones",
-      price: 2999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+    image:
+      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=500&q=80",
+  },
+],
 
-      image: "https://loremflickr.com/300/300/over,ear",
-    },
-  ],
-  Cameras: [
-    {
-      id: "el-007",
-      name: "DSLR Camera",
-      category: "Cameras",
-      subCategory: "Cameras",
-      price: 34999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+Headphones: [
+  {
+    id: "el-005",
+    name: "Wireless Earbuds",
+    category: "Headphones",
+    subCategory: "Headphones",
+    price: 1999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/dslr,camera",
-    },
-    {
-      id: "el-008",
-      name: "Action Camera",
-      category: "Cameras",
+    image:
+      "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    id: "el-006",
+    name: "Over-Ear Headphones",
+    category: "Headphones",
+    subCategory: "Headphones",
+    price: 2999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      subCategory: "Cameras",
-      price: 8999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80",
+  },
+],
 
-      image: "https://loremflickr.com/300/300/action,camera",
-    },
-  ],
-  "Smart Watches": [
-    {
-      id: "el-009",
-      name: "Fitness Smart Watch",
-      category:  "Smart Watches",
+Cameras: [
+  {
+    id: "el-007",
+    name: "DSLR Camera",
+    category: "Cameras",
+    subCategory: "Cameras",
+    price: 34999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      subCategory: "Smart Watches",
-      price: 2499,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+    image:
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    id: "el-008",
+    name: "Action Camera",
+    category: "Cameras",
+    subCategory: "Cameras",
+    price: 8999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/fitness,smart",
-    },
-  ],
+    image:
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=500&q=80",
+  },
+],
+
+"Smart Watches": [
+  {
+    id: "el-009",
+    name: "Fitness Smart Watch",
+    category: "Smart Watches",
+    subCategory: "Smart Watches",
+    price: 2499,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
+
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80",
+  },
+],
+
   "Home & Lifestyle": [
     {
       id: "hl-001",
@@ -835,7 +854,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/wooden,study",
+      image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-002",
@@ -847,7 +866,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/seater,sofa",
+     image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-003",
@@ -859,7 +878,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/non,stick",
+     image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-004",
@@ -871,7 +890,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/ceramic,dinner",
+     image: "https://images.unsplash.com/photo-1603199506016-b9a594b593c0?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-005",
@@ -883,7 +902,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/wall,art",
+      image: "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-006",
@@ -895,7 +914,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/decorative,vase",
+    image: "https://images.unsplash.com/photo-1577083552431-6e5fd01988b5?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-007",
@@ -907,7 +926,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/led,ceiling",
+     image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-008",
@@ -919,120 +938,11 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/table,lamp",
+      image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=500&q=80",
     },
   ],
-  Furniture: [
-    {
-      id: "hl-001",
-      name: "Wooden Study Table",
-      category:  "Furniture",
-      subCategory: "Furniture",
-      price: 5999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+ 
 
-      image: "https://loremflickr.com/300/300/wooden,study",
-    },
-    {
-      id: "hl-002",
-      name: "3-Seater Sofa",
-      category:  "Furniture",
-
-      subCategory: "Furniture",
-      price: 15999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/seater,sofa",
-    },
-  ],
-  Kitchenware: [
-    {
-      id: "hl-003",
-      name: "Non-Stick Cookware Set",
-      category:  "Kitchenware",
-
-      subCategory: "Kitchenware",
-      price: 2499,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/non,stick",
-    },
-    {
-      id: "hl-004",
-      name: "Ceramic Dinner Set",
-      category:  "Kitchenware",
-
-      subCategory: "Kitchenware",
-      price: 1799,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/ceramic,dinner",
-    },
-  ],
-  "Home Decor": [
-    {
-      id: "hl-005",
-      name: "Wall Art Canvas",
-      category:  "Home Decor",
-
-      subCategory: "Home Decor",
-      price: 899,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/wall,art",
-    },
-    {
-      id: "hl-006",
-      name: "Decorative Vase",
-      category:  "Home Decor",
-
-      subCategory: "Home Decor",
-      price: 599,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/decorative,vase",
-    },
-  ],
-  Lighting: [
-    {
-      id: "hl-007",
-      name: "LED Ceiling Light",
-      category:  "Lighting",
-
-      subCategory: "Lighting",
-      price: 1299,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/led,ceiling",
-    },
-    {
-      id: "hl-008",
-      name: "Table Lamp",
-      category:  "Lighting",
-
-      subCategory: "Lighting",
-      price: 699,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/table,lamp",
-    },
-  ],
   Medicine: [
     {
       id: "md-001",
@@ -1045,7 +955,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/pain,relief",
+     image: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "md-002",
@@ -1058,7 +968,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/vitamin,c",
+     image: "https://images.unsplash.com/photo-1550572017-edd951aa8ca9?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "md-003",
@@ -1071,7 +981,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/multivitamin,capsules",
+     image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "md-004",
@@ -1084,7 +994,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/first,aid",
+     image: "https://images.unsplash.com/photo-1608659905585-d2b9a6b7c1f4?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Pain Relief": [
@@ -1155,7 +1065,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/yoga,mat",
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "sp-002",
@@ -1168,7 +1078,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/adjustable,dumbbells",
+     image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "sp-003",
@@ -1181,7 +1091,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/mountain,bike",
+     image: "https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "sp-004",
@@ -1194,67 +1104,69 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/camping,tent",
+     image: "https://images.unsplash.com/photo-1504851149312-7a075b496cc7?auto=format&fit=crop&w=500&q=80",
     },
   ],
-  "Fitness Equipment": [
-    {
-      id: "sp-001",
-      name: "Yoga Mat",
-      category:  "Fitness Equipment",
+"Fitness Equipment": [
+  {
+    id: "sp-001",
+    name: "Yoga Mat",
+    category: "Fitness Equipment",
+    subCategory: "Fitness Equipment",
+    price: 599,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      subCategory: "Fitness Equipment",
-      price: 599,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+    image:
+      "https://images.unsplash.com/photo-1592432678016-e910b452f9a2?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    id: "sp-002",
+    name: "Adjustable Dumbbells",
+    category: "Fitness Equipment",
+    subCategory: "Fitness Equipment",
+    price: 2499,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/yoga,mat",
-    },
-    {
-      id: "sp-002",
-      name: "Adjustable Dumbbells",
-      category:  "Fitness Equipment",
+    image:
+      "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=500&q=80",
+  },
+],
 
-      subCategory: "Fitness Equipment",
-      price: 2499,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+Cycling: [
+  {
+    id: "sp-003",
+    name: "Mountain Bike",
+    category: "Cycling",
+    subCategory: "Cycling",
+    price: 12999,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/adjustable,dumbbells",
-    },
-  ],
-  Cycling: [
-    {
-      id: "sp-003",
-      name: "Mountain Bike",
-      category:  "Cycling",
+    image:
+      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=500&q=80",
+  },
+],
 
-      subCategory: "Cycling",
-      price: 12999,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
+Camping: [
+  {
+    id: "sp-004",
+    name: "Camping Tent (4 Person)",
+    category: "Camping",
+    subCategory: "Camping",
+    price: 3499,
+    discount: "-10%",
+    rating: 5,
+    reviews: 99,
 
-      image: "https://loremflickr.com/300/300/mountain,bike",
-    },
-  ],
-  Camping: [
-    {
-      id: "sp-004",
-      name: "Camping Tent (4 Person)",
-      category:  "Camping",
-
-      subCategory: "Camping",
-      price: 3499,
-      discount: "-10%",
-      rating: 5,
-      reviews: 99,
-
-      image: "https://loremflickr.com/300/300/camping,tent",
-    },
-  ],
+    image:
+      "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=500&q=80",
+  },
+],
   "Baby's & Toys": [
     {
       id: "bt-001",
@@ -1267,7 +1179,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/baby,diapers",
+     image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "bt-002",
@@ -1280,7 +1192,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/baby,feeding",
+      image: "https://images.unsplash.com/photo-1584839404042-8bc4f4d6b2b8?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "bt-003",
@@ -1293,7 +1205,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/building,blocks",
+      image: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "bt-004",
@@ -1306,7 +1218,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/remote,control",
+      image: "https://images.unsplash.com/photo-1594787319073-8f7c3f9d1c98?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "bt-005",
@@ -1319,9 +1231,10 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/baby,romper",
+      image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=500&q=80",
     },
   ],
+
   "Baby Care": [
     {
       id: "bt-001",
@@ -1334,7 +1247,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/baby,diapers",
+      image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "bt-002",
@@ -1347,9 +1260,10 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/baby,feeding",
+     image: "https://images.unsplash.com/photo-1584839404042-8bc4f4d6b2b8?auto=format&fit=crop&w=500&q=80",
     },
   ],
+
   Toys: [
     {
       id: "bt-003",
@@ -1362,7 +1276,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/building,blocks",
+     image: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "bt-004",
@@ -1375,7 +1289,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/remote,control",
+      image: "https://images.unsplash.com/photo-1594787319073-8f7c3f9d1c98?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Baby Clothing": [
@@ -1390,7 +1304,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/baby,romper",
+      image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Groceries & Pets": [
@@ -1405,7 +1319,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/basmati,rice",
+     image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "gp-002",
@@ -1418,7 +1332,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/cooking,oil",
+     image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "gp-003",
@@ -1431,7 +1345,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/dog,food",
+   image: "https://images.unsplash.com/photo-1589924691106-073b2d1d7d9e?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "gp-004",
@@ -1444,7 +1358,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/cat,food",
+    image: "https://images.unsplash.com/photo-1589924691106-073b2d1d7d9e?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "gp-005",
@@ -1457,7 +1371,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/pet,leash",
+      image: "https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Groceries: [
@@ -1472,7 +1386,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/basmati,rice",
+     image: "https://images.unsplash.com/photo-1515543904379-3d757afe72e4?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "gp-002",
@@ -1485,7 +1399,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/cooking,oil",
+     image: "https://images.unsplash.com/photo-1612538498456-e861df91d4d0?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Pet Food": [
@@ -1500,7 +1414,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/dog,food",
+     image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "gp-004",
@@ -1513,7 +1427,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/cat,food",
+image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Pet Accessories": [
@@ -1528,7 +1442,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/pet,leash",
+     image: "https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Health & Beauty": [
@@ -1543,7 +1457,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/face,moisturizer",
+     image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hb-002",
@@ -1556,7 +1470,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/sunscreen,spf",
+      image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hb-003",
@@ -1569,7 +1483,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/hair,serum",
+      image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hb-004",
@@ -1582,7 +1496,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/shampoo,conditioner",
+     image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hb-005",
@@ -1595,7 +1509,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/electric,trimmer",
+      image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Skincare: [
@@ -1610,7 +1524,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/face,moisturizer",
+      image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hb-002",
@@ -1623,7 +1537,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/sunscreen,spf",
+      image: "https://images.unsplash.com/photo-1556229010-6c3f2c9f5e8f?auto=format&fit=crop&w=500&q=80",
     },
   ],
   Haircare: [
@@ -1638,7 +1552,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/hair,serum",
+      image: "https://images.unsplash.com/photo-1527799820374-dcf8b2d3a5e2?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hb-004",
@@ -1651,7 +1565,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/shampoo,conditioner",
+      image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Personal Care": [
@@ -1665,7 +1579,7 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-      image: "https://loremflickr.com/300/300/electric,trimmer",
+      image: "https://images.unsplash.com/photo-1621607512022-6aecc4fed814?auto=format&fit=crop&w=500&q=80",
     },
   ],
 };
