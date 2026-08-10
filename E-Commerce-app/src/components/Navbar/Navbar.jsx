@@ -101,12 +101,135 @@ export default function Navbar() {
     ...allSidebarProducts,
     ...allSidebarCategories,
   ];
+  // const handleSearch = () => {
+  //   const value = search.trim().toLowerCase();
+  
+  //   if (!value) return;
+  
+  //   // 1. Sidebar Categories
+  //   const sidebarCategory = Object.keys(sidebarProducts).find(
+  //     (item) => item.toLowerCase() === value
+  //   );
+  
+  //   if (sidebarCategory) {
+  //     navigate(`/sidebar/${sidebarCategory}`);
+  //     setSearch("");
+  //     setShowSuggestions(false);
+  //     return;
+  //   }
+  
+  //   // 2. Main Category Page
+  //   const categoryPage = Object.keys(categoryProducts).find(
+  //     (item) => item.toLowerCase() === value
+  //   );
+  
+  //   if (categoryPage) {
+  //     navigate(`/category/${categoryPage}`);
+  //     setSearch("");
+  //     setShowSuggestions(false);
+  //     return;
+  //   }
+  
+  //   // 3. Product Suggestions (Details Page)
+  //   if (filteredProducts.length > 0) {
+  //     const product = filteredProducts[0];
+  
+  //     if (product.type === "main") {
+  //       navigate(`/products?search=${encodeURIComponent(search)}`);
+  //     } else if (product.type === "category") {
+  //       navigate(`/category-product/${product.id}`);
+  //     } else if (product.type === "sidebar") {
+  //       navigate(`/sidebar-product/${product.id}`);
+  //     }
+  
+  //     setSearch("");
+  //     setShowSuggestions(false);
+  //   }
+  // };
+
   const handleSearch = () => {
     const value = search.trim().toLowerCase();
   
     if (!value) return;
   
-    // 1. Sidebar Categories
+    // ==========================================
+    // 1. CURRENT SIDEBAR PAGE
+    // Example: /sidebar/Electronics
+    // ==========================================
+  
+    if (location.pathname.startsWith("/sidebar/")) {
+      const currentSidebar = decodeURIComponent(
+        location.pathname.replace("/sidebar/", "")
+      );
+  
+      const sidebarProductsList =
+        sidebarProducts[currentSidebar] || [];
+  
+      const matchedProducts = sidebarProductsList.filter((product) => {
+        return (
+          product.name?.toLowerCase().includes(value) ||
+          product.category?.toLowerCase().includes(value) ||
+          product.subCategory?.toLowerCase().includes(value)
+        );
+      });
+  
+      if (matchedProducts.length > 0) {
+        navigate(
+          `/sidebar/${encodeURIComponent(
+            currentSidebar
+          )}?search=${encodeURIComponent(search)}`
+        );
+  
+        setShowSuggestions(false);
+        return;
+      }
+  
+      showToast("No product found in this category", "error");
+      return;
+    }
+  
+    // ==========================================
+    // 2. CURRENT CATEGORY PAGE
+    // Example: /category/Phones
+    // ==========================================
+  
+    if (location.pathname.startsWith("/category/")) {
+      const currentCategory = decodeURIComponent(
+        location.pathname.replace("/category/", "")
+      );
+  
+      const categoryProductsList =
+        categoryProducts[currentCategory] || [];
+  
+      const matchedProducts = categoryProductsList.filter((product) => {
+        return (
+          product.title?.toLowerCase().includes(value) ||
+          product.name?.toLowerCase().includes(value) ||
+          product.category?.toLowerCase().includes(value) ||
+          product.subCategory?.toLowerCase().includes(value)
+        );
+      });
+  
+      if (matchedProducts.length > 0) {
+        navigate(
+          `/category/${encodeURIComponent(
+            currentCategory
+          )}?search=${encodeURIComponent(search)}`
+        );
+  
+        setShowSuggestions(false);
+        return;
+      }
+  
+      showToast("No product found in this category", "error");
+      return;
+    }
+  
+    // ==========================================
+    // 3. SIDEBAR CATEGORY SEARCH
+    // Example: Electronics
+    // ==========================================
+  
     const sidebarCategory = Object.keys(sidebarProducts).find(
       (item) => item.toLowerCase() === value
     );
@@ -118,7 +241,11 @@ export default function Navbar() {
       return;
     }
   
-    // 2. Main Category Page
+    // ==========================================
+    // 4. MAIN CATEGORY SEARCH
+    // Example: Phones
+    // ==========================================
+  
     const categoryPage = Object.keys(categoryProducts).find(
       (item) => item.toLowerCase() === value
     );
@@ -130,23 +257,23 @@ export default function Navbar() {
       return;
     }
   
-    // 3. Product Suggestions (Details Page)
-    if (filteredProducts.length > 0) {
-      const product = filteredProducts[0];
+    // ==========================================
+    // 5. NORMAL PRODUCT SEARCH
+    // ==========================================
   
-      if (product.type === "main") {
-        navigate(`/products?search=${encodeURIComponent(search)}`);
-      } else if (product.type === "category") {
-        navigate(`/category-product/${product.id}`);
-      } else if (product.type === "sidebar") {
-        navigate(`/sidebar-product/${product.id}`);
-      }
+    if (filteredProducts.length > 0) {
+      navigate(
+        `/products?search=${encodeURIComponent(search)}`
+      );
   
       setSearch("");
       setShowSuggestions(false);
+      return;
     }
+  
+    showToast("No product found", "error");
   };
-
+  
   const filteredProducts =
     search.trim() === ""
       ? []

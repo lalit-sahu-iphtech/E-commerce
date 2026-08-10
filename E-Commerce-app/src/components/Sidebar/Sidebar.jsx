@@ -3,11 +3,15 @@ import { FaChevronRight } from "react-icons/fa";
 import { useCategory } from "../../context/CategoryContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 
 export default function Sidebar() {
 
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+const searchValue = searchParams.get("search") || "";
 
     const {
         category,

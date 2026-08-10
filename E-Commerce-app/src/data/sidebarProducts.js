@@ -573,7 +573,8 @@ export const sidebarProducts = {
       rating: 5,
       reviews: 99,
 
-     image: "https://images.unsplash.com/photo-1553062407-5c7c8f0b1c43?auto=format&fit=crop&w=500&q=80",
+      image:
+      "https://images.nexusapp.co/assets/f9/67/81/488581933.jpg",
     },
   ],
   Jackets: [
@@ -914,7 +915,7 @@ Cameras: [
       rating: 5,
       reviews: 99,
 
-    image: "https://images.unsplash.com/photo-1577083552431-6e5fd01988b5?auto=format&fit=crop&w=500&q=80",
+      image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-007",
@@ -926,7 +927,7 @@ Cameras: [
       rating: 5,
       reviews: 99,
 
-     image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=500&q=80",
+     image: "https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "hl-008",
@@ -938,7 +939,7 @@ Cameras: [
       rating: 5,
       reviews: 99,
 
-      image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=500&q=80",
+      image: "https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&w=500&q=80",
     },
   ],
  
@@ -955,7 +956,7 @@ Cameras: [
       rating: 5,
       reviews: 99,
 
-     image: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=500&q=80",
+      image: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "md-002",
@@ -968,7 +969,7 @@ Cameras: [
       rating: 5,
       reviews: 99,
 
-     image: "https://images.unsplash.com/photo-1550572017-edd951aa8ca9?auto=format&fit=crop&w=500&q=80",
+      image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "md-003",
@@ -981,7 +982,7 @@ Cameras: [
       rating: 5,
       reviews: 99,
 
-     image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80",
+      image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "md-004",
@@ -994,7 +995,7 @@ Cameras: [
       rating: 5,
       reviews: 99,
 
-     image: "https://images.unsplash.com/photo-1608659905585-d2b9a6b7c1f4?auto=format&fit=crop&w=500&q=80",
+      image: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=500&q=80",
     },
   ],
   "Pain Relief": [
@@ -1192,7 +1193,9 @@ Camping: [
       rating: 5,
       reviews: 99,
 
-      image: "https://images.unsplash.com/photo-1584839404042-8bc4f4d6b2b8?auto=format&fit=crop&w=500&q=80",
+      
+      image:
+      "https://cdn.fynd.com/v2/falling-surf-7c8bb8/fyprod/wrkr/products/pictures/item/free/original/mothercare/KE685NA/0/sb6LbR5xMM-KE685NA_1.jpg",
     },
     {
       id: "bt-003",
@@ -1205,7 +1208,7 @@ Camping: [
       rating: 5,
       reviews: 99,
 
-      image: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=500&q=80",
+      image: "https://cdn.media.amplience.net/i/mrpricegroup/02_105445338_SI_11",
     },
     {
       id: "bt-004",
@@ -1218,7 +1221,8 @@ Camping: [
       rating: 5,
       reviews: 99,
 
-      image: "https://images.unsplash.com/photo-1594787319073-8f7c3f9d1c98?auto=format&fit=crop&w=500&q=80",
+      image:
+    "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=500&q=80",
     },
     {
       id: "bt-005",
@@ -1345,7 +1349,9 @@ Camping: [
       rating: 5,
       reviews: 99,
 
-   image: "https://images.unsplash.com/photo-1589924691106-073b2d1d7d9e?auto=format&fit=crop&w=500&q=80",
+      image:
+      "https://cobbydog.com/cdn/shop/files/custom_resized_a8985fcb-d44f-421a-8091-419d54e389e4.jpg?v=1743690434",
+  
     },
     {
       id: "gp-004",
@@ -1358,7 +1364,8 @@ Camping: [
       rating: 5,
       reviews: 99,
 
-    image: "https://images.unsplash.com/photo-1589924691106-073b2d1d7d9e?auto=format&fit=crop&w=500&q=80",
+      image:
+      "https://www.kindpng.com/picc/m/736-7367411_5-kg-cats-food-bag-icon-cat-png.png",
     },
     {
       id: "gp-005",
