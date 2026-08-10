@@ -14,9 +14,22 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../context/ToastContext";
 
+//redux
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart, increaseQuantity,decreaseQuantity,clearCart } from "../../redux/slices/cartSlice";
+import { toggleWishlist,removeFromWishlist, clearWishlist } from "../../redux/slices/wishlistSlice";
+
 export default function ProductCard({ product }) {
-  const { toggleWishlist, isInWishlist } = useWishlist();
-  const { addToCart, removeFromCart, isInCart } = useCart();
+
+  // const { toggleWishlist, isInWishlist } = useWishlist();
+  // const { addToCart, removeFromCart, isInCart } = useCart();
+  
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state)=>state.cart.items);
+  const wishlistItems = useSelector((state)=>state.wishlist.items);
+  const isInCart = (id)=>cartItems.some((item)=>item.id === id);
+  const isInWishlist = (id)=>wishlistItems.some((item)=>item.id === id);
+
   const navigate = useNavigate();
   const { showToast } = useToast();
   // const [added, setAdded] = useState(false);
@@ -30,7 +43,12 @@ export default function ProductCard({ product }) {
       navigate("/signup");
       return;
     }
-    toggleWishlist(product);
+    const alreadyInWishlist = isInWishlist(product.id);
+
+    // toggleWishlist(product);
+    dispatch(toggleWishlist(product));
+
+
     if (alreadyInWishlist) {
       showToast("Product removed from wishlist.", "success");
     } else {
@@ -68,10 +86,15 @@ export default function ProductCard({ product }) {
     }
   
     if (isInCart(product.id)) {
-      removeFromCart(product.id);
+      // removeFromCart(product.id);
+     
+      dispatch(removeFromCart(product.id));
+
       showToast("Product removed from cart.", "success");
+
     } else {
-      addToCart(product);
+      // addToCart(product);
+      dispatch(addToCart(product));
       showToast("Product added to cart.", "success");
     }
   };
