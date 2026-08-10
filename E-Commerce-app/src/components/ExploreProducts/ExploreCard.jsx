@@ -6,15 +6,30 @@ import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../context/ToastContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart } from "../../redux/slices/cartSlice";
+import { toggleWishlist, removeFromWishlist, clearWishlist } from "../../redux/slices/wishlistSlice";
 export default function ExploreCard({ product }) {
   
-  const {
-    addToCart,
-    removeFromCart,
-    isInCart,
-  } = useCart();
-  const { toggleWishlist, isInWishlist } = useWishlist();
+  // const {
+  //   addToCart,
+  //   removeFromCart,
+  //   isInCart,
+  // } = useCart();
+  // const { toggleWishlist, isInWishlist } = useWishlist();
   // const [added,setAdded]=useState(false);
+
+  const dispatch = useDispatch();
+
+  const cart = useSelector((state)=>state.cart.items);
+  const wishlist = useSelector((state)=>state.wishlist.items);
+
+  const isInCart = (id)=>{
+    return cart.some((item)=>item.id === id);
+  }
+  const isInWishlist = (id)=>{
+    return wishlist.some((item)=>item.id === id);
+  }
 
   const navigate = useNavigate();
 
@@ -31,7 +46,7 @@ export default function ExploreCard({ product }) {
   
     const alreadyInWishlist = isInWishlist(product.id);
   
-    toggleWishlist(product);
+    dispatch(toggleWishlist(product));
   
     if (alreadyInWishlist) {
       showToast("Product removed from wishlist.", "success");
@@ -74,10 +89,10 @@ export default function ExploreCard({ product }) {
     }
   
     if (isInCart(product.id)) {
-      removeFromCart(product.id);
+      dispatch(removeFromCart(product.id));
       showToast("Product removed from cart.", "success");
     } else {
-      addToCart(product);
+      dispatch(addToCart(product));
       showToast("Product added to cart.", "success");
     }
   };
