@@ -9,8 +9,14 @@ import { SearchProvider } from "./context/SearchContext";
 import { CategoryProvider } from "./context/CategoryContext";
 import ScrollToTop from "./components/ScrollToTop";
 import { ToastProvider } from "./context/ToastContext";
+import { PersistGate } from "redux-persist/integration/react";
+import {Provider} from "react-redux";
+import{store,persistor} from "./redux/store"
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+
+    <Provider store={store}>
+      <PersistGate loading={null}persistor={persistor}>
     <BrowserRouter>
     <ScrollToTop/>
      <SearchProvider>
@@ -19,6 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <WishlistProvider>
         <ToastProvider>
         <App />
+       
 
         </ToastProvider>
        
@@ -27,5 +34,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
      </ CategoryProvider >
      </SearchProvider>
     </BrowserRouter>
+    </PersistGate>
+    </Provider>
+
   </React.StrictMode>
 );
