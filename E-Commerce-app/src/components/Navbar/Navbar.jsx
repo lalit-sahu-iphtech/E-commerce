@@ -21,13 +21,33 @@ import { categoryProducts } from "../../data/categoryProducts";
 import { sidebarProducts } from "../../data/sidebarProducts";
 import { useToast } from "../../context/ToastContext";
 
+import { useSelector, useDispatch } from "react-redux";
+
 export default function Navbar() {
   const location = useLocation();
   const isSignupPage = location.pathname === "/signup";
   const navigate = useNavigate();
 
-  const { wishlist } = useWishlist();
-  const { cart } = useCart();
+  // const { wishlist } = useWishlist();
+  // const { cart } = useCart();
+
+  const dispatch = useDispatch();
+  //Redux auth
+  //const currentUser = useSelector((state)=>state.auth.currentUser)
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const wishlist = useSelector((state)=>state.wishlist.items);
+
+  const cart = useSelector((state) =>state.cart.items);
+
+  // const wishlistCount = wishlist.length;
+
+  // const cartCount = cart.reduce((total,item)=>total + (item.quantity || 1),0);
+
+  // const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
+
+
+
   const { search, setSearch } = useSearch();
   const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -35,7 +55,7 @@ export default function Navbar() {
   const [showProfile, setShowProfile] = useState(false);
   const { showToast } = useToast();
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  // const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
@@ -254,7 +274,7 @@ export default function Navbar() {
             className="wishlist-link"
             onClick={() => {
               if (!currentUser) {
-                alert("Please Login First");
+                showToast("Please Login First");
                 navigate("/signup");
                 return;
               }
@@ -276,7 +296,7 @@ export default function Navbar() {
             className="cart-icon"
             onClick={() => {
               if (!currentUser) {
-                alert("Please Login First");
+                showToast("Please Login First");
                 navigate("/signup");
                 return;
               }
