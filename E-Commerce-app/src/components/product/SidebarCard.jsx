@@ -14,9 +14,31 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../context/ToastContext";
 
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity } from "../../redux/slices/cartSlice";
+import { toggleWishlist,removeFromWishlist, clearWishlist } from "../../redux/slices/wishlistSlice";
+
+
 export default function SidebarCard({ product }) {
-  const { toggleWishlist, isInWishlist } = useWishlist();
-  const { addToCart, removeFromCart, isInCart } = useCart();
+  // const { toggleWishlist, isInWishlist } = useWishlist();
+  // const { addToCart, removeFromCart, isInCart } = useCart();
+
+  const dispatch = useDispatch();
+
+  const cartItems = useSelector((state)=>state.cart.items);
+
+  const wishlistItems = useSelector((state)=>state.wishlist.items);
+
+  const isInCart = (id)=>{
+    return cartItems.some((item)=>item.id === id);
+  }
+
+  const isInWishlist = (id)=>{
+    return wishlistItems.some((item) => item.id === id);
+  }
+
+
+
   const navigate = useNavigate();
   const { showToast } = useToast();
 
@@ -52,10 +74,10 @@ export default function SidebarCard({ product }) {
     }
 
     if (isInCart(product.id)) {
-      removeFromCart(product.id);
+      dispatch(removeFromCart(product.id));
       showToast("Product removed from cart.", "success");
     } else {
-      addToCart(product);
+      dispatch(addToCart(product));
       showToast("Product added to cart.", "success");
     }
   };
@@ -71,7 +93,7 @@ export default function SidebarCard({ product }) {
 
     const alreadyInWishlist = isInWishlist(product.id);
 
-    toggleWishlist(product);
+    dispatch(toggleWishlist(product));
 
     if (alreadyInWishlist) {
       showToast("Product removed from wishlist.", "success");
