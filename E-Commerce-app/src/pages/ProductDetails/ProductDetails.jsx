@@ -4,40 +4,49 @@ import { FaStar, FaRegStar, FaHeart } from "react-icons/fa";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { useState } from "react";
 
-import { products } from "../../data/products";
+import { products as mainProducts } from "../../data/products";
+import { categoryProducts } from "../../data/categoryProducts";
+import { sidebarProducts } from "../../data/sidebarProducts";
+
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
+import { useToast } from "../../context/ToastContext";
 import RecomDetails from "./RecomDetails";
 
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
-
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import { useToast } from "../../context/ToastContext";
+
+// Ek hi jagah teeno data source ko combine kar diya (products, categoryProducts, sidebarProducts).
+// Ab id chahe products.js se aaye, categoryProducts.js se aaye ya sidebarProducts.js se — sab yahin milega.
+const allProducts = [
+  ...mainProducts,
+  ...Object.values(categoryProducts).flat(),
+  ...Object.values(sidebarProducts).flat(),
+];
+
+// Rotation fallback un products ke liye jinke paas sirf ek "image" hai, images[] nahi
+// (products.js aur sidebarProducts.js mein aisa hi hai)
+const imageRotation = [
+  "rotate(0deg)",
+  "rotate(-25deg)",
+  "rotate(25deg)",
+  "rotate(180deg)",
+];
 
 export default function ProductDetails() {
   const { showToast } = useToast();
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const product = products.find((item) => item.id === Number(id));
+  // products.js/categoryProducts.js ka id number hai, sidebarProducts.js ka id string (e.g. "wf-001")
+  // isliye String() se compare kiya taaki dono type ke id match ho jaayein
+  const product = allProducts.find((item) => String(item.id) === String(id));
 
   const [qty, setQty] = useState(1);
-
-  const [selectedColor, setSelectedColor] = useState(
-    product?.colors?.[0] || ""
-  );
-
+  const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || "");
   const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
-
   const [selectedImage, setSelectedImage] = useState(0);
   const [showImage, setShowImage] = useState(false);
-
-  const imageRotation = [
-    "rotate(0deg)",
-    "rotate(-25deg)",
-    "rotate(25deg)",
-    "rotate(180deg)",
-  ];
 
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
@@ -54,18 +63,26 @@ export default function ProductDetails() {
       </h2>
     );
   }
+
+  // kahin "title" hai kahin "name"
+  const title = product.title || product.name;
+
+  // categoryProducts.js ke paas images[] array hai, baaki dono ke paas sirf ek "image"
+  const hasMultipleImages = Array.isArray(product.images) && product.images.length > 0;
+  const imageList = hasMultipleImages
+    ? product.images
+    : [product.image, product.image, product.image, product.image];
+
   const handleNextImage = (e) => {
     e.stopPropagation();
-    setSelectedImage((prev) =>
-      prev === imageRotation.length - 1 ? 0 : prev + 1
-    );
+    setSelectedImage((prev) => (prev === imageList.length - 1 ? 0 : prev + 1));
   };
+
   const handlePrevImage = (e) => {
     e.stopPropagation();
-    setSelectedImage((prev) =>
-      prev === 0 ? imageRotation.length - 1 : prev - 1
-    );
+    setSelectedImage((prev) => (prev === 0 ? imageList.length - 1 : prev - 1));
   };
+
   const handleBuyNow = () => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -86,6 +103,7 @@ export default function ProductDetails() {
       },
     });
   };
+
   return (
     <div className="product-container">
       <section className="details-page">
@@ -93,7 +111,7 @@ export default function ProductDetails() {
 
         <div className="details-left">
           <div className="small-images">
-            {imageRotation.map((rotation, index) => (
+            {imageList.map((img, index) => (
               <div
                 key={index}
                 className={`small-box ${
@@ -102,24 +120,19 @@ export default function ProductDetails() {
                 onClick={() => setSelectedImage(index)}
               >
                 <img
-                  src={product.image}
-                  alt={product.title}
-                  style={{
-                    transform: rotation,
-                  }}
+                  src={img}
+                  alt={`${title}-${index}`}
+                  style={!hasMultipleImages ? { transform: imageRotation[index] } : undefined}
                 />
               </div>
             ))}
           </div>
 
-          <div className="main-image">
+          <div className="main-image" onClick={() => setShowImage(true)}>
             <img
-              src={product.image}
-              alt={product.title}
-              onClick={() => setShowImage(true)}
-              style={{
-                transform: imageRotation[selectedImage],
-              }}
+              src={imageList[selectedImage]}
+              alt={title}
+              style={!hasMultipleImages ? { transform: imageRotation[selectedImage] } : undefined}
             />
           </div>
         </div>
@@ -127,7 +140,7 @@ export default function ProductDetails() {
         {/* RIGHT */}
 
         <div className="details-right">
-          <h2>{product.title}</h2>
+          <h2>{title}</h2>
 
           <div className="rating-row">
             {[...Array(5)].map((_, index) =>
@@ -143,40 +156,42 @@ export default function ProductDetails() {
             <span
               className="stock"
               style={{
-                color: product.stock ? "#00A651" : "red",
+                color: product.stock === false ? "red" : "#00A651",
               }}
             >
-              {product.stock ? "In Stock" : "Out of Stock"}
+              {product.stock === false ? "Out of Stock" : "In Stock"}
             </span>
           </div>
 
           <h3 className="price">${(product.price * qty).toFixed(2)}</h3>
 
-          <p className="description">{product.description}</p>
+          {product.description && (
+            <p className="description">{product.description}</p>
+          )}
 
           <hr />
 
-          {/* COLORS */}
+          {/* COLORS - sirf tab dikhega jab product ke paas colors[] ho */}
+          {product.colors && (
+            <div className="color-row">
+              <strong>Colours:</strong>
 
-          <div className="color-row">
-            <strong>Colours:</strong>
+              {product.colors.map((color, index) => (
+                <div
+                  key={index}
+                  className={`circle ${
+                    selectedColor === color ? "active-color" : ""
+                  }`}
+                  style={{
+                    background: color,
+                  }}
+                  onClick={() => setSelectedColor(color)}
+                ></div>
+              ))}
+            </div>
+          )}
 
-            {product.colors?.map((color, index) => (
-              <div
-                key={index}
-                className={`circle ${
-                  selectedColor === color ? "active-color" : ""
-                }`}
-                style={{
-                  background: color,
-                }}
-                onClick={() => setSelectedColor(color)}
-              ></div>
-            ))}
-          </div>
-
-          {/* SIZE */}
-
+          {/* SIZE - sirf tab dikhega jab product ke paas sizes[] ho */}
           {product.sizes && (
             <div className="size-row">
               <strong>Size:</strong>
@@ -246,6 +261,7 @@ export default function ProductDetails() {
           </div>
         </div>
       </section>
+
       {showImage && (
         <div className="image-modal" onClick={() => setShowImage(false)}>
           <span className="close-image" onClick={() => setShowImage(false)}>
@@ -257,12 +273,10 @@ export default function ProductDetails() {
           </button>
 
           <img
-            src={product.image}
-            alt={product.title}
+            src={imageList[selectedImage]}
+            alt={title}
             className="zoom-image"
-            style={{
-              transform: imageRotation[selectedImage],
-            }}
+            style={!hasMultipleImages ? { transform: imageRotation[selectedImage] } : undefined}
             onClick={(e) => e.stopPropagation()}
           />
 

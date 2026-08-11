@@ -13,15 +13,16 @@ import {
 } from "react-icons/hi2";
 import { IoSearchOutline } from "react-icons/io5";
 
-import { useWishlist } from "../../context/WishlistContext";
-import { useCart } from "../../context/CartContext";
-import { useSearch } from "../../context/SearchContext";
+//import { useWishlist } from "../../context/WishlistContext";
+//import { useCart } from "../../context/CartContext";
+// import { useSearch } from "../../context/SearchContext";
 import { products } from "../../data/products";
 import { categoryProducts } from "../../data/categoryProducts";
 import { sidebarProducts } from "../../data/sidebarProducts";
 import { useToast } from "../../context/ToastContext";
 
 import { useSelector, useDispatch } from "react-redux";
+import { setSearchQuery, setSearchResults, setSearchSuggestions, clearSearch } from "../../redux/slices/searchSlice";
 
 export default function Navbar() {
   const location = useLocation();
@@ -36,9 +37,9 @@ export default function Navbar() {
   //const currentUser = useSelector((state)=>state.auth.currentUser)
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  const wishlist = useSelector((state)=>state.wishlist.items);
+  const wishlist = useSelector((state) => state.wishlist.items);
 
-  const cart = useSelector((state) =>state.cart.items);
+  const cart = useSelector((state) => state.cart.items);
 
   // const wishlistCount = wishlist.length;
 
@@ -46,9 +47,10 @@ export default function Navbar() {
 
   // const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
 
+  //const { search, setSearch } = useSearch();
+  const search = useSelector((state)=>state.search.query);
+  const searchSuggestions = useSelector((state) =>state.search.suggestions);
 
-
-  const { search, setSearch } = useSearch();
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -103,37 +105,37 @@ export default function Navbar() {
   ];
   // const handleSearch = () => {
   //   const value = search.trim().toLowerCase();
-  
+
   //   if (!value) return;
-  
+
   //   // 1. Sidebar Categories
   //   const sidebarCategory = Object.keys(sidebarProducts).find(
   //     (item) => item.toLowerCase() === value
   //   );
-  
+
   //   if (sidebarCategory) {
   //     navigate(`/sidebar/${sidebarCategory}`);
   //     setSearch("");
   //     setShowSuggestions(false);
   //     return;
   //   }
-  
+
   //   // 2. Main Category Page
   //   const categoryPage = Object.keys(categoryProducts).find(
   //     (item) => item.toLowerCase() === value
   //   );
-  
+
   //   if (categoryPage) {
   //     navigate(`/category/${categoryPage}`);
   //     setSearch("");
   //     setShowSuggestions(false);
   //     return;
   //   }
-  
+
   //   // 3. Product Suggestions (Details Page)
   //   if (filteredProducts.length > 0) {
   //     const product = filteredProducts[0];
-  
+
   //     if (product.type === "main") {
   //       navigate(`/products?search=${encodeURIComponent(search)}`);
   //     } else if (product.type === "category") {
@@ -141,7 +143,7 @@ export default function Navbar() {
   //     } else if (product.type === "sidebar") {
   //       navigate(`/sidebar-product/${product.id}`);
   //     }
-  
+
   //     setSearch("");
   //     setShowSuggestions(false);
   //   }
@@ -149,22 +151,21 @@ export default function Navbar() {
 
   const handleSearch = () => {
     const value = search.trim().toLowerCase();
-  
+
     if (!value) return;
-  
+
     // ==========================================
     // 1. CURRENT SIDEBAR PAGE
     // Example: /sidebar/Electronics
     // ==========================================
-  
+
     if (location.pathname.startsWith("/sidebar/")) {
       const currentSidebar = decodeURIComponent(
         location.pathname.replace("/sidebar/", "")
       );
-  
-      const sidebarProductsList =
-        sidebarProducts[currentSidebar] || [];
-  
+
+      const sidebarProductsList = sidebarProducts[currentSidebar] || [];
+
       const matchedProducts = sidebarProductsList.filter((product) => {
         return (
           product.name?.toLowerCase().includes(value) ||
@@ -172,35 +173,34 @@ export default function Navbar() {
           product.subCategory?.toLowerCase().includes(value)
         );
       });
-  
+
       if (matchedProducts.length > 0) {
         navigate(
           `/sidebar/${encodeURIComponent(
             currentSidebar
           )}?search=${encodeURIComponent(search)}`
         );
-  
+
         setShowSuggestions(false);
         return;
       }
-  
+
       showToast("No product found in this category", "error");
       return;
     }
-  
+
     // ==========================================
     // 2. CURRENT CATEGORY PAGE
     // Example: /category/Phones
     // ==========================================
-  
+
     if (location.pathname.startsWith("/category/")) {
       const currentCategory = decodeURIComponent(
         location.pathname.replace("/category/", "")
       );
-  
-      const categoryProductsList =
-        categoryProducts[currentCategory] || [];
-  
+
+      const categoryProductsList = categoryProducts[currentCategory] || [];
+
       const matchedProducts = categoryProductsList.filter((product) => {
         return (
           product.title?.toLowerCase().includes(value) ||
@@ -209,71 +209,72 @@ export default function Navbar() {
           product.subCategory?.toLowerCase().includes(value)
         );
       });
-  
+
       if (matchedProducts.length > 0) {
         navigate(
           `/category/${encodeURIComponent(
             currentCategory
           )}?search=${encodeURIComponent(search)}`
         );
-  
+
         setShowSuggestions(false);
         return;
       }
-  
+
       showToast("No product found in this category", "error");
       return;
     }
-  
+
     // ==========================================
     // 3. SIDEBAR CATEGORY SEARCH
     // Example: Electronics
     // ==========================================
-  
+
     const sidebarCategory = Object.keys(sidebarProducts).find(
       (item) => item.toLowerCase() === value
     );
-  
+
     if (sidebarCategory) {
       navigate(`/sidebar/${sidebarCategory}`);
-      setSearch("");
+      // setSearch("");
+     dispatch(clearSearch());
       setShowSuggestions(false);
       return;
     }
-  
+
     // ==========================================
     // 4. MAIN CATEGORY SEARCH
     // Example: Phones
     // ==========================================
-  
+
     const categoryPage = Object.keys(categoryProducts).find(
       (item) => item.toLowerCase() === value
     );
-  
+
     if (categoryPage) {
       navigate(`/category/${categoryPage}`);
-      setSearch("");
+      // setSearch("");
+      dispatch(clearSearch());
       setShowSuggestions(false);
       return;
     }
-  
+
     // ==========================================
     // 5. NORMAL PRODUCT SEARCH
     // ==========================================
-  
+
     if (filteredProducts.length > 0) {
-      navigate(
-        `/products?search=${encodeURIComponent(search)}`
-      );
-  
-      setSearch("");
+      navigate(`/products?search=${encodeURIComponent(search)}`);
+
+      // setSearch("");
+      dispatch(clearSearch());
       setShowSuggestions(false);
       return;
     }
-  
+
     showToast("No product found", "error");
   };
-  
+
   const filteredProducts =
     search.trim() === ""
       ? []
@@ -289,6 +290,22 @@ export default function Navbar() {
             );
           })
           .slice(0, 15);
+
+  // Suggestion pe click hone par ab details page nahi khulega —
+  // seedha All Products page pe navigate karke usi product ko search se filter kar denge.
+  // Sirf "sidebar-category" alag hai kyunki wo khud ek category page hai, product nahi.
+  const handleSuggestionClick = (product) => {
+    if (product.type === "sidebar-category") {
+      navigate(`/sidebar/${product.name}`);
+    } else {
+      const query = product.title || product.name || "";
+      navigate(`/products?search=${encodeURIComponent(query)}`);
+    }
+
+    // setSearch("");
+    dispatch(clearSearch());
+    setShowSuggestions(false);
+  };
 
   return (
     <header className="navbar">
@@ -342,7 +359,7 @@ export default function Navbar() {
           placeholder="What are you looking for?"
           value={search}
           onChange={(e) => {
-            setSearch(e.target.value);
+            dispatch(setSearchQuery(e.target.value));
             setShowSuggestions(true);
           }}
           onKeyDown={(e) => {
@@ -362,22 +379,9 @@ export default function Navbar() {
                 <div
                   key={product.id}
                   className="suggestion-item"
-                  onClick={() => {
-                    if (product.type === "main") {
-                      navigate(`/product/${product.id}`);
-                    } else if (product.type === "category") {
-                      navigate(`/category-product/${product.id}`);
-                    } else if (product.type === "sidebar") {
-                      navigate(`/sidebar-product/${product.id}`);
-                    } else if (product.type === "sidebar-category") {
-                      navigate(`/sidebar/${product.name}`);
-                    }
-
-                    setSearch("");
-                    setShowSuggestions(false);
-                  }}
+                  onClick={() => handleSuggestionClick(product)}
                 >
-                  <img src={product.image} alt={product.title} />
+                  <img src={product.image} alt={product.title || product.name} />
 
                   <div className="suggestion-info">
                     <h4>{product.title || product.name}</h4>

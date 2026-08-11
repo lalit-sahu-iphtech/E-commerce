@@ -341,6 +341,23 @@
   .view-all-wrapper button:hover {
     background: #c43d3d;
   }
+  .eye-btn {
+    border: none;
+    background: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .eye-btn svg {
+    font-size: 18px;
+  }
   
   /* ================= Responsive ================= */
   
