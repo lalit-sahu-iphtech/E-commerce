@@ -10,7 +10,7 @@ import { sidebarProducts } from "../../data/sidebarProducts";
 
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
 import RecomDetails from "./RecomDetails";
 
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
@@ -34,7 +34,7 @@ const imageRotation = [
 ];
 
 export default function ProductDetails() {
-  const { showToast } = useToast();
+  // const { showToast } = useToast();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -68,9 +68,9 @@ export default function ProductDetails() {
   const title = product.title || product.name;
 
   // categoryProducts.js ke paas images[] array hai, baaki dono ke paas sirf ek "image"
-  const hasMultipleImages = Array.isArray(product.images) && product.images.length > 0;
+  const hasMultipleImages = Array.isArray(product.image) && product.image.length > 0;
   const imageList = hasMultipleImages
-    ? product.images
+    ? product.image
     : [product.image, product.image, product.image, product.image];
 
   const handleNextImage = (e) => {
@@ -87,7 +87,7 @@ export default function ProductDetails() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (!currentUser) {
-      showToast("Please login first to buy this product.", "error");
+      dispatch(showToast("Please login first to buy this product.", "error"));
       navigate("/signup");
       return;
     }

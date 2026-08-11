@@ -4,12 +4,12 @@ import cartReducer from "./slices/cartSlice";
 import wishlistReducer from "./slices/wishlistSlice";
 import authReducer from "./slices/authSlice";
 import searchReducer from "./slices/searchSlice";
+import toastReducer from "./slices/toastSlice";
 
 import {
   persistStore,
   persistReducer,
 } from "redux-persist";
-
 
 // ========================================
 // CUSTOM LOCAL STORAGE
@@ -17,9 +17,7 @@ import {
 
 const storage = {
   getItem: (key) => {
-    return Promise.resolve(
-      localStorage.getItem(key)
-    );
+    return Promise.resolve(localStorage.getItem(key));
   },
 
   setItem: (key, value) => {
@@ -34,7 +32,6 @@ const storage = {
     return Promise.resolve();
   },
 };
-
 
 // ========================================
 // PERSIST CONFIG
@@ -55,7 +52,6 @@ const authPersistConfig = {
   storage,
 };
 
-
 // ========================================
 // PERSIST REDUCERS
 // ========================================
@@ -75,7 +71,6 @@ const persistedAuthReducer = persistReducer(
   authReducer
 );
 
-
 // ========================================
 // STORE
 // ========================================
@@ -85,7 +80,12 @@ export const store = configureStore({
     cart: persistedCartReducer,
     wishlist: persistedWishlistReducer,
     auth: persistedAuthReducer,
+
+    // Search Redux
     search: searchReducer,
+
+    // Toast Redux
+    toast: toastReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -104,9 +104,8 @@ export const store = configureStore({
     }),
 });
 
-
 // ========================================
 // PERSISTOR
 // ========================================
 
-export const persistor = persistStore(store);
+export const persistor = persistStore(store)

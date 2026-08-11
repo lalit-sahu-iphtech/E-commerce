@@ -9,8 +9,8 @@ import {
 
 import "./product.css";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "../../context/ToastContext";
-
+// import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -22,7 +22,7 @@ import { toggleWishlist } from "../../redux/slices/wishlistSlice";
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { showToast } = useToast();
+  // const { showToast } = useToast();
 
   const cartItems = useSelector((state) => state.cart.items);
   const wishlistItems = useSelector((state) => state.wishlist.items);
@@ -41,22 +41,22 @@ export default function ProductCard({ product }) {
     );
 
     if (!currentUser) {
-      showToast(
-        "Please login first to add products to wishlist.",
-        "error"
-      );
+      dispatch(showToast({
+        message:"Please login first to add products to wishlist.",
+        type:"error"}
+      ));
       navigate("/signup");
       return;
     }
 
     dispatch(toggleWishlist(product));
 
-    showToast(
+    dispatch(showToast({message:
       isInWishlist
         ? "Product removed from wishlist."
         : "Product added to wishlist.",
-      "success"
-    );
+      type:"success"}
+    ));
   };
 
   const handleAddCart = () => {
@@ -65,10 +65,10 @@ export default function ProductCard({ product }) {
     );
 
     if (!currentUser) {
-      showToast(
-        "Please login first to add products to cart.",
-        "error"
-      );
+      dispatch(showToast({
+        message:"Please login first to add products to cart.",
+        type:"error"}
+      ));
       navigate("/signup");
       return;
     }
@@ -76,17 +76,17 @@ export default function ProductCard({ product }) {
     if (isInCart) {
       dispatch(removeFromCart(product.id));
 
-      showToast(
-        "Product removed from cart.",
-        "success"
-      );
+      dispatch(showToast({
+        message:"Product removed from cart.",
+        type:"success"}
+      ));
     } else {
       dispatch(addToCart(product));
 
-      showToast(
-        "Product added to cart.",
-        "success"
-      );
+      dispatch(showToast({
+       message: "Product added to cart.",
+       type: "success"}
+      ));
     }
   };
 

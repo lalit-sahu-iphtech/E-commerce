@@ -12,7 +12,8 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleWishlist, removeFromWishlist, clearWishlist } from "../../redux/slices/wishlistSlice";
 import { addToCart, removeFromCart,increaseQuantity, decreaseQuantity, clearCart } from "../../redux/slices/cartSlice";
@@ -33,7 +34,7 @@ export default function SellingProducts({ product }) {
   const cart = useSelector((state)=>state.cart.items)
 
   const navigate = useNavigate();
-  const{showToast} = useToast()
+  // const{showToast} = useToast()
 
   const isInWishlist = (id)=>{
     return wishlist.some((item)=>item.id == id)
@@ -49,16 +50,16 @@ export default function SellingProducts({ product }) {
 
     if(!currentUser){
       // alert("please login first to add products to wishlist.");
-      showToast("please login first to add products to wishlist.", "error")
+      dispatch(showToast("please login first to add products to wishlist.", "error"))
       navigate("/signup");
       return;
     }
     const alreadyInWishlist = isInWishlist(product.id);
     dispatch(toggleWishlist(product));
     if (alreadyInWishlist) {
-      showToast("Product removed from wishlist.", "success");
+      dispatch(showToast("Product removed from wishlist.", "success"));
     } else {
-      showToast("Product added to wishlist.", "success");
+      dispatch(showToast("Product added to wishlist.", "success"));
     }
   }
   // handle add to catt
@@ -87,20 +88,20 @@ export default function SellingProducts({ product }) {
     );
   
     if (!currentUser) {
-      showToast(
+      dispatch(showToast(
         "Please login first to add products to cart.",
         "error"
-      );
+      ));
       navigate("/signup");
       return;
     }
   
     if (isInCart(product.id)) {
       dispatch(removeFromCart(product.id));
-      showToast("Product removed from cart.", "success");
+      dispatch(showToast("Product removed from cart.", "success"));
     } else {
       dispatch(addToCart(product));
-      showToast("Product added to cart.", "success");
+      dispatch(showToast("Product added to cart.", "success"));
     }
   };
   return (

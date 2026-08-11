@@ -14,10 +14,14 @@ import { IoSendOutline } from "react-icons/io5";
 import qr from "../../assets/footer/qr.png";
 import googlePlay from "../../assets/footer/googleplay.png";
 import appStore from "../../assets/footer/appstore.png";
-import { useToast } from "../../context/ToastContext";
+import { useDispatch } from "react-redux";
+// import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
+import { showToast } from "../../redux/slices/toastSlice";
 
 export default function Footer() {
-  const{showToast} = useToast();
+  // const{showToast} = useToast();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
 
   const [errors, setErrors] = useState({
@@ -39,7 +43,7 @@ export default function Footer() {
     if (!validateForm()) return;
 
     // alert("✅ Thank you! Your email has been subscribed successfully.");
-    showToast("Thank you! Your email has been subscribed successfully.", "success");
+    dispatch(showToast({message:"Thank you! Your email has been subscribed successfully.", type:"success"}));
 
     setEmail("");
   };

@@ -19,10 +19,12 @@ import { IoSearchOutline } from "react-icons/io5";
 import { products } from "../../data/products";
 import { categoryProducts } from "../../data/categoryProducts";
 import { sidebarProducts } from "../../data/sidebarProducts";
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery, setSearchResults, setSearchSuggestions, clearSearch } from "../../redux/slices/searchSlice";
+import { showToast } from "../../redux/slices/toastSlice";
 
 export default function Navbar() {
   const location = useLocation();
@@ -55,7 +57,7 @@ export default function Navbar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  const { showToast } = useToast();
+  // const { showToast } = useToast();
 
   // const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -65,7 +67,7 @@ export default function Navbar() {
     setShowProfile(false);
 
     // alert("Logged Out Successfully");
-    showToast("Log Out Successfully", "success");
+    dispatch(showToast({message:"Log Out Successfully", type:"success"}));
 
     navigate("/");
 
@@ -159,71 +161,188 @@ export default function Navbar() {
     // Example: /sidebar/Electronics
     // ==========================================
 
-    if (location.pathname.startsWith("/sidebar/")) {
-      const currentSidebar = decodeURIComponent(
-        location.pathname.replace("/sidebar/", "")
-      );
+    // if (location.pathname.startsWith("/sidebar/")) {
+    //   const currentSidebar = decodeURIComponent(
+    //     location.pathname.replace("/sidebar/", "")
+    //   );
 
-      const sidebarProductsList = sidebarProducts[currentSidebar] || [];
+    //   const sidebarProductsList = sidebarProducts[currentSidebar] || [];
 
-      const matchedProducts = sidebarProductsList.filter((product) => {
-        return (
-          product.name?.toLowerCase().includes(value) ||
-          product.category?.toLowerCase().includes(value) ||
-          product.subCategory?.toLowerCase().includes(value)
-        );
-      });
+    //   const matchedProducts = sidebarProductsList.filter((product) => {
+    //     return (
+    //       product.name?.toLowerCase().includes(value) ||
+    //       product.category?.toLowerCase().includes(value) ||
+    //       product.subCategory?.toLowerCase().includes(value)
+    //     );
+    //   });
 
-      if (matchedProducts.length > 0) {
-        navigate(
-          `/sidebar/${encodeURIComponent(
-            currentSidebar
-          )}?search=${encodeURIComponent(search)}`
-        );
+    //   if (matchedProducts.length > 0) {
+    //     navigate(
+    //       `/sidebar/${encodeURIComponent(
+    //         currentSidebar
+    //       )}?search=${encodeURIComponent(search)}`
+    //     );
 
-        setShowSuggestions(false);
-        return;
-      }
+    //     setShowSuggestions(false);
+    //     return;
+    //   }
 
-      showToast("No product found in this category", "error");
-      return;
-    }
+    //   showToast("No product found in this category", "error");
+    //   return;
+    // }
+    // ==========================================
+// 1. CURRENT SIDEBAR PAGE
+// Example: /sidebar/Electronics
+// ==========================================
+
+if (location.pathname.startsWith("/sidebar/")) {
+  const currentSidebar = decodeURIComponent(
+    location.pathname.replace("/sidebar/", "")
+  );
+
+  const sidebarProductsList =
+    sidebarProducts[currentSidebar] || [];
+
+  // First: current sidebar category me search
+  const matchedProducts = sidebarProductsList.filter((product) => {
+    return (
+      product.name?.toLowerCase().includes(value) ||
+      product.title?.toLowerCase().includes(value) ||
+      product.category?.toLowerCase().includes(value) ||
+      product.subCategory?.toLowerCase().includes(value)
+    );
+  });
+
+  // Product current sidebar me mil gaya
+  if (matchedProducts.length > 0) {
+    navigate(
+      `/sidebar/${encodeURIComponent(
+        currentSidebar
+      )}?search=${encodeURIComponent(search)}`
+    );
+
+    setShowSuggestions(false);
+    return;
+  }
+
+  // Current sidebar me nahi mila
+  // → ab poore products me search karo
+  const globalMatchedProducts = allProducts.filter((product) => {
+    return (
+      product.title?.toLowerCase().includes(value) ||
+      product.name?.toLowerCase().includes(value) ||
+      product.category?.toLowerCase().includes(value) ||
+      product.subCategory?.toLowerCase().includes(value)
+    );
+  });
+
+  // Product kisi bhi category me mil gaya
+  if (globalMatchedProducts.length > 0) {
+    navigate(
+      `/products?search=${encodeURIComponent(search)}`
+    );
+
+    setShowSuggestions(false);
+    return;
+  }
+
+  // Kahin bhi product nahi mila
+  dispatch(showToast({message:"No product found", type:"error"}));
+  return;
+}
 
     // ==========================================
     // 2. CURRENT CATEGORY PAGE
     // Example: /category/Phones
     // ==========================================
 
-    if (location.pathname.startsWith("/category/")) {
-      const currentCategory = decodeURIComponent(
-        location.pathname.replace("/category/", "")
-      );
+    // if (location.pathname.startsWith("/category/")) {
+    //   const currentCategory = decodeURIComponent(
+    //     location.pathname.replace("/category/", "")
+    //   );
 
-      const categoryProductsList = categoryProducts[currentCategory] || [];
+    //   const categoryProductsList = categoryProducts[currentCategory] || [];
 
-      const matchedProducts = categoryProductsList.filter((product) => {
-        return (
-          product.title?.toLowerCase().includes(value) ||
-          product.name?.toLowerCase().includes(value) ||
-          product.category?.toLowerCase().includes(value) ||
-          product.subCategory?.toLowerCase().includes(value)
-        );
-      });
+    //   const matchedProducts = categoryProductsList.filter((product) => {
+    //     return (
+    //       product.title?.toLowerCase().includes(value) ||
+    //       product.name?.toLowerCase().includes(value) ||
+    //       product.category?.toLowerCase().includes(value) ||
+    //       product.subCategory?.toLowerCase().includes(value)
+    //     );
+    //   });
 
-      if (matchedProducts.length > 0) {
-        navigate(
-          `/category/${encodeURIComponent(
-            currentCategory
-          )}?search=${encodeURIComponent(search)}`
-        );
+    //   if (matchedProducts.length > 0) {
+    //     navigate(
+    //       `/category/${encodeURIComponent(
+    //         currentCategory
+    //       )}?search=${encodeURIComponent(search)}`
+    //     );
 
-        setShowSuggestions(false);
-        return;
-      }
+    //     setShowSuggestions(false);
+    //     return;
+    //   }
 
-      showToast("No product found in this category", "error");
-      return;
-    }
+    //   showToast("No product found in this category", "error");
+    //   return;
+    // }
+
+    // ==========================================
+// 2. CURRENT CATEGORY PAGE
+// Example: /category/Phones
+// ==========================================
+
+if (location.pathname.startsWith("/category/")) {
+  const currentCategory = decodeURIComponent(
+    location.pathname.replace("/category/", "")
+  );
+
+  const categoryProductsList = categoryProducts[currentCategory] || [];
+
+  const matchedProducts = categoryProductsList.filter((product) => {
+    return (
+      product.title?.toLowerCase().includes(value) ||
+      product.name?.toLowerCase().includes(value) ||
+      product.category?.toLowerCase().includes(value) ||
+      product.subCategory?.toLowerCase().includes(value)
+    );
+  });
+
+  // Product current category me mil gaya
+  if (matchedProducts.length > 0) {
+    navigate(
+      `/category/${encodeURIComponent(
+        currentCategory
+      )}?search=${encodeURIComponent(search)}`
+    );
+
+    setShowSuggestions(false);
+    return;
+  }
+
+  // Current category me nahi mila
+  // → ab poore products me search karo
+  const globalMatchedProducts = allProducts.filter((product) => {
+    return (
+      product.title?.toLowerCase().includes(value) ||
+      product.name?.toLowerCase().includes(value) ||
+      product.category?.toLowerCase().includes(value) ||
+      product.subCategory?.toLowerCase().includes(value)
+    );
+  });
+
+  if (globalMatchedProducts.length > 0) {
+    navigate(
+      `/products?search=${encodeURIComponent(search)}`
+    );
+
+    setShowSuggestions(false);
+    return;
+  }
+
+  dispatch(showToast({message:"No product found", type:"error"}));
+  return;
+}
 
     // ==========================================
     // 3. SIDEBAR CATEGORY SEARCH
@@ -272,7 +391,7 @@ export default function Navbar() {
       return;
     }
 
-    showToast("No product found", "error");
+    dispatch(showToast({message:"No product found", type:"error"}));
   };
 
   const filteredProducts =
@@ -405,7 +524,7 @@ export default function Navbar() {
             className="wishlist-link"
             onClick={() => {
               if (!currentUser) {
-                showToast("Please Login First");
+                dispatch(showToast({message:"Please Login First",type:"error"}));
                 navigate("/signup");
                 return;
               }
@@ -427,7 +546,8 @@ export default function Navbar() {
             className="cart-icon"
             onClick={() => {
               if (!currentUser) {
-                showToast("Please Login First");
+                dispatch(showToast({message:"Please Login First",type:"error"}));
+
                 navigate("/signup");
                 return;
               }
@@ -476,7 +596,7 @@ export default function Navbar() {
                 <div
                   onClick={() => {
                     setShowProfile(false);
-                    alert("Coming Soon");
+                    dispatch(showToast({message:"Coming Soon", typ:"error"}));
                   }}
                 >
                   <HiOutlineXCircle className="dropdown-icon" />
@@ -486,7 +606,8 @@ export default function Navbar() {
                 <div
                   onClick={() => {
                     setShowProfile(false);
-                    alert("Coming Soon");
+                    dispatch(showToast({message:"Coming Soon", typ:"error"}));
+
                   }}
                 >
                   <HiOutlineStar className="dropdown-icon" />

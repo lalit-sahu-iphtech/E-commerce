@@ -19,7 +19,7 @@ import { products } from "../../data/recomonded";
 
 // import Footer from "../Footer/Footer";
 
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -82,7 +82,7 @@ export default function Wishlist() {
   // TOAST + NAVIGATION
   // ================================
 
-  const { showToast } = useToast();
+  // const { showToast } = useToast();
 
   const navigate = useNavigate();
 
@@ -109,10 +109,10 @@ export default function Wishlist() {
     // User is not logged in
     if (!currentUser) {
 
-      showToast(
+      dispatch(showToast(
         "Please login first to add products to cart.",
         "error"
-      );
+      ));
 
       navigate("/signup");
 
@@ -130,10 +130,10 @@ export default function Wishlist() {
         removeFromCart(product.id)
       );
 
-      showToast(
+      dispatch(showToast(
         "Product removed from cart.",
         "success"
-      );
+      ));
 
     }
 
@@ -147,10 +147,10 @@ export default function Wishlist() {
         addToCart(product)
       );
 
-      showToast(
+      dispatch(showToast(
         "Product added to cart.",
         "success"
-      );
+      ));
     }
   };
 
@@ -166,10 +166,10 @@ export default function Wishlist() {
 
       // alert("Wishlist is empty");
 
-      showToast(
+      dispatch(showToast(
         "Wishlist is empty",
         "error"
-      );
+      ));
 
       return;
     }
@@ -193,10 +193,10 @@ export default function Wishlist() {
 
     // alert("All products moved to cart");
 
-    showToast(
+    dispatch(showToast(
       "All products moved to cart",
       "success"
-    );
+    ));
   };
 
 
@@ -297,10 +297,10 @@ export default function Wishlist() {
                       )
                     );
 
-                    showToast(
+                    dispatch(showToast(
                       "Product removed from wishlist.",
                       "success"
-                    );
+                    ));
 
                   }}
                 >

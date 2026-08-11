@@ -2,11 +2,11 @@ import "./profile.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
 
 export default function Profile() {
   const navigate = useNavigate();
-  const{showToast} = useToast();
+  // const{showToast} = useToast();
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
@@ -180,7 +180,7 @@ export default function Profile() {
 
     console.table(updatedCurrentUser);
 
-    showToast("Profile Updated Successfully.", "success");
+    dispatch(showToast("Profile Updated Successfully.", "success"));
   
 
     setFormData({

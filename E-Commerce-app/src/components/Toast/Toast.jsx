@@ -1,13 +1,23 @@
 import "./toast.css";
+
 import { FaCheckCircle } from "react-icons/fa";
 import { MdError } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 
-export default function Toast({
-  message,
-  type,
-  onClose,
-}) {
+import { useDispatch, useSelector } from "react-redux";
+import { hideToast } from "../../redux/slices/toastSlice";
+
+export default function Toast() {
+  const dispatch = useDispatch();
+
+  const { message, type, visible } = useSelector(
+    (state) => state.toast
+  );
+
+  if (!visible || !message) {
+    return null;
+  }
+
   return (
     <div className={`toast toast-${type}`}>
       {type === "success" ? (
@@ -20,7 +30,7 @@ export default function Toast({
 
       <IoClose
         className="toast-close"
-        onClick={onClose}
+        onClick={() => dispatch(hideToast())}
       />
     </div>
   );

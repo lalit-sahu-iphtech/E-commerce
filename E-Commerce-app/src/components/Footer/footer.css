@@ -225,14 +225,21 @@ padding:60px 30px;
 gap:30px;
 }
 
+/* Exclusive/Subscribe column -> full width on its own row
+   (same pattern already used at mobile size, just wasn't applied here) */
+.footer-column:nth-child(1){
+    grid-column:1 / -1;
+    padding-bottom:20px;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* ===========================
+/* Download App column -> full width on its own row,
+   instead of sitting alone in a half-empty row */
+.footer-column:nth-child(5){
+    grid-column:1 / -1;
+}
 
-
-/* ===========================
-      MOBILE (770px and below)
-=========================== */
+}
 
 /* ===========================
       MOBILE (770px and below)

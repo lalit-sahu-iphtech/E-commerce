@@ -8,14 +8,14 @@ import mastercard from "../../assets/payment/mastercard.png";
 import nagad from "../../assets/payment/nagad.png";
 
 import { useState, useEffect } from "react";
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
 import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
   const navigate = useNavigate();
   const { cart } = useCart();
   const location = useLocation();
-  const { showToast } = useToast();
+  // const { showToast } = useToast();
 
   const buyNowProduct = location.state?.buyNowProduct;
   const checkoutItems = buyNowProduct ? [buyNowProduct] : cart;
@@ -168,19 +168,19 @@ export default function Checkout() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (!currentUser) {
-      showToast("Please login first to place your order.", "error");
+      dispatch(showToast("Please login first to place your order.", "error"));
       navigate("/signup");
       return;
     }
 
     if (cart.length === 0) {
       // alert("Your cart is empty");
-      showToast("Your cart is empty", "error");
+      dispatch(showToast("Your cart is empty", "error"));
       return;
     }
 
     // alert("🎉 Order Placed Successfully!");
-    showToast("🎉 Order Placed Successfully!", "success");
+    dispatch(showToast("🎉 Order Placed Successfully!", "success"));
 
     setFormData({
       firstName: "",

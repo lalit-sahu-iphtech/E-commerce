@@ -5,10 +5,12 @@ import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart } from "../../redux/slices/cartSlice";
 import { toggleWishlist, removeFromWishlist, clearWishlist } from "../../redux/slices/wishlistSlice";
+
 export default function ExploreCard({ product }) {
   
   // const {
@@ -18,6 +20,10 @@ export default function ExploreCard({ product }) {
   // } = useCart();
   // const { toggleWishlist, isInWishlist } = useWishlist();
   // const [added,setAdded]=useState(false);
+
+  const [selectedColor, setSelectedColor] = useState(
+    product.colors?.[0] || ""
+  );
 
   const dispatch = useDispatch();
 
@@ -33,13 +39,13 @@ export default function ExploreCard({ product }) {
 
   const navigate = useNavigate();
 
-  const{showToast} = useToast();
+  // const{showToast} = useToast();
 
   const handleWishlist = () => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   
     if (!currentUser) {
-      showToast("Please login first to add products to wishlist.", "error");
+      dispatch(showToast({message:"Please login first to add products to wishlist.", type:"error"}));
       navigate("/signup");
       return;
     }
@@ -49,9 +55,9 @@ export default function ExploreCard({ product }) {
     dispatch(toggleWishlist(product));
   
     if (alreadyInWishlist) {
-      showToast("Product removed from wishlist.", "success");
+      dispatch(showToast({message:"Product removed from wishlist.", type:"success"}));
     } else {
-      showToast("Product added to wishlist.", "success");
+      dispatch(showToast({message:"Product added to wishlist.", type:"success"}));
     }
   };
   // handle add to catt
@@ -80,20 +86,20 @@ export default function ExploreCard({ product }) {
     );
   
     if (!currentUser) {
-      showToast(
-        "Please login first to add products to cart.",
-        "error"
-      );
+      dispatch(showToast({
+        message:"Please login first to add products to cart.",
+        type:"error"}
+      ));
       navigate("/signup");
       return;
     }
   
     if (isInCart(product.id)) {
       dispatch(removeFromCart(product.id));
-      showToast("Product removed from cart.", "success");
+      dispatch(showToast({message:"Product removed from cart.", type:"success"}));
     } else {
       dispatch(addToCart(product));
-      showToast("Product added to cart.", "success");
+      dispatch(showToast({message:"Product added to cart.", type:"success"}));
     }
   };
 
@@ -189,14 +195,18 @@ export default function ExploreCard({ product }) {
 </div>
 </div>
 
-      {product.colors && (
+      {product.colors && product.colors.length > 0 && (
         <div className="color-options">
           {product.colors.map((color, index) => (
-            <span
-              key={index}
-              className="color-dot"
-              style={{ background: color }}
-            />
+            <button
+            key={index}
+            type="button"
+            className={`color-dot ${selectedColor === color ? "selected-color" : ""}`}
+            style={{backgroundColor : color}}
+            onClick ={()=>setSelectedColor(color)}
+            aria-label={`Select ${color} color`}
+            title={color}
+            ></button>
           ))}
         </div>
       )}

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { useState } from "react";
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
 
 export default function Contact() {
-  const{showToast} = useToast();
+  // const{showToast} = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -79,7 +79,7 @@ export default function Contact() {
     console.log(formData);
 
     // alert("✅ Message sent successfully!");
-    showToast("Message sent successfully!", "success");
+    dispatch(showToast("Message sent successfully!", "success"));
 
     setFormData({
       name: "",

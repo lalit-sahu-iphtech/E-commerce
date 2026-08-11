@@ -9,7 +9,8 @@ import googleIcon from "../../assets/google.png";
 
 import Footer from "../Footer/Footer";
 
-import { useToast } from "../../context/ToastContext";
+// import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
 
 // Redux
 import { useDispatch } from "react-redux";
@@ -23,7 +24,7 @@ export default function Signup({ setIsAuthenticated }) {
 
   const navigate = useNavigate();
 
-  const { showToast } = useToast();
+  // const { showToast } = useToast();
 
   // Redux dispatch
   const dispatch = useDispatch();
@@ -193,10 +194,10 @@ export default function Signup({ setIsAuthenticated }) {
 
       // alert("User already exists!");
 
-      showToast(
-        "User already exists",
-        "error"
-      );
+      dispatch(showToast({
+        message:"User already exists",
+        type:"error"}
+      ));
 
       return;
     }
@@ -241,10 +242,10 @@ export default function Signup({ setIsAuthenticated }) {
 
     // alert("Account Created Successfully");
 
-    showToast(
+    dispatch(showToast({message :
       "Account Created Successfully",
-      "success"
-    );
+      type:"success"}
+    ));
 
 
     navigate("/");
@@ -305,10 +306,10 @@ export default function Signup({ setIsAuthenticated }) {
 
       // alert("Login Successful");
 
-      showToast(
-        "Login Successful",
-        "success"
-      );
+      dispatch(showToast({
+        message:"Login Successful",
+       type:"success"}
+      ));
 
 
       navigate("/");
@@ -317,10 +318,10 @@ export default function Signup({ setIsAuthenticated }) {
 
       // alert("Invalid Email or Password");
 
-      showToast(
-        "Invalid Email or Password",
-        "error"
-      );
+      dispatch(showToast({
+        message:"Invalid Email or Password",
+        type:"error"}
+      ));
 
     }
   };
