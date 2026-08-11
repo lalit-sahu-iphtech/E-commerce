@@ -1,4 +1,5 @@
 import "./toast.css";
+import { useEffect } from "react";
 
 import { FaCheckCircle } from "react-icons/fa";
 import { MdError } from "react-icons/md";
@@ -13,6 +14,15 @@ export default function Toast() {
   const { message, type, visible } = useSelector(
     (state) => state.toast
   );
+
+  useEffect(() => {
+    if (!visible || !message) {
+      return undefined;
+    }
+
+    const timer = setTimeout(() => dispatch(hideToast()), 3000);
+    return () => clearTimeout(timer);
+  }, [dispatch, message, type, visible]);
 
   if (!visible || !message) {
     return null;

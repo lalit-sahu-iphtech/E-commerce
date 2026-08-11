@@ -17,7 +17,6 @@ import appStore from "../../assets/footer/appstore.png";
 import { useDispatch } from "react-redux";
 // import { useToast } from "../../context/ToastContext";
 import { showToast } from "../../redux/slices/toastSlice";
-import { showToast } from "../../redux/slices/toastSlice";
 
 export default function Footer() {
   // const{showToast} = useToast();

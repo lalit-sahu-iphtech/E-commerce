@@ -10,10 +10,22 @@ const toastSlice = createSlice({
     initialState,
 
     reducers : {
-        showToast : (state,action)=>{
-            state.message = action.payload.message;
-            state.type = action.payload.type || "success";
-            state.visible = true;
+        showToast : {
+            reducer: (state, action) => {
+                state.message = action.payload.message;
+                state.type = action.payload.type;
+                state.visible = true;
+            },
+            // Supports both showToast({ message, type }) and the older
+            // showToast(message, type) calls already used in some components.
+            prepare: (toast, type = "success") => ({
+                payload: typeof toast === "string"
+                    ? { message: toast, type }
+                    : {
+                        message: toast?.message || "",
+                        type: toast?.type || "success",
+                    },
+            }),
         },
         hideToast : (state)=>{
             state.message = "",

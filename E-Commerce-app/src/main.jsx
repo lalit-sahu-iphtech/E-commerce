@@ -9,6 +9,7 @@ import { SearchProvider } from "./context/SearchContext";
 import { CategoryProvider } from "./context/CategoryContext";
 import ScrollToTop from "./components/ScrollToTop";
 import { ToastProvider } from "./context/ToastContext";
+import Toast from "./components/Toast/Toast";
 import { PersistGate } from "redux-persist/integration/react";
 import {Provider} from "react-redux";
 import{store,persistor} from "./redux/store"
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <WishlistProvider>
         <ToastProvider>
         <App />
+        <Toast />
        
 
         </ToastProvider>

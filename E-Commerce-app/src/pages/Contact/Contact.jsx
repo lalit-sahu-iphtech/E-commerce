@@ -4,6 +4,8 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { useState } from "react";
 // import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
+
 
 export default function Contact() {
   // const{showToast} = useToast();
@@ -79,7 +81,7 @@ export default function Contact() {
     console.log(formData);
 
     // alert("✅ Message sent successfully!");
-    dispatch(showToast("Message sent successfully!", "success"));
+    dispatch(showToast({message:"Message sent successfully!", type:"success"}));
 
     setFormData({
       name: "",

@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 // import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
+
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -180,7 +182,7 @@ export default function Profile() {
 
     console.table(updatedCurrentUser);
 
-    dispatch(showToast("Profile Updated Successfully.", "success"));
+    dispatch(showToast({message:"Profile Updated Successfully.", type:"success"}));
   
 
     setFormData({

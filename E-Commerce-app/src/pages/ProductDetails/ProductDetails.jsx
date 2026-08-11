@@ -11,6 +11,8 @@ import { sidebarProducts } from "../../data/sidebarProducts";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 // import { useToast } from "../../context/ToastContext";
+import { showToast } from "../../redux/slices/toastSlice";
+
 import RecomDetails from "./RecomDetails";
 
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
@@ -87,7 +89,7 @@ export default function ProductDetails() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     if (!currentUser) {
-      dispatch(showToast("Please login first to buy this product.", "error"));
+      dispatch(showToast({message:"Please login first to buy this product.", type:"error"}));
       navigate("/signup");
       return;
     }

@@ -24,7 +24,6 @@ import { showToast } from "../../redux/slices/toastSlice";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchQuery, setSearchResults, setSearchSuggestions, clearSearch } from "../../redux/slices/searchSlice";
-import { showToast } from "../../redux/slices/toastSlice";
 
 export default function Navbar() {
   const location = useLocation();
@@ -596,7 +595,7 @@ if (location.pathname.startsWith("/category/")) {
                 <div
                   onClick={() => {
                     setShowProfile(false);
-                    dispatch(showToast({message:"Coming Soon", typ:"error"}));
+                    dispatch(showToast({message:"Coming Soon", type:"error"}));
                   }}
                 >
                   <HiOutlineXCircle className="dropdown-icon" />
@@ -606,7 +605,7 @@ if (location.pathname.startsWith("/category/")) {
                 <div
                   onClick={() => {
                     setShowProfile(false);
-                    dispatch(showToast({message:"Coming Soon", typ:"error"}));
+                    dispatch(showToast({message:"Coming Soon", type:"error"}));
 
                   }}
                 >
