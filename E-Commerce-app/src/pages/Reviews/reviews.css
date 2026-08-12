@@ -1,0 +1,305 @@
+.reviews-page {
+    margin: 60px 100px;
+    min-height: 60vh;
+  }
+  
+  /* =========================
+     Breadcrumb
+  ========================= */
+  
+  .reviews-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 45px;
+    font-size: 14px;
+  }
+  
+  .reviews-breadcrumb a {
+    color: #777;
+    text-decoration: none;
+  }
+  
+  .reviews-breadcrumb span {
+    color: #777;
+  }
+  
+  .reviews-breadcrumb span:last-child {
+    color: #000;
+    font-weight: 600;
+  }
+  
+  /* =========================
+     Header
+  ========================= */
+  
+  .reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 35px;
+  }
+  
+  .reviews-label {
+    color: #db4444;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  .reviews-header h1 {
+    margin: 8px 0 0;
+    font-size: 32px;
+    font-weight: 600;
+  }
+  
+  .reviews-count {
+    color: #777;
+    font-size: 15px;
+  }
+  
+  /* =========================
+     Reviews List
+  ========================= */
+  
+  .reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Review Card */
+  
+  .review-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  
+    padding: 20px;
+  
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+  
+    background: #fff;
+  
+    transition: 0.3s;
+  }
+  
+  .review-card:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Product Image */
+  
+  .review-image {
+    width: 110px;
+    height: 110px;
+  
+    flex-shrink: 0;
+  
+    background: #f5f5f5;
+  
+    border-radius: 6px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .review-image img {
+    width: 90px;
+    height: 90px;
+  
+    object-fit: contain;
+  }
+  
+  /* Content */
+  
+  .review-content {
+    flex: 1;
+  }
+  
+  .review-content h3 {
+    margin: 0 0 10px;
+  
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  /* Rating */
+  
+  .review-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  
+    margin-bottom: 12px;
+  }
+  
+  .review-rating span {
+    margin-left: 8px;
+  
+    color: #777;
+  
+    font-size: 13px;
+  }
+  
+  .star-filled {
+    color: #ffad33;
+    font-size: 16px;
+  }
+  
+  .star-empty {
+    color: #bfbfbf;
+    font-size: 16px;
+  }
+  
+  /* Review text */
+  
+  .review-text {
+    margin: 0 0 8px;
+  
+    color: #555;
+  
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* Date */
+  
+  .review-date {
+    margin: 0;
+  
+    color: #999;
+  
+    font-size: 12px;
+  }
+  
+  /* =========================
+     Empty Reviews
+  ========================= */
+  
+  .empty-reviews {
+    min-height: 350px;
+  
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: center;
+  
+    text-align: center;
+  }
+  
+  .review-empty-icon {
+    width: 60px;
+    height: 60px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    border-radius: 50%;
+  
+    background: #fff3cd;
+    color: #ffad33;
+  
+    font-size: 28px;
+  
+    margin-bottom: 20px;
+  }
+  
+  .empty-reviews h2 {
+    margin: 0 0 10px;
+  
+    font-size: 28px;
+  }
+  
+  .empty-reviews p {
+    color: #777;
+  
+    margin-bottom: 25px;
+  }
+  
+  .review-shop-btn {
+    background: #db4444;
+    color: #fff;
+  
+    text-decoration: none;
+  
+    padding: 12px 24px;
+  
+    border-radius: 5px;
+  
+    transition: 0.3s;
+  }
+  
+  .review-shop-btn:hover {
+    background: #c93434;
+  }
+  
+  /* =========================
+     Responsive
+  ========================= */
+  
+  @media (max-width: 992px) {
+    .reviews-page {
+      margin: 40px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .reviews-page {
+      margin: 30px 20px;
+    }
+  
+    .reviews-header {
+      align-items: flex-start;
+      gap: 15px;
+    }
+  
+    .reviews-header h1 {
+      font-size: 27px;
+    }
+  
+    .review-card {
+      gap: 15px;
+    }
+  
+    .review-image {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .review-image img {
+      width: 65px;
+      height: 65px;
+    }
+  
+    .review-content h3 {
+      font-size: 15px;
+    }
+  
+    .review-text {
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .reviews-header {
+      flex-direction: column;
+    }
+  
+    .review-card {
+      align-items: flex-start;
+    }
+  
+    .review-image {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .review-image img {
+      width: 55px;
+      height: 55px;
+    }
+  }

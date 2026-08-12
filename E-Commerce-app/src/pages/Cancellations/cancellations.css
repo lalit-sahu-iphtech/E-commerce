@@ -1,0 +1,407 @@
+.cancellations-page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+  
+  /* =========================
+     Breadcrumb
+  ========================= */
+  
+  .cancellations-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    font-size: 14px;
+  }
+  
+  .cancellations-breadcrumb a {
+    color: #777;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .cancellations-breadcrumb a:hover {
+    color: #db4444;
+  }
+  
+  .cancellations-breadcrumb span {
+    color: #777;
+  }
+  
+  .cancellations-breadcrumb span:last-child {
+    color: #111;
+    font-weight: 600;
+  }
+  
+  /* =========================
+     Header
+  ========================= */
+  
+  .cancellations-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .cancellations-label {
+    display: inline-block;
+    color: #db4444;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .cancellations-header h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    color: #111;
+  }
+  
+  .cancellations-count {
+    color: #777;
+    font-size: 15px;
+  }
+  
+  /* =========================
+     Cancellation List
+  ========================= */
+  
+  .cancellations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .cancellation-card {
+    display: grid;
+    grid-template-columns: 90px 1fr auto auto;
+    align-items: center;
+    gap: 25px;
+  
+    padding: 20px;
+  
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+  
+    transition: 0.3s;
+  }
+  
+  .cancellation-card:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+  
+  /* =========================
+     Image
+  ========================= */
+  
+  .cancellation-image {
+    width: 90px;
+    height: 90px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .cancellation-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  /* =========================
+     Product Info
+  ========================= */
+  
+  .cancellation-info h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #222;
+  }
+  
+  .cancellation-price {
+    margin: 0 0 7px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #db4444;
+  }
+  
+  .cancellation-quantity {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  /* =========================
+     Status
+  ========================= */
+  
+  .cancellation-status span {
+    display: inline-flex;
+    align-items: center;
+  
+    padding: 7px 14px;
+  
+    background: #fff0f0;
+    color: #db4444;
+  
+    border-radius: 20px;
+  
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  /* =========================
+     Date
+  ========================= */
+  
+  .cancellation-date {
+    min-width: 120px;
+    text-align: right;
+  }
+  
+  .cancellation-date p {
+    margin: 0 0 5px;
+    color: #888;
+    font-size: 12px;
+  }
+  
+  .cancellation-date strong {
+    font-size: 13px;
+    color: #333;
+  }
+  
+  /* =========================
+     Empty State
+  ========================= */
+  
+  .empty-cancellations {
+    min-height: 350px;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    text-align: center;
+  
+    padding: 50px 20px;
+  }
+  
+  .cancel-icon {
+    width: 70px;
+    height: 70px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    margin-bottom: 20px;
+  
+    border-radius: 50%;
+  
+    background: #fff0f0;
+    color: #db4444;
+  
+    font-size: 30px;
+    font-weight: 500;
+  }
+  
+  .empty-cancellations h2 {
+    margin: 0 0 10px;
+  
+    font-size: 25px;
+    color: #222;
+  }
+  
+  .empty-cancellations p {
+    margin: 0 0 25px;
+  
+    color: #777;
+    font-size: 14px;
+  }
+  
+  .browse-products-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 12px 24px;
+  
+    background: #db4444;
+    color: #fff;
+  
+    border-radius: 6px;
+  
+    text-decoration: none;
+  
+    font-size: 14px;
+    font-weight: 500;
+  
+    transition: 0.3s;
+  }
+  
+  .browse-products-btn:hover {
+    background: #b83232;
+    transform: translateY(-2px);
+  }
+  
+  /* =========================
+     Tablet
+  ========================= */
+  
+  @media (max-width: 992px) {
+  
+    .cancellations-page {
+      margin: 40px auto;
+      padding: 0 25px;
+    }
+  
+    .cancellation-card {
+      grid-template-columns: 80px 1fr auto;
+      gap: 18px;
+    }
+  
+    .cancellation-date {
+      grid-column: 2 / -1;
+      text-align: left;
+    }
+  
+    .cancellation-image {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .cancellations-header h1 {
+      font-size: 28px;
+    }
+  }
+  
+  /* =========================
+     Mobile
+  ========================= */
+  
+  @media (max-width: 600px) {
+  
+    .cancellations-page {
+      margin: 25px auto;
+      padding: 0 16px;
+    }
+  
+    .cancellations-breadcrumb {
+      gap: 8px;
+      margin-bottom: 25px;
+      font-size: 13px;
+    }
+  
+    .cancellations-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+  
+    .cancellations-header h1 {
+      font-size: 24px;
+    }
+  
+    .cancellations-count {
+      font-size: 13px;
+    }
+  
+    .cancellation-card {
+      grid-template-columns: 70px 1fr;
+      gap: 15px;
+  
+      padding: 15px;
+    }
+  
+    .cancellation-image {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .cancellation-info h3 {
+      font-size: 15px;
+    }
+  
+    .cancellation-price {
+      font-size: 14px;
+    }
+  
+    .cancellation-quantity {
+      font-size: 12px;
+    }
+  
+    .cancellation-status {
+      grid-column: 1 / -1;
+    }
+  
+    .cancellation-date {
+      grid-column: 1 / -1;
+      text-align: left;
+    }
+  
+    .cancellation-status span {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  
+    .empty-cancellations {
+      min-height: 300px;
+      padding: 30px 15px;
+    }
+  
+    .empty-cancellations h2 {
+      font-size: 22px;
+    }
+  
+    .empty-cancellations p {
+      font-size: 13px;
+    }
+  
+    .browse-products-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+  }
+  
+  /* =========================
+     Small Mobile
+  ========================= */
+  
+  @media (max-width: 400px) {
+  
+    .cancellation-card {
+      grid-template-columns: 60px 1fr;
+      padding: 12px;
+    }
+  
+    .cancellation-image {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .cancellation-info h3 {
+      font-size: 14px;
+    }
+  
+    .cancellations-header h1 {
+      font-size: 22px;
+    }
+  }
