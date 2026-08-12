@@ -5,6 +5,8 @@ import wishlistReducer from "./slices/wishlistSlice";
 import authReducer from "./slices/authSlice";
 import searchReducer from "./slices/searchSlice";
 import toastReducer from "./slices/toastSlice";
+import reviewsReducer from "./slices/reviewsSlice";
+import cancellationReducer from "./slices/cancellationSlice"
 
 import {
   persistStore,
@@ -52,6 +54,17 @@ const authPersistConfig = {
   storage,
 };
 
+const reviewsPersistConfig = {
+  key: "reviews",
+  storage,
+};
+
+const cancellationPersistConfig = {
+  key : "cancellations",
+  storage,
+}
+
+
 // ========================================
 // PERSIST REDUCERS
 // ========================================
@@ -71,6 +84,16 @@ const persistedAuthReducer = persistReducer(
   authReducer
 );
 
+const persistedReviewsReducer = persistReducer(
+  reviewsPersistConfig,
+  reviewsReducer
+);
+const persistedCancellationReducer = persistReducer(
+  cancellationPersistConfig,
+  cancellationReducer
+);
+
+
 // ========================================
 // STORE
 // ========================================
@@ -86,6 +109,8 @@ export const store = configureStore({
 
     // Toast Redux
     toast: toastReducer,
+    reviews : persistedReviewsReducer,
+    cancellations : persistedCancellationReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
