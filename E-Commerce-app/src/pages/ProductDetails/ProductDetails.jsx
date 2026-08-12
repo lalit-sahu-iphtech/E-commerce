@@ -12,6 +12,7 @@ import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/WishlistContext";
 // import { useToast } from "../../context/ToastContext";
 import { showToast } from "../../redux/slices/toastSlice";
+import { useDispatch } from "react-redux";
 
 import RecomDetails from "./RecomDetails";
 
@@ -39,6 +40,7 @@ export default function ProductDetails() {
   // const { showToast } = useToast();
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // products.js/categoryProducts.js ka id number hai, sidebarProducts.js ka id string (e.g. "wf-001")
   // isliye String() se compare kiya taaki dono type ke id match ho jaayein
@@ -87,21 +89,31 @@ export default function ProductDetails() {
 
   const handleBuyNow = () => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
+  
     if (!currentUser) {
-      dispatch(showToast({message:"Please login first to buy this product.", type:"error"}));
+      dispatch(
+        showToast({
+          message: "Please login first to buy this product.",
+          type: "error",
+        })
+      );
       navigate("/signup");
       return;
     }
-
+  
+    const productToBuy = {
+      ...product,
+      quantity: qty,
+      size: selectedSize,
+      color: selectedColor,
+    };
+  
+    // Pehle cart me add karo, taaki My Orders me bhi show ho
+    addToCart(productToBuy);
+  
     navigate("/checkout", {
       state: {
-        buyNowProduct: {
-          ...product,
-          quantity: qty,
-          size: selectedSize,
-          color: selectedColor,
-        },
+        buyNowProduct: productToBuy,
       },
     });
   };
