@@ -1,0 +1,311 @@
+/* ==========================================
+   RECOMMENDED CARD
+========================================== */
+
+.recommended-card {
+    width: 100%;
+    min-width: 0;
+    cursor: pointer;
+  }
+  
+  /* ==========================================
+     IMAGE CONTAINER
+  ========================================== */
+  
+  .recommended-image {
+    position: relative;
+  
+    width: 100%;
+    height: 240px;
+  
+    background: #f5f5f5;
+  
+    border-radius: 6px;
+  
+    overflow: hidden;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* ==========================================
+     PRODUCT IMAGE
+  ========================================== */
+  
+  .recommended-image img {
+    width: 75%;
+    height: 75%;
+  
+    object-fit: contain;
+  
+    transition: transform 0.35s ease;
+  }
+  
+  .recommended-card:hover
+  .recommended-image img {
+    transform: scale(1.05);
+  }
+  
+  /* ==========================================
+     DISCOUNT
+  ========================================== */
+  
+  .recommended-discount {
+    position: absolute;
+  
+    top: 14px;
+    left: 14px;
+  
+    background: #db4444;
+    color: #fff;
+  
+    padding: 5px 11px;
+  
+    border-radius: 4px;
+  
+    font-size: 13px;
+    font-weight: 500;
+  
+    z-index: 2;
+  }
+  
+  /* ==========================================
+     NEW BADGE
+  ========================================== */
+  
+  .recommended-new {
+    position: absolute;
+  
+    top: 14px;
+    left: 14px;
+  
+    background: #00a651;
+    color: #fff;
+  
+    padding: 5px 11px;
+  
+    border-radius: 4px;
+  
+    font-size: 13px;
+    font-weight: 500;
+  
+    z-index: 2;
+  }
+  
+  /* ==========================================
+     PREVIEW
+  ========================================== */
+  
+  .recommended-preview {
+    position: absolute;
+  
+    top: 14px;
+    right: 14px;
+  
+    width: 36px;
+    height: 36px;
+  
+    border: none;
+    border-radius: 50%;
+  
+    background: #fff;
+  
+    color: #000;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    cursor: pointer;
+  
+    z-index: 5;
+  
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  
+    transition: all 0.3s ease;
+  }
+  
+  .recommended-preview:hover {
+    background: #db4444;
+    color: #fff;
+  
+    transform: scale(1.08);
+  }
+  
+  /* ==========================================
+     ADD TO CART
+  ========================================== */
+  
+  .recommended-cart-btn {
+    position: absolute;
+  
+    left: 0;
+    bottom: 0;
+  
+    width: 100%;
+  
+    min-height: 44px;
+  
+    border: none;
+  
+    background: #000;
+    color: #fff;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 7px;
+  
+    padding: 11px;
+  
+    font-size: 14px;
+    font-weight: 500;
+  
+    cursor: pointer;
+  
+    transform: translateY(100%);
+  
+    transition:
+      transform 0.3s ease,
+      background 0.3s ease;
+  }
+  
+  .recommended-card:hover
+  .recommended-cart-btn {
+    transform: translateY(0);
+  }
+  
+  /* ==========================================
+     ADDED / REMOVE ITEM
+  ========================================== */
+  
+  .recommended-cart-added {
+    background: #16a34a;
+  }
+  
+  .recommended-cart-added:hover {
+    background: #15803d;
+  }
+  
+  /* ==========================================
+     TITLE
+  ========================================== */
+  
+  .recommended-title {
+    margin: 15px 0 0;
+  
+    font-size: 16px;
+    font-weight: 600;
+  
+    line-height: 1.4;
+  
+    color: #000;
+  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* ==========================================
+     PRICE
+  ========================================== */
+  
+  .recommended-price {
+    display: flex;
+    align-items: center;
+  
+    gap: 12px;
+  
+    margin-top: 8px;
+  }
+  
+  .recommended-new-price {
+    color: #db4444;
+  
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .recommended-old-price {
+    color: #777;
+  
+    font-size: 14px;
+  
+    text-decoration: line-through;
+  }
+  
+  /* ==========================================
+     RATING
+  ========================================== */
+  
+  .recommended-rating {
+    display: flex;
+    align-items: center;
+  
+    gap: 4px;
+  
+    margin-top: 7px;
+  }
+  
+  .recommended-rating .recommended-star {
+    color: #ffad33;
+  
+    font-size: 15px;
+  }
+  
+  .recommended-rating span {
+    margin-left: 6px;
+  
+    color: #777;
+  
+    font-size: 14px;
+  }
+  
+  /* ==========================================
+     TABLET
+  ========================================== */
+  
+  @media (max-width: 1100px) {
+    .recommended-image {
+      height: 230px;
+    }
+  }
+  
+  /* ==========================================
+     TABLET
+  ========================================== */
+  
+  @media (max-width: 768px) {
+    .recommended-image {
+      height: 220px;
+    }
+  
+    /* Touch devices */
+    .recommended-cart-btn {
+      transform: translateY(0);
+    }
+  }
+  
+  /* ==========================================
+     MOBILE
+  ========================================== */
+  
+  @media (max-width: 500px) {
+    .recommended-image {
+      height: 240px;
+    }
+  
+    .recommended-title {
+      font-size: 15px;
+    }
+  
+    .recommended-new-price {
+      font-size: 15px;
+    }
+  
+    .recommended-old-price {
+      font-size: 13px;
+    }
+  }
