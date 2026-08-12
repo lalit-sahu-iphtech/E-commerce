@@ -1,136 +1,205 @@
-import { FaRegHeart, FaRegEye, FaStar, FaRegStar,FaStarHalfAlt, } from "react-icons/fa";
+import {
+  FaRegEye,
+  FaStar,
+  FaRegStar,
+  FaStarHalfAlt,
+} from "react-icons/fa";
 
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 
-import { useWishlist } from "../../context/WishlistContext";
-import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-// import { useToast } from "../../context/ToastContext";
-// import "../product/product.css"
+import { useDispatch, useSelector } from "react-redux";
 
-export default function RecommendedCard({ product, index}) {
-  const {
-    addToCart,
-    removeFromCart,
-    isInCart,
-  } = useCart();
-  // const{showToast} = useToast()
-  const { addToWishlist } = useWishlist();
+import {
+  addToCart,
+  removeFromCart,
+} from "../../redux/slices/cartSlice";
+
+import { showToast } from "../../redux/slices/toastSlice";
+
+import "./recommended.css";
+
+export default function RecommendedCard({ product, index }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  //  const [added, setAdded] = useState(false);
+  const cart = useSelector((state) => state.cart.items);
+
+  const isInCart = cart.some(
+    (item) => item.id === product.id
+  );
 
   const handleAddCart = () => {
     const currentUser = JSON.parse(
       localStorage.getItem("currentUser")
     );
-  
+
     if (!currentUser) {
-      dispatch(showToast(
-        "Please login first to add products to cart.",
-        "error"
-      ));
+      dispatch(
+        showToast({
+          message: "Please login first to add products to cart.",
+          type: "error",
+        })
+      );
+
       navigate("/signup");
       return;
     }
-  
-    if (isInCart(product.id)) {
-      removeFromCart(product.id);
-      dispatch(showToast("Product removed from cart.", "success"));
+
+    if (isInCart) {
+      dispatch(removeFromCart(product.id));
+
+      dispatch(
+        showToast({
+          message: "Product removed from cart.",
+          type: "success",
+        })
+      );
     } else {
-      addToCart(product);
-      dispatch(showToast("Product added to cart.", "success"));
+      dispatch(addToCart(product));
+
+      dispatch(
+        showToast({
+          message: "Product added to cart.",
+          type: "success",
+        })
+      );
     }
   };
 
-  return (
-    <div className="wishlist-card">
-      <div className="wishlist-image">
-        {index == 0 && product.discount && (
-           <span className="discount-badge">{product.discount}</span>
-        )}
-       
-
-        {product.new && <span className="new-badge">NEW</span>}
-
-        {/* <button
-            className="heart-btn"
-            onClick={() => addToWishlist(product)}
-          >
-            <FaRegHeart />
-          </button> */}
-
-        {/* <button className="preview-btn">
-          <FaRegEye />
-        </button> */}
-     <button
-  className="preview-btn"
-  onClick={() =>
+  const handlePreview = () => {
     navigate(
       `/product/${product.id}/${product.title
         .toLowerCase()
         .replace(/\s+/g, "-")}`
-    )
-  }
->
-  <FaRegEye />
-</button>
+    );
+  };
 
-        <img src={product.image} alt={product.title} />
+  return (
+    <div className="recommended-card">
 
-            <button
-             className={`cart-btn ${
-              isInCart(product.id) ? "added" : "removed"
-            }`}
-              onClick={() => handleAddCart(product)}
-            >
-              <HiOutlineShoppingCart />
-              {isInCart(product.id)
-  ? "Remove Item"
-  : "Add to Cart"}
-            </button>
+      {/* ==============================
+          IMAGE
+      ============================== */}
+
+      <div className="recommended-image">
+
+        {/* Discount */}
+        {index === 0 && product.discount && (
+          <span className="recommended-discount">
+            {product.discount}
+          </span>
+        )}
+
+        {/* New */}
+        {product.new && (
+          <span className="recommended-new">
+            NEW
+          </span>
+        )}
+
+        {/* Preview */}
+        <button
+          type="button"
+          className="recommended-preview"
+          onClick={handlePreview}
+        >
+          <FaRegEye />
+        </button>
+
+        {/* Product Image */}
+        <img
+          src={product.image}
+          alt={product.title}
+        />
+
+        {/* Cart */}
+        <button
+          type="button"
+          className={`recommended-cart-btn ${
+            isInCart ? "recommended-cart-added" : ""
+          }`}
+          onClick={handleAddCart}
+        >
+          <HiOutlineShoppingCart />
+
+          {isInCart
+            ? "Remove Item"
+            : "Add To Cart"}
+        </button>
       </div>
 
-      <h3>{product.title}</h3>
+      {/* ==============================
+          TITLE
+      ============================== */}
 
-      <div className="price">
-        <span className="new-price">${product.price}</span>
-         {index == 0 && product.oldPrice && (
-            <span className="old-price">
+      <h3 className="recommended-title">
+        {product.title}
+      </h3>
+
+      {/* ==============================
+          PRICE
+      ============================== */}
+
+      <div className="recommended-price">
+
+        <span className="recommended-new-price">
+          ${product.price}
+        </span>
+
+        {index === 0 && product.oldPrice && (
+          <span className="recommended-old-price">
             ${product.oldPrice}
           </span>
-         )}
-      
+        )}
+
       </div>
 
-      <div className="rating">
-        {[...Array(5)].map((_, index) => {
-          if (index + 1 <= Math.floor(product.rating)) {
-            return <FaStar key={index} color="#FFAD33" />;
-          } else if (
-            index < product.rating &&
+      {/* ==============================
+          RATING
+      ============================== */}
+
+      <div className="recommended-rating">
+
+        {[...Array(5)].map((_, starIndex) => {
+
+          if (
+            starIndex + 1 <=
+            Math.floor(product.rating)
+          ) {
+            return (
+              <FaStar
+                key={starIndex}
+                className="recommended-star"
+              />
+            );
+          }
+
+          if (
+            starIndex < product.rating &&
             product.rating % 1 !== 0
           ) {
             return (
               <FaStarHalfAlt
-                key={index}
-                color="#FFAD33"
-              />
-            );
-          } else {
-            return (
-              <FaRegStar
-                key={index}
-                color="#FFAD33"
+                key={starIndex}
+                className="recommended-star"
               />
             );
           }
+
+          return (
+            <FaRegStar
+              key={starIndex}
+              className="recommended-star"
+            />
+          );
         })}
 
-        <span>({product.reviews})</span>
-      </div>
+        <span>
+          ({product.reviews})
+        </span>
 
+      </div>
     </div>
   );
 }
