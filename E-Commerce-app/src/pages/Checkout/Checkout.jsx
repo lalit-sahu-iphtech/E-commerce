@@ -1,6 +1,6 @@
 import "./checkout.css";
 import { Link, useLocation } from "react-router-dom";
-import { useCart } from "../../context/CartContext";
+// import { useCart } from "../../context/CartContext";
 
 import bkash from "../../assets/payment/bkash.png";
 import visa from "../../assets/payment/visa.png";
@@ -12,10 +12,15 @@ import { useState, useEffect } from "react";
 import { showToast } from "../../redux/slices/toastSlice";
 
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { cart } = useCart();
+  
+  // const { cart } = useCart();
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.items);
+
   const location = useLocation();
   // const { showToast } = useToast();
 
@@ -23,8 +28,8 @@ export default function Checkout() {
   const checkoutItems = buyNowProduct ? [buyNowProduct] : cart;
 
   const subtotal = checkoutItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
+    (total, item) => total + Number(item.price) * Number(item.quantity || 1),0
+    
   );
 
   const [formData, setFormData] = useState({
@@ -183,6 +188,7 @@ export default function Checkout() {
 
     // alert("🎉 Order Placed Successfully!");
     dispatch(showToast({message:"🎉 Order Placed Successfully!", type:"success"}));
+    navigate("/orders")
 
     setFormData({
       firstName: "",
@@ -366,7 +372,7 @@ export default function Checkout() {
                     <p>{item.title}</p>
                   </div>
 
-                  <span>${(item.price * item.quantity).toFixed(2)}</span>
+                  <span>${(item.price * item.quantity || 1).toFixed(2)}</span>
                 </div>
               ))
             )}
