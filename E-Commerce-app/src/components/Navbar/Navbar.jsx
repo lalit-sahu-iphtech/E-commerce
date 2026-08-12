@@ -595,7 +595,7 @@ if (location.pathname.startsWith("/category/")) {
                 <div
                   onClick={() => {
                     setShowProfile(false);
-                    dispatch(showToast({message:"Coming Soon", type:"error"}));
+                     navigate("/cancellations")
                   }}
                 >
                   <HiOutlineXCircle className="dropdown-icon" />
@@ -605,7 +605,7 @@ if (location.pathname.startsWith("/category/")) {
                 <div
                   onClick={() => {
                     setShowProfile(false);
-                    dispatch(showToast({message:"Coming Soon", type:"error"}));
+                    navigate("/reviews")
 
                   }}
                 >
@@ -621,6 +621,7 @@ if (location.pathname.startsWith("/category/")) {
             )}
           </div>
         )}
+
       </div>
     </header>
   );
