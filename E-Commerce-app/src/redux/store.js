@@ -7,7 +7,7 @@ import searchReducer from "./slices/searchSlice";
 import toastReducer from "./slices/toastSlice";
 import reviewsReducer from "./slices/reviewsSlice";
 import cancellationReducer from "./slices/cancellationSlice"
-
+import orderReducer from "./slices/orderSlice";
 import {
   persistStore,
   persistReducer,
@@ -63,6 +63,10 @@ const cancellationPersistConfig = {
   key : "cancellations",
   storage,
 }
+const orderPersistConfig = {
+  key: "orders",
+  storage,
+};
 
 
 // ========================================
@@ -92,7 +96,10 @@ const persistedCancellationReducer = persistReducer(
   cancellationPersistConfig,
   cancellationReducer
 );
-
+const persistedOrderReducer = persistReducer(
+  orderPersistConfig,
+  orderReducer
+);
 
 // ========================================
 // STORE

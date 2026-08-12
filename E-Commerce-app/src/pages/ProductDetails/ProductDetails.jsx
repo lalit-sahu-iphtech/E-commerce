@@ -108,8 +108,7 @@ export default function ProductDetails() {
       color: selectedColor,
     };
   
-    // Pehle cart me add karo, taaki My Orders me bhi show ho
-    addToCart(productToBuy);
+  
   
     navigate("/checkout", {
       state: {

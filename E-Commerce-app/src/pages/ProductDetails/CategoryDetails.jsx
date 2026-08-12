@@ -299,11 +299,7 @@ export default function CategoryDetails() {
     };
 
 
-    // Add to Redux cart
-    dispatch(
-      addToCart(productToBuy)
-    );
-
+   
 
     // Go checkout
     navigate("/checkout", {
@@ -586,21 +582,7 @@ export default function CategoryDetails() {
 
 
             {/* Buy Now */}
-
-            <button
-              className="buy-btn"
-              onClick={() => {
-                navigate("/checkout", {
-                  state: {
-                    buyNowProduct: {
-                      ...product,
-                      quantity: qty,
-                      size: selectedSize,
-                    },
-                  },
-                });
-              }}
-            >
+            <button className="buy-btn" onClick={handleBuyNow}>
               Buy Now
             </button>
 

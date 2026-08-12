@@ -10,6 +10,10 @@ import nagad from "../../assets/payment/nagad.png";
 import { useState, useEffect } from "react";
 // import { useToast } from "../../context/ToastContext";
 import { showToast } from "../../redux/slices/toastSlice";
+import { addOrder } from "../../redux/slices/orderSlice";
+import {
+  clearCart,
+} from "../../redux/slices/cartSlice";
 
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -170,48 +174,115 @@ export default function Checkout() {
   };
 
   const handlePlaceOrder = () => {
+    // =========================
+    // VALIDATE BILLING FORM
+    // =========================
+  
     if (!validateForm()) return;
-
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
+  
+    // =========================
+    // CURRENT USER
+    // =========================
+  
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+  
     if (!currentUser) {
-      dispatch(showToast({message:"Please login first to place your order.", type:"error"}));
+      dispatch(
+        showToast({
+          message: "Please login first to place your order.",
+          type: "error",
+        })
+      );
+  
       navigate("/signup");
       return;
     }
-
-    if (cart.length === 0) {
-      // alert("Your cart is empty");
-      dispatch(showToast({message:"Your cart is empty", type:"error"}));
+  
+    // =========================
+    // CHECKOUT ITEMS
+    // =========================
+  
+    if (checkoutItems.length === 0) {
+      dispatch(
+        showToast({
+          message: "No products available for checkout.",
+          type: "error",
+        })
+      );
+  
       return;
     }
-
-    // alert("🎉 Order Placed Successfully!");
-    dispatch(showToast({message:"🎉 Order Placed Successfully!", type:"success"}));
-    navigate("/orders")
-
-    setFormData({
-      firstName: "",
-      company: "",
-      street: "",
-      apartment: "",
-      city: "",
-      phone: "",
-      email: "",
-    });
-
-    setErrors({
-      firstName: "",
-      street: "",
-      city: "",
-      phone: "",
-      email: "",
-    });
-
-    setCoupon("");
-    setAppliedCoupon("");
-    setCouponMsg("");
-    setDiscount(0);
+  
+    // =========================
+    // CREATE ORDER
+    // =========================
+  
+    const order = {
+      id: Date.now(),
+  
+      userId: currentUser.email,
+  
+      items: checkoutItems.map((item) => ({
+        ...item,
+        quantity: Number(item.quantity || 1),
+      })),
+  
+      subtotal: subtotal,
+  
+      discount: discount,
+  
+      total: total,
+  
+      paymentMethod: "Bank",
+  
+      billingDetails: {
+        firstName: formData.firstName,
+        company: formData.company,
+        street: formData.street,
+        apartment: formData.apartment,
+        city: formData.city,
+        phone: formData.phone,
+        email: formData.email,
+      },
+  
+      status: "Processing",
+  
+      orderedAt: new Date().toLocaleString(),
+    };
+  
+    // =========================
+    // SAVE ORDER IN REDUX
+    // =========================
+  
+    dispatch(addOrder(order));
+  
+    // =========================
+    // CLEAR CART ONLY FOR
+    // NORMAL CART CHECKOUT
+    // =========================
+  
+    if (!buyNowProduct) {
+      dispatch(clearCart());
+    }
+  
+    // =========================
+    // SUCCESS TOAST
+    // =========================
+  
+    dispatch(
+      showToast({
+        message: "🎉 Order Placed Successfully!",
+        type: "success",
+      })
+    );
+  
+    // =========================
+    // GO TO MY ORDERS
+    // =========================
+  
+    navigate("/orders");
   };
 
   return (
