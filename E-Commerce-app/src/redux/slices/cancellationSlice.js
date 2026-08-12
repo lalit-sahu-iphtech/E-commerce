@@ -10,27 +10,38 @@ const cancellationSlice = createSlice({
   initialState,
 
   reducers: {
-    addCancellation: (state, action) => {
-      const product = action.payload;
+    // ========================================
+    // ADD CANCELLED PRODUCT
+    // ========================================
 
-      const alreadyExists = state.items.some(
-        (item) => item.id === product.id
+    addCancellation: (state, action) => {
+      const cancellation = action.payload;
+
+      // Prevent duplicate cancellation
+      const alreadyCancelled = state.items.some(
+        (item) =>
+          item.cancellationId === cancellation.cancellationId
       );
 
-      if (!alreadyExists) {
-        state.items.push({
-          ...product,
-          cancellationStatus: "Cancelled",
-          cancelledAt: new Date().toLocaleDateString(),
-        });
+      if (!alreadyCancelled) {
+        state.items.push(cancellation);
       }
     },
 
+    // ========================================
+    // REMOVE CANCELLATION
+    // ========================================
+
     removeCancellation: (state, action) => {
       state.items = state.items.filter(
-        (item) => item.id !== action.payload
+        (item) =>
+          item.cancellationId !== action.payload
       );
     },
+
+    // ========================================
+    // CLEAR ALL CANCELLATIONS
+    // ========================================
 
     clearCancellations: (state) => {
       state.items = [];

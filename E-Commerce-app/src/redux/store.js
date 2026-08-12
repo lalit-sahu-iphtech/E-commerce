@@ -118,6 +118,7 @@ export const store = configureStore({
     toast: toastReducer,
     reviews : persistedReviewsReducer,
     cancellations : persistedCancellationReducer,
+    orders : persistedOrderReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

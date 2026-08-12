@@ -173,118 +173,242 @@ export default function Checkout() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // const handlePlaceOrder = () => {
+  //   // =========================
+  //   // VALIDATE BILLING FORM
+  //   // =========================
+  
+  //   if (!validateForm()) return;
+  
+  //   // =========================
+  //   // CURRENT USER
+  //   // =========================
+  
+  //   const currentUser = JSON.parse(
+  //     localStorage.getItem("currentUser")
+  //   );
+  
+  //   if (!currentUser) {
+  //     dispatch(
+  //       showToast({
+  //         message: "Please login first to place your order.",
+  //         type: "error",
+  //       })
+  //     );
+  
+  //     navigate("/signup");
+  //     return;
+  //   }
+  
+  //   // =========================
+  //   // CHECKOUT ITEMS
+  //   // =========================
+  
+  //   if (checkoutItems.length === 0) {
+  //     dispatch(
+  //       showToast({
+  //         message: "No products available for checkout.",
+  //         type: "error",
+  //       })
+  //     );
+  
+  //     return;
+  //   }
+  
+  //   // =========================
+  //   // CREATE ORDER
+  //   // =========================
+  
+  //   const order = {
+  //      orderId: `ORD-${Date.now()}`,
+  
+  //     userId: currentUser.email,
+  
+  //     items: checkoutItems.map((item) => ({
+  //       ...item,
+  //       quantity: Number(item.quantity || 1),
+  //     })),
+  
+  //     subtotal: subtotal,
+  
+  //     discount: discount,
+  
+  //     total: total,
+  
+  //     paymentMethod: "Bank",
+  
+  //     billingDetails: {
+  //       firstName: formData.firstName,
+  //       company: formData.company,
+  //       street: formData.street,
+  //       apartment: formData.apartment,
+  //       city: formData.city,
+  //       phone: formData.phone,
+  //       email: formData.email,
+  //     },
+  
+  //     status: "Processing",
+  
+  //     orderedAt: new Date().toLocaleString(),
+  //   };
+  
+  //   // =========================
+  //   // SAVE ORDER IN REDUX
+  //   // =========================
+  
+  //   dispatch(addOrder(order));
+  
+  //   // =========================
+  //   // CLEAR CART ONLY FOR
+  //   // NORMAL CART CHECKOUT
+  //   // =========================
+  
+  //   if (!buyNowProduct) {
+  //     dispatch(clearCart());
+  //   }
+  
+  //   // =========================
+  //   // SUCCESS TOAST
+  //   // =========================
+  
+  //   dispatch(
+  //     showToast({
+  //       message: "🎉 Order Placed Successfully!",
+  //       type: "success",
+  //     })
+  //   );
+  
+  //   // =========================
+  //   // GO TO MY ORDERS
+  //   // =========================
+  
+  //   navigate("/orders");
+  // };
+
   const handlePlaceOrder = () => {
-    // =========================
-    // VALIDATE BILLING FORM
-    // =========================
-  
-    if (!validateForm()) return;
-  
-    // =========================
-    // CURRENT USER
-    // =========================
-  
-    const currentUser = JSON.parse(
-      localStorage.getItem("currentUser")
-    );
-  
-    if (!currentUser) {
-      dispatch(
-        showToast({
-          message: "Please login first to place your order.",
-          type: "error",
-        })
-      );
-  
-      navigate("/signup");
-      return;
-    }
-  
-    // =========================
-    // CHECKOUT ITEMS
-    // =========================
-  
-    if (checkoutItems.length === 0) {
-      dispatch(
-        showToast({
-          message: "No products available for checkout.",
-          type: "error",
-        })
-      );
-  
-      return;
-    }
-  
-    // =========================
-    // CREATE ORDER
-    // =========================
-  
-    const order = {
-      id: Date.now(),
-  
-      userId: currentUser.email,
-  
-      items: checkoutItems.map((item) => ({
-        ...item,
-        quantity: Number(item.quantity || 1),
-      })),
-  
-      subtotal: subtotal,
-  
-      discount: discount,
-  
-      total: total,
-  
-      paymentMethod: "Bank",
-  
-      billingDetails: {
-        firstName: formData.firstName,
-        company: formData.company,
-        street: formData.street,
-        apartment: formData.apartment,
-        city: formData.city,
-        phone: formData.phone,
-        email: formData.email,
-      },
-  
-      status: "Processing",
-  
-      orderedAt: new Date().toLocaleString(),
-    };
-  
-    // =========================
-    // SAVE ORDER IN REDUX
-    // =========================
-  
-    dispatch(addOrder(order));
-  
-    // =========================
-    // CLEAR CART ONLY FOR
-    // NORMAL CART CHECKOUT
-    // =========================
-  
-    if (!buyNowProduct) {
-      dispatch(clearCart());
-    }
-  
-    // =========================
-    // SUCCESS TOAST
-    // =========================
-  
+  // ================================
+  // VALIDATE BILLING FORM
+  // ================================
+
+  if (!validateForm()) return;
+
+  // ================================
+  // CHECK LOGIN
+  // ================================
+
+  const currentUser = JSON.parse(
+    localStorage.getItem("currentUser")
+  );
+
+  if (!currentUser) {
     dispatch(
       showToast({
-        message: "🎉 Order Placed Successfully!",
-        type: "success",
+        message: "Please login first to place your order.",
+        type: "error",
       })
     );
-  
-    // =========================
-    // GO TO MY ORDERS
-    // =========================
-  
-    navigate("/orders");
+
+    navigate("/signup");
+
+    return;
+  }
+
+  // ================================
+  // CHECK CHECKOUT ITEMS
+  // ================================
+
+  if (checkoutItems.length === 0) {
+    dispatch(
+      showToast({
+        message: "Your cart is empty",
+        type: "error",
+      })
+    );
+
+    return;
+  }
+
+  // ================================
+  // CREATE ORDER
+  // ================================
+
+  const order = {
+    orderId: `ORD-${Date.now()}`,
+
+    userId: currentUser.email,
+
+    // Keep the same field name that the orders and cancellation flows use.
+    // Each cart product stays independent inside this order.
+    products: checkoutItems.map((item) => ({
+      ...item,
+
+      quantity: Number(
+        item.quantity || 1
+      ),
+    })),
+
+    billingDetails: {
+      firstName: formData.firstName,
+
+      company: formData.company,
+
+      street: formData.street,
+
+      apartment: formData.apartment,
+
+      city: formData.city,
+
+      phone: formData.phone,
+
+      email: formData.email,
+    },
+
+    subtotal,
+
+    discount,
+
+    total,
+
+    paymentMethod: "Bank",
+
+    status: "Processing",
+
+    orderedAt: new Date().toLocaleString(),
   };
 
+  // ================================
+  // SAVE ORDER IN REDUX
+  // ================================
+
+  dispatch(addOrder(order));
+
+  // ================================
+  // REMOVE ORDERED ITEMS FROM CART
+  // ONLY FOR NORMAL CART CHECKOUT
+  // ================================
+
+  if (!buyNowProduct) {
+    // Yahan tum apne cartSlice ka clearCart action
+    // use kar sakte ho.
+  }
+
+  // ================================
+  // SUCCESS MESSAGE
+  // ================================
+
+  dispatch(
+    showToast({
+      message: "🎉 Order Placed Successfully!",
+      type: "success",
+    })
+  );
+
+  // ================================
+  // GO TO MY ORDERS
+  // ================================
+
+  navigate("/orders");
+};
   return (
     <>
       <section className="checkout-page">
