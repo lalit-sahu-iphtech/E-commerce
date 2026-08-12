@@ -11,6 +11,7 @@ import RecomDetails from "./RecomDetails";
 
 import { TbTruckDelivery, TbRefresh } from "react-icons/tb";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+
 export default function SidebarDetails() {
   const products = Object.values(sidebarProducts).flat();
   const { id } = useParams();
