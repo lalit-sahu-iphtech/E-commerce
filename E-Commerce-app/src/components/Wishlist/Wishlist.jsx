@@ -3,29 +3,14 @@ import "./wishlist.css";
 import { FaTrashAlt } from "react-icons/fa";
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 
-// Old Context imports
-// import { useWishlist } from "../../context/WishlistContext";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import RecommendedCard from "./RecommendedCard";
 
-import { useNavigate } from "react-router-dom";
-
-// Old Cart Context
-// import { useCart } from "../../context/CartContext";
-
-// import { useState } from "react";
-
 import { products } from "../../data/recomonded";
 
-// import Footer from "../Footer/Footer";
-
-// import { useToast } from "../../context/ToastContext";
-
-// Redux
-import { useDispatch, useSelector } from "react-redux";
-
 import {
-  // toggleWishlist,
   removeFromWishlist,
   clearWishlist,
 } from "../../redux/slices/wishlistSlice";
@@ -35,190 +20,173 @@ import {
   removeFromCart,
 } from "../../redux/slices/cartSlice";
 
+import { showToast } from "../../redux/slices/toastSlice";
+
 export default function Wishlist() {
-
-  // ================================
-  // OLD CONTEXT CODE
-  // ================================
-
-  // const { addToCart, removeFromCart, isInCart } = useCart();
-
-  // const {
-  //   wishlist,
-  //   removeFromWishlist,
-  //   clearWishlist
-  // } = useWishlist();
-
-
-  // ================================
-  // REDUX
-  // ================================
-
   const dispatch = useDispatch();
-
-  // Get wishlist products from Redux
-  const wishlist = useSelector(
-    (state) => state.wishlist.items
-  );
-
-  // Get cart products from Redux
-  const cart = useSelector(
-    (state) => state.cart.items
-  );
-
-
-  // ================================
-  // CHECK PRODUCT IN CART
-  // ================================
-
-  const isInCart = (id) => {
-    return cart.some(
-      (item) => item.id === id
-    );
-  };
-
-
-  // ================================
-  // TOAST + NAVIGATION
-  // ================================
-
-  // const { showToast } = useToast();
-
   const navigate = useNavigate();
 
+  // ==========================================
+  // REDUX DATA
+  // ==========================================
 
-  // ================================
-  // OLD ADDED STATE
-  // ================================
+  const wishlist = useSelector(
+    (state) => state.wishlist?.items || []
+  );
 
-  // const [added, setAdded] = useState(false);
+  const cart = useSelector(
+    (state) => state.cart?.items || []
+  );
 
+  // ==========================================
+  // CHECK PRODUCT IN CART
+  // ==========================================
 
-  // ================================
+  const isInCart = (id) => {
+    return cart.some((item) => item.id === id);
+  };
+
+  // ==========================================
   // ADD / REMOVE CART
-  // ================================
+  // ==========================================
 
   const handleAddCart = (product) => {
-
-    // Check current logged-in user
     const currentUser = JSON.parse(
       localStorage.getItem("currentUser")
     );
 
-
-    // User is not logged in
+    // Login check
     if (!currentUser) {
-
-      dispatch(showToast(
-        "Please login first to add products to cart.",
-        "error"
-      ));
+      dispatch(
+        showToast({
+          message: "Please login first to add products to cart.",
+          type: "error",
+        })
+      );
 
       navigate("/signup");
 
       return;
     }
 
-
-    // ================================
-    // REMOVE FROM CART
-    // ================================
-
+    // Remove from cart
     if (isInCart(product.id)) {
+      dispatch(removeFromCart(product.id));
 
       dispatch(
-        removeFromCart(product.id)
+        showToast({
+          message: "Product removed from cart.",
+          type: "success",
+        })
       );
-
-      dispatch(showToast(
-        "Product removed from cart.",
-        "success"
-      ));
-
-    }
-
-    // ================================
-    // ADD TO CART
-    // ================================
-
-    else {
-
-      dispatch(
-        addToCart(product)
-      );
-
-      dispatch(showToast(
-        "Product added to cart.",
-        "success"
-      ));
-    }
-  };
-
-
-  // ================================
-  // MOVE ALL TO BAG
-  // ================================
-
-  const handleMoveAllToBag = () => {
-
-    // Wishlist empty
-    if (wishlist.length === 0) {
-
-      // alert("Wishlist is empty");
-
-      dispatch(showToast(
-        "Wishlist is empty",
-        "error"
-      ));
 
       return;
     }
 
+    // Add to cart
+    dispatch(addToCart(product));
+
+    dispatch(
+      showToast({
+        message: "Product added to cart.",
+        type: "success",
+      })
+    );
+  };
+
+  // ==========================================
+  // REMOVE FROM WISHLIST
+  // ==========================================
+
+  const handleRemoveWishlist = (productId) => {
+    dispatch(removeFromWishlist(productId));
+
+    dispatch(
+      showToast({
+        message: "Product removed from wishlist.",
+        type: "success",
+      })
+    );
+  };
+
+  // ==========================================
+  // MOVE ALL TO BAG
+  // ==========================================
+
+  const handleMoveAllToBag = () => {
+    const currentUser = JSON.parse(
+      localStorage.getItem("currentUser")
+    );
+
+    // Login check
+    if (!currentUser) {
+      dispatch(
+        showToast({
+          message: "Please login first.",
+          type: "error",
+        })
+      );
+
+      navigate("/signup");
+
+      return;
+    }
+
+    // Empty wishlist
+    if (wishlist.length === 0) {
+      dispatch(
+        showToast({
+          message: "Wishlist is empty.",
+          type: "error",
+        })
+      );
+
+      return;
+    }
 
     // Add all wishlist products to cart
     wishlist.forEach((item) => {
-
-      dispatch(
-        addToCart(item)
-      );
-
+      if (!isInCart(item.id)) {
+        dispatch(addToCart(item));
+      }
     });
 
+    // Clear wishlist
+    dispatch(clearWishlist());
 
-    // Clear wishlist after moving
     dispatch(
-      clearWishlist()
+      showToast({
+        message: "All products moved to cart.",
+        type: "success",
+      })
     );
-
-
-    // alert("All products moved to cart");
-
-    dispatch(showToast(
-      "All products moved to cart",
-      "success"
-    ));
   };
 
-
-  // ================================
+  // ==========================================
   // JSX
-  // ================================
+  // ==========================================
 
   return (
-    <>
+    <section className="wishlist-page">
 
-      {/* =================================
+      {/* ========================================
           WISHLIST HEADER
-      ================================= */}
+      ======================================== */}
 
       <div className="wishlist-header">
 
-        <h2>
-          Wishlist ({wishlist.length})
-        </h2>
+        <div className="wishlist-title-wrapper">
+          <h2>
+            Wishlist
+          </h2>
 
+          <span>
+            ({wishlist.length})
+          </span>
+        </div>
 
         <button
+          type="button"
           className="move-btn"
           onClick={handleMoveAllToBag}
         >
@@ -227,146 +195,143 @@ export default function Wishlist() {
 
       </div>
 
-
-      {/* =================================
-          WISHLIST
-      ================================= */}
+      {/* ========================================
+          WISHLIST PRODUCTS
+      ======================================== */}
 
       {wishlist.length === 0 ? (
 
+        /* ========================================
+           EMPTY WISHLIST
+        ======================================== */
+
         <div className="empty-wishlist">
 
+          <div className="empty-wishlist-icon">
+            ♡
+          </div>
+
           <h2>
-            Your Wishlist is Empty ❤️
+            Your Wishlist is Empty
           </h2>
 
           <p>
-            Add some products to your wishlist.
+            Save your favorite products here and
+            shop them whenever you want.
           </p>
+
+          <button
+            type="button"
+            className="browse-products-btn"
+            onClick={() => navigate("/products")}
+          >
+            Browse Products
+          </button>
 
         </div>
 
       ) : (
 
+        /* ========================================
+           WISHLIST GRID
+        ======================================== */
+
         <div className="wishlist-grid">
 
-          {wishlist.map((products, index) => (
+          {wishlist.map((product, index) => (
 
             <div
               className="wishlist-card"
-              key={products.id}
+              key={product.id}
             >
 
-              {/* =================================
-                  PRODUCT IMAGE
-              ================================= */}
+              {/* ==================================
+                  IMAGE
+              ================================== */}
 
               <div className="wishlist-image">
 
                 {/* Discount */}
                 {index === 0 &&
-                  products.discount && (
-
+                  product.discount && (
                     <span className="discount-badge">
-                      {products.discount}
+                      {product.discount}
                     </span>
+                  )}
 
+                {/* New */}
+                {product.new && (
+                  <span className="new-badge">
+                    NEW
+                  </span>
                 )}
 
-
                 {/* Product Image */}
-
                 <img
-                  src={products.image}
-                  alt={products.title}
+                  src={product.image}
+                  alt={product.title || product.name}
                 />
 
-
-                {/* =================================
-                    DELETE WISHLIST BUTTON
-                ================================= */}
-
+                {/* Delete */}
                 <button
                   type="button"
                   className="delete-btn"
-                  onClick={() => {
-
-                    dispatch(
-                      removeFromWishlist(
-                        products.id
-                      )
-                    );
-
-                    dispatch(showToast(
-                      "Product removed from wishlist.",
-                      "success"
-                    ));
-
-                  }}
+                  onClick={() =>
+                    handleRemoveWishlist(product.id)
+                  }
+                  aria-label="Remove from wishlist"
                 >
-
                   <FaTrashAlt />
-
                 </button>
 
-
-                {/* =================================
-                    CART BUTTON
-                ================================= */}
-
+                {/* Cart */}
                 <button
                   type="button"
-                  className={`cart-btn ${
-                    isInCart(products.id)
-                      ? "added"
-                      : "removed"
+                  className={`wishlist-cart-btn ${
+                    isInCart(product.id)
+                      ? "wishlist-cart-added"
+                      : ""
                   }`}
                   onClick={() =>
-                    handleAddCart(products)
+                    handleAddCart(product)
                   }
                 >
-
                   <HiOutlineShoppingCart />
 
-
-                  {isInCart(products.id)
+                  {isInCart(product.id)
                     ? "Remove Item"
-                    : "Add To Cart"
-                  }
-
+                    : "Add To Cart"}
                 </button>
 
               </div>
 
+              {/* ==================================
+                  TITLE
+              ================================== */}
 
-              {/* =================================
-                  PRODUCT TITLE
-              ================================= */}
-
-              <h3>
-                {products.title}
+              <h3 className="wishlist-product-title">
+                {product.title || product.name}
               </h3>
 
+              {/* ==================================
+                  PRICE
+              ================================== */}
 
-              {/* =================================
-                  PRODUCT PRICE
-              ================================= */}
+              <div className="wishlist-price">
 
-              <div className="price">
-
-                <span className="new-price">
-                  ${products.price}
+                <span className="wishlist-new-price">
+                  ${Number(product.price || 0).toFixed(0)}
                 </span>
 
-
                 {index === 0 &&
-                  products.oldPrice && (
-
-                    <span className="old-price">
-                      ${products.oldPrice}
+                  product.oldPrice && (
+                    <span className="wishlist-old-price">
+                      $
+                      {Number(
+                        product.oldPrice
+                      ).toFixed(0)}
                     </span>
-
-                )}
+                  )}
 
               </div>
 
@@ -375,55 +340,58 @@ export default function Wishlist() {
           ))}
 
         </div>
-
       )}
 
-
-      {/* =================================
+      {/* ========================================
           JUST FOR YOU
-      ================================= */}
+      ======================================== */}
 
-      <div className="just-header">
+      <section className="just-for-you-section">
 
-        <div className="just-left">
+        <div className="just-header">
 
-          <span className="red-bar"></span>
+          <div className="just-left">
 
-          <h2>
-            Just For You
-          </h2>
+            <span className="red-bar"></span>
+
+            <h2>
+              Just For You
+            </h2>
+
+          </div>
+
+          <button
+            type="button"
+            className="see-all-btn"
+            onClick={() => navigate("/products")}
+          >
+            See All
+          </button>
 
         </div>
 
+        {/* ======================================
+            RECOMMENDED PRODUCTS
+        ====================================== */}
 
-        <button
-          className="move-btn"
-          onClick={() => navigate("/")}
-        >
-          See All
-        </button>
+        <div className="wishlist-grid recommended-products-grid">
 
-      </div>
+          {products.slice(0, 4).map(
+            (product, index) => (
 
+              <RecommendedCard
+                key={product.id}
+                product={product}
+                index={index}
+              />
 
-      {/* =================================
-          RECOMMENDED PRODUCTS
-      ================================= */}
+            )
+          )}
 
-      <div className="wishlist-grid">
+        </div>
 
-        {products.map((product, index) => (
+      </section>
 
-          <RecommendedCard
-            key={product.id}
-            product={product}
-            index={index}
-          />
-
-        ))}
-
-      </div>
-
-    </>
+    </section>
   );
 }
