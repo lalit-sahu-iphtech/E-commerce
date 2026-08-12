@@ -23,6 +23,12 @@ import SidebarDetails from "./pages/ProductDetails/SidebarDetails.jsx";
 import FaqPage from "./pages/FAQ/FaqPage";
 import PrivacyPage from "./pages/Privacy/PrivacyPage";
 import TermsPage from "./pages/Terms/TermsPage";
+import Orders from "./pages/Orders/Orders";
+import Cancellations from "./pages/Cancellations/Cancellations";
+import Reviews from "./pages/Reviews/Reviews";
+import WriteReview from "./pages/WriteReview/WriteReview";
+import AddressBook from "./pages/AddressBook/AddressBook";
+import PaymentOptions from "./pages/PaymentOptions/PaymentOptions";
 // import   MainProductsPage from "./pages/MainProductsPage/MainProductsPage";
 
 function App() {
@@ -47,6 +53,13 @@ function App() {
           />
 
           <Route path="/profile" element={<Profile />} />
+          <Route path="/address-book"element={<AddressBook/>}/>
+          <Route path="/payment-options"element={<PaymentOptions/>}/>
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/cancellations"element={<Cancellations/>}/>
+          <Route path="/reviews"element={<Reviews/>}/>
+          <Route path="/write-review/:productId"element={<WriteReview/>}/>
+
 
           <Route path="/wishlist" element={<Wishlist />} />
 
