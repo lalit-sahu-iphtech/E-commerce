@@ -5,10 +5,12 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { useState } from "react";
 // import { useToast } from "../../context/ToastContext";
 import { showToast } from "../../redux/slices/toastSlice";
+import { useDispatch } from "react-redux";
 
 
 export default function Contact() {
   // const{showToast} = useToast();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
